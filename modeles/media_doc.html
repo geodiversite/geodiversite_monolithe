@@ -1,0 +1,91 @@
+<BOUCLE_doc (DOCUMENTS) {id_document}>
+#SET{player,#ENV{player,#CONFIG{player,'neoplayer'}}}
+
+[(#REM) Document Image ? ]
+[(#TYPE_DOCUMENT|match{^(JPEG|GIF|PNG)$}|?{
+	[(#INCLURE{fond=modeles/image_legendes}{id_document}{class}{editable})]
+})]
+
+[(#REM) Document MP3 ? ]
+[(#TYPE_DOCUMENT|=={MP3}|?{
+<dl class='spip_document_#ID_DOCUMENT spip_documents[ spip_documents_(#ENV{align})][ (#ENV{class})] spip_lien_ok'[ style='float:(#ENV{align}|match{left|right});']>
+[(#ENV*{logo_origine}|?{
+<dt><a href="[(#ENV{lien}|sinon{#URL_DOCUMENT})]" type="#MIME_TYPE"[ class="(#ENV{lien_class})"] title='#TYPE_DOCUMENT - [(#TAILLE|taille_en_octets|texte_backend)]'>
+<img src='[(#ENV*{logo_origine}|extraire_attribut{src})]' width='[(#ENV*{logo_origine}|largeur)]' height='[(#ENV*{logo_origine}|hauteur)]' alt='#TYPE_DOCUMENT - [(#TAILLE|taille_en_octets|texte_backend)]' /></a></dt>
+,
+''
+})]
+[
+<dt class='spip_doc_titre'[ style='width:(#ENV*{logo_origine}|largeur|min{350}|max{120})px;']><strong>(#TITRE)</strong></dt>][
+<dd class='spip_doc_descriptif'[ style='width:(#ENV*{logo_origine}|largeur|min{350}|max{120})px;']>(#DESCRIPTIF|PtoBR)[(#NOTES|PtoBR)]</dd>]
+<dd class='spip_doc_descriptif'[ style='width:(#ENV*{logo_origine}|largeur|min{350}|max{120})px;']>
+[(#GET{player}|=={pixplayer}|?{' ',''})
+<object type='application/x-shockwave-flash' data='#CHEMIN{flash/pixplayer.swf}' id='audioplayer#ID_DOCUMENT' height='24' width='290'>
+<param name="wmode" value="opaque" />
+<param name='movie' value='#CHEMIN{flash/pixplayer.swf}' />
+<param name='FlashVars' value='playerID=#ID_DOCUMENT&amp;bg=0xf8f8f8&amp;leftbg=0xeeeeee&amp;lefticon=0x666666&amp;rightbg=0xcccccc&amp;rightbghover=0x999999&amp;righticon=0x666666&amp;righticonhover=0xFFFFFF&amp;text=0x666666&amp;slider=0x666666&amp;track=0xFFFFFF&amp;border=0x666666&amp;loader=0x9FFFB8&amp;soundFile=#URL_DOCUMENT' />
+<param name='quality' value='high' />
+<param name='menu' value='false' />
+<param name='bgcolor' value='#FFFFFF' />
+[<span><a href='(#URL_DOCUMENT)' rel='enclosure'>#URL_DOCUMENT</a></span>]
+</object>
+][(#GET{player}|=={neoplayer}|?{' ',''})
+<object id="audioplayer#ID_DOCUMENT" type="application/x-shockwave-flash" data="#CHEMIN{flash/neoplayer_maxi.swf}" width="200" height="20">
+<param name="wmode" value="opaque" />
+<param name="movie" value="#CHEMIN{flash/neoplayer_maxi.swf}" />
+<param name="FlashVars" value="mp3=#URL_DOCUMENT&amp;bgcolor1=ffffff&amp;bgcolor2=cccccc&amp;buttoncolor=999999&amp;buttonovercolor=0&amp;slidercolor1=cccccc&amp;slidercolor2=999999&amp;loadingcolor=ffff00&amp;sliderovercolor=666666&amp;textcolor=0&amp;showstop=1&amp;showinfo=0&amp;width=200&amp;height=20" />
+[<span><a href='(#URL_DOCUMENT)' rel='enclosure'>#URL_DOCUMENT</a></span>]
+</object>
+][(#GET{player}|=={dewplayer}|?{' ',''})
+<object type='application/x-shockwave-flash' data='#CHEMIN{flash/dewplayer.swf}' width='200' height='20'>
+<param name="wmode" value="opaque" />
+<param name='movie' value='#CHEMIN{flash/dewplayer.swf}' />
+<param name="FlashVars" value='son=[(#URL_DOCUMENT|url_absolue)]' />
+[<span><a href='(#URL_DOCUMENT)' rel='enclosure'>#URL_DOCUMENT</a></span>]
+</object>
+][(#GET{player}|=={eraplayer}|?{' ',''})
+<object id="audioplayer#ID_DOCUMENT" type="application/x-shockwave-flash" data="#CHEMIN{flash/eraplayer.swf}" width="20" height="20">
+	<param name="wmode" value="transparent" />
+	<param name="movie" value="#CHEMIN{flash/eraplayer.swf}" />
+	<param name="FlashVars" value="mp3=#URL_DOCUMENT" />
+	[<span><a href='(#URL_DOCUMENT)' rel='enclosure'>#URL_DOCUMENT</a></span>]
+</object>
+]
+</dd>
+</dl>
+})]
+
+
+[(#REM) Document Flash (.flv) ? 
+	Documentation: 
+	- player_flv_js.swf -> http://flv-player.net/players/js/documentation/
+	- player_flv_multi.swf -> http://flv-player.net/players/multi/documentation/
+	- player_flv_maxi -> http://flv-player.net/players/maxi/documentation/
+	- player_flv.swf -> http://flv-player.net/players/normal/documentation/
+	- player_flv_mini.swf -> http://flv-player.net/players/mini/documentation/
+][(#TYPE_DOCUMENT|=={Flash Video}|?{' '})
+<dl class='spip_document_#ID_DOCUMENT spip_documents[ spip_documents_(#ENV{align})][ (#ENV{class})] spip_lien_ok'[ style='float:(#ENV{align}|match{left|right});']>
+<dt class='spip_doc_titre'>
+<object type="application/x-shockwave-flash" data="#CHEMIN{flash/player_flv_maxi.swf}" width="[(#LARGEUR|=={0}|?{560,#LARGEUR})]" height="[(#HAUTEUR|=={0}|?{420,#HAUTEUR})]">
+<param name="movie" value="#CHEMIN{flash/player_flv_maxi.swf}" />
+<param name="FlashVars" value="flv=[(#URL_DOCUMENT|url_absolue)]&amp;width=[(#LARGEUR|=={0}|?{560,#LARGEUR})]&amp;height=[(#HAUTEUR|=={0}|?{420,#HAUTEUR})]&amp;bgcolor1=333333&amp;bgcolor2=333333&amp;buttoncolor=999999&amp;buttonovercolor=0&amp;slidercolor1=cccccc&amp;slidercolor2=999999&amp;sliderovercolor=666666&amp;textcolor=0&amp;showstop=1&amp;title=[(#TITRE|urlencode)][(#ENV*{logo_origine}|extraire_attribut{src}|match{flv.png$}|?{'',' '})&amp;startimage=[(#ENV*{logo_origine}|extraire_attribut{src})]]&amp;ondoubleclick=fullscreen&amp;showfullscreen=1&amp;showvolume=1" />
+<param name="allowFullScreen" value="true" />
+[<strong>(#TITRE)</strong>]
+[<span><a href="(#URL_DOCUMENT)" rel="enclosure">#URL_DOCUMENT</a></span>]
+</object>
+</dt>
+[<dd class='spip_doc_descriptif'[ style='width:(#ENV*{logo_origine}|largeur|min{350}|max{120})px;']>(#DESCRIPTIF|PtoBR)[(#NOTES|PtoBR)]</dd>]
+</dl>
+]
+
+
+[(#REM) Sinon : document normal ]
+[(#TYPE_DOCUMENT|match{^(Flash Video|MP3|JPEG|GIF|PNG)$}|?{'',' '})
+<dl class='spip_document_#ID_DOCUMENT spip_documents[ spip_documents_(#ENV{align})][ (#ENV{class})] spip_lien_ok'[ style='float:(#ENV{align}|match{left|right});']>
+<a href="[(#ENV{lien}|sinon{#URL_DOCUMENT})]" type="#MIME_TYPE"[ class="(#ENV{lien_class})"]><img src='[(#LOGO_DOCUMENT||extraire_attribut{src})]' width='[(#LOGO_DOCUMENT||largeur)]' height='[(#LOGO_DOCUMENT||hauteur)]' alt='#TYPE_DOCUMENT - [(#TAILLE|taille_en_octets)]' title='#TYPE_DOCUMENT - [(#TAILLE|taille_en_octets)]' /></a>
+[
+<dt class='spip_doc_titre'[ style='width:(#LOGO_DOCUMENT||largeur|min{350}|max{120})px;']><strong>(#TITRE)</strong></dt>][
+<dd class='spip_doc_descriptif'[ style='width:(#LOGO_DOCUMENT||largeur|min{350}|max{120})px;']>(#DESCRIPTIF|PtoBR)[(#NOTES|PtoBR)]</dd>]
+</dl>
+]
+</BOUCLE_doc>

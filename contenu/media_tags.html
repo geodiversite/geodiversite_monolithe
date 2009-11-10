@@ -1,0 +1,15 @@
+[<p class="actions" id="afficher_spipicious"><:geol:tags_modifier:></p>
+(#FORMULAIRE_SPIPICIOUS_AJAX{#ID_ARTICLE,'article'})
+<script type="text/javascript">
+(function($){
+	$(function(){
+		$("div.formulaire_spipicious").hide();
+		$("#afficher_spipicious").click(function(){
+			$('div.formulaire_spipicious').toggle('slow');
+			return false;
+		});
+	});
+})(jQuery);
+</script>]
+
+[(#MODELE{nuage_dl_article}{type=- Tags -}{id_article})]

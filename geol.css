@@ -1,0 +1,84 @@
+body, h1, h2, h3, h4, h5, h6 { font-family: Arial, Helvetica, sans-serif; }
+
+body { font-size: 0.75em; color: #666; }
+#page { width: 960px; margin: 0 auto; }
+#entete { width: 960px; border: 0; }
+#conteneur { width: 60%; }
+#navigation { width: 35%; }
+#contenu { padding-top: 0; }
+#extra { margin-top: 0; }
+#pied { border-top: 1px solid #ddd; width: auto; text-align: left; }
+#pied a { color: #666; }
+
+h1 { font-weight: bold; margin-bottom: 20px; /*font-size: 2.1em;*/ color: #333; }
+h1.entry-title, h2 { clear: both; font-weight: bold; color: #666; }
+h2 a, h2 a:hover { color: #666; }
+h3 { /*font-size: 1.1em;*/ }
+h3.spip { color: #666; text-align: left; border-bottom: 1px solid #ddd; padding-bottom: 20px; }
+.spip_surligne { background: transparent; }
+
+/*  ------------------------------------------
+/*  le menu de navigation + entete
+/*  ------------------------------------------ */
+
+#entete a.accueil strong { position: absolute; left: -8888em; }
+
+/*  ------------------------------------------
+/*  navigation + extras
+/*  ------------------------------------------ */
+
+#navigation .menu h2 { margin-bottom: 10px; }
+#navigation .menu .socialtags ul,
+#navigation .menu .socialtags ul li { border: 0; }
+
+/*  ------------------------------------------
+/*  pages sommaire, articles et rubriques
+/*  ------------------------------------------ */
+
+.cartouche .avatar { float: left; margin-right: 10px; }
+.cartouche p { clear: none; }
+
+/* Messages des forums
+----------------------------------------------- */
+
+.comments h2,
+#documents_portfolio h2,
+#documents_joints h2 { margin-bottom: 10px; font-size: 1.27em; font-weight: bold; text-align: left; }
+#comments ul { margin: 0; padding: 0; list-style: none; }
+#comments li.comment { position: relative; padding: 0 0 0 45px; border-top: 1px solid #ddd; }
+#comments li.comment:first-child { border: 0; }
+#comments .comment-meta img.photo { position: absolute; left: 0; top: 10px; }
+
+
+/*  ------------------------------------------
+/*  Les formulaires
+/*  ------------------------------------------ */
+
+
+table.spip_barre { margin-top: 4px; }
+table.spip_barre a img { background: #ddd; }
+table.spip_barre a:focus img,
+table.spip_barre a:hover img,
+table.spip_barre a:active img { background: #faf8f5; }
+
+#contenu #formulaire_ajouter_structure,
+.formulaire_contact_libre,
+.formulaire_ecrire_auteur { width: 90%; margin: 10px auto; padding: 10px; border: 1px solid #ddd; background: #f5f5f5; }
+.formulaire_contact_libre fieldset legend,
+.formulaire_ecrire_auteur fieldset legend { background: transparent; }
+
+div#spiplistes-formabo span.nom { margin-bottom: 10px; }
+div#spiplistes-formabo legend { font-family: Arial, Helvetica, sans-serif; font-size: 1.05em; }
+.formulaire_spip_listes_inscription { width: 70%; margin: 1em auto; padding: 20px; border: 1px solid #ddd; }
+
+/* boutons admin */
+body .spip-admin-float { left: 0; margin: 15px auto 0; width: 960px; text-align: right; z-index: 29; }
+body a.spip-admin-boutons { border: 1px solid #ddd; color: #666; }
+body a.spip-admin-boutons:hover { border: 1px solid #ddd; color: #00c0f8; background: transparent; }
+
+/* Couleurs des liens
+---------------------------------------------- */
+.actions { color: #00c0f8; cursor: pointer; }
+a, a.spip_out { color: #00c0f8; text-decoration: none; }
+a.external { padding-right: 14px; background: transparent url(images/spip_out.gif) no-repeat right; }
+a:hover { color: #00c0f8; text-decoration: underline; }

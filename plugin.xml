@@ -1,0 +1,21 @@
+<plugin>
+	<nom>Squelettes G&eacute;odiversit&eacute;.org</nom>
+	<auteur>b_b</auteur>
+	<version>0.1</version>
+	<etat>stable</etat>
+	<prefix>geol</prefix>
+	<description>
+	Squelettes du projet G&eacute;odiversit&eacute;.org.
+	</description>
+	<lien></lien>
+	<licence>GPL</licence>
+	<icon></icon>
+	<options>geol_options.php</options>
+	<fonctions>geol_fonctions.php</fonctions>
+	<pipeline>
+		<nom>insert_head</nom>
+		<inclure>geol_pipelines.php</inclure>
+	</pipeline>
+	<necessite id="saisies" version="[1.1;]" />
+ 	<necessite id='SPIP' version='[2.0.9;]' />
+</plugin>
