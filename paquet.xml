@@ -24,7 +24,7 @@
 	<necessite nom="diogene" compatibilite="[1.0.0;[" />
 	<necessite nom="emballe_medias" compatibilite="[1.1.1;[" />
 	<necessite nom="saisies" compatibilite="[1.25.10;[" />
-	<necessite nom="Z" compatibilite="[1.1.1;[" />
+	<necessite nom="Zcore" compatibilite="[1.1.1;[" />
 	<necessite nom="pages" compatibilite="[1.0.0;[" />
 	<necessite nom="mesfavoris" compatibilite="[2.2.0;[" />
 	<necessite nom="menus" compatibilite="[1.2.1;[" />
