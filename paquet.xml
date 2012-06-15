@@ -1,0 +1,34 @@
+<paquet
+	prefix="geol"
+	categorie="squelette"
+	version="1.0.0"
+	etat="dev"
+	compatibilite="[3.0.0;["
+	logo="images/logo_carre.png"
+	schema="0.2"
+>	
+
+	<nom>Squelettes G&eacute;odiversit&eacute;.net</nom>
+	<!-- Squelettes du projet Géodiversité -->
+
+	<auteur>b_b</auteur>
+
+	<licence lien="http://www.gnu.org/licenses/gpl-3.0.html">GPL 3</licence>
+
+	<pipeline nom="styliser" inclure="geol_pipelines.php" />
+	<pipeline nom="formulaire_charger" inclure="geol_pipelines.php" />
+	<pipeline nom="em_post_upload_medias" inclure="geol_pipelines.php" />
+	<pipeline nom="xmlrpc_methodes" inclure="geol_pipelines.php" />
+	<pipeline nom="xmlrpc_server_class" inclure="geol_pipelines.php" />
+
+	<necessite nom="diogene" compatibilite="[1.0.0;[" />
+	<necessite nom="emballe_medias" compatibilite="[1.1.1;[" />
+	<necessite nom="saisies" compatibilite="[1.25.10;[" />
+	<necessite nom="Z" compatibilite="[1.1.1;[" />
+	<necessite nom="pages" compatibilite="[1.0.0;[" />
+	<necessite nom="mesfavoris" compatibilite="[2.2.0;[" />
+	<necessite nom="menus" compatibilite="[1.2.1;[" />
+	<necessite nom="gis" compatibilite="[4.0.0;[" />
+
+	<utilise nom="amis" compatibilite="[0.1;[" />
+</paquet>
