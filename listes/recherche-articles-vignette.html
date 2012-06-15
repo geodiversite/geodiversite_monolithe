@@ -1,0 +1,46 @@
+#SET{extensions,#ARRAY|array_merge{#CONFIG{emballe_medias/fichiers/fichiers_images}}|array_merge{#CONFIG{emballe_medias/fichiers/fichiers_videos}}|array_merge{#CONFIG{emballe_medias/fichiers/fichiers_audios}}|array_merge{#CONFIG{emballe_medias/fichiers/fichiers_textes}}}
+
+[(#ENV{type_doc}|oui)
+	#SET{extensions,#ARRAY}
+]
+
+[(#VAL{'type_images'}|in_array{#ENV{type_doc,#ARRAY}}|oui)
+	#SET{extensions,#GET{extensions}|array_merge{#CONFIG{emballe_medias/fichiers/fichiers_images}}}
+]
+[(#VAL{'type_videos'}|in_array{#ENV{type_doc,#ARRAY}}|oui)
+	#SET{extensions,#GET{extensions}|array_merge{#CONFIG{emballe_medias/fichiers/fichiers_videos}}}
+]
+[(#VAL{'type_audios'}|in_array{#ENV{type_doc,#ARRAY}}|oui)
+	#SET{extensions,#GET{extensions}|array_merge{#CONFIG{emballe_medias/fichiers/fichiers_audios}}}
+]
+[(#VAL{'type_textes'}|in_array{#ENV{type_doc,#ARRAY}}|oui)
+	#SET{extensions,#GET{extensions}|array_merge{#CONFIG{emballe_medias/fichiers/fichiers_textes}}}
+]
+
+#SET{cols,#ENV{cols,3}}<B_articles>
+<div class="liste articles boites[ cols(#GET{cols})]">
+	#ANCRE_PAGINATION
+	<h2 class="h2"><:geol:contribs:>[ ((#GRAND_TOTAL))]</h2>
+	<div class="liens_options">
+		<strong><:geol:trier:></strong> : 
+		<a href="[(#SELF|parametre_url{"tri","points"})]" class="ajax[(#ENV{tri,points}|=={points}|oui) on]"><:geol:trier_par_points:></a>, 
+		<a href="[(#SELF|parametre_url{"tri","date"})]" class="ajax[(#ENV{tri,points}|=={date}|oui) on]"><:geol:trier_par_date:></a>, 
+		<a href="[(#SELF|parametre_url{"tri","popularite"})]" class="ajax[(#ENV{tri,points}|=={popularite}|oui) on]"><:geol:trier_par_pop:></a> |
+		[(#INCLURE{fond=inclure/listes_liens_pas,pas,tri,cols=#GET{cols},self=#SELF})]
+	</div>
+	<ul class="liste-items">
+		<BOUCLE_articles(ARTICLES documents_liens documents){mode=document}{documents.extension IN #GET{extensions}}
+			{mots_articles.id_mot?}
+			{enfants #ENV**{categories}}
+			{id_licence IN #ENV**{id_licence}}
+			{recherche?}
+			{!par #ENV{tri,points}}
+			{pagination #ENV{pas,#GET{cols}|mult{3}}}>
+		<li class="item[ clear(#COMPTEUR_BOUCLE|modulo{#GET{cols}}|=={1}|oui)] article_vignette">
+			[(#INCLURE{fond=inclure/article-vignette,id_article,env})]
+		</li>
+		</BOUCLE_articles>
+	</ul>
+	[<p class="pagination">(#PAGINATION{page_precedent_suivant}{separateur=' '})</p>]
+</div>
+</B_articles>

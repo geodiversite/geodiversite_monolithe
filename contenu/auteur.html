@@ -1,0 +1,35 @@
+<BOUCLE_contenu_auteur(AUTEURS){id_auteur}{tout}>
+[(#REM) Fil d'Ariane ]
+<ol id="hierarchie">
+	<li><a href="#URL_PAGE{auteurs}"><:geol:contributeurs_les:></a></li>
+	[<li class="on"><strong>(#NOM|couper{80})</strong></li>]
+</ol>
+
+<div class="contenu-principal">
+	<div class="cartouche">
+		<h1 class="h1 fn"><span>#NOM</span></h1>
+	</div>
+	
+	[(#PLUGIN{amis}|oui)
+	[(#INCLURE{fond=inclure/menu-auteur,id_auteur,type})]]
+
+	[(#REM) Articles de l'auteur ]
+	[(#INCLURE{fond=listes/articles-vignette,
+		id_auteur,
+		ajax,
+		tri,
+		largeur=200,
+		hauteur=200,
+		info_auteur=non})]
+
+	[(#REM) Tags de l'auteur ]
+
+	<div class="tags">
+		<h2 class="h2"><:geol:tags_utilises_par{nom=#NOM}:></h2>
+		[(#INCLURE{fond=modeles/spipicious_nuage_auteur,
+			id_auteur,
+			tri=titre,
+			url=[(#URL_PAGE{mot}|parametre_url{id_auteur,#ID_AUTEUR})]})]
+	</div>
+</div>
+</BOUCLE_contenu_auteur>

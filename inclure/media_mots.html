@@ -1,0 +1,43 @@
+<BOUCLE_media_mots(ARTICLES){id_article}>
+<h2 class="h2"><span><:geol:categories_scientifiques:></span></h2>
+
+[(#SESSION{statut}|=={0minirezo}|non)
+<p class="explication"><:geol:mot_doux_categories:></p>]
+
+[(#ENV{modifier_cats}|oui)
+	[(#SESSION{statut}|=={0minirezo}|oui)
+	<div id="bloc_polyhier" class="geomodale">
+	<span class="picker_bouton">[(#VAL{91}|chr)]<a href="[(#URL_ARTICLE)]" class="ajax"><:geol:annuler:></a>[(#VAL{93}|chr)]</span>
+	[(#FORMULAIRE_EDITER_POLYHIERARCHIE{article,#ENV{id_article},#URL_ARTICLE})]
+	</div>
+	]
+]
+
+[(#REM) !! pas tres propres mais pas encore trouve mieux... !!
+		on colle les parents indirects de l'article dans une array ]
+
+#SET{parents_indirects,#ARRAY}
+<BOUCLE_cat1(RUBRIQUES){parents_indirects}{tout}>
+#SET_PUSH{parents_indirects,#ID_RUBRIQUE}</BOUCLE_cat1>
+#SET{cats,oui}</B_cat1>
+
+[(#REM) on boucle sur les categories pour trouver celles de l'article ]
+<BOUCLE_merci_bonux(CONDITION){si #ENV{modifier_cats}|!={oui}}>
+[<ul class="liste-items puces">(#GET{cats}|oui)]
+<BOUCLE_cat_mere(RUBRIQUES){id_parent=#CONFIG{geol/secteur_categories,2}}{tout}>
+	<B_cat>
+	<li class="item">
+		[(#_cat_mere:TITRE|unique|couper{80}) : ]
+		<BOUCLE_cat(RUBRIQUES){branche}{id_rubrique IN #GET{parents_indirects}}{tout}{', '}>[<a href="#URL_RUBRIQUE">(#TITRE|couper{80})</a>]</BOUCLE_cat>
+	</li>
+	</B_cat>
+</BOUCLE_cat_mere>
+[</ul>(#GET{cats}|oui)]
+</BOUCLE_merci_bonux>
+
+[(#SESSION{statut}|=={0minirezo}|oui)
+<div class="actions">
+	[(#VAL{91}|chr) ]<a href="[(#SELF|parametre_url{modifier_cats,oui})]" class="ajax"><:geol:modifier_categories:></a>[ (#VAL{93}|chr)]
+</div>]
+
+</BOUCLE_media_mots>

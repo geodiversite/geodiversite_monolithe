@@ -1,0 +1,50 @@
+[(#REM) 
+	Parametres :
+	-* largeur : de l'image... (largeur originale par defaut)
+	-* hauteur : de l'image... (hauteur originale par defaut)
+	-* info_titre : si !=non afficher le titre
+	-* info_texte : si !=non afficher le texte
+	-* info_auteur : si !=non afficher le nom de l'auteur
+	-* info_date : si !=non afficher la date
+	-* info_visites : !=non oui afficher le nombre de visite
+	-* info_commentaires : !=non oui afficher le nombre de commentaires
+ ]
+ 
+<BOUCLE_article_vignette(ARTICLES){id_article}>
+
+[(#ENV{info_titre}|!={non}|oui)
+[<h3 class="titre">(#TITRE)</h3>]]
+
+#SET{url_article,#URL_ARTICLE}
+
+<BOUCLE_doc(DOCUMENTS){id_article}{vu=non}{0,1}>
+[(#SET{largeur,#ENV{largeur,#LARGEUR}})]
+[(#SET{hauteur,#ENV{hauteur,#HAUTEUR}})]
+[<a href="#GET{url_article}">
+	(#LOGO_DOCUMENT|image_reduire{#GET{largeur},#GET{hauteur}}|inserer_attribut{alt,[(#TITRE|couper{80}|texte_backend)]})
+</a>]
+</BOUCLE_doc>
+
+<div class="info_media">
+
+[(#ENV{info_texte}|!={non}|oui)
+	[<div class="texte">(#TEXTE|couper{100})</div>]]
+
+[(#ENV{info_auteur}|!={non}|oui)
+	<p>[<:geol:de:> <span class="contributor"><span(#_article_vignette:LESAUTEURS)</span>]</p>]
+	
+[(#ENV{info_date}|!={non}|oui)
+	<p><abbr class="published" title="[(#DATE|date_iso)]">[<:geol:publie_le:> (#DATE|affdate{'d/m/Y'})]</abbr></p>]
+
+[(#ENV{info_visites}|!={non}|oui)
+	[<p>(#VISITES|singulier_ou_pluriel{geol:vue,geol:vues})</p>]]
+
+<BOUCLE_merci_bonux(CONDITION){si #ENV{info_commentaires}|!={non}}>
+	<BOUCLE_coms(FORUMS) {id_article}{plat}></BOUCLE_coms>
+	[<p><a href="#GET{url_article}#forum">(#TOTAL_BOUCLE)
+		[(#TOTAL_BOUCLE|>{1}|?{<:geol:commentaires:>,<:geol:commentaire:>})]</a></p>]
+	<//B_coms>
+</BOUCLE_merci_bonux>
+
+</div>
+</BOUCLE_article_vignette>

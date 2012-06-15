@@ -1,0 +1,60 @@
+<title>[(#NOM_SITE_SPIP|translitteration)]<BOUCLE_art(ARTICLES){id_article}>[: (#TITRE|supprimer_numero|texte_backend)]</BOUCLE_art><BOUCLE_rub(RUBRIQUES){id_rubrique}>[: (#TITRE|supprimer_numero|texte_backend)]</BOUCLE_rub><BOUCLE_doc(DOCUMENTS){id_document}>[: (#TITRE|supprimer_numero|propre|texte_backend)]</BOUCLE_doc><BOUCLE_SEC(RUBRIQUES){id_rubrique=#ENV{id_secteur}}>[: (#TITRE|supprimer_numero|translitteration)]</BOUCLE_SEC></title>
+<B_rubsecteur>
+	<BOUCLE_rubsecteur(RUBRIQUES){id_rubrique=#ENV{id_secteur}}>
+	<trackList>
+		<BOUCLE_docsrubsecteur(DOCUMENTS){rubriques.id_secteur=#ENV{id_secteur}}{mode=document}{extension==#ENV{type,.}}{par num titre,titre,id_document}>
+		<track>
+			<location>[(#EXTENSION|match{jpg|png|gif}|?{[(#FICHIER|image_reduire{#CONFIG{xspf/rotrecadre_width,640},#CONFIG{xspf/rotrecadre_height,0}}|extraire_attribut{src}|url_absolue)],[(#URL_DOCUMENT|url_absolue)]})]</location>
+			<image>[(#EXTENSION|match{mp3}|?{[(#LOGO_DOCUMENT{vignette}|image_reduire{150}|extraire_attribut{src}|sinon{#CHEMIN{images/logo_carre.png}}|url_absolue)],[(#LOGO_DOCUMENT|extraire_attribut{src}|url_absolue)]})]</image>
+			<annotation>[(#TITRE|supprimer_tags|supprimer_numero|texte_backend)]</annotation>
+			<BOUCLE_lien1(DOCUMENTS_LIENS){id_document}{objet IN 'article','rubrique','breve'}{0,1}>
+			<info>[(#ID_OBJET|generer_url_entite{#OBJET}|parametre_url{id_document,#ID_DOCUMENT}|url_absolue)]</info>
+			</BOUCLE_lien1>
+		</track>
+		</BOUCLE_docsrubsecteur>
+		<BOUCLE_docsartsecteur(DOCUMENTS){articles.id_secteur=#ENV{id_secteur}}{mode=document}{extension==#ENV{type,.}}{par num titre,titre,id_document}>
+		<track>
+			<location>[(#EXTENSION|match{jpg|png|gif}|?{[(#FICHIER|image_reduire{#CONFIG{xspf/rotrecadre_width,640},#CONFIG{xspf/rotrecadre_height,0}}|extraire_attribut{src}|url_absolue)],[(#URL_DOCUMENT|url_absolue)]})]</location>
+			<image>[(#EXTENSION|match{mp3}|?{[(#LOGO_DOCUMENT{vignette}|image_reduire{150}|extraire_attribut{src}|sinon{#CHEMIN{images/logo_carre.png}}|url_absolue)],[(#LOGO_DOCUMENT|extraire_attribut{src}|url_absolue)]})]</image>
+			<annotation>[(#TITRE|supprimer_numero|supprimer_tags|texte_backend)]</annotation>
+			<creator>[(#TITRE|supprimer_numero|supprimer_tags|texte_backend)]</creator>
+			<BOUCLE_lien2(DOCUMENTS_LIENS){id_document}{objet IN 'article','rubrique','breve'}{0,1}>
+			<info>[(#ID_OBJET|generer_url_entite{#OBJET}|parametre_url{id_document,#ID_DOCUMENT}|url_absolue)]</info>
+			</BOUCLE_lien2>
+		</track>
+		</BOUCLE_docsartsecteur>
+	</trackList>
+	</BOUCLE_rubsecteur>
+</B_rubsecteur>
+	<B_docs>
+	<trackList>
+[(#REM) -------------------- Pour jw uniquement ----------------]		
+		[(#ENV{prerolllocation}|!={''}|oui)
+		<track>
+			<location>#ENV{prerolllocation}.flv</location>
+			<info>#ENV{prerolllink}</info>
+			<album>preroll</album>
+		</track>]
+[(#REM) -------------------- Boucle generale de generation des listes de lecture xspf ----------------]
+	<BOUCLE_docs(DOCUMENTS){id_article ?}{id_rubrique ?}{id_document ?}{id_breve ?}{id_mot ?}{id_donnee ?}{mode=document}{extension==#ENV{type,.}}{par num titre,titre,id_document}>
+		<track>
+			<location>[(#EXTENSION|match{jpg|png|gif}|?{[(#FICHIER|image_reduire{#CONFIG{xspf/rotrecadre_width,640},#CONFIG{xspf/rotrecadre_height,0}}|extraire_attribut{src}|url_absolue)],[(#URL_DOCUMENT|url_absolue)]})]</location>
+			[<image>(#EXTENSION|match{mp3}|?{[(#LOGO_DOCUMENT{vignette}|image_reduire{150}|extraire_attribut{src}|sinon{#CHEMIN{images/logo_carre.png}}|url_absolue)],[(#LOGO_DOCUMENT|extraire_attribut{src}|match{dist/vignettes}|?{#LOGO_ARTICLE_RUBRIQUE||sinon{#LOGO_BREVE_RUBRIQUE}||sinon{#LOGO_SITE_SPIP},#LOGO_DOCUMENT}|extraire_attribut{src}|url_absolue)]})</image>]
+			<title>[(#TITRE|supprimer_numero|texte_backend|sinon{[(#FICHIER|basename)]}|texte_backend)]</title>
+			<annotation>[(#TITRE|supprimer_numero|propre|supprimer_tags|translitteration|sinon{[(#FICHIER|basename)]}|texte_backend)]</annotation>
+			<BOUCLE_lien3(DOCUMENTS_LIENS){id_document}{objet IN 'article','rubrique','breve'}{0,1}>
+			<info>[(#ID_OBJET|generer_url_entite{#OBJET}|parametre_url{id_document,#ID_DOCUMENT}|url_absolue)]</info>
+			</BOUCLE_lien3>
+			[(#ENV{creator}|!={''}|oui)<creator>#ENV{creator}</creator>]
+		</track>
+	</BOUCLE_docs>
+[(#REM) -------------------- Pour jw uniquement ----------------]	
+		[(#ENV{postrolllocation}|!={''}|oui)
+		<track>
+			<location>#ENV{postrolllocation}.flv</location>
+			<info>#ENV{postrolllink}</info>
+			<album>postroll</album>
+		</track>]
+	</trackList>
+	</B_docs>
+<//B_rubsecteur>

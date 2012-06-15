@@ -1,0 +1,23 @@
+<div class="menu auteurs">
+	<h2 class="h2"><span><:geol:contributeurs_nouveaux:></span></h2>
+	<B_auteurs>
+	<ul class="liste-items">
+	<BOUCLE_auteurs(AUTEURS){tout}{!par date_inscription}{0,3}>
+		<li class="item vcard">
+			<a href="#URL_AUTEUR">
+				<span class="titre fn">#NOM</span>
+				[(#PLUGIN{gravatar}|oui)[(#MODELE{gravatar,id_auteur,largeur=30})]]
+			</a>
+		</li>
+	</BOUCLE_auteurs>
+	</ul>
+	</B_auteurs>
+</div>
+
+[(#REM) liste des amdins si on est logué ]
+[(#SESSION{id_auteur}|oui)
+[(#INCLURE{fond=inclure/auteurs_liste_admins})]
+]
+
+[(#REM) bloc inscription ]
+[(#INCLURE{fond=inclure/inscription})]

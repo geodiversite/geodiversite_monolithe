@@ -1,0 +1,17 @@
+<BOUCLE_navigation_amis(AUTEURS){id_auteur}>
+[(#SESSION{id_auteur}|=={#ID_AUTEUR}|oui)
+<div class="menu amis auteurs">
+	[(#REM) invitations de l'auteur ]
+	[(#INCLURE{fond=listes/amis_invitations,
+		id_auteur,
+		env,
+		ajax})]
+</div>	
+<div class="menu amis auteurs">	
+	[(#REM) sollicitations de l'auteur ]
+	[(#INCLURE{fond=listes/amis_sollicitations,
+		id_auteur,
+		env,
+		ajax})]
+</div>]
+</BOUCLE_navigation_amis>

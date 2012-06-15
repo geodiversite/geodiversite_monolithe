@@ -1,0 +1,50 @@
+<BOUCLE_contenu_auteur(AUTEURS){id_auteur}{tout}>
+[(#REM) Fil d'Ariane ]
+<ol id="hierarchie">
+	[<li><a href="#URL_AUTEUR{#ENV{id_auteur}}">(#NOM|couper{80})</a></li>]
+	<li class="on"><strong><:geol:favoris:></strong></li>
+</ol>
+
+<div class="contenu-principal">
+	<div class="cartouche">
+		<h1 class="h1 fn"><span>#NOM</span></h1>
+	</div>
+	
+	[(#PLUGIN{amis}|oui)
+	[(#INCLURE{fond=inclure/menu-auteur,id_auteur,page})]]
+	
+	[(#REM) favoris de l'auteur ]
+	[(#INCLURE{fond=listes/favoris-vignette,
+		id_auteur,
+		ajax,
+		tri,
+		largeur=200,
+		hauteur=200,
+		info_texte=non,
+		info_auteur=non,
+		info_date=non,
+		info_visites=non,
+		info_commentaires=non})]
+
+</div>
+</BOUCLE_contenu_auteur>
+<BOUCLE_contenu_article(ARTICLES){id_article}>
+[(#REM) Fil d'Ariane ]
+<ol id="hierarchie">
+	[<li><a href="#URL_ARTICLE">(#TITRE|couper{80})</a></li>]
+	<li class="on"><strong><:geol:fans:></strong></li>
+</ol>
+
+<div class="contenu-principal">
+	<div class="cartouche">
+		<h1 class="h1 fn"><span>#TITRE</span></h1>
+	</div>
+
+	[(#REM) fans de l'article ]
+	[(#INCLURE{fond=listes/fans-vignette,
+		id_article,
+		pas,
+		ajax})]
+
+</div>
+</BOUCLE_contenu_article>

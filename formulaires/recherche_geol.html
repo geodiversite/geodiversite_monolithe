@@ -1,0 +1,47 @@
+<div class="formulaire_spip formulaire_recherche_geol" id="formulaire_recherche_geol">
+<br class='bugajaxie' />
+[<p class="reponse_formulaire reponse_formulaire_ok">(#ENV*{message_ok})</p>]
+[<p class="reponse_formulaire reponse_formulaire_erreur">(#ENV*{message_erreur})</p>]
+[(#ENV{editable})
+<form method='get' action='#ENV{action}' enctype='multipart/form-data'>
+	[(#REM) declarer les hidden qui declencheront le service du formulaire parametre : url d'action ]
+	<input type="hidden" value="recherche" name="page">
+	<fieldset>
+		<ul>
+			<li class='recherche_libre'>
+				<label for="recherche_libre"><:info_rechercher:></label>
+				<input type="text" class="text" size="10" name="recherche_libre" id="recherche_libre"[ value="(#ENV{recherche_libre})"] />
+				<p class="explication"><:fulltext:casse_indifferente:> <:fulltext:accents_pas_pris:>.</p>
+			</li>
+			[(#SAISIE{secteur,
+				categories,
+				explication=<:geol:explication_select_multiple:>,
+				multiple=oui,
+				recursif=oui,
+				defaut=#ARRAY{0,0},
+				label=<:geol:categories:>})]
+			[(#SAISIE{mot,
+				echelle,
+				label=<:geol:echelle_media:>,
+				id_groupe=#CONFIG{geol/groupe_mots_echelle,2}})]
+			[(#SAISIE{checkbox,type_doc,
+				label=<:geol:media_type:>,
+				defaut=#ARRAY{0,0}, 
+				datas=#ARRAY{
+					type_images,<:geol:media_type_images:>,
+					type_audios,<:geol:media_type_audios:>,
+					type_videos,<:geol:media_type_videos:>,
+					type_textes,<:geol:media_type_textes:>}})]
+			[(#SAISIE{selection_multiple,
+				id_licence,
+				explication=<:geol:explication_select_multiple:>,
+				label=<:geol:licence_media:>,
+				option_intro=<:geol:toutes:>,
+				datas=#ENV**{licences}})]
+		</ul>
+	</fieldset>
+	<p class="boutons">
+		<input type="submit" class="submit" value="<:info_rechercher:>" title="<:info_rechercher:>" />	
+	</p>
+</form>]
+</div>

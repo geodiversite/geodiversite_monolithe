@@ -1,0 +1,13 @@
+[(#AUTORISER{tagger_spipicious,article,#ID_ARTICLE}|oui)
+<p>[(#VAL{91}|chr) ]<a href="[(#SELF|parametre_url{modifier_tags,#ENV{modifier_tags}|?{'',oui}})]" class="ajax">[(#ENV{modifier_tags}|?{<:geol:annuler:>,<:geol:tags_modifier:>})]</a>[ (#VAL{93}|chr)]</p>
+]
+
+[(#ENV{modifier_tags}|oui)
+	[(#FORMULAIRE_SPIPICIOUS_AJAX{#ID_ARTICLE,'article',#URL_ARTICLE})]
+]
+
+[(#ENV{modifier_tags}|non)
+	[(#MODELE{nuage_dl}
+		{id=#CONFIG{geol/groupe_tags,#CONFIG{spipicious/groupe_mot,1}}}
+		{id_article})]
+]

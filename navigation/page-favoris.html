@@ -1,0 +1,18 @@
+<BOUCLE_article_navigation(ARTICLES){id_article}>
+
+<div class="menu media">
+	<h2 class="h2"><span><:geol:contrib:></span></h2>
+	[(#INCLURE{fond=inclure/article-vignette,
+		id_article,
+		largeur=200,
+		hauteur=200,
+		info_titre=non,
+		info_texte=non,
+		info_auteur=non,
+		info_date=non,
+		info_visites=non,
+		info_commentaires=non})]
+	<a href="#URL_ARTICLE"><:geol:retour_page_media:></a>
+</div>
+
+</BOUCLE_article_navigation>

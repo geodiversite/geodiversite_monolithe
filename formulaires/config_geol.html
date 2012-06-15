@@ -1,0 +1,43 @@
+<!-- autoriser=webmestre -->
+<!-- refus=<:cfg:refus_configuration_webmestre:> -->
+<!-- nom=geol -->
+<div class="formulaire_spip formulaire_config">
+
+[<p class="reponse_formulaire reponse_formulaire_ok">(#ENV*{message_ok})</p>]
+[<p class="reponse_formulaire reponse_formulaire_erreur">(#ENV*{message_erreur})</p>]
+
+<form method="post" action="#SELF">
+	<div>
+		#ACTION_FORMULAIRE{SELF}
+			<ul>
+				[(#SAISIE{secteur,secteur_medias,
+					label=<:geol:cfg_label_secteur_medias:>})]
+				[(#SAISIE{secteur,secteur_categories,
+					label=<:geol:cfg_label_secteur_categories:>})]
+				[(#SAISIE{groupe_mots,groupe_echelle,
+					label=<:geol:cfg_label_groupe_echelle:>})]
+				[(#SAISIE{groupe_mots,groupe_tags,
+					label=<:geol:cfg_label_groupe_tags:>})]
+				[(#SAISIE{couleur,couleur_primaire,
+					label=<:geol:cfg_label_couleur_primaire:>,
+					defaut=#00c0f8})]
+				[(#SAISIE{input,nom_fichier_kml,
+					label=<:geol:cfg_label_nom_fichier_kml:>,
+					explication=<:geol:cfg_explication_nom_fichier_kml:>,
+					defaut=geodiversite})]
+				[(#SAISIE{input,zoom_minicartes,
+					label=<:geol:cfg_label_zoom_minicartes:>,
+					explication=<:geol:cfg_explication_zoom_minicartes:>,
+					defaut=7})]
+				[(#SAISIE{case,afficher_serie,
+					label=<:geol:cfg_label_afficher_serie:>,
+					label_case=<:geol:cfg_label_afficher_bloc:>,
+					explication=<:geol:explication_afficher_serie:>})]
+			</ul>
+			<p class="boutons">
+				<input type="submit" name="_cfg_delete" value="<:cfg:reset:>" class="submit" />
+				<input type="submit" name="_cfg_ok" value="<:bouton_enregistrer:>" class="submit" />
+			</p>
+	</div>
+</form>
+</div>

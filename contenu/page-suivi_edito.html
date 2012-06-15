@@ -1,0 +1,22 @@
+[(#REM) Fil d'Ariane ]
+<ol id="hierarchie">
+	<li><a href="#URL_SITE_SPIP/"><:accueil_site:></a></li>
+	<li class="on"><strong><:geol:suivi_edito:></strong></li>
+</ol>
+
+<div class="contenu-principal">
+
+	<div class="cartouche">
+		<h1 class="h1"><:geol:suivi_edito:></h1>
+	</div>
+	
+	[(#ENV{filtre,texte}|=={texte}|oui)
+	[(#INCLURE{fond=inclure/suivi_sans_texte})]
+	]
+	
+	[(#ENV{filtre,texte}|=={categorie}|oui)
+	[(#INCLURE{fond=inclure/suivi_sans_categorie})]
+	]
+
+
+</div>

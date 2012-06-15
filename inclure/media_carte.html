@@ -1,0 +1,73 @@
+<h2 class="h2"><span><:geol:localisation:></span></h2>
+
+<BOUCLE_centrer(GIS){id_article}>
+#SET{id_gis,#ID_GIS}
+#SET{lat,#LAT}
+#SET{lon,#LON}
+<div class="geo">
+	[<abbr class="latitude" title="(#GET{lat})">[[(#LAT|>{0}|?{'N','S'})] (#LAT|dec_to_dms)]</abbr> - ]
+	[<abbr class="longitude" title="(#GET{lon})">[[(#LON|>{0}|?{'E','W'})] (#LON|dec_to_dms)]</abbr>]
+</div>
+
+[<div class="adr">
+	<span class="country-name">(#PAYS)</span>[, 
+	<span class="region">(#REGION)</span>][, 
+	<span class="locality">(#VILLE)</span>]
+</div>]
+</BOUCLE_centrer>
+
+[(#REM) on affiche la carte seulement si les coordonnees de l'article sont definies 
+		ET qu'on n'est pas en train de les modifier ]
+[(#GET{lat}|oui)
+	[(#ENV{modifier_carte}|ou{#ENV{signaler_erreur}}|non)
+		[(#REM) decommenter et commenter ce qui suit pour avoir une vraie carte a la place de l'image
+		[(#MODELE{carte_gis}{id_article}{latit=#GET{lat}}{lonxit=#GET{lon}}{zoom=7}
+			{control=small}{control_type=non}{zoom_molette=non}{height=200px}{type=physique})]
+		]
+		<a href="#URL_PAGE{carte,id_article=#ID_ARTICLE}">
+		[(#REM|gis_api_utilisee|=={googlev3}|oui)
+			<img src="http://maps.google.com/maps/api/staticmap?center=#GET{lat},#GET{lon}&amp;zoom=#CONFIG{geol/zoom_minicartes,7}&amp;maptype=terrain&amp;markers=[(#CHEMIN{images/geol_minimarker.png}|?{icon:[(#CHEMIN{images/geol_minimarker.png}|url_absolue)],color:0x[(#CONFIG{geol/couleur_primaire,#00c0f8}|substr{1,6})]})]|#GET{lat},#GET{lon}&amp;size=335x170&amp;sensor=false" width="335" height="170" alt="" />
+		]
+		[(#REM|gis_api_utilisee|=={openlayers}|oui)
+			[(#SET{rvb,#CONFIG{geol/couleur_primaire,#00c0f8}|substr{1,6}|geol_couleur_hex_to_dec})]
+			[(#SET{icon,#CHEMIN{images/geol_minimarker.png}|url_absolue})]
+			[(#VAL{http://dev.openstreetmap.org/~pafciu17/?module=map&points=#GET{lon}|concat{','}|concat{#GET{lat}}|concat{&color=#GET{rvb}}|concat{&pointImageUrl=#GET{icon}}}
+				|parametre_url{lat,#GET{lat},'&'}
+				|parametre_url{lon,#GET{lon},'&'}
+				|parametre_url{zoom,#CONFIG{geol/zoom_minicartes,7},'&'}
+				|parametre_url{width,335,'&'}
+				|parametre_url{height,170,'&'}|copie_locale|balise_img)]
+		]
+		</a>
+	]
+]
+
+[(#ENV{modifier_carte}|oui)
+	[(#AUTORISER{modifier,article,#ENV{id_article}}|oui)
+	#FORMULAIRE_EDITER_GIS{#GET{id_gis},'article',#ID_ARTICLE,#URL_ARTICLE|parametre_url{var_mode,calcul}}
+	]
+]
+
+[(#ENV{signaler_erreur}|oui)
+	#FORMULAIRE_ECRIRE_AUTEUR
+]
+
+[(#GET{lat}|oui)
+<ul class="liste-items puces">
+	[<li class="item"><a href="(#URL_PAGE{carte,id_article=#ID_ARTICLE})"><:geol:lien_grande_carte:></a></li>]
+	<li class="item"><a href="[(#SELF|parametre_url{signaler_erreur,#ENV{signaler_erreur}|?{'',oui}})]" class="ajax"><:geol:signaler_erreur_localisation:></a></li>
+	<li class="item"><a href="[(#URL_PAGE{geol_kml,dl=oui}|parametre_url{id_article,#ID_ARTICLE})]"><:geol:exporter_coordonnees:></a></li>
+</ul>]
+
+[(#GET{lat}|non)
+<p class="explication"><:geol:media_non_geolocalise:></p>]
+
+[(#ENV{signaler_erreur}|oui)
+<div class="actions">
+	[(#VAL{91}|chr) ]<a href="[(#SELF|parametre_url{signaler_erreur,''})]" class="ajax"><:geol:annuler:></a>[ (#VAL{93}|chr)]
+</div>]
+
+[(#AUTORISER{modifier,article,#ENV{id_article}}|et{#ENV{signaler_erreur}|non}|oui)
+<div class="actions">
+	[(#VAL{91}|chr) ]<a href="[(#SELF|parametre_url{modifier_carte,#ENV{modifier_carte}|?{'',oui}})]">[(#ENV{modifier_carte}|?{<:geol:annuler:>,<:geol:modifier_carte:>})]</a>[ (#VAL{93}|chr)]
+</div>]

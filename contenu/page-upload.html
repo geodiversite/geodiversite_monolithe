@@ -1,0 +1,39 @@
+#CACHE{0}
+[(#REM) Fil d'Ariane ]
+<ol id="hierarchie">
+	<li class="on"><strong><:geol:publier_nouveau_media:></strong></li>
+</ol>
+
+<div class="contenu-principal">
+	<BOUCLE_art_auteur(ARTICLES){id_auteur=#SESSION{id_auteur}}{0,1}>
+	</BOUCLE_art_auteur>
+	<div class="mot_doux"><:geol:mot_doux_premier_upload{url=#URL_PAGE{aide}}:></div>
+	<//B_art_auteur>
+
+	<BOUCLE_diogene(DIOGENES){type=article}>
+	<BOUCLE_autorise(CONDITION){si #AUTORISER{creerdans,diogene,#ID_DIOGENE}|oui}>
+	<div class="texte #EDIT{description}">#DESCRIPTION</div>
+	<INCLURE{fond=inclure/diogene_#OBJET,env,id_diogene}>
+	</BOUCLE_autorise>
+	</B_autorise>
+	<div class="texte">
+		<div class="formulaire_spip">
+			<p class="reponse_formulaire_erreur">
+				<:diogene:erreur_droits_objet_publier:>
+				[(#SESSION{id_auteur}|non)
+				<br /><:diogene:erreur_autorisation_login_publier:>
+				]
+			</p>
+		</div>
+	</div>
+	<//B_autorise>
+	</BOUCLE_diogene>
+	</B_diogene>
+	<div class="texte">
+		<div class="formulaire_spip">
+			<p class="reponse_formulaire_erreur"><:diogene:erreur_objet_publier:></p>
+		</div>
+	</div>
+	<//B_diogene>
+
+</div>

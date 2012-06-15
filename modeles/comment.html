@@ -1,0 +1,25 @@
+<BOUCLE_comment(FORUMS){id_forum}>
+<div class="comment hreview[ (#ID_PARENT|?{reply})]">
+<a href="#comment#ID_FORUM" name="comment#ID_FORUM" id="comment#ID_FORUM"></a>
+<a href="#forum#ID_FORUM" name="forum#ID_FORUM" id="forum#ID_FORUM"></a>
+	<p class="comment-meta">
+	<a rel="self bookmark" href="#forum#ID_FORUM" title="<:geol:commentaires_permalink_pour:> <:geol:commentaire:> #ID_FORUM" class="permalink">#</a>
+	<BOUCLE_auteur(AUTEURS){tout}{id_auteur}>
+	[<abbr class="dtreviewed"[ title="(#DATE|date_iso)"]><:geol:commentaires_le_date_jour:> (#DATE|affdate_jourcourt)[ <:geol:commentaires_a_date_heure:>&nbsp;(#DATE|heures)][:(#DATE|minutes)]</abbr>][<span class="item reviewer vcard">, <:par_auteur:> <a rel="nofollow" href="#URL_AUTEUR" class="url spip_in"><strong class="fn n">(#NOM)</strong></a>[(#PLUGIN{gravatar}|oui)[ (#MODELE{gravatar,largeur=32})]]</span>]
+	</BOUCLE_auteur>
+	[<abbr class="dtreviewed"[ title="(#DATE|date_iso)"]><:geol:commentaires_le_date_jour:> (#DATE|affdate_jourcourt)[ <:geol:commentaires_a_date_heure:>&nbsp;(#DATE|heures)][:(#DATE|minutes)]</abbr>][<span class="item reviewer vcard">, <:par_auteur:> [<a rel="external nofollow" href="(#URL_SITE)"[ title="(#NOM_SITE*|attribut_html)"] class="#EDIT{hyperlien} url spip_out">]<strong class="#EDIT{qui} fn n">(#NOM|sinon{[(#PLUGIN{gravatar}|oui)?]})</strong>[</a>(#URL_SITE|oui)][(#PLUGIN{gravatar}|oui)[ (#MODELE{gravatar,email=#EMAIL,largeur=32})]]</span>]
+	<//B_auteur>
+	</p>
+	<div class="comment-content description">
+		[<div class="comment-texte #EDIT{texte}">(#TEXTE|lignes_longues)</div>]
+		[<div class="comment-notes">(#NOTES|safehtml|lignes_longues)</div>]
+		<B_doc><div class="comment-doc"><BOUCLE_doc(DOCUMENTS){id_forum}>
+		[(#EXTENSION|match{'^(gif|jpg|png)$'}|?{
+			[(#MODELE{emb}|image_reduire{300})]
+		,
+			[(#LOGO_DOCUMENT|#URL_DOCUMENT)]
+		})]
+		</BOUCLE_doc></div></B_doc>
+	</div>
+</div><!--.comment-->
+</BOUCLE_comment> 

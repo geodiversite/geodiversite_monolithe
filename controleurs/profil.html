@@ -1,0 +1,36 @@
+#CACHE{0}
+<BOUCLE_a(AUTEURS){id_auteur}{tous}>
+<ul>
+	<li class="fieldset">
+		<fieldset style="#ENV{style}">
+			<h3 class="legend"><:geol:legend_editer_profil:></h3>
+			<ul>
+				<li class="editer_logo">
+					[(#INCLURE{fond=controleurs/logo,id_auteur,env})
+					<!-- input class="crayon-active" name="#ENV{name_logo}" type="hidden" / -->]
+				</li>
+				<li class="editer_nom obligatoire">
+					<label for="#ENV{name_nom}"><:geol:profil_nom:></label>
+					<input type="text" name="#ENV{name_nom}" id="#ENV{name_nom}" value="[(#NOM**|entites_html)]" class="text crayon-active" />
+				</li>
+				<li class="editer_email obligatoire">
+					<label for="#ENV{name_email}"><:geol:profil_mail:></label>
+					<input type="text" name="#ENV{name_email}" id="#ENV{name_email}" value="[(#EMAIL**|entites_html)]" class="text crayon-active" />
+				</li>[(#PLUGIN{openid}|oui)
+				<li class="editer_openid">
+					<label for="#ENV{name_openid}"><:geol:profil_openid:></label>
+					<input type="text" name="#ENV{name_openid}" id="#ENV{name_openid}" value="[(#OPENID**|entites_html)]" class="text crayon-active" />
+				</li>]
+				<li class="editer_bio">
+					<label for="#ENV{name_bio}"><:geol:profil_bio:></label>
+					<textarea name="#ENV{name_bio}" id="#ENV{name_bio}" style="width:100%; height:#ENV{hauteur}|mul{2}px;">[(#BIO**|entites_html)]</textarea>
+				</li>
+				<li class="editer_url_site">
+					<label for="#ENV{name_url_site}"><:geol:profil_url:></label>
+					<input type="text" name="#ENV{name_url_site}" id="#ENV{name_url_site}" value="[(#URL_SITE**|entites_html)]" class="text crayon-active" />
+				</li>
+			</ul>
+		</fieldset>
+	</li>
+</ul>
+</BOUCLE_a>

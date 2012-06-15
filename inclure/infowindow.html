@@ -1,0 +1,10 @@
+<BOUCLE_un_article(ARTICLES){id_article}><div class="descriptif_window">
+	<h3>#_un_article:TITRE</h3>
+	<BOUCLE_imaxe(DOCUMENTS){extension !IN 'kml','kmz'}{id_article}{vu=non}{0,1}>
+	<a href='[(#URL_ARTICLE|url_absolue)]' [title='(#_un_article:TITRE|texte_backend)'] class="lien_logo">
+		<img src='[(#LOGO_DOCUMENT|image_reduire{225}|extraire_attribut{src}|url_absolue)]' height='[(#LOGO_DOCUMENT|image_reduire{225}|extraire_attribut{height})]' width='[(#LOGO_DOCUMENT|image_reduire{225}|extraire_attribut{width})]' alt='[(#_un_article:TITRE|texte_backend|sinon{Image})]' />
+	</a>
+	</BOUCLE_imaxe>
+	[<div class="auteurs"><:geol:publie_par:> (#LESAUTEURS) </div>]
+	<B_cat1><div class="categories"><:geol:categories:> : <BOUCLE_cat1(RUBRIQUES){parents_indirects}{tout}{', '}><a href="[(#URL_RUBRIQUE|url_absolue)]">#TITRE</a></BOUCLE_cat1></div></B_cat1>
+</div></BOUCLE_un_article>

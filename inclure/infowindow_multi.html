@@ -1,0 +1,17 @@
+<B_articles><div class="descriptif_window multi">
+<ul class="liste-items">
+<BOUCLE_articles(ARTICLES){id_article IN #ENV{id_article}}{pagination 3}><li class="item">
+	<BOUCLE_img(DOCUMENTS){extension !IN 'kml','kmz'}{id_article}{vu=non}{0,1}>
+	<a href='[(#URL_ARTICLE|url_absolue)]' [title='(#_articles:TITRE|texte_backend)'] class="lien_logo">
+		<img src='[(#LOGO_DOCUMENT|image_passe_partout{50,50}|image_recadre{50,50,center}|extraire_attribut{src}|url_absolue)]' height='50' width='50' alt='[(#_articles:TITRE|texte_backend|sinon{Image})]' />
+	</a>
+	</BOUCLE_img>
+	<div class="desc">
+		<h3>#TITRE</h3>
+		[<div class="auteurs"><:geol:publie_par:> (#LESAUTEURS) </div>]
+		<B_cat1><div class="categories"><:geol:categories:> : <BOUCLE_cat1(RUBRIQUES){parents_indirects}{tout}{', '}><a href="[(#URL_RUBRIQUE|url_absolue)]">#TITRE</a></BOUCLE_cat1></div></B_cat1>
+	</div>
+	</li></BOUCLE_articles>
+</ul>
+[<p class="pagination">(#PAGINATION{precedent_suivant})</p>]
+<div></B_articles>

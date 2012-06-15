@@ -1,0 +1,13 @@
+[(#HTTP_HEADER{Content-type: text/plain[; charset=(#CHARSET)]})]
+<BOUCLE_auteur(AUTEURS){id_auteur=#ENV{id_ami}}{tout}>
+<:amis:mail_inviterami_titre{nom_site=#NOM_SITE_SPIP}|nettoyer_titre_email:>
+
+[(#SET{ami,#INFO_NOM{auteur,#ENV{id_auteur}}})
+]<:amis:mail_inviterami_texte{nom=#NOM,ami=#GET{ami},nom_site=#NOM_SITE_SPIP}:>
+
+<:amis:mail_inviterami_explication:>
+
+** [(#URL_PAGE{contacts,id_auteur=#ID_AUTEUR}|url_absolue)]
+
+</BOUCLE_auteur>
+#FILTRE{supprimer_tags|filtrer_entites|trim}

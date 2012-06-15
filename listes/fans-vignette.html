@@ -1,0 +1,20 @@
+#CACHE{0}
+#SET{cols,#ENV{cols,3}}<B_auteurs>
+<div class="liste articles boites[ cols(#GET{cols})]">
+	#ANCRE_PAGINATION
+	<BOUCLE_combien(FAVORIS){id_objet=#ENV{id_article}}{objet=article} />
+	[<h2 class="h2">(#GRAND_TOTAL|singulier_ou_pluriel{geol:contributeur,geol:contributeurs})</h2>]
+	<//B_combien>
+	<div class="liens_options">
+		[(#INCLURE{fond=inclure/listes_liens_pas,pas,tri,cols=#GET{cols},objets=<:geol:objets_auteurs:>,self=#SELF})]
+	</div>
+	<ul class="liste-items">
+		<BOUCLE_auteurs(FAVORIS){id_objet=#ENV{id_article}}{objet=article} {!par maj} {pagination #ENV{pas,#GET{cols}|mult{3}}}>
+		<li class="item[ clear(#COMPTEUR_BOUCLE|modulo{#GET{cols}}|=={1}|oui)] article_vignette">
+			[(#INCLURE{fond=inclure/auteur-vignette,id_auteur=#ID_AUTEUR})]
+		</li>
+		</BOUCLE_auteurs>
+	</ul>
+	[<p class="pagination">(#PAGINATION{page_precedent_suivant}{separateur=' '})</p>]
+</div>
+</B_auteurs>

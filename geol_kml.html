@@ -1,0 +1,59 @@
+#HTTP_HEADER{Content-Type: application/vnd.google-earth.kml+xml;charset=#CHARSET}[(#ENV**{dl}
+|?{#HTTP_HEADER{Content-Disposition: attachment; filename=#CONFIG{geol/nom_fichier_kml}|sinon{geodiversite}|concat{.kml}},''})]<?xml 
+version="1.0" encoding="#CHARSET" ?>
+<kml xmlns="http://www.opengis.net/kml/2.2"
+	xmlns:atom="http://www.w3.org/2005/Atom">
+<Document>
+[<name>(#NOM_SITE_SPIP|texte_backend)</name>]
+[<description>(#DESCRIPTIF_SITE_SPIP|supprimer_tags|texte_backend)</description>]
+<BOUCLE_un_article(ARTICLES){id_mot ?}{id_auteur ?}{branche ?}{recherche ?}{id_article ?}{!par date}>
+	[(#SET{logo_doc,''})][(#SET{lat,''})][(#SET{lon,''})]
+	<BOUCLE_gis(GIS){id_article}>
+	[(#SET{lat,#LAT})][(#SET{lon,#LON})]
+	</BOUCLE_gis><B_imaxe>
+	<Placemark id="#art_#ID_ARTICLE">
+		<name>[(#TITRE|supprimer_numero|texte_backend)]</name>
+		<atom:link rel="related" href="[(#URL_ARTICLE|url_absolue)]" />
+		<description>
+			<![CDATA[
+				<div class="descriptif_window">
+					<h3>#_un_article:TITRE</h3>
+					<BOUCLE_imaxe(DOCUMENTS){extension !IN 'kml','kmz'}{id_article}{vu=non}{0,1}>
+					#SET{logo_doc,#LOGO_DOCUMENT|image_passe_partout{28,28}|image_recadre{28,28}|image_recadre{32,32,center}|image_aplatir{jpg,ffffff}}
+					<a href='[(#URL_ARTICLE|url_absolue)]' [title='(#_un_article:TITRE|texte_backend)'] class="lien_infowindow">
+						<img src='[(#LOGO_DOCUMENT|image_reduire{225}|extraire_attribut{src}|url_absolue)]' height='[(#LOGO_DOCUMENT|image_reduire{225}|extraire_attribut{height})]' width='[(#LOGO_DOCUMENT|image_reduire{225}|extraire_attribut{width})]' alt='[(#_un_article:TITRE|texte_backend|sinon{Image})]' />
+					</a>
+					</BOUCLE_imaxe>
+					[<span class="auteurs"><:geol:publie_par:> (#LESAUTEURS|liens_absolus) </span>]
+					<B_cat1><span class="categories"><:geol:categories:> : <BOUCLE_cat1(RUBRIQUES){parents_indirects}{tout}{', '}><a href="[(#URL_RUBRIQUE|url_absolue)]">#TITRE</a></BOUCLE_cat1></span></B_cat1>
+				</div>
+			]]>
+		</description>
+		[<Point>
+			<coordinates>(#GET{lon}),[(#GET{lat})]</coordinates>
+		</Point>]
+		#SET{icon_w,#GET{logo_doc}|extraire_attribut{src}|largeur}
+		#SET{icon_h,#GET{logo_doc}|extraire_attribut{src}|hauteur}
+		#SET{icon_anchorPoint,''}
+		<Style>
+			<IconStyle>
+				<scale>1.0</scale>
+				[<Icon>
+					<href>(#GET{logo_doc}|extraire_attribut{src}|url_absolue)</href>
+				</Icon>]
+				<hotSpot x="[(#GET{icon_w}|div{2})]"  y="[(#GET{icon_h}|div{2})]" xunits="pixels" yunits="pixels"/>
+			</IconStyle>
+		</Style>
+		<ExtendedData>
+			[<Data name="iconSize">
+				<value>(#GET{icon_w}),[(#GET{icon_h})]</value>
+			</Data>]
+			[<Data name="iconAnchor">
+				<value>(#GET{icon_w}|div{2}),[(#GET{icon_h}|div{2})]</value>
+			</Data>]
+		</ExtendedData>
+	</Placemark>
+</B_imaxe></B_gis>
+</BOUCLE_un_article>
+</Document>
+</kml>

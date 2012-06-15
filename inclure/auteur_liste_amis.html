@@ -1,0 +1,30 @@
+<BOUCLE_auteur(AUTEURS){id_auteur}{tout}>
+<div class="menu vignettes">
+	<h2 class="h2"><span><:geol:amis_titre:></span></h2>
+	[(#SESSION{id_auteur}|amis_peut_inviter{#ID_AUTEUR}|oui)
+	<a href="#URL_ACTION_AUTEUR{ajouterami,#ID_AUTEUR,#SELF}">
+		<:geol:amis_ajouter:>
+	</a>]
+	<B_potes>
+	<ul class="liste-items">
+		<BOUCLE_potes(AUTEURS){amis #ENV{id_auteur}}{0,3}{tout}>
+		<li class="item">
+			<a href="#URL_AUTEUR"[ title="(#NOM|attribut_html)"]>
+			[(#LOGO_AUTEUR|image_passe_partout{50,50}
+				|image_recadre{50,50,center}
+				|inserer_attribut{alt,[(#NOM|texte_backend)]})]
+			</a>
+		</li>
+		</BOUCLE_potes>
+	</ul>
+	<p><a href="#URL_PAGE{contacts,id_auteur=#ID_AUTEUR}"><:geol:amis_voir_tous:></a></p>
+	</B_potes>
+	<p><:geol:amis_aucun:></p>
+	<//B_potes>
+	<BOUCLE_test(CONDITION){si #SESSION{id_auteur}|=={#ID_AUTEUR}}>
+	<BOUCLE_demandes(AMIS){id_ami=#ENV{id_auteur}}{statut=prop} />[
+	<p><a href="[(#URL_PAGE{contacts,id_auteur=#ID_AUTEUR})]" class="hop">
+		(#TOTAL_BOUCLE|singulier_ou_pluriel{<:geol:amis_une_demande:>,<:geol:amis_nb_demandes:>})
+	</a></p>]<//B_demandes></BOUCLE_test>
+</div>
+</BOUCLE_auteur>

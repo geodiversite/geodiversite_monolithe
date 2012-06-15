@@ -1,0 +1,19 @@
+[(#REM) Fil d'Ariane ]
+<ol id="hierarchie">
+	<li class="on"><strong><:geol:tags:></strong></li>
+</ol>
+
+<div class="contenu-principal">
+	<div class="cartouche">
+		<h1 class="h1 fn"><span>#NOM</span></h1>
+	</div>
+	
+	<BOUCLE_page(ARTICLES){page=tags}>
+	[<div class="chapo">(#TEXTE)</div>]
+	</BOUCLE_page>
+	
+	<div class="tags">
+		<h2 class="h2"><:geol:tags_tous:></h2>
+		[(#MODELE{nuage_dl}{tri=titre})]
+	</div>
+</div>

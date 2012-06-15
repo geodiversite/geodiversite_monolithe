@@ -1,0 +1,27 @@
+<div class="conteneur">
+<div class="liste">
+	<h3 class="h3"><:geol:pied_vous:> : </h3>
+	<ul class="menu-liste">
+		[(#SESSION{id_auteur}|non)
+		<li class="menu-entree"><a href="[(#URL_PAGE{login}|parametre_url{url,#SELF})]" rel="nofollow" class='login_modal'><:lien_connecter:></a></li>
+		<li class="menu-entree"><a href="[(#URL_PAGE{inscription})]" rel="nofollow" class='login_modal'><:geol:creer_compte:></a></li>
+		][(#SESSION{id_auteur}|oui)
+		<li class="menu-entree"><a href="#URL_LOGOUT" rel="nofollow"><:icone_deconnecter:></a></li>
+		<li class="menu-entree"><a href="[(#URL_PAGE{upload})]" rel="nofollow"><:geol:publier_media:></a></li>
+		[(#PLUGIN{tickets}|oui)<li class="menu-entree"><a href="[(#URL_PAGE{tickets})]" rel="nofollow"><:geol:signaler_bug:></a></li>]
+		]
+	</ul>
+</div>
+[<div class="liste">
+	<h3 class="h3"><:geol:nav_explorer:> : </h3>
+	(#INCLURE{fond=inclure/menu,env,identifiant=pied_explorer})
+</div>]
+[<div class="liste">
+	<h3 class="h3"><:geol:nav_univers:> : </h3>
+	(#INCLURE{fond=inclure/menu,env,identifiant=pied_univers})
+</div>]
+[<div class="liste">
+	<h3 class="h3"><:geol:nav_a_propos:> : </h3>
+	(#INCLURE{fond=inclure/menu,env,identifiant=pied_apropos})
+</div>]
+</div>

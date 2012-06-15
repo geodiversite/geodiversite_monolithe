@@ -1,0 +1,15 @@
+[(#SET{titre, <:geol:suivi_edito:>})]
+[(#ENV{titre}|oui)
+	#SET{titre, #ENV*{titre}|typo}
+]
+
+[(#ENV{appel_formulaire}|oui)
+	<div class="titre">#GET{titre}</div>
+	<div class="infos"><:geol:suivi_edito:></div>
+]
+[(#ENV{appel_menu}|oui)
+[(#SESSION{statut}|=={0minirezo}|oui)
+	<li class="menu-entree[ (#ENV{css})][(#ENV{env}|table_valeur{type}|=={page}|et{#ENV{env}|table_valeur{composition}|=={suivi_edito}}) on]">
+		<a href="#URL_PAGE{suivi_edito}" title="[(#GET{titre}|attribut_html)]">#GET{titre}</a>
+]
+]

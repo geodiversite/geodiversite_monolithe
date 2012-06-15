@@ -1,0 +1,12 @@
+<B_amis>
+<h2 class="h2"><span><:amis:invitations:></span></h2>
+[<p class='pagination'>(#PAGINATION)</p>]
+<ul class='liste-items'>
+<BOUCLE_amis(AMIS){id_auteur=#ENV{id_auteur}}{statut=prop}{pagination 5}><BOUCLE_auteur(AUTEURS){id_auteur=#ID_AMI}{tout}>
+<li class='item'>
+	<a href="#URL_AUTEUR">
+		<span class="titre fn">#NOM</span>
+		[(#PLUGIN{gravatar}|oui)[(#MODELE{gravatar,id_auteur,largeur=30})]]
+	</a>
+</li>
+</BOUCLE_auteur></BOUCLE_amis></ul></B_amis>

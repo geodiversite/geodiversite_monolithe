@@ -1,0 +1,8 @@
+#ENV*{bloc_ancre}
+#SET{i,#ENV{page_courante}|moins{1}}
+[(#GET{i}|>{0}|?{' '})[
+	(#SET{item, #GET{i}|moins{1}|mult{#ENV{pas}} })
+	][(#GET{i}|=={#ENV{page_courante}}|?{'',' '})
+		<a href='[(#ENV{url}|parametre_url{#ENV{debut},#GET{item}})]' title='<:public:page_precedente|attribut_html:>' class='lien_pagination' rel='nofollow'>&lt;</a>
+	]
+]

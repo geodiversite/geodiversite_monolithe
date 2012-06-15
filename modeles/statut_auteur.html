@@ -1,0 +1,9 @@
+<BOUCLE_auteur(AUTEURS){id_auteur}{tout}>
+[(#STATUT|=={'1comite'}|oui)<:titre_image_redacteur_02:>]
+[(#STATUT|=={''6forum'}|oui)<:titre_image_visiteur:>]
+<BOUCLE_aut_rub(auteurs_rubriques){id_auteur}{0,1}>
+<:geol:statut_admin_restreint:>
+</BOUCLE_aut_rub>	
+[(#STATUT|=={'0minirezo'}|oui)<:geol:statut_admin:>]
+<//B_aut_rub>
+</BOUCLE_auteur>

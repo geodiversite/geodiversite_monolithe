@@ -1,0 +1,96 @@
+[(#REM) filtres de recherche ]
+<div class="menu">
+	<h2 class="h2"><span><:geol:recherche_options:></span></h2>
+		
+		[(#ENV{categories}|oui|ou{#ENV{id_licence}|oui}|ou{#ENV{type_doc}|oui})
+		<p class="explication"><:geol:explication_recherche_filtree:></p>]
+		
+		<B_cat>
+		<h3 class="h3"><:geol:categories:></h3>
+		<ul class="liste-items">
+			<BOUCLE_cat(RUBRIQUES){tout}{id_rubrique IN #ENV**{categories}}>
+			<li class="item">
+			<a href="[(#VAL{&amp;categories%5B%5D=#ID_RUBRIQUE}|str_replace{'',#SELF})]" class="delete" title="<:geol:recherche_retirer_filtre|texte_backend:>">
+			#TITRE
+			</a>
+			</li>
+			</BOUCLE_cat>
+		</ul>
+		</B_cat>
+		
+		<B_echelle>
+		<h3 class="h3"><:geol:echelle_media:></h3>
+		<ul class="liste-items">
+		<BOUCLE_echelle(MOTS){id_mot=#ENV{echelle}}>
+			<li class="item">
+			<a href="[(#VAL{echelle=#ID_MOT}|str_replace{'',#SELF})]" class="delete" title="<:geol:recherche_retirer_filtre|texte_backend:>">
+			#TITRE
+			</a>
+			</li>
+		</BOUCLE_echelle>
+		</ul>
+		</B_echelle>
+		
+		<B_pour2>
+		<h3 class="h3"><:geol:licence_media:></h3>
+		<ul class="liste-items"> 
+			<BOUCLE_pour2(POUR){tableau #ENV**{id_licence}}>
+			<li class="item">
+			<a href="[(#VAL{&amp;id_licence%5B%5D=#VALEUR}|str_replace{'',#SELF})]" class="delete" title="<:geol:recherche_retirer_filtre|texte_backend:>">
+			[(#INCLURE{fond=modeles/licence,
+				id_licence=#VALEUR,
+				lien=non,
+				logo=non})]
+			</a
+			</li>
+			</BOUCLE_pour2>
+		</ul>
+		</B_pour2>
+		
+		<B_pour3>
+		<h3 class="h3"><:geol:media_type:></h3>
+		<ul class="liste-items"> 
+			<BOUCLE_pour3(POUR){tableau #ENV**{type_doc}}>
+			<li class="item">
+			<a href="[(#VAL{&amp;type_doc%5B%5D=#VALEUR}|str_replace{'',#SELF})]" class="delete" title="<:geol:recherche_retirer_filtre|texte_backend:>">
+			[(#VALEUR|=={type_images}|oui)<:geol:media_type_images:>]
+			[(#VALEUR|=={type_audios}|oui)<:geol:media_type_audios:>]
+			[(#VALEUR|=={type_videos}|oui)<:geol:media_type_videos:>]
+			[(#VALEUR|=={type_textes}|oui)<:geol:media_type_textes:>]
+			</a>
+			</li>
+			</BOUCLE_pour3>
+		</ul>
+		</B_pour3>
+	</ul>
+	<p class="explication"><a href="#URL_PAGE{recherche_avancee}" class="hop"><:geol:recherche_avancee:></a></p>
+</div>
+
+[(#REM) auteurs trouves ]
+<B_auteurs>
+<div class="menu auteurs">
+	<h2 class="h2"><span><:geol:contributeurs_les:></span></h2>
+	<ul class="liste-items">
+	<BOUCLE_auteurs(AUTEURS){recherche} {tout}{!par points}{0,10}>
+		<li class="item vcard">
+			<a href="#URL_AUTEUR">
+				<span class="titre fn">#NOM</span>
+				[(#PLUGIN{gravatar}|oui)[(#MODELE{gravatar,id_auteur,largeur=30})]]
+			</a>
+		</li>
+	</BOUCLE_auteurs>
+	</ul>
+</div>
+</B_auteurs>
+
+[(#REM) rubriques trouvees ]
+<B_rubriques>
+<div class="menu rubriques">
+	<h2 class="h2"><span><:geol:categories:></span></h2>
+	<ul class="liste-items puces">
+		<BOUCLE_rubriques(RUBRIQUES) {recherche} {tout}{!par points}{0,10}>
+		<li class="item"><a href="#URL_RUBRIQUE">#TITRE</a></li>
+		</BOUCLE_rubriques>
+	</ul>
+</div>
+</B_rubriques>

@@ -1,0 +1,1 @@
+<BOUCLE_article(ARTICLES){id_article=#ENV{id}}><BOUCLE_doc(DOCUMENTS){id_article}{mode=document}{!par date}{0,1}>[<a href="#_article:URL_ARTICLE">(#LOGO_DOCUMENT|image_reduire{50}|inserer_attribut{alt,[(#TITRE|couper{80}|texte_backend)]}) #_article:TITRE</a>]</BOUCLE_doc></BOUCLE_article>

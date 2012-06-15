@@ -1,0 +1,27 @@
+<BOUCLE_un_article(ARTICLES){id_article}><BOUCLE_gis(GIS){id_article}>#SET{lat,#LAT} #SET{lon,#LON}</BOUCLE_gis>
+	<item[ xml:lang="(#LANG)"]>
+		<title>[(#TITRE|supprimer_tags|texte_backend)]</title>
+		<link>[(#URL_ARTICLE|url_absolue)]</link>
+		[<guid isPermaLink="true">(#URL_ARTICLE|url_absolue)</guid>]
+		[<dc:date>(#DATE|date_iso)</dc:date>]
+		<dc:format>text/html</dc:format>
+		[<dc:language>(#LANG)</dc:language>]
+		[<dc:creator>(#LESAUTEURS|supprimer_tags|texte_backend)</dc:creator>]
+		<description>[(#INTRODUCTION|texte_backend)]
+			<BOUCLE_imaxe(DOCUMENTS){id_article}{extension==jpg|png|gif}{vu=non}{0,1}>&lt;a href='[(#_recents:URL_ARTICLE|url_absolue)]' [title='(#_recents:TITRE|texte_backend)']&gt;&lt;img src='[(#LOGO_DOCUMENT|image_reduire{100,100}|extraire_attribut{src}|url_absolue)]' [height='(#LOGO_DOCUMENT|image_reduire{100,100}|hauteur)'] [width='(#LOGO_DOCUMENT|image_reduire{100,100}|largeur)'] alt='[(#_recents:TITRE|texte_backend|sinon{Image})]' /&gt;&lt;/a&gt;</BOUCLE_imaxe>
+			<BOUCLE_rubrique_mf(RUBRIQUES){parents_indirects}{tout}{', '}>[&lt;a href="[(#URL_RUBRIQUE|url_absolue)]" rel="directory"&gt;(#TITRE|supprimer_tags|texte_backend)&lt;/a&gt;]</BOUCLE_rubrique_mf>
+			<BOUCLE_mots_mf(MOTS){id_article}{", "}>[&lt;a href="[(#URL_MOT|url_absolue)]" rel="tag"&gt;(#TITRE|texte_backend)&lt;/a&gt;]</BOUCLE_mots_mf>
+		</description>
+		<content:encoded>
+			<BOUCLE_imaxe1(DOCUMENTS){id_article}{extension==jpg|png|gif}{vu=non}{0,1}>&lt;a href='[(#_recents:URL_ARTICLE|url_absolue)]' [title='(#_recents:TITRE|texte_backend)']&gt;&lt;img src='[(#LOGO_DOCUMENT|image_reduire{100,100}|extraire_attribut{src}|url_absolue)]' [height='(#LOGO_DOCUMENT|image_reduire{100,100}|hauteur)'] [width='(#LOGO_DOCUMENT|image_reduire{100,100}|largeur)'] alt='[(#_recents:TITRE|texte_backend|sinon{Image})]' /&gt;&lt;/a&gt;</BOUCLE_imaxe1>
+			[&lt;div class='rss_texte'&gt;(#TEXTE|image_reduire{500,0}|texte_backend)&lt;/div&gt;]
+			<B_cat1>&lt;div class='rss_categories'&gt;<:geol:categories|texte_backend:> : <BOUCLE_cat1(RUBRIQUES){parents_indirects}{tout}{', '}>&lt;a href="[(#URL_RUBRIQUE|url_absolue)]"&gt;#TITRE&lt;/a&gt;</BOUCLE_cat1>&lt;/div&gt;</B_cat1>
+			<B_tags1>&lt;div class='rss_tags'&gt;<:geol:tags|texte_backend:> : <BOUCLE_tags1(MOTS){id_article}{", "}>&lt;a href="[(#URL_MOT|url_absolue)]" rel="tag"&gt;[(#TITRE|texte_backend)]&lt;/a&gt;</BOUCLE_tags1>&lt;/div&gt;</B_tags1>
+		</content:encoded>
+		[<georss:point>#GET{lat} #GET{lon}</georss:point>
+		<geo:lat>#GET{lat}</geo:lat>
+		<geo:long>#GET{lon}</geo:long>(#ENV{georss}|oui)]<BOUCLE_documents(DOCUMENTS){id_article}{vu=non}{0,1}>
+		[<enclosure url="(#URL_DOCUMENT|url_absolue|unique)"[ length="(#TAILLE)"][ type="(#MIME_TYPE)"] />]</BOUCLE_documents><BOUCLE_tags(MOTS){id_article}>
+		[<dc:subject>(#TITRE|texte_backend)</dc:subject>]</BOUCLE_tags>
+	</item>
+</BOUCLE_un_article>

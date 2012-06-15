@@ -1,0 +1,31 @@
+<BOUCLE_contenu_mot(MOTS){id_mot}>
+[(#REM) Fil d'Ariane ]
+<ol id="hierarchie">
+	<BOUCLE_auteur(AUTEURS){id_auteur=#ENV{id_auteur,0}}>[<li><a href="#URL_AUTEUR{#ENV{id_auteur}}">(#NOM|couper{80})</a></li>]</BOUCLE_auteur>
+	<li><a href="#URL_PAGE{tags}"><:geol:tags:></a></li>
+	[<li class="on"><strong>(#TITRE|couper{80})</strong></li>]
+</ol>
+
+<div class="contenu-principal">
+	<div class="cartouche">
+		<h1 class="h1 #EDIT{qui} fn">#NOM</h1>
+		[(#LOGO_MOT|image_reduire{150,150})]
+	</div>
+
+	[<div class="#EDIT{texte} chapo">(#TEXTE|sinon{<:geol:pas_description:>})</div>]
+
+	[(#REM) Articles du mot ?et de l'auteur ]
+	[(#INCLURE{fond=listes/articles-vignette,
+		id_mot,
+		id_auteur,
+		ajax,
+		tri,
+		largeur=200,
+		hauteur=200,
+		info_titre=non,
+		info_texte=non,
+		info_date=non,
+		info_visites=non,
+		info_commentaires=non})]
+</div>
+</BOUCLE_contenu_mot>

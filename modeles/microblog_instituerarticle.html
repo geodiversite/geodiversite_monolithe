@@ -1,0 +1,12 @@
+[(#REM)
+
+  Squelette
+  (c) 2009 xxx
+  Distribue sous licence GPL
+
+]
+<BOUCLE_art(ARTICLES){id_article}{statut?}{tout}{id_rubrique!=-1}>
+	#SET{url,(#STATUT|=={publie}|?{#URL_SITE_SPIP/#ID_ARTICLE,(#ID_ARTICLE|generer_url_entite{article,'','',#STATUT|=={publie}|?{#EVAL{true}}}|url_absolue)})}
+	[(#SET{len,#VAL{120}|moins{#GET{url}|strlen}})]
+	[(#TITRE|concat{[, par (#LESAUTEURS)]}|couper{#GET{len}}|concat{' ',#GET{url}})]
+</BOUCLE_art>

@@ -1,0 +1,11 @@
+<BOUCLE_auteur_head(AUTEURS){id_auteur}>
+<title>[(#NOM|textebrut) - <:geol:favoris|textebrut:> - ][(#NOM_SITE_SPIP|textebrut)]</title>
+[<meta name="description" content="(#BIO|couper{150}|attribut_html)" />]
+[<link rel="canonical" href="(#URL_PAGE{favoris,id_auteur=#ID_AUTEUR}|url_absolue)" />]
+</BOUCLE_auteur_head>
+<BOUCLE_article_head(ARTICLES){id_article}>
+<title>[(#TITRE|textebrut) - <:geol:fans|textebrut:> - ][(#NOM_SITE_SPIP|textebrut)]</title>
+[<meta name="description" content="(#INTRODUCTION{150}|attribut_html)" />]
+[<link rel="canonical" href="(#URL_PAGE{favoris,id_article=#ID_AARTICLE}|url_absolue)" />]
+</BOUCLE_article_head>
+<INCLURE{fond=inclure/head}>

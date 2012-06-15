@@ -1,0 +1,31 @@
+<BOUCLE_media_partage(ARTICLES){id_article}>
+<h2 class="h2"><span><:geol:partage_telechargement:></span></h2>
+
+[(#ENV{modifier_licence}|oui)
+	[(#AUTORISER{modifier,article,#ENV{id_article}}|oui)
+	#FORMULAIRE_EDITER_LICENCE{#ID_ARTICLE,#URL_ARTICLE}
+	]
+]
+
+<ul class="liste-items puces">
+	[(#ENV{modifier_licence}|non)
+	<li class="item">
+		<:geol:licence_media:> : [(#INCLURE{fond=modeles/licence,id_article=#ID_ARTICLE,logo=non})]
+	</li>]
+	<li class="item"><BOUCLE_doc(DOCUMENTS){id_article}>
+		<a href="[(#URL_DOCUMENT|url_absolue)]" title="<:geol:doc_telecharger|texte_backend:>" class="telecharger"><:geol:doc_telecharger:></a></BOUCLE_doc>
+	</li>
+	<BOUCLE_nbfav(FAVORIS){id_objet=#ID_ARTICLE}{objet=article} />
+	[<li class="item"><a href="#URL_PAGE{favoris,id_article=#ID_ARTICLE}">(#TOTAL_BOUCLE|singulier_ou_pluriel{geol:favoris_nb_personne,geol:favoris_nb_personnes})</a></li>]
+	<//B_nbfav>
+	[(#PLUGIN{socialtags}|oui)
+	<li class="item socialtags"><:geol:partage_socialtags:> :
+		<a href="#socialtags" name="socialtags" id="socialtags"></a>
+	</li>]
+</ul>
+
+[(#AUTORISER{modifier,article,#ENV{id_article}}|oui)
+<div class="actions">
+	[(#VAL{91}|chr) ]<a href="[(#SELF|parametre_url{modifier_licence,#ENV{modifier_licence}|?{'',oui}})]" class="ajax">[(#ENV{modifier_licence}|?{<:geol:annuler:>,<:geol:modifier_licence:>})]</a>[ (#VAL{93}|chr)]
+</div>]
+</BOUCLE_media_partage>

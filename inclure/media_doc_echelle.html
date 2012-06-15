@@ -1,0 +1,16 @@
+<BOUCLE_echelles(GROUPES_MOTS){id_groupe=#CONFIG{geol/groupe_echelle,2}}>
+<BOUCLE_echelle(MOTS){id_article}{id_groupe=#ID_GROUPE}{0,1}>#SET{echelle,#TITRE}</BOUCLE_echelle>
+
+<p class="doc_echelle">
+	<:geol:echelle_media:>[ : (#GET{echelle}|sinon{<:geol:info_vide_f:>}) ]
+	[(#AUTORISER{modifier,article,#ENV{id_article}}|oui)[(#VAL{91}|chr)]<a href="[(#SELF|parametre_url{modifier_echelle,#ENV{modifier_echelle}|?{'',oui}})]" class="ajax">
+		[(#ENV{modifier_echelle}|?{<:geol:annuler:>,<:geol:modifier:>})]
+		</a>[(#VAL{93}|chr)]]
+</p>
+
+[(#ENV{modifier_echelle}|oui)
+	[(#AUTORISER{modifier,article,#ENV{id_article}}|oui)
+	#FORMULAIRE_EDITER_MOT_ARTICLE{#ID_ARTICLE,#ID_GROUPE,#URL_ARTICLE}
+	]
+]
+</BOUCLE_echelles>

@@ -1,0 +1,17 @@
+[(#REM) Fil d'Ariane ]
+<ol id="hierarchie">
+	<li class="on"><strong><:geol:contributeurs_les:></strong></li>
+</ol>
+
+<div class="contenu-principal">
+	<div class="cartouche">
+		<h1 class="h1"><span><:geol:contributeurs_les:></span></h1>
+	</div>
+
+	[(#REM) liste des auteurs ]
+	[(#INCLURE{fond=listes/auteurs-vignette,
+		tri,
+		senstri,
+		pas,
+		ajax})]
+</div>

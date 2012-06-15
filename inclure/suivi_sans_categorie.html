@@ -1,0 +1,12 @@
+<p><strong><:geol:suivi_edito_filtre_categorie:></strong><p>
+
+<BOUCLE_doublons(ARTICLES){branche #CONFIG{geol/secteur_categories,2}}{doublons} /><//B_doublons>
+
+[(#INCLURE{fond=listes/articles-vignette,
+	id_rubrique=#CONFIG{geol/secteur_medias,1},
+	ajax,
+	tri,
+	doublons,
+	largeur=200,
+	hauteur=200,
+	info_auteur=non})]

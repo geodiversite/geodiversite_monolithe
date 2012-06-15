@@ -1,0 +1,11 @@
+[(#SET{markers,#ARRAY})]
+<BOUCLE_un_article(ARTICLES documents_liens documents){gis}{extension !IN 'kml','kmz'}{vu=non}{id_mot ?}{id_auteur ?}{branche ?}{recherche ?}{id_article ?}{!par date}
+>[(#SET{lat,#LAT})] [(#SET{lon,#LON})][(#SET{name,#_un_article:TITRE|supprimer_numero})][
+(#SET{icon,#LOGO_DOCUMENT|image_passe_partout{28,28}|image_recadre{28,28}|image_recadre{32,32,center}|image_aplatir{jpg,ffffff}|extraire_attribut{src}|url_absolue})][
+(#SET_PUSH{markers,#ARRAY{
+	id,#ID_ARTICLE,
+	name,#GET{name},
+	lat,#GET{lat},
+	lon,#GET{lon},
+	icon,#GET{icon}}})]</BOUCLE_un_article>
+"markers":[(#GET{markers}|json_encode)]

@@ -1,0 +1,8 @@
+#ENV*{bloc_ancre}
+#SET{i,#ENV{page_courante}|plus{1}}
+[(#GET{i}|<={#ENV{nombre_pages}}|?{' '})[
+	(#SET{item, #GET{i}|moins{1}|mult{#ENV{pas}} })
+	][(#GET{i}|=={#ENV{page_courante}}|?{'',' '})
+		<a href='[(#ENV{url}|parametre_url{#ENV{debut},#GET{item}})]' title='<:public:page_suivante|attribut_html:>' class='lien_pagination' rel='nofollow'>&gt;</a>
+	]
+]

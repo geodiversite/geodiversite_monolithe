@@ -1,0 +1,7 @@
+<div class="menu">
+	<h2 class="h2"><span><:geol:suivi_edito_filtres:></span></h2>
+	<ul class="liste-items">
+		<li class="item"><a href="[(#SELF|parametre_url{filtre,texte})]"[(#ENV{filtre,texte}|=={texte}|oui) class="on"]><:geol:suivi_edito_filtre_texte:></a></li>
+		<li class="item"><a href="[(#SELF|parametre_url{filtre,categorie})]"[(#ENV{filtre,texte}|=={categorie}|oui) class="on"]><:geol:suivi_edito_filtre_categorie:></a></li>
+	</ul>
+</div>

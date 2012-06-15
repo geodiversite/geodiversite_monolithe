@@ -1,0 +1,44 @@
+[(#ENV{id_rubrique}|!={-1}|oui)
+
+[(#REM) carte ]
+[<div class="menu carte">
+	(#INCLURE{fond=inclure/media_carte,
+		id_article,
+		signaler_erreur,
+		modifier_carte,
+		ajax})
+</div>]
+
+[(#REM) medias precedents/suivants ]
+[(#CONFIG{geol/afficher_serie}|oui)
+[<div class="menu vignettes serie">
+	(#INCLURE{fond=inclure/media_serie,
+		id_article,
+		debut_serie=@#ID_ARTICLE,
+		ajax})
+</div>]]
+
+[(#REM) partage / telechargement ]
+[<div class="menu">
+	(#INCLURE{fond=inclure/media_partage,
+		id_article,
+		id_rubrique,
+		modifier_licence,
+		ajax})
+</div>]
+
+[(#REM) tags scientifiques ]
+[<div class="menu">
+	(#PLUGIN{polyhier}|oui)
+	[(#INCLURE{fond=inclure/media_mots,
+		id_article,
+		modifier_cats,
+		ajax})]
+</div>]
+
+[(#REM) Pipeline pour ajout de contenu par autres plugins ]
+[<div class="menu">
+	(#PIPELINE{geol_navigation_fin})
+</div>]
+
+]

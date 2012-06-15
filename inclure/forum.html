@@ -1,0 +1,14 @@
+[(#REM) Cette balise (invisible) provoque le recalcul du forum la premiere fois qu'un message est poste (cf. inc/invalideur). ]
+[(#PARAMETRES_FORUM|?{''})]
+<B_comments-list>
+<div class="comments-list">
+	<h2 class="h2"><:geol:commentaires_titre:></h2>
+	<ul>
+		<BOUCLE_comments-list(FORUMS) {statut IN publie} {id_rubrique ?}{id_article ?}{id_breve ?}{id_syndic ?} {plat} {par date}>
+		<li class="[(#COMPTEUR_BOUCLE|alterner{'odd','even'})][ (#COMPTEUR_BOUCLE|=={1}|oui)first][ (#EXPOSE)]">
+			[(#MODELE{comment}{id_forum}{compteur=#COMPTEUR_BOUCLE})]
+		</li>
+		</BOUCLE_comments-list>
+	</ul>
+</div>
+</B_comments-list>

@@ -1,0 +1,8 @@
+<strong><:geol:afficher:></strong> :
+#SET{pas,#ENV{cols}|mult{3}} 
+<a href="[(#SELF|parametre_url{"pas",#GET{pas}})]" class="ajax[(#ENV{pas,#ENV{cols}|mult{3}}|=={#GET{pas}}|oui) on]">[(#GET{pas}) [(#ENV{objets,<:geol:objets_medias:>})]]</a>, 
+#SET{pas,#ENV{cols}|mult{5}}
+<a href="[(#SELF|parametre_url{"pas",#GET{pas}})]" class="ajax[(#ENV{pas,#ENV{cols}|mult{3}}|=={#GET{pas}}|oui) on]">[(#GET{pas}) [(#ENV{objets,<:geol:objets_medias:>})]]</a>, 
+#SET{pas,#ENV{cols}|mult{10}}
+<a href="[(#SELF|parametre_url{"pas",#GET{pas}})]" class="ajax[(#ENV{pas,#ENV{cols}|mult{3}}|=={#GET{pas}}|oui) on]">[(#GET{pas}) [(#ENV{objets,<:geol:objets_medias:>})]]</a>
+<:geol:afficher_par_page:>

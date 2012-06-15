@@ -1,0 +1,6 @@
+#HTTP_HEADER{'Content-Type: text/html;'}
+[(#ENV{id_article}|is_array|?{
+	[(#INCLURE{fond=inclure/infowindow_multi,env,ajax})]
+,
+	[(#INCLURE{fond=inclure/infowindow,env,ajax})]
+})]

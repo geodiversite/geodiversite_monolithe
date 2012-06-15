@@ -1,0 +1,15 @@
+<div class="contenu-principal">
+	
+	<div class="cartouche">
+		<h1 class="h1">#NOM_SITE_SPIP</h1>
+	</div>
+	
+	[(#REM)
+		Est-ce qu'on se connecte a l'espace prive ou pas ?
+	]
+	[(#ENV{url}|=={''}|?{#SET{prive,' '}})]
+	[(#ENV{url}|match{^#EVAL{_DIR_RESTREINT_ABS}}|?{#SET{prive,' '}})]
+	[(#GET{prive}) <h3 class="h3 spip"><:login_acces_prive:></h3>]
+
+	[(#FORMULAIRE_LOGIN{#ENV{url}|sinon{#URL_ECRIRE{accueil}}})]
+</div>

@@ -1,0 +1,7 @@
+<div id="geomap" class="carte_gis"></div>
+[(#REM|gis_api_utilisee|=={googlev3}|oui)
+[(#INCLURE{fond=inclure/carte_googlev3,env})]
+]
+[(#REM|gis_api_utilisee|=={openlayers}|oui)
+[(#INCLURE{fond=inclure/carte_openlayers,env})]
+]

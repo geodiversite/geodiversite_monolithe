@@ -1,0 +1,45 @@
+<BOUCLE_contenu_article(ARTICLES){id_article}>
+[(#REM) Fil d'Ariane ]
+<ol id="hierarchie">
+	[<li class="#EDIT{titre} on"><strong>(#TITRE|couper{80})</strong></li>]
+</ol>
+
+<div class="contenu-principal">
+	<div class="cartouche">
+		<div class="surlignable">
+			[<p class="#EDIT{surtitre} surtitre">(#SURTITRE)</p>]
+			<h1 class="entry-title h1">#TITRE</h1>
+			[<p class="#EDIT{soustitre} soustitre">(#SOUSTITRE)</p>]
+		</div>
+		[(#REM) Inclure le modele des liens de traductions ]
+		#MODELE{article_traductions}
+		
+	</div>
+
+	<div class="surlignable">
+		[<div class="#EDIT{chapo} chapo">(#CHAPO|image_reduire{500,0})</div>]
+		[<div class="#EDIT{texte} texte entry-content">(#TEXTE|image_reduire{500,0}|sinon{<:geol:pas_description:>})</div>]
+	</div>
+
+	[<p class="#EDIT{hyperlien} hyperlien"><:voir_en_ligne:> : <a href="(#URL_SITE)" class="spip_out">[(#NOM_SITE|sinon{[(#URL_SITE|couper{80})]})]</a></p>]
+
+	[<div class="ps surlignable"><h2 class="h2 pas_surlignable"><:info_ps:></h2><div class="#EDIT{ps}">(#PS|image_reduire{500,0})</div></div>]
+
+	[(#REM) Gestion du portfolio et des documents
+		Le critere {env} permet de passer d'autres arguments de la page
+		 par exemple l'id_document choisi pour un affichage complet
+
+	[(#INCLURE{fond=inc-documents-noflv}
+		{id_article}
+		{env}
+	)]]
+</div>
+
+[(#REM) Petition :
+La petition ayant une PAGINATION il faut absolument {env}
+et pourquoi pas ajax
+][(#PETITION|?{' '})<INCLURE{fond=inc-petition}{id_article}{env}{ajax} />]
+
+[<div class="notes surlignable"><h2 class="h2 pas_surlignable"><:info_notes:></h2>(#NOTES)</div>]
+
+</BOUCLE_contenu_article>

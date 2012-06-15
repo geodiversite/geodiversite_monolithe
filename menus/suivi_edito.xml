@@ -1,0 +1,8 @@
+<entree>
+	<nom><:geol:suivi_edito:></nom>
+	<rang>10000</rang>
+	<description><:geol:suivi_edito:></description>
+	<icone>images/menus-24.png</icone>
+	<parametre nom="titre" label="menus:entree_titre" />
+	<parametre nom="css" label="menus:entree_css" />
+</entree>

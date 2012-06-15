@@ -1,0 +1,19 @@
+#SET{cols,#ENV{cols,3}}<B_articles>
+<div class="liste articles boites[ cols(#GET{cols})]">
+	#ANCRE_PAGINATION
+	<h2 class="h2"><:geol:contribs:>[ ((#GRAND_TOTAL))]</h2>
+	<div class="liens_options">
+		[(#INCLURE{fond=inclure/listes_liens_pas,pas,tri,cols=#GET{cols},self=#SELF})]
+	</div>
+	<ul class="liste-items">
+		<BOUCLE_articles(FAVORIS){id_auteur} {!par maj} {pagination #ENV{pas,#GET{cols}|mult{3}}}>
+		<li class="item[ clear(#COMPTEUR_BOUCLE|modulo{#GET{cols}}|=={1}|oui)] article_vignette">
+			[(#INCLURE{fond=inclure/article-vignette,id_article=#ID_OBJET,env})]
+			[(#SESSION{id_auteur}|=={#ENV{id_auteur}}|oui)
+			[(#BOUTON_ACTION{<:geol:favoris_retirer:>,#URL_ACTION_AUTEUR{supprimer_favori,#ID_FAVORI,#SELF},ajax retirer_favori})]]
+		</li>
+		</BOUCLE_articles>
+	</ul>
+	[<p class="pagination">(#PAGINATION{page_precedent_suivant}{separateur=' '})</p>]
+</div>
+</B_articles>

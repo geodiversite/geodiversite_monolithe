@@ -1,0 +1,7 @@
+#HTTP_HEADER{'Content-Type: text/javascript'}
+{		
+	["title": (#NOM_SITE_SPIP|json_encode),]
+	["link": "(#URL_SITE_SPIP)/",]
+	["description": (#DESCRIPTIF_SITE_SPIP|textebrut|json_encode),]
+	[(#ENV{id_rubrique}|?{#INCLURE{fond=json/geol_markers_branche,env},#INCLURE{fond=json/geol_markers,env}})]
+}

@@ -1,0 +1,24 @@
+<BOUCLE_auteur_vignette(AUTEURS){id_auteur}{tout}>
+
+[<h3 class="titre fn">(#NOM)</h3>]
+
+[(#PLUGIN{gravatar}|oui)[<a href="#URL_AUTEUR">(#MODELE{gravatar,id_auteur,largeur=60})</a>]]
+
+<BOUCLE_merci_bonux(CONDITION){si #ENV{info_desc}|!={non}}>
+<div class="info_media vcard">
+	
+	#SET{total_visites,0}
+	<BOUCLE_total(ARTICLES){id_auteur}{page=''}>
+	#SET{total_visites,#GET{total_visites}|plus{#VISITES}} 
+	</BOUCLE_total>
+	[<p>(#GRAND_TOTAL|singulier_ou_pluriel{geol:contrib_auteur,geol:contribs_auteur})</p>]
+	</B_total>
+	<p><:geol:contrib_0:></p>
+	<//B_total>
+	[<p>(#GET{total_visites}|singulier_ou_pluriel{geol:visite,geol:visites}|sinon{<:geol:visite_0:>})</p>]
+	[<p><a href="(#URL_PAGE{carte,id_auteur=#ID_AUTEUR})"><:geol:auteur_carte:></a></p>]
+	
+</div>
+</BOUCLE_merci_bonux>
+
+</BOUCLE_auteur_vignette>
