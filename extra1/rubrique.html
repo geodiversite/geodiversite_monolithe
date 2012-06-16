@@ -1,10 +1,10 @@
 <div class="menu">
 	<h2 class="h2"><span><:geol:localisation:></span></h2>
 	<a href="[(#ID_RUBRIQUE|!={#CONFIG{geol/secteur_medias,1}}|?{#URL_PAGE{carte,id_rubrique=#ID_RUBRIQUE},#URL_PAGE{carte}})]">
-	<BOUCLE_ggmap(CONDITION){si #REM|gis_api_utilisee|=={googlev3}}>
+	<BOUCLE_ggmap(CONDITION){si #REM|gis_layer_defaut|in_array{#ARRAY{0,google_roadmap,1,google_satellite,2,google_terrain}}|oui}>
 		<img src="http://maps.google.com/maps/api/staticmap?maptype=terrain<B_articles>&amp;markers=size:tiny|color:0x[(#CONFIG{geol/couleur_primaire,#00c0f8}|substr{1,6})]|<BOUCLE_articles(ARTICLES){branche}{tout}{0,100}{!par date}{'|'}><BOUCLE_gis(GIS){id_article}>[(#LAT|round{4})],[(#LON|round{4})]</BOUCLE_gis></BOUCLE_articles>&amp;size=200x200&amp;sensor=false" width="200" height="200" alt="" />
 	</BOUCLE_ggmap>
-	<BOUCLE_ol(CONDITION){si #REM|gis_api_utilisee|=={openlayers}}>
+	<BOUCLE_ol(CONDITION){si #REM|gis_layer_defaut|in_array{#ARRAY{0,google_roadmap,1,google_satellite,2,google_terrain}}|non}>
 		[(#SET{rvb,#CONFIG{geol/couleur_primaire,#00c0f8}|substr{1,6}|geol_couleur_hex_to_dec|replace{',',':'}})]
 		<BOUCLE_points(GIS articles){branche}{tout}{0,100}{!par date}>[(#COMPTEUR_BOUCLE|=={1}|oui) #SET{lon_min,#LON} #SET{lon_max,#LON} #SET{lat_min,#LAT} #SET{lat_max,#LAT}  ][(#LON|<{#GET{lon_min}}|oui) #SET{lon_min,#LON} ][(#LON|>{#GET{lon_max}}|oui) #SET{lon_max,#LON} ][(#LAT|<{#GET{lat_min}}|oui) #SET{lat_min,#LAT} ][(#LAT|>{#GET{lat_max}}|oui) #SET{lat_max,#LAT} ] #SET{points,#GET{points}|concat{#LON|round{4}|concat{','}|concat{#LAT|round{4}}|concat{','}|concat{color:#GET{rvb}}}} [(#COMPTEUR_BOUCLE|<{#TOTAL_BOUCLE}|oui) #SET{points,#GET{points}|concat{';'}} ]</BOUCLE_points>
 		#SET{bbox,#GET{lon_min}|round{4}|concat{','}|concat{#GET{lat_max}|round{4}}|concat{','}|concat{#GET{lon_max}|round{4}}|concat{','}|concat{#GET{lat_min}|round{4}}}

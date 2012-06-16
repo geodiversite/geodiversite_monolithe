@@ -24,11 +24,11 @@
 		[(#MODELE{carte_gis}{id_article}{latit=#GET{lat}}{lonxit=#GET{lon}}{zoom=7}
 			{control=small}{control_type=non}{zoom_molette=non}{height=200px}{type=physique})]
 		]
-		<a href="#URL_PAGE{carte,id_article=#ID_ARTICLE}">
-		[(#REM|gis_api_utilisee|=={googlev3}|oui)
+		<a href="#URL_PAGE{carte,id_article=#ID_ARTICLE}">[
+		(#SET{google_layers,#ARRAY{0,google_roadmap,1,google_satellite,2,google_terrain}})][
+		(#REM|gis_layer_defaut|in_array{#GET{google_layers}}|oui)
 			<img src="http://maps.google.com/maps/api/staticmap?center=#GET{lat},#GET{lon}&amp;zoom=#CONFIG{geol/zoom_minicartes,7}&amp;maptype=terrain&amp;markers=[(#CHEMIN{images/geol_minimarker.png}|?{icon:[(#CHEMIN{images/geol_minimarker.png}|url_absolue)],color:0x[(#CONFIG{geol/couleur_primaire,#00c0f8}|substr{1,6})]})]|#GET{lat},#GET{lon}&amp;size=335x170&amp;sensor=false" width="335" height="170" alt="" />
-		]
-		[(#REM|gis_api_utilisee|=={openlayers}|oui)
+		][(#REM|gis_layer_defaut|in_array{#GET{google_layers}}|non)
 			[(#SET{rvb,#CONFIG{geol/couleur_primaire,#00c0f8}|substr{1,6}|geol_couleur_hex_to_dec})]
 			[(#SET{icon,#CHEMIN{images/geol_minimarker.png}|url_absolue})]
 			[(#VAL{http://dev.openstreetmap.org/~pafciu17/?module=map&points=#GET{lon}|concat{','}|concat{#GET{lat}}|concat{&color=#GET{rvb}}|concat{&pointImageUrl=#GET{icon}}}
