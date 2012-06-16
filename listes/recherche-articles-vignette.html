@@ -22,7 +22,7 @@
 	#ANCRE_PAGINATION
 	<h2 class="h2"><:geol:contribs:>[ ((#GRAND_TOTAL))]</h2>
 	<div class="liens_options">
-		<strong><:geol:trier:></strong> : 
+		<strong><:geol:trier:></strong> 
 		<a href="[(#SELF|parametre_url{"tri","points"})]" class="ajax[(#ENV{tri,points}|=={points}|oui) on]"><:geol:trier_par_points:></a>, 
 		<a href="[(#SELF|parametre_url{"tri","date"})]" class="ajax[(#ENV{tri,points}|=={date}|oui) on]"><:geol:trier_par_date:></a>, 
 		<a href="[(#SELF|parametre_url{"tri","popularite"})]" class="ajax[(#ENV{tri,points}|=={popularite}|oui) on]"><:geol:trier_par_pop:></a> |

@@ -1,3 +1,4 @@
+<BOUCLE_si_date_inscription(CONDITION){si #PLUGIN{date_inscription}|oui}>
 <div class="menu auteurs">
 	<h2 class="h2"><span><:geol:contributeurs_nouveaux:></span></h2>
 	<B_auteurs>
@@ -13,8 +14,9 @@
 	</ul>
 	</B_auteurs>
 </div>
+</BOUCLE_si_date_inscription>
 
-[(#REM) liste des amdins si on est logué ]
+[(#REM) liste des admins si on est logué ]
 [(#SESSION{id_auteur}|oui)
 [(#INCLURE{fond=inclure/auteurs_liste_admins})]
 ]

@@ -1,0 +1,420 @@
+#CACHE{3600*100,cache-client}
+#HTTP_HEADER{Content-Type: text/css; charset=iso-8859-15}
+#HTTP_HEADER{Vary: Accept-Encoding}
+
+/* ------------------------------------------
+/* ------------------------------------------
+/* prive/style_prive_plugin_bonux :
+/* pour le picker de polyhierarchie
+/* ------------------------------------------ */
+/* ------------------------------------------ */
+
+[(#INCLURE{fond=prive/style_prive_plugin_bonux,ltr=#LTR})]
+
+/* ------------------------------------------
+/* ------------------------------------------
+/* Styles par defaut geodiversite
+/* ------------------------------------------ */
+/* ------------------------------------------ */
+
+#SET{couleur1,#CONFIG{geol/couleur_primaire,#00c0f8}}
+
+.hop { font-weight: bold; }
+
+/*  ------------------------------------------
+/*  hierarchie
+/*  ------------------------------------------ */
+
+#hierarchie { display: table; margin: 0 0 10px; padding: 0; overflow: hidden; list-style: none; color: #GET{couleur1};
+	font: bold 1.2em Arial, Helvetica, sans-serif; }
+#hierarchie li { float: left; padding-left: 10px; }
+#hierarchie li.spacer { padding-right: 5px; }
+
+/*  ------------------------------------------
+/*  navigation
+/*  ------------------------------------------ */
+
+.menu.media,
+.menu .explication { text-align: right; }
+.menu.carte .h2 { margin-bottom: 10px; }
+.menu.carte .geo { text-align: right; font-size: 1.3em; margin-bottom: 5px; }
+.menu.carte .geo abbr { border: 0; }
+.menu.carte .adr { text-align: right; margin-bottom: 5px; }
+
+.menu.serie .image_loading { display: none; }
+.menu.serie .liste-items { text-align: center; }
+.menu.serie .liste-items .item.pagination .lien_pagination { display: block; width: 18px; height: 56px; line-height: 56px; text-align: center; font-weight: bold; background: #f2f2f2; color: #666; }
+.menu.serie .liste-items .item.pagination .lien_pagination:hover { text-decoration: none; color: #GET{couleur1}; }
+.menu.serie .liste-items .item.pagination.prev .lien_pagination { float: left; }
+.menu.serie .liste-items .item.pagination.next .lien_pagination { float: right; }
+.menu.serie .liste-items .item { padding: 0; }
+.menu.serie .liste-items .item .spip_logos { float: none; clear: none; margin: 0; padding: 1px; border: 1px solid transparent; }
+.menu.serie .liste-items .item:hover .spip_logos,
+.menu.serie .liste-items .item.on .spip_logos { border-color: #aaa; }
+
+.menu div.socialtags { margin: 7px 0 0; }
+.menu .socialtags ul,
+.menu .socialtags ul li { border: 0; background: none; padding: 0; }
+.menu .liste-items li.socialtags { background-position: left 0.4em; }
+.menu .puces li { padding-left: 15px; background: transparent url(#CHEMIN{images/puce.png}) left 50% no-repeat; }
+.menu .actions { text-align: right; margin: 3px 0 0; }
+.menu dl dt { font-weight: bold; margin: 5px 0; }
+.menu dl dd { margin: 2px 0 2px 20px; }
+.menu .liste-items .item a.delete { padding-left: 18px; display: block; color: #666;
+	background: transparent url(#CHEMIN{prive/images/noeud_moins.gif}) left 50% no-repeat; }
+.menu .liste-items .item a.delete:hover { color: #GET{couleur1}; }
+.categories li.item { padding: 4px 0 4px 18px; background: transparent url(#CHEMIN{prive/images/noeud_plus.gif}) left 3px no-repeat; }
+.categories li a { color: #666; }
+.categories li a:hover { color: #GET{couleur1}; }
+.categories li ul { margin-top: 4px; background: transparent url(#CHEMIN{images/dots.gif}) 6px top repeat-y; }
+.categories li.on { font-weight: normal; background-image: url(#CHEMIN{prive/images/noeud_moins.gif}); }
+.categories li.deplie { background: transparent url(#CHEMIN{prive/images/noeud_moins.gif}) left 4px no-repeat; }
+.categories li.on>a { font-weight: bold; }
+
+/*  ------------------------------------------
+/*  pied
+/*  ------------------------------------------ */
+
+.pied.conteneur { padding: 5px 0; text-align: left; }
+.pied .liste { margin: 10px 0; }
+.pied .h3,
+.pied .menu-liste,
+.pied .menu-liste .menu-entree,
+.pied .menu-liste .menu-entree a { display: inline; border: 0; padding: 0; }
+.pied .menu-liste .menu-entree { padding: 0 0 0 5px; }
+.pied .h3 { font-size: 1em; }
+
+/*  ------------------------------------------
+/*  pages sommaire, articles et rubriques
+/*  ------------------------------------------ */
+
+.page_sommaire #navigation { display: none; }
+.page_sommaire #contenu { float: none; width: 80%; margin: 30px auto 0; }
+.page_sommaire #contenu .menu { float: right; clear: none; width: 43%; padding: 12px 15px; background: #f2f2f2; }
+
+.page_sommaire #contenu .menu .h2 { margin: 0; padding: 0; color: #666; font-size: 1.5em; }
+.page_sommaire #contenu .menu .menu-liste { margin: 0.4em 0; padding: 0.2em 0.1em; font-size: 1.1em; border: 0; }
+.page_sommaire #contenu .menu .menu-liste .menu-entree { display: inline; margin: 0; padding: 0; }
+.page_sommaire #contenu .menu .menu-liste .menu-entree:before { content: ";\0000a0" }
+.page_sommaire #contenu .menu .menu-liste .menu-entree:first-child:before { content: "" }
+.page_sommaire .boites .liste-items .item { float: left; clear: none; width: 25%; margin: 0; }
+
+.page_sommaire .image_pop { float: left; clear: none; width: 50%; position: relative; }
+.page_sommaire .image_pop .description { display: block; padding: 4px; background: #f2f2f2; position: absolute; top: 10px; left: 0; opacity: 0.75; }
+.page_sommaire .image_pop .description:hover { opacity: 1; }
+.page_sommaire .image_pop .description h2,
+.page_sommaire .image_pop .description .auteur,
+.page_sommaire .image_pop .description a { padding: 0; font: bold 12px Arial,helvetica; color:#333; text-decoration: none; opacity: 1; }
+
+
+.page_upload #contenu,
+.page_ticket #contenu,
+.page_tickets #contenu,
+.page_editer_ticket #contenu { width: 60%; }
+.page_upload #navigation,
+.page_ticket #navigation,
+.page_tickets #navigation,
+.page_editer_ticket #navigation { width: 35%; }
+.page_article .cartouche,
+.page_ticket .cartouche { margin: 10px 0 20px; }
+
+.cartouche { margin-bottom: 0; }
+.cartouche .info-publi { overflow: hidden; }
+.cartouche .avatar { float: left; margin-right: 10px; }
+.cartouche p { clear: none; margin: 0; padding: 0; }
+.cartouche .spip_logos { float: left; margin: 0 16px 4px 0; }
+
+.chapo { width: 93%; margin-bottom: 15px; font-size: 1em; }
+
+.image-annotate-note .note-text img { display: block; float: left; margin: 2px 5px 2px 0; }
+.image-annotate-note .note-text .author a { color: #666; }
+.image-annotate-note .note-text .author a:hover { color: #GET{couleur1}; }
+.image_legendes .nb_notes { margin-bottom: 0; }
+.doc_echelle { margin: 5px 0 0; }
+
+/* Listes d'articles et extraits introductifs */
+
+#contenu .liste-items .item { margin-bottom: 0; }
+.liste-items .item .info-publi { margin-left: 0; padding: 0; background: transparent; }
+
+.liste .liens_options { margin: 0; color: #999; }
+/* utiliser inline-block au lieu de float http://www.webinventif.fr/inline-block/ */
+.boites .liste-items .item { width: 48%; padding-top: 20px;  margin-left: 10px; border: 0;
+	display: -moz-inline-stack; display: inline-block; vertical-align: top; zoom: 1; *display: inline; }
+.boites .liste-items .clear { margin-left: 0; }
+.boites .liste-items .item .titre a { display: block; }
+.boites .liste-items .item .spip_logos { float: none; margin: 0; }
+
+.article_vignette .titre { margin: 0 0 10px; }
+.article_vignette .texte { margin: 10px 0; line-height: 1.2em; }
+.article_vignette p { margin: 0; }
+
+/*  ------------------------------------------
+/*  page carte
+/*  ------------------------------------------ */
+
+.page_carte html,
+.page_carte body { height: 100%; }
+.page_carte #top #extra { width: auto; position: absolute; z-index: 3000; right: 0; }
+.page_carte #page { overflow: hidden; width: 100%; margin: 0; height: 100%; position: absolute; left: 0; }
+.page_carte #conteneur,
+.page_carte #conteneur #contenu,
+.page_carte #conteneur #contenu .carte_gis { width: 100%; margin: 0; height: 100%; position: relative; }
+.page_carte #pied { position: absolute; bottom: 0; background: #fff; }
+.page_carte #pied #bouton { position: absolute; top: -20px; right: 10px; }
+.page_carte #pied.cache #bouton { background-position: left top; }
+.page_carte #pied #bouton:hover { cursor: pointer; }
+
+.page_carte .info_filtre { display: block; float: left; padding: 5px 15px 4px 10px;
+	background: #999 url(#CHEMIN{images/bg_info_filtre.png}) right 50% no-repeat; color: #fff; }
+.page_carte .info_filtre #close_filtre { display: inline-block; height: 16px; width: 16px; margin-left: 5px;
+	text-indent: -3000em; background: transparent url(#CHEMIN{images/close.png}) 50% 50% no-repeat; }
+
+.page_carte div#kml_panel { position: absolute; right: 10px; top: 35px; z-index: 4000; width: 200px;
+	padding: 5px; background: #fff; border: 5px solid #f2f2f2; }
+.page_carte #kml_panel h3 { margin: 0 0 5px; cursor: move; padding-right: 18px; }
+.page_carte #kml_panel.replie h3 { margin: 0; border: 0; }
+.page_carte #kml_panel #toggle { display: block; float: right; width: 18px; height: 18px; text-indent: -3000em;
+	background: transparent url(#CHEMIN{prive/images/noeud_moins.gif}) 50% top no-repeat; }
+.page_carte #kml_panel #toggle:active,
+.page_carte #kml_panel #toggle:focus { outline: 0 none; }
+.page_carte #kml_panel.replie #toggle { background: transparent url(#CHEMIN{prive/images/noeud_plus.gif}) 50% top no-repeat; }
+.page_carte #kml_panel ul.liste-items { max-height: 250px; overflow-y: auto; display: none; }
+.page_carte #kml_panel input.checkbox { vertical-align: middle; }
+
+.geol_window { padding: 10px; background: #fff; border: 1px solid #e2e2e2;
+	-moz-border-radius: 8px; -webkit-border-radius: 8px; border-radius: 8px; }
+.geol_window .descriptif_window { width: 225px; }
+.geol_window h3 { font-size: 1.2em;	margin: 0 14px 5px 0; }
+.geol_window .auteurs {	display: block; margin: 5px 0; }
+.geol_window .lien_logo { display: block; text-align: center; }
+.geol_window .multi .liste-items { list-style: none; }
+#page .geol_window .multi .liste-items .item { border-bottom: 1px solid #ddd; margin: 0 0 10px; padding: 0 0 5px; }
+#page .geol_window .multi .liste-items .item .lien_logo { float: left; }
+.geol_window .multi .liste-items .item .desc { margin-left: 60px; }
+.geol_window .multi .pagination { text-align: center; }
+
+#page .olPopupCloseBox { background: url(#CHEMIN{images/infowindow_close.png}) no-repeat; }
+
+/*
+.page_carte #infopanel { position: absolute; left: 0; bottom: 120px; z-index: 4000; width: 100%; opacity: 0.8;
+	padding: 5px; background: #fff; border-left: 0; border-right: 0; }
+.page_carte #infopanel .liste-items .item { display: inline; padding: 0; }
+.page_carte #infopanel .liste-items .item img { padding: 5px; opacity: 1; }
+*/
+
+/* listes des pages galerie
+----------------------------------------------- */
+
+.boites .liste-items { overflow: hidden; }
+.boites .liste-items .item { width: 32%; }
+.boites.cols2 .liste-items .item { width: 48%; }
+.boites.cols3 .liste-items .item { width: 32%; }
+.boites.cols4 .liste-items .item { width: 23%; }
+.boites.cols5 .liste-items .item { width: 18%; }
+.boites .liste-items .item .titre,
+.boites .liste-items .item .info_media { padding-right: 20px; }
+
+.liste .pagination { margin: 20px 0; text-align: center; }
+.liste .pagination span.on,
+.liste .pagination a { padding: 5px 10px; line-height: 2em; border: 1px solid #ddd;  }
+.liste .pagination span.on { background: #ddd; }
+
+/* page auteur + auteurs
+----------------------------------------------- */
+
+.menu.auteur .liste-items .item { display: inline; color: #999; }
+
+.page_auteur #navigation .menu { text-align: right; }
+
+.suivi .liste-items { text-align: right; }
+.suivi .liste-items .item a { display: block; padding: 10px 0; }
+.vignettes .liste-items .item { display: inline; }
+.vignettes .liste-items .item a:hover { text-decoration: none; }
+
+.auteurs .liste-items .item { margin: 10px 0; text-align: right; }
+.auteurs .liste-items .item a { display: block; text-decoration: none; color: #666; }
+.auteurs .liste-items .item a:hover { color: #GET{couleur1}; }
+.auteurs .liste-items .item .fn { display: inline; font-size: 1.2em; font-weight: bold; }
+.auteurs .liste-items .item img { margin-left: 10px; vertical-align: top; }
+
+.amis .liste-items .item .action { display: block; margin-top: 5px; }
+
+/* page login + spip_pass + 404
+----------------------------------------------- */
+
+.page_login #page #conteneur,
+.page_spip_pass #page #conteneur { width: 360px; margin: 0 auto; padding-top: 35px; }
+.page_login #contenu,
+.page_spip_pass #contenu { float: none; width: 100%; }
+
+/* page upload
+----------------------------------------------- */
+
+.page_upload #em_message_avant_upload { border: 0; }
+.page_upload #em_upload_document li.fieldset,
+.page_upload .formulaire_supprimer_document,
+.page_upload #formulaire_diogene .editer_titre,
+.page_upload #formulaire_diogene .editer_texte,
+.page_upload #formulaire_diogene li.fieldset { margin: 20px 0; padding: 10px; border: 5px solid #f2f2f2; background: #fff; }
+.page_upload .previsu_document { border: 0; }
+.page_upload .previsu_document h4,
+.page_upload .previsu_document .infos_document,
+.page_upload .previsu_document a.legende_add,
+.page_upload #formulaire_diogene .editer_id_parent,
+.page_upload #formulaire_diogene .editer_parent,
+.page_upload #formulaire_diogene .editer_parents,
+.page_upload #formulaire_diogene .editer_gis_titre,
+.page_upload #formulaire_diogene .editer_gis_descriptif { display: none; }
+.page_upload #formulaire_diogene h3.legend { margin-bottom: 10px; }
+.page_upload .formulaire_message { font-weight: bold; }
+.page_upload .diogene_geo #geomap { width: 100%; height: 350px; }
+.page_upload #em_upload_boutons { background: #f2f2f2; color: #666; border: 4px solid #fff;
+	-moz-border-radius: 8px; -webkit-border-radius: 8px; border-radius: 8px;
+	-moz-box-shadow: 0 1px 3px #999; -webkit-box-shadow: 0 1px 3px #999; box-shadow: 0 1px 3px #999; }
+
+/* Messages des forums
+----------------------------------------------- */
+
+.comments h2,
+.comments-list h2,
+#documents_portfolio h2,
+#documents_joints h2 { text-align: left; }
+.comments-list ul,
+.forum, .forum .forum-fil,
+.forum .forum-fil .forum-chapo { margin: 0; padding: 0; list-style: none; background: transparent; border: 0; color: #666; }
+.comments-list li { position: relative; list-style: none; padding: 0 0 0 45px; border-top: 1px solid #ddd; }
+.comments-list li:first-child { border: 0; }
+.comments-list .comment-meta { margin: 1em 0; }
+.comments-list .comment-meta img.photo { position: absolute; left: 0; top: 10px; }
+
+
+/*  ------------------------------------------
+/*  Les formulaires
+/*  ------------------------------------------ */
+
+.formulaire_inscription,
+.formulaire_login,
+.formulaire_oubli,
+.formulaire_mot_de_passe,
+.formulaire_ecrire_auteur,
+.formulaire_editer_mot_article,
+.formulaire_spipicious,
+.formulaire_editer_gis,
+.formulaire_editer_licence { width: auto; margin: 10px auto; padding: 10px; border: 1px solid #ddd; background: #f5f5f5; }
+.formulaire_ecrire_auteur fieldset legend,
+.formulaire_login fieldset legend,
+.formulaire_oubli fieldset legend,
+.formulaire_mot_de_passe fieldset legend,
+.formulaire_spipicious fieldset legend { background: transparent; }
+
+.formulaire_spip fieldset.previsu { border: 1px dashed #bbb; }
+.formulaire_spip fieldset.previsu legend { color: #666; }
+.formulaire_spip .reponse_formulaire { text-align: center; font-size: 1.1em; }
+.formulaire_spip .reponse_formulaire_ok { color: #GET{couleur1}; }
+
+/* inscription + login */
+
+.formulaire_inscription fieldset legend,
+.formulaire_inscription fieldset p.explication { display: none; }
+.formulaire_inscription p.boutons { text-align: center; }
+.formulaire_login .password { width: 15em; border: 1px inset; }
+
+/* editer_mot_article */
+
+.formulaire_editer_mot_article { width: 50%; margin: 10px 0; }
+
+/* formulaire_forum */
+
+.formulaire_forum .previsu .forum-chapo .forum-titre { display: none; }
+.formulaire_forum .previsu .forum-chapo small { font-size: 1em; }
+.formulaire_forum .previsu .forum-chapo small span { font-weight: bold; }
+
+/* formulaire_editer_gis */
+
+.formulaire_editer_gis .editer_titre,
+.formulaire_editer_gis .editer_descriptif { display: none; }
+
+/* recherche avancee */
+
+.formulaire_recherche_geol { width: 90%; margin-top: 10px; }
+.formulaire_recherche_geol ul li { overflow: hidden; padding: 15px 10px 15px 150px; border-top: 1px solid #ddd; }
+.formulaire_recherche_geol ul li:first-child { border-top: 0; }
+.formulaire_recherche_geol ul li label { float: left; width: 140px; margin-left: -145px; text-align: left; vertical-align: top;
+	/* pour IE6 */ position: relative; display: inline; }
+.formulaire_recherche_geol ul>li label { display: block; position: static; }
+.formulaire_recherche_geol li.choix { padding-left : 10px; }
+.formulaire_recherche_geol .choix label { float: none; margin-left: 5px; display: inline; width: auto; vertical-align: middle; }
+.formulaire_recherche_geol .choix input.radio,
+.formulaire_recherche_geol .choix input.checkbox { width: auto; vertical-align: middle; }
+.formulaire_recherche_geol .saisie_mot select { width: 15em; }
+
+
+/* boutons actions */
+.actions_doc { margin: 0; overflow: hidden; } /* astuce pour le p qui contient que des floats */
+.actions_doc a,
+.actions_doc .formulaire_favori form button.ajouter_favori,
+.actions_doc .formulaire_favori form button.ajouter_favori:hover,
+.actions_doc .formulaire_favori form button.retirer_favori,
+.actions_doc .formulaire_favori form button.retirer_favori:hover {
+	display: block; float: left; width: 20px; height: 20px; margin-right: 10px; text-indent: -3000em;
+	background: transparent url(#CHEMIN{images/sprite_actions_doc.png}) left top no-repeat; }
+.actions_doc a.zoom { background-position: 0 -20px; }
+.actions_doc a.zoom:hover { background-position: 0 0; }
+.actions_doc a.telecharger { background-position: 0 -60px; }
+.actions_doc a.telecharger:hover { background-position: 0 -40px; }
+.actions_doc a.ajouter_note { background-position: 0 -100px; }
+.actions_doc a.ajouter_note:hover { background-position: 0 -80px; }
+.actions_doc a.rotation_gauche { background-position: 0 -140px; }
+.actions_doc a.rotation_gauche:hover { background-position: 0 -120px; }
+.actions_doc a.rotation_droite { background-position: 0 -180px; }
+.actions_doc a.rotation_droite:hover { background-position: 0 -160px; }
+.actions_doc a.modifier { background-position: 0 -220px; }
+.actions_doc a.modifier:hover { background-position: 0 -200px; }
+.actions_doc a.supprimer { background-position: 0 -260px; }
+.actions_doc a.supprimer:hover { background-position: 0 -240px; }
+
+.actions_doc .formulaire_favori { float: left; }
+.actions_doc .formulaire_favori form button.ajouter_favori span,
+.actions_doc .formulaire_favori form button.retirer_favori span { display: none; }
+.actions_doc .formulaire_favori form button.ajouter_favori { background-position: 0 -300px; } 
+.actions_doc .formulaire_favori form button.ajouter_favori:hover { background-position: 0 -280px; } 
+.actions_doc .formulaire_favori form button.retirer_favori { background-position: 0 -340px; } 
+.actions_doc .formulaire_favori form button.retirer_favori:hover { background-position: 0 -320px; } 
+
+.actions_doc .formulaire_notation { float: right; margin-right: 10px; }
+.actions_doc .formulaire_notation .note { border: 0; }
+
+/* formulaire favoris */
+
+form.retirer_favori button.submit { width: auto; overflow: visible; border: 0; cursor: pointer; color: #GET{couleur1};
+	background: transparent url(#CHEMIN{images/puce.png}) left 50% no-repeat; padding: 0 0 0 12px; }
+form.retirer_favori button.submit:hover { color: #e83418; }
+
+/* les crayons */
+
+.geomodale,
+.mot_doux,
+body .crayon-html { padding: 5px; border: 5px solid #f2f2f2; background: #fff; }
+body .crayon-html .formulaire_spip { margin-bottom: 5px; }
+body .crayon-html .editer_logo h3.legend { font-size: 1em; }
+body .crayon-html .editer_logo div.choix,
+body .crayon-html .editer_logo input.file { display: inline; }
+body .crayon-html .crayon-boutons { float: none; position: static; width: auto; margin-top: 10px; bottom: 10px; text-align: right; }
+body .crayon-html .crayon-boutons button { float: none; display: inline; width: auto; height: 32px; text-indent: 0;
+	cursor: pointer; background: #f2f2f2; color: #666; border: 4px solid #fff;
+	-moz-border-radius: 8px; -webkit-border-radius: 8px; border-radius: 8px;
+	-moz-box-shadow: 0 1px 3px #999; -webkit-box-shadow: 0 1px 3px #999; box-shadow: 0 1px 3px #999; }
+body .crayon-html .crayon-boutons button:hover { color: #GET{couleur1}; }
+body .crayon-html .crayon-boutons .crayon-submit { font-weight: bold; margin-right: 15px; }
+body .resizehandle_boutons { margin-top: 0; }
+
+/* fausse modale pour certains formulaires */
+
+.geomodale { position: absolute; width: 600px; left: 50%; margin-left: -300px; background: #ddd; }
+
+/* Couleurs des liens
+---------------------------------------------- */
+a, a.spip_in, a.spip_out { color: #GET{couleur1}; text-decoration: none; }
+a:focus,a:hover,a:active { color: #GET{couleur1}; text-decoration: underline; }
+body a.external { padding-right: 14px; background: transparent url(#CHEMIN{images/out.gif}) no-repeat right; }

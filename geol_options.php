@@ -10,7 +10,7 @@ define ('_url_minuscules',1);
 
 // autoriser le prive uniquement pour les admins
 function autoriser_ecrire($faire, $type, $id, $qui, $opt) {
-	return $qui['statut'] == '0minirezo' AND !$qui['restreint'];
+	return $qui['statut'] == '0minirezo';
 }
 
 // surcharger autoriser_ecrire_ticket_dist sinon autoriser_ecrire passe avant

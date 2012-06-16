@@ -5,7 +5,7 @@
 	[<h2 class="h2">(#GRAND_TOTAL|singulier_ou_pluriel{geol:amis_nb_un,geol:amis_nb})[ ((#GRAND_TOTAL))]</h2>]
 	<//B_combien>
 	<div class="liens_options">
-		<strong><:geol:trier:></strong> : 
+		<strong><:geol:trier:></strong> 
 		<a href="[(#SELF|parametre_url{"tri","nom"}|parametre_url{'senstri',''})]" class="ajax[(#ENV{tri,nom}|=={nom}|oui) on]"><:geol:trier_par_nom:></a>, 
 		<a href="[(#SELF|parametre_url{"tri","date_inscription"}|parametre_url{'senstri','1'})]" class="ajax[(#ENV{tri,nom}|=={date_inscription}|oui) on]"><:geol:trier_par_date_inscription:></a> |
 		[(#INCLURE{fond=inclure/listes_liens_pas,pas,tri,cols=#GET{cols},objets=<:geol:objets_auteurs:>,self=#SELF})]

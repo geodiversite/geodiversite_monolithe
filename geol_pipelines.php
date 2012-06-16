@@ -3,6 +3,19 @@
 if (!defined('_ECRIRE_INC_VERSION')) return;
 
 /**
+ * Insertion dans le pipeline insert_head_css (SPIP)
+ * 
+ * Ajout de la feuille de styles de geodiversite
+ * 
+ * @param array $flux
+ * @return array $flux
+ */
+function geol_insert_head_css($flux) {
+	$flux .= '<link rel="stylesheet" href="'.parametre_url(generer_url_public('geol.css'),'ltr', $GLOBALS['spip_lang_left']).'" type="text/css" media="projection, screen, tv" />';
+	return $flux;
+}
+
+/**
  * Insertion dans le pipeline styliser (SPIP)
  * 
  * Par défaut, appliquer la composition 'page' aux articles de la rubrique -1 (les pages donc)
@@ -103,5 +116,14 @@ function geol_xmlrpc_methodes($flux){
 function geol_xmlrpc_server_class($flux){
 	include_spip('inc/geol_xmlrpc');
 	return $flux;
+}
+
+/**
+ * Insertion dans le pipeline jqueryui_plugins
+ * Ajout de la fonction draggable pour les cartes
+ */
+function geol_jqueryui_plugins($plugins){
+	$plugins[] = 'jquery.ui.draggable';
+	return $plugins;
 }
 ?>

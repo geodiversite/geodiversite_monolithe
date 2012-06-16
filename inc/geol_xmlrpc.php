@@ -303,7 +303,7 @@ function geodiv_lire_media($args){
  */
 function geodiv_creer_media($args){
 	global $spip_xmlrpc_serveur;
-	
+	spip_log($args['document']['name'],'xmlrpc');
 	/**
 	 * On est obligé d'être identifié
 	 */
@@ -318,22 +318,28 @@ function geodiv_creer_media($args){
 	 * -* name
 	 * -* type
 	 */
-	if(!$args['document']['bits'] OR !$args['document']['name']){
+	if((strlen($args['document']['bits']) == 0) OR !$args['document']['name']){
 		$erreur = _T('geol:erreur_fichier_inconnu');
+		spip_log('on plante, pas assez d infos','xmlrpc');
 		return new IXR_Error(-32601, attribut_html($erreur));
 	}else{
 		$tmp_name = _DIR_VAR.$args['document']['name'];
-		$fichier = base64_decode($args['document']['bits']);
+		spip_log(strlen($args['document']['bits']),'xmlrpc');
+		if($fichier_64 = base64_decode($args['document']['bits'])){
+			spip_log('On a un fichieren base_64','xmlrpc');
+		}
 	}
 	
 	/**
 	 * On enregistre le document temporaire sur le serveur dans local/
+	 * 
 	 */
 	if ($f = fopen($tmp_name, 'w+')) {
-		fwrite($f, $fichier);
+		fwrite($f, $fichier_64 ? $fichier_64 : $args['document']['bits']);
 		fclose($f);
 	}else{
 		$erreur = _T('geol:erreur_fichier_inconnu');
+		spip_log($erreur,'xmlrpc');
 		return new IXR_Error(-32601, attribut_html($erreur));
 	}
 	

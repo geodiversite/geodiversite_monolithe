@@ -11,7 +11,7 @@
 			<li class='recherche_libre'>
 				<label for="recherche_libre"><:info_rechercher:></label>
 				<input type="text" class="text" size="10" name="recherche_libre" id="recherche_libre"[ value="(#ENV{recherche_libre})"] />
-				<p class="explication"><:fulltext:casse_indifferente:> <:fulltext:accents_pas_pris:>.</p>
+				[(#PLUGIN{Fulltext}|oui)<p class="explication"><:fulltext:casse_indifferente:> <:fulltext:accents_pas_pris:>.</p>]
 			</li>
 			[(#SAISIE{secteur,
 				categories,
@@ -32,12 +32,13 @@
 					type_audios,<:geol:media_type_audios:>,
 					type_videos,<:geol:media_type_videos:>,
 					type_textes,<:geol:media_type_textes:>}})]
+			[(#PLUGIN{licence}|oui)
 			[(#SAISIE{selection_multiple,
 				id_licence,
 				explication=<:geol:explication_select_multiple:>,
 				label=<:geol:licence_media:>,
 				option_intro=<:geol:toutes:>,
-				datas=#ENV**{licences}})]
+				datas=#ENV**{licences}})]]
 		</ul>
 	</fieldset>
 	<p class="boutons">

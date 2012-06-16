@@ -1,32 +1,12 @@
-/* --------------------------------------------------------- */
-/* Feuille de style des squelettes par defaut pour SPIP 2.0  */
-/* --------------------------------------------------------- */
-
-/* couleurs utilisees
- *
- * - #46839B
- * - #f9f9f9
- * - #ddd
- * - #f63
- */
-
-
 /* ------------------------------------------
 /* Typographie generale (style transversaux)
 /* ------------------------------------------ */
 html { font-size: 100%; } /* Cf.: http://pompage.net/pompe/definir-des-tailles-de-polices-en-CSS/ */
-body { font-size: 0.8125em; font-family: "Luxi sans", "Lucida Grande", Lucida, "Lucida Sans Unicode", sans-serif; color: #333; }
 
 /* Titraille / Intertitres */
 h1,h2,h3,h4,h5,h6,
-.h1,.h2,.h3,.h4,.h5,.h6 { margin: 0; padding: 0; font-weight: normal; font-size: 1em; font-family: Georgia, Times, serif; }
-h1,.h1 { font-size: 1.70em; color: #000; }
-h2,.h2 { font-size: 1.40em; font-weight: normal; }
-h2, h2 a, h2 a:focus, h2 a:hover, h2 a:active { color: #70617E; }
-.h2, .h2 a, .h2 a:focus, .h2 a:hover, .h2 a:active { color: #70617E; }
+.h1,.h2,.h3,.h4,.h5,.h6 { margin: 0; padding: 0; font-weight: normal; font-size: 1em; }
 h3,.h3 { font-size: 1.20em; font-weight: bold; }
-h3.spip {} /* Cf.: spip_style.css */
-hr.spip {} /* Cf.: spip_style.css */
 
 /* Autres enrichissements typo */
 strong { font-weight: bold; }
@@ -38,23 +18,9 @@ del { text-decoration: line-through; }
 ins { color: red !important; text-decoration: none; }
 sup, sub { font-size: .8em; font-variant: normal; }
 
-/* Listes */
-ul.spip {} /* Cf.: spip_style.css */
-ol.spip {} /* Cf.: spip_style.css */
-dl {}
-dt {}
-dd {}
-
-/* Citations, code et poesie */
-cite {}
-q {}
-blockquote {}
-blockquote.spip {} /* Cf.: spip_style.css */
-blockquote.spip_poesie {} /* Cf.: spip_style.css */
 /* Cf.: spip_style.css */
 .spip_code {color:#8B2703;}
 .spip_cadre {color:#444; background-color: #fff; border: 1px solid #ddd; font-size:1em; padding:0.5em;width:90%; }
-address {}
 
 /* Tableaux */
 /* Cf.: spip_style.css */
@@ -64,35 +30,24 @@ table.spip td, table.spip th {border:white 2px solid;}
 
 /* Logos, documents et images */
 img { margin: 0; padding: 0; border: 0; }
-.spip_logos {} /* Cf.: spip_style.css */
-.spip_documents {} /* Cf.: spip_style.css */
-.spip_documents_center {} /* Cf.: spip_style.css */
-.spip_documents_left {} /* Cf.: spip_style.css */
-.spip_documents_right {} /* Cf.: spip_style.css */
-.spip_doc_titre {} /* Cf.: spip_style.css */
-.spip_doc_descriptif {} /* Cf.: spip_style.css */
-
 
 /* ------------------------------------------
 /* Disposition a l'ecran des blocs principaux
 /* ------------------------------------------ */
-body { background: #f9f9f9; margin: 0; padding: 0; text-align: center; }
+body { margin: 0; padding: 0; text-align: center; }
 
-#page { position: relative; background: #fff; width: 58em; margin: 1em auto; padding:1em 2em; text-align: left; border:3px solid #ddd; }
+#page { position: relative; background: #fff; text-align: left; }
 
-#entete { width: 100%; margin: 0; padding-top: 1.60em; padding-bottom: 1.60em; margin-bottom:1em; border-bottom: 2px solid #46839B;}
-#entete .accueil { display: block; width: 67%; }
+#entete .accueil { display: block; }
 #entete .accueil .spip_logos { vertical-align: bottom; line-height: 1em; }
-#entete .accueil #nom_site_spip { vertical-align: bottom; font-size: 2.2em; font-family: Georgia, Times, serif; font-weight: normal; }
+#entete .accueil #nom_site_spip { vertical-align: bottom; }
 #entete .formulaire_menu_lang { position: absolute; right: 0; top: 0.90em; display: block; width: 30%; } /*Cf.: spip_formulaires.css*/
 
 #conteneur { clear: both; overflow: hidden; }
-#contenu { padding-top: 0.30em; float:left; width:65%;}
 
-#navigation { float: right; width: 30%; margin-top: 1em; overflow: hidden; }
+#navigation { margin-top: 1em; overflow: hidden; }
 
-#pied { clear: both; width: 100%; margin: 1em 0 0 0; padding: 0.60em 0; border: 2px solid #ddd; background:#f9f9f9; text-align: center; font-size: 0.90em; }
-#pied a { /*color:#666;*/ } /* ne pas utiliser de selecteur trop precis, et eviter de toucher aux liens */
+#pied { margin: 1em 0 0 0; font-size: 0.90em; }
 #pied img { vertical-align: middle; }
 
 
@@ -100,14 +55,12 @@ body { background: #f9f9f9; margin: 0; padding: 0; text-align: center; }
 /* Habillage des elements du contenu
 /* ------------------------------------------ */
 
-#hierarchie { clear: both; margin-bottom: 2em; font-size: 0.84em; }
-#hierarchie, #hierarchie a { color: #666; }
+#hierarchie { clear: both; }
+#hierarchie a { color: #666; }
 
-.cartouche { margin-bottom: 2em; }
-.cartouche .spip_logos { float: right; margin-left: 16px; margin-bottom: 4px; }
 .cartouche .info-publi { margin: 0; padding: 0; clear: left; }
 
-.chapo { margin-bottom: 1.50em; line-height: 1.40em; font-size:1.1em; }
+.chapo { line-height: 1.40em; }
 .texte { line-height: 1.60em; }
 .ps, .notes { margin-bottom: 2em; line-height: 1.40em; }
 .notes { clear: both; font-size: 0.90em; }
@@ -136,47 +89,24 @@ body { background: #f9f9f9; margin: 0; padding: 0; text-align: center; }
 .menu-liste .menu-entree .menu-entree { padding: 0; border: 0; }
 #nav .menu-liste .menu-entree {	display: inline;padding:0;margin:0 0 0 10px; }
 
-#navigation .menu {background:#fcfcfc; padding:0.5em; border: 1px solid #ddd;}
-#navigation .menu a {/*color:#666;*/} /* ne pas utiliser de selecteur trop precis, et eviter de toucher aux liens */
 #navigation .menu-liste {border-bottom:0;}
 #navigation .menu-liste .menu-entree {list-style:square; margin-left:15px; padding:0; color:#f63;}
 #navigation .menu-liste .menu-entree .menu-liste {margin-left:0;}
 #navigation .liste .h2 {margin-top:1em;}
-#navigation .formulaire_recherche{margin-bottom:2em;}
 
 /* Pagination */
 .pagination { clear: both; text-align: right; font-size: 0.90em; color: #666; }
 .pagination .on { font-weight: bold; color: #666; }
 
-/* Rubriques */
-/*
-.rubriques ul { border: 0; }
-.rubriques ul li { background: #EEE; border: 0; }
-*/
-
-
 /* Listes d'articles et extraits introductifs */
 .liste-items {margin: 0; padding: 0; list-style: none; border-bottom:0;}
 .liste-items .item {list-style:square; margin-left:0; padding:2px 0; clear:both; overflow:hidden;}
-#contenu .liste-items .item {margin-bottom:2em;}
 .liste-items .item .h3 { margin: 0.30em 0; border-bottom:1px solid #46839B;}
 .liste-items .item .h3 a:hover { text-decoration:none;}
-.liste-items .item .info-publi {  display:block; float:right; margin-top:0.6em; margin-left:.3em; padding:.3em; background:#ddd;}
+.liste-items .item .info-publi { display:block; float:right; margin-top:0.6em; }
 
 .liste.articles .spip_logos { float: right; clear: right; margin: .8em 0 4px 16px; }
 .liste .articles .item .introduction { margin-top: 0.30em; line-height: 1.40em; padding: 0.5em 0 1.5em 1em;}
-
-
-/* Couleurs des liens
----------------------------------------------- */
-a { color: #3996BB; text-decoration: none; }
-a:focus,a:hover,a:active { color: #46839B; text-decoration: underline; }
-a.spip_out, a.spip_glossaire {
-	color: #46839B;
-	background:transparent url(images/out.gif) no-repeat scroll right center;
-	padding-right:12px;
-}
-
 
 /*  ------------------------------------------
 /*  Habillage des formulaires
@@ -186,7 +116,7 @@ input, select, textarea { font-size: 100%; font-family: inherit; }
 
 /* Structure generale des formulaires
 ----------------------------------------------- */
-.formulaire_spip { clear: both; margin-bottom: 2em; padding: 0; border: 0; text-align: left; font-size: 1em; }
+.formulaire_spip { clear: both; text-align: left; font-size: 1em; }
 .formulaire_spip form { margin: 0; padding: 0; } /* Bug IE/Win */
 
 /* Fieldset */
@@ -230,13 +160,13 @@ input, select, textarea { font-size: 100%; font-family: inherit; }
 .formulaire_spip li.obligatoire label {}
 
 /* Previsualisation du message */
-.formulaire_spip fieldset.previsu { margin-bottom: 2em; padding: 1em; border: 2px dashed #F57900; }
-.formulaire_spip fieldset.previsu legend { padding: 0 0.50em; font-weight: bold; color: #F57900; }
+.formulaire_spip fieldset.previsu { margin-bottom: 2em; padding: 1em; }
+.formulaire_spip fieldset.previsu legend { padding: 0 0.50em; font-weight: bold; }
 .formulaire_spip fieldset.previsu li { padding: 3px; border: none; }
 .formulaire_spip fieldset.previsu p { margin: 1em 0; } 
 
 /* Reponse du formulaire */
-.reponse_formulaire { font-weight: bold; color: #e86519; font-size: 1.20em; }
+.reponse_formulaire { font-weight: bold; color: #e86519; }
 fieldset.reponse_formulaire { border-color: #e86519; font-weight: normal; }
 fieldset.reponse_formulaire.reponse_formulaire legend { color: #F57900; } /* Preciser la couleur des legend et du fond pour IE/Win */
 
@@ -246,7 +176,7 @@ fieldset.reponse_formulaire.reponse_formulaire legend { color: #F57900; } /* Pre
 .reponse_formulaire_erreur { margin: 0; color: #C30; font-weight: bold; }
 
 /* * OK */
-.reponse_formulaire_ok { margin: 0; color: #53AD20; font-weight: bold; }
+.reponse_formulaire_ok { margin: 0; font-weight: bold; }
 
 
 /* Variantes et cas particuliers
@@ -254,10 +184,10 @@ fieldset.reponse_formulaire.reponse_formulaire legend { color: #F57900; } /* Pre
 
 /* Barre de raccourcis typographiques */
 table.spip_barre { width: 100%; }
-table.spip_barre a img { background: #FDA; padding: 3px; border: 1px outset #CC9; }
+table.spip_barre a img { padding: 3px; border: 1px outset #CC9; }
 table.spip_barre a:focus img,
 table.spip_barre a:hover img,
-table.spip_barre a:active img { background: #FFF; border: 1px solid #CC9; }
+table.spip_barre a:active img { border: 1px solid #CC9; }
 table.spip_barre input.barre { width: 99%; background: transparent; border: 0; }
 
 /* Formulaire de forum */
@@ -274,11 +204,8 @@ table.spip_barre input.barre { width: 99%; background: transparent; border: 0; }
 
 /* Formulaires de recherche (site / petitions) */
 .formulaire_recherche { margin: 0; padding: 0; background: none; }
-.formulaire_recherche * { display: inline; vertical-align: middle; }
-.formulaire_recherche label {}
+.formulaire_recherche * { display: inline; }
 .formulaire_recherche input.text { width: 10em; }
-.formulaire_recherche input.submit {}
-
 
 /* Choix des mots-clefs */
 ul.choix_mots { display: block; margin: 0; padding: 0; list-style: none; }
@@ -294,20 +221,18 @@ ul.choix_mots li label { display: inline; font-weight: normal; }
 .formulaire_login #spip_logo_auteur {float:right;}
 
 
-
 /* --------------------------------------------------------- */
 /* --------------------------------------------------------- */
 /* 			Personnalisations geodiversite					 */
 /* --------------------------------------------------------- */
 /* --------------------------------------------------------- */
 
-/* Typo de base + Disposition a l'ecran des blocs principaux */
-
 @font-face {
 	font-family: 'geol';
 	src: url('polices/jesaya_free.eot');
 	src: local('Jesaya Free Regular'), local('JesayaFree-Regular'), url('polices/jesaya_free.woff') format('woff'), url('polices/jesaya_free.ttf') format('truetype'), url('polices/jesaya_free.svg#JesayaFree-Regular') format('svg'); }
 
+/* Typo de base + Disposition a l'ecran des blocs principaux */
 
 body { font-family: Arial, Helvetica, sans-serif; font-size: 0.75em; color: #666; background: #fff; }
 #page { width: 100%; margin: 0; padding: 0; border: 0; }
@@ -320,15 +245,14 @@ body div.conteneur { width: 960px; margin: 0 auto; }
 h1,h2,h3,h4,h5,h6,
 .h1,.h2,.h3,.h4,.h5,.h6 { font-family: Arial, Helvetica, sans-serif; }
 
-h1, .h1, h2, .h2 { clear: both; overflow: hidden; font: bold 1.2em geol, Arial, Helvetica, sans-serif; color: #00c0f8; }
+h1, .h1, h2, .h2 { clear: both; overflow: hidden; font: bold 1.2em Arial, Helvetica, sans-serif; color: #00c0f8; }
 h2 a, h2 a:hover, .h2 a, .h2 a:hover { color: #666; }
 
-h3 { /*font-size: 1.1em;*/ }
 h3.spip { color: #666; text-align: left; margin: 1em 0; }
 .spip_surligne { background: transparent; }
 
+h1, .h1, h2, .h2 { font: bold 1.2em geol, Arial, Helvetica, sans-serif; color: #00c0f8; }
 #contenu .h2 { margin: 20px 0; padding: 4px 0 4px 10px; background: transparent url(images/bg_titre_left.png) -190px 50% no-repeat; }
-.hop { font-weight: bold; }
 
 /*  ------------------------------------------
 /*  le menu de navigation + entete + extra
@@ -339,13 +263,13 @@ h3.spip { color: #666; text-align: left; margin: 1em 0; }
 #entete .accueil #nom_site_spip { font: bold 4em geol, Arial, Helvetica, sans-serif; }
 
 #nav { background: #f2f2f2; border: 1px dashed #ddd; border-left: 0; border-right: 0; overflow: hidden; }
-#nav .menu-liste { float: right; border: 0; font-size: 1.1em; padding: 5px 5px 5px 30px; background: #00c0f8 url(images/bg_nav.png) left 50% no-repeat; }
+#nav .menu-liste { float: right; border: 0; font-size: 1.1em; padding: 5px; padding-left: 30px; background: #00c0f8 url(images/bg_nav.png) left 50% no-repeat; }
 #nav .menu-liste .menu-entree { display: inline; margin: 0.20em 0; padding: 0.20em; }
 #nav .menu-liste .menu-entree a { color: #fff; font-weight: bold; }
 #nav .menu-liste .menu-entree a:hover { color: #f5f5f5; text-decoration: none; }
-#nav .univers { position: absolute; right: 0; top: 45px; background: transparent; color: #00c0f8; }
-#nav .univers .menu-entree a { color: #00c0f8; }
-#nav .univers .menu-entree a:hover { color: #00c0f8; }
+#nav .menu-liste.univers { position: absolute; right: 0; top: 45px; background: transparent; color: #00c0f8; }
+#nav .menu-liste.univers .menu-entree a { color: #00c0f8; }
+#nav .menu-liste.univers .menu-entree a:hover { color: #00c0f8; }
 
 #extra .menu { float: right; margin: 0; padding: 5px; padding-left: 30px; background: transparent url(images/bg_extra.png) left 50% no-repeat; }
 #extra .menu h2,
@@ -358,18 +282,17 @@ h3.spip { color: #666; text-align: left; margin: 1em 0; }
 #extra .menu .formulaire_recherche input.text { padding: 1px; border: 0; background: #fff; color: #333; }
 #extra .menu .formulaire_recherche input.submit { padding: 0; border: 0; background: #f5f5f5; }
 
+
 /*  ------------------------------------------
 /*  hierarchie
 /*  ------------------------------------------ */
 
-#hierarchie { display: table; margin: 0 0 10px; padding: 0; overflow: hidden; list-style: none; color: #00c0f8;
-	font: bold 1.2em geol, Arial, Helvetica, sans-serif; }
+#hierarchie { font: bold 1.2em geol, Arial, Helvetica, sans-serif; }
 #hierarchie li:first-child { background: #00c0f8 url(images/bg_ariane_blue.png) right 50% no-repeat; color: #fff; }
 #hierarchie li.on:first-child { background-image: url(images/bg_ariane_blue_on.png) }
 #hierarchie li:first-child a { color: #fff; }
-#hierarchie li { float: left; padding: 4px 30px 4px 10px; background: #f2f2f2 url(images/bg_ariane_grey.png) right 50% no-repeat; }
+#hierarchie li { padding: 4px 30px 4px 10px; background: #f2f2f2 url(images/bg_ariane_grey.png) right 50% no-repeat; }
 #hierarchie li.on { background-image: url(images/bg_ariane_grey_on.png); }
-#hierarchie li.spacer { padding-right: 5px; }
 
 /*  ------------------------------------------
 /*  navigation
@@ -381,54 +304,11 @@ h3.spip { color: #666; text-align: left; margin: 1em 0; }
 #navigation .h2 span { display: table; float: right; padding: 4px 10px 4px 40px; min-width: 100px;
 	background: #f2f2f2 url(images/bg_titre_right.png) left 50% no-repeat; }
 #navigation .h3 { font-size: 1em; margin: 5px 0; padding: 0 0 2px; border-bottom: 1px solid #f2f2f2; }
-#navigation .media,
-#navigation .menu .explication { text-align: right; }
-#navigation .carte .h2 { margin-bottom: 10px; }
-#navigation .menu .geo { text-align: right; font-size: 1.3em; margin-bottom: 5px; }
-#navigation .menu .geo abbr { border: 0; }
-#navigation .menu .adr { text-align: right; margin-bottom: 5px; }
-
-#navigation .menu.serie .image_loading { display: none; }
-#navigation .menu.serie .liste-items { text-align: center; }
-#navigation .menu.serie .liste-items .item.pagination .lien_pagination { display: block; width: 18px; height: 56px; line-height: 56px; text-align: center; font-weight: bold; background: #f2f2f2; color: #666; }
-#navigation .menu.serie .liste-items .item.pagination .lien_pagination:hover { text-decoration: none; color: #00c0f8; }
-#navigation .menu.serie .liste-items .item.pagination.prev .lien_pagination { float: left; }
-#navigation .menu.serie .liste-items .item.pagination.next .lien_pagination { float: right; }
-#navigation .menu.serie .liste-items .item { padding: 0; }
-#navigation .menu.serie .liste-items .item .spip_logos { padding: 1px; border: 1px solid transparent; }
-#navigation .menu.serie .liste-items .item:hover .spip_logos,
-#navigation .menu.serie .liste-items .item.on .spip_logos { border-color: #aaa; }
-
-#navigation .menu div.socialtags { margin: 7px 0 0; }
-#navigation .menu .socialtags ul,
-#navigation .menu .socialtags ul li { border: 0; background: none; padding: 0; }
-#navigation .menu .liste-items li.socialtags { background-position: left 0.4em; }
-#navigation .puces li { padding-left: 15px; background: transparent url(images/puce.png) left 50% no-repeat; }
-#navigation .actions { text-align: right; margin: 3px 0 0; }
-#navigation .menu dl dt { font-weight: bold; margin: 5px 0; }
-#navigation .menu dl dd { margin: 2px 0 2px 20px; }
-#navigation .menu .liste-items .item a.delete { padding-left: 18px; display: block; color: #666;
-	background: transparent url(../../prive/images/noeud_moins.gif) left 50% no-repeat; }
-#navigation .menu .liste-items .item a.delete:hover { color: #00c0f8; }
-.categories li.item { padding: 4px 0 4px 18px; background: transparent url(../../prive/images/noeud_plus.gif) left 3px no-repeat; }
-.categories li a { color: #666; }
-.categories li a:hover { color: #00c0f8; }
-.categories li ul { margin-top: 4px; background: transparent url(images/dots.gif) 6px top repeat-y; }
-.categories li.on { font-weight: normal; background-image: url(../../prive/images/noeud_moins.gif); }
-.categories li.deplie { background: transparent url(../../prive/images/noeud_moins.gif) left 4px no-repeat; }
-.categories li.on>a { font-weight: bold; }
 
 /*  ------------------------------------------
 /*  pied
 /*  ------------------------------------------ */
 
-#pied .liste { margin: 10px 0; }
-#pied .h3,
-#pied .menu-liste,
-#pied .menu-liste .menu-entree { display: inline; border: 0; }
-#pied .menu-liste .menu-entree { padding: 0 0 0 5px; }
-#pied .h3 { font-size: 1em; }
-#pied .conteneur { padding: 5px 0; }
 #pied a { color: #666; }
 #pied a:hover { color: #00c0f8; }
 #pied .on { font-weight: normal; }
@@ -437,349 +317,34 @@ h3.spip { color: #666; text-align: left; margin: 1em 0; }
 /*  pages sommaire, articles et rubriques
 /*  ------------------------------------------ */
 
-.page_sommaire #navigation { display: none; }
-.page_sommaire #contenu { float: none; width: 80%; margin: 30px auto 0; }
-.page_sommaire #contenu .menu { float: right; clear: none; width: 43%; padding: 12px 15px; background: #f2f2f2; }
-.page_sommaire #contenu .image_pop { float: left; clear: none; width: 50%; position: relative; }
-.page_sommaire #contenu .menu .h2 { margin: 0; padding: 0; color: #666; font-size: 1.5em; }
-.page_sommaire #contenu .menu .menu-liste { margin: 0.4em 0; padding: 0.2em 0.1em; font-size: 1.1em; border: 0; }
-.page_sommaire #contenu .menu .menu-liste .menu-entree { display: inline; margin: 0; padding: 0; }
-.page_sommaire #contenu .menu .menu-liste .menu-entree:before { content: ";\0000a0" }
-.page_sommaire #contenu .menu .menu-liste .menu-entree:first-child:before { content: "" }
 .page_sommaire #contenu .boites .h2 { width: 50%; margin-bottom: 0; color: #fff; font-size: 1.5em;
 	background: #00c0f8 url(images/bg_ariane_blue_on.png) right 50% no-repeat; }
-.page_sommaire .boites .liste-items .item { float: left; clear: none; width: 25%; margin: 0; }
 
-.page_sommaire .image_pop .description { display: block; padding: 4px; background: #f2f2f2; position: absolute; top: 10px; left: 0; opacity: 0.75; }
-.page_sommaire .image_pop .description:hover { opacity: 1; }
-.page_sommaire .image_pop .description h2,
-.page_sommaire .image_pop .description .auteur,
-.page_sommaire .image_pop .description a { font: bold 12px Arial,helvetica; color:#333; text-decoration: none; opacity: 1; }
+.page_article #contenu { width: 60%; }
+.page_article #navigation { width: 35%; }
 
-
-.page_article #contenu,
-.page_upload #contenu,
-.page_ticket #contenu,
-.page_tickets #contenu,
-.page_editer_ticket #contenu { width: 60%; }
-.page_article #navigation,
-.page_upload #navigation,
-.page_ticket #navigation,
-.page_tickets #navigation,
-.page_editer_ticket #navigation { width: 35%; }
-.page_article .cartouche,
-.page_ticket .cartouche { margin: 10px 0 20px; }
-
-.cartouche { margin-bottom: 0; }
 .cartouche .h1 { margin-bottom: 20px; color: #666; position: absolute; left: -3000em; }
-.cartouche .info-publi { overflow: hidden; }
-.cartouche .avatar { float: left; margin-right: 10px; }
-.cartouche p { clear: none; margin: 0; padding: 0; }
-.cartouche .spip_logos { float: left; margin: 0 16px 4px 0; }
-
-.chapo { width: 93%; margin-bottom: 15px; font-size: 1em; }
-
-.image-annotate-note .note-text img { display: block; float: left; margin: 2px 5px 2px 0; }
-.image-annotate-note .note-text .author a { color: #666; }
-.image-annotate-note .note-text .author a:hover { color: #00c0f8; }
-.image_legendes .nb_notes { margin-bottom: 0; }
-.doc_echelle { margin: 5px 0 0; }
-
-/* Listes d'articles et extraits introductifs */
-
-#contenu .liste-items .item { margin-bottom: 0; }
-.liste-items .item .info-publi { margin-left: 0; padding: 0; background: transparent; }
-
-.liste .liens_options { margin: 0; color: #999; }
-/* utiliser inline-block au lieu de float http://www.webinventif.fr/inline-block/ */
-.boites .liste-items .item { width: 48%; padding-top: 20px;  margin-left: 10px; border: 0;
-	display: -moz-inline-stack; display: inline-block; vertical-align: top; zoom: 1; *display: inline; }
-.boites .liste-items .clear { margin-left: 0; }
-.boites .liste-items .item .titre a { display: block; }
-.boites .liste-items .item .spip_logos { float: none; margin: 0; }
-
-.article_vignette .titre { margin: 0 0 10px; }
-.article_vignette .texte { margin: 10px 0; line-height: 1.2em; }
-.article_vignette p { margin: 0; }
 
 /*  ------------------------------------------
 /*  page carte
 /*  ------------------------------------------ */
 
-.page_carte html,
-.page_carte body { height: 100%; }
-.page_carte #top #extra { width: auto; position: absolute; z-index: 3000; right: 0; }
-.page_carte #page { overflow: hidden; width: 100%; margin: 0; height: 100%; position: absolute; left: 0; }
-.page_carte #conteneur,
-.page_carte #conteneur #contenu,
-.page_carte #conteneur #contenu .carte_gis { width: 100%; margin: 0; height: 100%; position: relative; }
-.page_carte #pied { position: absolute; bottom: 0; background: #fff; }
-.page_carte #pied #bouton { position: absolute; top: -20px; right: 10px; background: transparent url(images/bouton_pied.png) -40px top no-repeat; width: 40px; height: 20px; }
-.page_carte #pied.cache #bouton { background-position: left top; }
-.page_carte #pied #bouton:hover { cursor: pointer; }
-
-.page_carte .info_filtre { display: block; float: left; padding: 5px 15px 4px 10px;
-	background: #999 url(images/bg_info_filtre.png) right 50% no-repeat; color: #fff; }
-.page_carte .info_filtre #close_filtre { display: block; float: right; height: 16px; width: 16px; margin-left: 5px;
-	text-indent: -3000em; background: transparent url(images/close.png) 50% 50% no-repeat; }
-
-.page_carte #kml_panel { position: absolute; right: 10px; top: 35px; z-index: 4000; width: 200px;
-	padding: 5px; background: #fff; border: 5px solid #f2f2f2; }
-.page_carte #kml_panel h3 { margin: 0 0 5px; cursor: move; padding-right: 18px; }
-.page_carte #kml_panel.replie h3 { margin: 0; border: 0; }
-.page_carte #kml_panel #toggle { display: block; float: right; width: 18px; height: 18px; text-indent: -3000em;
-	background: transparent url(../../prive/images/noeud_moins.gif) 50% top no-repeat; }
-.page_carte #kml_panel #toggle:active,
-.page_carte #kml_panel #toggle:focus { outline: 0 none; }
-.page_carte #kml_panel.replie #toggle { background: transparent url(../../prive/images/noeud_plus.gif) 50% top no-repeat; }
-.page_carte #kml_panel ul.liste-items { max-height: 250px; overflow-y: auto; display: none; }
-.page_carte #kml_panel input.checkbox { vertical-align: middle; }
-
-.geol_window { padding: 10px; background: #fff; border: 1px solid #e2e2e2;
-	-moz-border-radius: 8px; -webkit-border-radius: 8px; border-radius: 8px; }
-.geol_window .descriptif_window { width: 225px; }
-.geol_window h3 { font-size: 1.2em;	margin: 0 14px 5px 0; }
-.geol_window .auteurs {	display: block; margin: 5px 0; }
-.geol_window .lien_logo { display: block; text-align: center; }
-.geol_window .multi .liste-items { list-style: none; }
-#page .geol_window .multi .liste-items .item { border-bottom: 1px solid #ddd; margin: 0 0 10px; padding: 0 0 5px; }
-#page .geol_window .multi .liste-items .item .lien_logo { float: left; }
-.geol_window .multi .liste-items .item .desc { margin-left: 60px; }
-.geol_window .multi .pagination { text-align: center; }
-
-#page .olPopupCloseBox { background: url("images/infowindow_close.png") no-repeat; }
-
-/*
-.page_carte #infopanel { position: absolute; left: 0; bottom: 120px; z-index: 4000; width: 100%; opacity: 0.8;
-	padding: 5px; background: #fff; border-left: 0; border-right: 0; }
-.page_carte #infopanel .liste-items .item { display: inline; padding: 0; }
-.page_carte #infopanel .liste-items .item img { padding: 5px; opacity: 1; }
-*/
-
-/* listes des pages galerie
------------------------------------------------ */
-
-.boites .liste-items { overflow: hidden; }
-.boites .liste-items .item { width: 32%; }
-.boites.cols2 .liste-items .item { width: 48%; }
-.boites.cols3 .liste-items .item { width: 32%; }
-.boites.cols4 .liste-items .item { width: 23%; }
-.boites.cols5 .liste-items .item { width: 18%; }
-.boites .liste-items .item .titre,
-.boites .liste-items .item .info_media { padding-right: 20px; }
-
-.liste .pagination { margin: 20px 0; text-align: center; }
-.liste .pagination span.on,
-.liste .pagination a { padding: 5px 10px; line-height: 2em; border: 1px solid #ddd;  }
-.liste .pagination span.on { background: #ddd; }
+.page_carte #pied #bouton { background: transparent url(images/bouton_pied.png) -40px top no-repeat; width: 40px; height: 20px; }
 
 /* page auteur + auteurs
 ----------------------------------------------- */
 
-.menu.auteur .liste-items .item { display: inline; color: #999; }
-
-.page_auteur #navigation .menu { text-align: right; }
-
-.suivi .liste-items { text-align: right; }
-.suivi .liste-items .item a { display: block; padding: 10px 30px 10px 0; }
+.suivi .liste-items .item a { padding-right: 30px; }
 .suivi .rss { background: transparent url(images/rss.png) right 50% no-repeat; }
 .suivi .kml { background: transparent url(images/kml.png) right 50% no-repeat; }
 .suivi .georss { background: transparent url(images/georss.png) right 50% no-repeat; }
-.vignettes .liste-items .item { display: inline; }
-.vignettes .liste-items .item a:hover { text-decoration: none; }
 
-.auteurs .liste-items .item { margin: 10px 0; text-align: right; }
-.auteurs .liste-items .item a { display: block; text-decoration: none; color: #666; }
-.auteurs .liste-items .item a:hover { color: #00c0f8; }
-.auteurs .liste-items .item .fn { display: inline; font-size: 1.2em; font-weight: bold; }
-.auteurs .liste-items .item img { margin-left: 10px; vertical-align: top; }
-
-.amis .liste-items .item .action { display: block; margin-top: 5px; }
-
-/* page login + spip_pass + 404
+/* page 404
 ----------------------------------------------- */
 
-.page_login #page #conteneur,
-.page_spip_pass #page #conteneur { width: 360px; margin: 0 auto; padding-top: 35px; }
-.page_login #contenu,
-.page_spip_pass #contenu { float: none; width: 100%; }
 .page_404 #conteneur { background: transparent url(images/bg_404.png) right 50% no-repeat; }
-
-/* page upload
------------------------------------------------ */
-
-.page_upload #em_message_avant_upload { border: 0; }
-.page_upload #em_upload_document li.fieldset,
-.page_upload .formulaire_supprimer_document,
-.page_upload #formulaire_diogene .editer_titre,
-.page_upload #formulaire_diogene .editer_texte,
-.page_upload #formulaire_diogene li.fieldset { margin: 20px 0; padding: 10px; border: 5px solid #f2f2f2; background: #fff; }
-.page_upload .previsu_document { border: 0; }
-.page_upload .previsu_document h4,
-.page_upload .previsu_document .infos_document,
-.page_upload .previsu_document a.legende_add,
-.page_upload #formulaire_diogene .editer_id_parent,
-.page_upload #formulaire_diogene .editer_parent,
-.page_upload #formulaire_diogene .editer_parents,
-.page_upload #formulaire_diogene .editer_gis_titre,
-.page_upload #formulaire_diogene .editer_gis_descriptif { display: none; }
-.page_upload #formulaire_diogene h3.legend { margin-bottom: 10px; }
-.page_upload .formulaire_message { font-weight: bold; }
-.page_upload .diogene_geo #geomap { width: 100%; height: 350px; }
-.page_upload #em_upload_boutons { background: #f2f2f2; color: #666; border: 4px solid #fff;
-	-moz-border-radius: 8px; -webkit-border-radius: 8px; border-radius: 8px;
-	-moz-box-shadow: 0 1px 3px #999; -webkit-box-shadow: 0 1px 3px #999; box-shadow: 0 1px 3px #999; }
-
-/* Messages des forums
------------------------------------------------ */
-
-.comments h2,
-.comments-list h2,
-#documents_portfolio h2,
-#documents_joints h2 { text-align: left; }
-.comments-list ul { margin: 0; padding: 0; list-style: none; }
-.comments-list li { position: relative; padding: 0 0 0 45px; border-top: 1px solid #ddd; }
-.comments-list li:first-child { border: 0; }
-.comments-list .comment-meta { margin: 1em 0; }
-.comments-list .comment-meta img.photo { position: absolute; left: 0; top: 10px; }
-
-
-/*  ------------------------------------------
-/*  Les formulaires
-/*  ------------------------------------------ */
-
-table.spip_barre { margin-top: 4px; }
-table.spip_barre a img { background: #ddd; }
-table.spip_barre a:focus img,
-table.spip_barre a:hover img,
-table.spip_barre a:active img { background: #faf8f5; }
-
-.formulaire_inscription,
-.formulaire_login,
-.formulaire_oubli,
-.formulaire_mot_de_passe,
-.formulaire_ecrire_auteur,
-.formulaire_editer_mot_article,
-.formulaire_spipicious,
-.formulaire_editer_gis,
-.formulaire_editer_licence { width: auto; margin: 10px auto; padding: 10px; border: 1px solid #ddd; background: #f5f5f5; }
-.formulaire_ecrire_auteur fieldset legend,
-.formulaire_login fieldset legend,
-.formulaire_oubli fieldset legend,
-.formulaire_mot_de_passe fieldset legend,
-.formulaire_spipicious fieldset legend { background: transparent; }
-
-.formulaire_spip fieldset.previsu { border: 1px dashed #bbb; }
-.formulaire_spip fieldset.previsu legend { color: #666; }
-.formulaire_spip .reponse_formulaire { text-align: center; font-size: 1.1em; }
-.formulaire_spip .reponse_formulaire_ok { color: #00c0f8; }
-
-/* inscription + login */
-
-.formulaire_inscription fieldset legend,
-.formulaire_inscription fieldset p.explication { display: none; }
-.formulaire_inscription p.boutons { text-align: center; }
-.formulaire_login .password { width: 15em; border: 1px inset; }
-
-/* editer_mot_article */
-
-.formulaire_editer_mot_article { width: 50%; margin: 10px 0; }
-
-/* formulaire_forum */
-
-.formulaire_forum .previsu .forum-chapo .forum-titre { display: none; }
-.formulaire_forum .previsu .forum-chapo small { font-size: 1em; }
-.formulaire_forum .previsu .forum-chapo small span { font-weight: bold; }
-
-/* formulaire_editer_gis */
-
-.formulaire_editer_gis .editer_titre,
-.formulaire_editer_gis .editer_descriptif { display: none; }
-
-/* recherche avancee */
-
-.formulaire_recherche_geol { width: 90%; margin-top: 10px; }
-.formulaire_recherche_geol ul li { overflow: hidden; padding: 15px 10px 15px 150px; border-top: 1px solid #ddd; }
-.formulaire_recherche_geol ul li:first-child { border-top: 0; }
-.formulaire_recherche_geol ul li label { float: left; width: 140px; margin-left: -145px; text-align: left; vertical-align: top;
-	/* pour IE6 */ position: relative; display: inline; }
-.formulaire_recherche_geol ul>li label { display: block; position: static; }
-.formulaire_recherche_geol li.choix { padding-left : 10px; }
-.formulaire_recherche_geol .choix label { float: none; margin-left: 5px; display: inline; width: auto; vertical-align: middle; }
-.formulaire_recherche_geol .choix input.radio,
-.formulaire_recherche_geol .choix input.checkbox { width: auto; vertical-align: middle; }
-.formulaire_recherche_geol .saisie_mot select { width: 15em; }
 
 /* boutons admin */
 body .spip-admin-float { right: 5px; margin: 5px auto 0; }
 body a.spip-admin-boutons { border: 1px solid #ddd; color: #666; background: #fff; }
-body a.spip-admin-boutons:hover { border: 1px solid #ddd; color: #00c0f8; background: transparent; }
-
-/* boutons actions */
-.actions_doc { margin: 0; overflow: hidden; } /* astuce pour le p qui contient que des floats */
-.actions_doc a,
-.actions_doc .formulaire_favori form button.ajouter_favori,
-.actions_doc .formulaire_favori form button.ajouter_favori:hover,
-.actions_doc .formulaire_favori form button.retirer_favori,
-.actions_doc .formulaire_favori form button.retirer_favori:hover {
-	display: block; float: left; width: 20px; height: 20px; margin-right: 10px; text-indent: -3000em;
-	background: transparent url(images/sprite_actions_doc.png) left top no-repeat; }
-.actions_doc a.zoom { background-position: 0 -20px; }
-.actions_doc a.zoom:hover { background-position: 0 0; }
-.actions_doc a.telecharger { background-position: 0 -60px; }
-.actions_doc a.telecharger:hover { background-position: 0 -40px; }
-.actions_doc a.ajouter_note { background-position: 0 -100px; }
-.actions_doc a.ajouter_note:hover { background-position: 0 -80px; }
-.actions_doc a.rotation_gauche { background-position: 0 -140px; }
-.actions_doc a.rotation_gauche:hover { background-position: 0 -120px; }
-.actions_doc a.rotation_droite { background-position: 0 -180px; }
-.actions_doc a.rotation_droite:hover { background-position: 0 -160px; }
-.actions_doc a.modifier { background-position: 0 -220px; }
-.actions_doc a.modifier:hover { background-position: 0 -200px; }
-.actions_doc a.supprimer { background-position: 0 -260px; }
-.actions_doc a.supprimer:hover { background-position: 0 -240px; }
-
-.actions_doc .formulaire_favori { float: left; }
-.actions_doc .formulaire_favori form button.ajouter_favori span,
-.actions_doc .formulaire_favori form button.retirer_favori span { display: none; }
-.actions_doc .formulaire_favori form button.ajouter_favori { background-position: 0 -300px; } 
-.actions_doc .formulaire_favori form button.ajouter_favori:hover { background-position: 0 -280px; } 
-.actions_doc .formulaire_favori form button.retirer_favori { background-position: 0 -340px; } 
-.actions_doc .formulaire_favori form button.retirer_favori:hover { background-position: 0 -320px; } 
-
-.actions_doc .formulaire_notation { float: right; margin-right: 10px; }
-.actions_doc .formulaire_notation .note { border: 0; }
-
-/* formulaire favoris */
-
-form.retirer_favori button.submit { width: auto; overflow: visible; border: 0; cursor: pointer; color: #00c0f8;
-	background: transparent url(images/puce.png) left 50% no-repeat; padding: 0 0 0 12px; }
-form.retirer_favori button.submit:hover { color: #e83418; }
-
-/* les crayons */
-
-.geomodale,
-.mot_doux,
-body .crayon-html { padding: 5px; border: 5px solid #f2f2f2; background: #fff; }
-body .crayon-html .formulaire_spip { margin-bottom: 5px; }
-body .crayon-html .editer_logo h3.legend { font-size: 1em; }
-body .crayon-html .editer_logo div.choix,
-body .crayon-html .editer_logo input.file { display: inline; }
-body .crayon-html .crayon-boutons { float: none; position: static; width: auto; margin-top: 10px; bottom: 10px; text-align: right; }
-body .crayon-html .crayon-boutons button { float: none; display: inline; width: auto; height: 32px; text-indent: 0;
-	cursor: pointer; background: #f2f2f2; color: #666; border: 4px solid #fff;
-	-moz-border-radius: 8px; -webkit-border-radius: 8px; border-radius: 8px;
-	-moz-box-shadow: 0 1px 3px #999; -webkit-box-shadow: 0 1px 3px #999; box-shadow: 0 1px 3px #999; }
-body .crayon-html .crayon-boutons button:hover { color: #00c0f8; }
-body .crayon-html .crayon-boutons .crayon-submit { font-weight: bold; margin-right: 15px; }
-body .resizehandle_boutons { margin-top: 0; }
-
-/* fausse modale pour certains formulaires */
-
-.geomodale { position: absolute; width: 600px; left: 50%; margin-left: -300px; background: #ddd; }
-
-/* Couleurs des liens
----------------------------------------------- */
-a, a.spip_in, a.spip_out { color: #00c0f8; text-decoration: none; }
-body a.external { padding-right: 14px; background: transparent url(images/out.gif) no-repeat right; }
-a:hover { color: #00c0f8; text-decoration: underline; }
+body a.spip-admin-boutons:hover { border: 1px solid #ddd; color: #GET{couleur1}; background: transparent; }

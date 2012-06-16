@@ -20,16 +20,16 @@
 
 		var parseData = function(data,map) {
 			markers = [];
-			$.each(data.markers, function(i,item){
-				if (item.lat) {
-					var latlng = new google.maps.LatLng(item.lat,item.lon);
+			$.each(data.features, function(i,item){
+				if (item.geometry.coordinates[0]) {
+					var latlng = new google.maps.LatLng(item.geometry.coordinates[1],item.geometry.coordinates[0]);
 					var marker = new google.maps.Marker({
 						position: latlng,
-						title:item.name
+						title:item.properties.name
 					});
-					if (item.icon) {
+					if (item.properties.icon) {
 						icon = new google.maps.MarkerImage();
-						icon.url = item.icon;
+						icon.url = item.properties.icon;
 						icon.size = new google.maps.Size(32,32);
 						icon.anchor = new google.maps.Point(16,16);
 						marker.setIcon(icon);

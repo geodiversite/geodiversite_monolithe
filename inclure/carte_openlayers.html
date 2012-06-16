@@ -116,13 +116,13 @@
 				function(data) {
 					if (data) {
 						features = new Array();
-						$.each(data.markers, function(i,item){
-							if (item.lat) {
+						$.each(data.features, function(i,item){
+							if (item.geometry.coordinates[(#VAL{91}|chr)]0[(#VAL{93}|chr)]) {
 								// convertir les coords des points de wgs84 vers spherical mercator
-								var latlng = new OpenLayers.Geometry.Point(item.lon,item.lat).transform(wgs84, map.getProjectionObject());
-								var marker = new OpenLayers.Feature.Vector(latlng,{x:item.lon,y:item.lat});
-								if (item.icon) {
-									marker.attributes.icon = item.icon;
+								var lonlat = new OpenLayers.Geometry.Point(item.geometry.coordinates[(#VAL{91}|chr)]0[(#VAL{93}|chr)],item.geometry.coordinates[(#VAL{91}|chr)]1[(#VAL{93}|chr)]).transform(wgs84, map.getProjectionObject());
+								var marker = new OpenLayers.Feature.Vector(lonlat,{x:item.geometry.coordinates[(#VAL{91}|chr)]0[(#VAL{93}|chr)],y:item.geometry.coordinates[(#VAL{91}|chr)]1[(#VAL{93}|chr)]});
+								if (item.properties.icon) {
+									marker.attributes.icon = item.properties.icon;
 								}
 								marker.attributes.id = item.id;
 								//marker.attributes.label = item.name;

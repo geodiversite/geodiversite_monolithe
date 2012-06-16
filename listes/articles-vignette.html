@@ -3,7 +3,7 @@
 	#ANCRE_PAGINATION
 	[<h2 class="h2">(#GRAND_TOTAL|singulier_ou_pluriel{geol:contrib,geol:contribs})[ ((#GRAND_TOTAL))]</h2>]
 	<div class="liens_options">
-		<strong><:geol:trier:></strong> : 
+		<strong><:geol:trier:></strong> 
 		<a href="[(#SELF|parametre_url{"tri","date"})]" class="ajax[(#ENV{tri,date}|=={date}|oui) on]"><:geol:trier_par_date:></a>, 
 		<a href="[(#SELF|parametre_url{"tri","popularite"})]" class="ajax[(#ENV{tri,date}|=={popularite}|oui) on]"><:geol:trier_par_pop:></a> |
 		[(#INCLURE{fond=inclure/listes_liens_pas,pas,tri,cols=#GET{cols},self=#SELF})]

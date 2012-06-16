@@ -24,12 +24,13 @@
 
 	[(#REM) Tags de l'auteur ]
 
+	[(#PLUGIN{spipicious}|oui)
 	<div class="tags">
 		<h2 class="h2"><:geol:tags_utilises_par{nom=#NOM}:></h2>
 		[(#INCLURE{fond=modeles/spipicious_nuage_auteur,
 			id_auteur,
 			tri=titre,
 			url=[(#URL_PAGE{mot}|parametre_url{id_auteur,#ID_AUTEUR})]})]
-	</div>
+	</div>]
 </div>
 </BOUCLE_contenu_auteur>

@@ -29,14 +29,7 @@
 		(#REM|gis_layer_defaut|in_array{#GET{google_layers}}|oui)
 			<img src="http://maps.google.com/maps/api/staticmap?center=#GET{lat},#GET{lon}&amp;zoom=#CONFIG{geol/zoom_minicartes,7}&amp;maptype=terrain&amp;markers=[(#CHEMIN{images/geol_minimarker.png}|?{icon:[(#CHEMIN{images/geol_minimarker.png}|url_absolue)],color:0x[(#CONFIG{geol/couleur_primaire,#00c0f8}|substr{1,6})]})]|#GET{lat},#GET{lon}&amp;size=335x170&amp;sensor=false" width="335" height="170" alt="" />
 		][(#REM|gis_layer_defaut|in_array{#GET{google_layers}}|non)
-			[(#SET{rvb,#CONFIG{geol/couleur_primaire,#00c0f8}|substr{1,6}|geol_couleur_hex_to_dec})]
-			[(#SET{icon,#CHEMIN{images/geol_minimarker.png}|url_absolue})]
-			[(#VAL{http://dev.openstreetmap.org/~pafciu17/?module=map&points=#GET{lon}|concat{','}|concat{#GET{lat}}|concat{&color=#GET{rvb}}|concat{&pointImageUrl=#GET{icon}}}
-				|parametre_url{lat,#GET{lat},'&'}
-				|parametre_url{lon,#GET{lon},'&'}
-				|parametre_url{zoom,#CONFIG{geol/zoom_minicartes,7},'&'}
-				|parametre_url{width,335,'&'}
-				|parametre_url{height,170,'&'}|copie_locale|balise_img)]
+			<img src="http://open.mapquestapi.com/staticmap/v4/getmap?center=#GET{lat},#GET{lon}&zoom=#CONFIG{geol/zoom_minicartes,7}&xis=[(#CHEMIN{images/geol_minimarker.png}|url_absolue|sinon{http://open.mapquestapi.com/staticmap/geticon?uri=pcenter.png})],1,C,#GET{lat},#GET{lon}&size=335,170&imageType=png&type=map&scalebar=false" width="335" height="170" alt="" />
 		]
 		</a>
 	]

@@ -7,7 +7,13 @@
 <div class="contenu-principal">
 	<BOUCLE_art_auteur(ARTICLES){id_auteur=#SESSION{id_auteur}}{0,1}>
 	</BOUCLE_art_auteur>
+	<BOUCLE_txtaide(ARTICLES){page=aide}{0,1}>
 	<div class="mot_doux"><:geol:mot_doux_premier_upload{url=#URL_PAGE{aide}}:></div>
+	</BOUCLE_txtaide>
+	</B_txtaide>
+	[(#REM)
+		Peut être mettre un texte uniquement pour les webmestre ici les incitant à créer la page d'aide?
+	]<//B_txtaide>
 	<//B_art_auteur>
 
 	<BOUCLE_diogene(DIOGENES){type=article}>
