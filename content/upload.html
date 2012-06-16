@@ -18,7 +18,7 @@
 
 	<BOUCLE_diogene(DIOGENES){type=article}>
 	<BOUCLE_autorise(CONDITION){si #AUTORISER{creerdans,diogene,#ID_DIOGENE}|oui}>
-	<div class="texte #EDIT{description}">#DESCRIPTION</div>
+	<div class="texte #_diogene:EDIT{description}">#_diogene:DESCRIPTION</div>
 	<INCLURE{fond=inclure/diogene_#OBJET,env,id_diogene}>
 	</BOUCLE_autorise>
 	</B_autorise>
