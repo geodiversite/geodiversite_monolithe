@@ -1,29 +1,31 @@
+<body>
 <div id="page">
 
 	<div id="top">
 		<div id="entete">
-			<INCLURE{fond=inclure/entete,env}>
+			<INCLURE{fond=header/#ENV{type-page},env}>
 		</div>
 		<div id="nav">
-			<INCLURE{fond=inclure/barre-nav,env}>
+			<INCLURE{fond=inclure/nav,env}>
 		</div>
 		<div id="extra">
-			<INCLURE{fond=extra/#ENV{type},env}>
+			<INCLURE{fond=extra2/#ENV{type-page},env}>
 		</div>
 	</div>
 	
 	<div id="conteneur" class="conteneur">	
 		<div id="contenu">
-			<INCLURE{fond=contenu/#ENV{type},env}>
+			<INCLURE{fond=content/#ENV{type-page},env}>
 		</div>
 
 		<div id="navigation">
-			<INCLURE{fond=navigation/#ENV{type},env}>
+			<INCLURE{fond=extra1/#ENV{type-page},env}>
 		</div>
 	</div>
     
 	<div id="pied">
-		<INCLURE{fond=inclure/pied,env}>
+		<INCLURE{fond=footer/#ENV{type-page},env}>
 	</div>
 
 </div><!--#page-->
+</body>

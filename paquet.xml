@@ -3,7 +3,7 @@
 	categorie="squelette"
 	version="1.0.0"
 	etat="dev"
-	compatibilite="[3.0.0;["
+	compatibilite="[3.0.0;3.0.*]"
 	logo="images/logo_carre.png"
 	schema="0.2"
 >	
@@ -24,7 +24,7 @@
 	<necessite nom="diogene" compatibilite="[1.0.0;[" />
 	<necessite nom="emballe_medias" compatibilite="[1.1.1;[" />
 	<necessite nom="saisies" compatibilite="[1.25.10;[" />
-	<necessite nom="Zcore" compatibilite="[1.1.1;[" />
+	<necessite nom="Zpip" compatibilite="[2.0.5-dev;[" />
 	<necessite nom="pages" compatibilite="[1.0.0;[" />
 	<necessite nom="mesfavoris" compatibilite="[2.2.0;[" />
 	<necessite nom="menus" compatibilite="[1.2.1;[" />

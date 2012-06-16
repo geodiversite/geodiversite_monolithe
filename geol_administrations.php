@@ -57,7 +57,10 @@ function geol_installation(){
 	if (lire_meta('articles_mots') == 'non') ecrire_meta('articles_mots', 'oui');
 		
 	// activer les docs sur les articles
-	if (lire_meta('documents_article') == 'non') ecrire_meta('documents_article', 'oui');
+	is_array($documents_objets = explode(',',lire_meta('documents_objets'))) || $documents_objets = array();
+	if (!in_array('spip_articles', $documents_objets)){
+		ecrire_meta('documents_objets', implode(',',array('spip_articles','')));
+	}
 	
 	// pas de titre, lien et barre typo dans les forums
 	if (lire_meta('forums_titre') == 'oui') ecrire_meta('forums_titre', 'non');
@@ -108,6 +111,7 @@ function geol_installation(){
 	if (count($Terreurs) != 0) echo implode('<br>',$Terreurs);
 	
 	// creation des menus du squelette
+	include_spip('inc/filtres');
 	$plugin = chercher_filtre('info_plugin');
 	if ($plugin('menus','est_actif')){
 		include_spip('action/editer_menu');
