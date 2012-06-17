@@ -4,7 +4,7 @@ include_spip('inc/autoriser');
 
 function formulaires_editer_mot_article_charger_dist($id_article='new', $id_groupe='', $retour=''){
 	
-	$id_mot = sql_getfetsel('mot.id_mot','spip_mots as mot left join spip_mots_articles as mots_articles ON (mot.id_mot=mots_articles.id_mot)','mots_articles.id_article='.intval($id_article).' AND mot.id_groupe='.intval($id_groupe));
+	$id_mot = sql_getfetsel('mot.id_mot','spip_mots as mot left join spip_mots_liens as mots_liens ON (mot.id_mot=mots_liens.id_mot)','mots_liens.id_objet='.intval($id_article).' AND mots_liens.objet = "article" AND mot.id_groupe='.intval($id_groupe));
 	
 	$valeurs['id_article'] = $id_article;
 	$valeurs['id_groupe'] = $id_groupe;
@@ -26,21 +26,25 @@ function formulaires_editer_mot_article_traiter_dist($id_article='new', $id_grou
 	
 	$message = array('editable'=>true, 'message_ok'=>'');
 	
-	$id_mot_ancien = sql_getfetsel('mot.id_mot','spip_mots as mot left join spip_mots_articles as mots_articles ON (mot.id_mot=mots_articles.id_mot)','mots_articles.id_article='.intval($id_article).' AND mot.id_groupe='.intval($id_groupe));
+	$id_mot_ancien = sql_getfetsel('mot.id_mot','spip_mots as mot left join spip_mots_liens as mots_liens ON (mot.id_mot=mots_liens.id_mot)','mots_liens.id_objet='.intval($id_article).' AND mots_liens.objet = "article" AND mot.id_groupe='.intval($id_groupe));
 	
+	include_spip('action/editer_liens');
 	// si aucun mot selectionne on delie le mot de ce groupe
 	if(!$id_mot = _request('id_mot')){
-		sql_delete('spip_mots_articles','id_article='.intval($id_article).' AND id_mot='.intval($id_mot_ancien));
+		//sql_delete('spip_mots_liens','objet = "article" AND id_objet='.intval($id_article).' AND id_mot='.intval($id_mot_ancien));
+		objet_dissocier(array("mot"=>$id_mot_ancien), array("article"=>$id_article));
 	} else {
 		if ($id_mot_ancien != $id_mot) {
 			// on delie l'ancien mot
-			sql_delete('spip_mots_articles','id_article='.intval($id_article).' AND id_mot='.intval($id_mot_ancien));
+			//sql_delete('spip_mots_liens','id_article='.intval($id_article).' AND id_mot='.intval($id_mot_ancien));
+			objet_dissocier(array("mot"=>$id_mot_ancien), array("article"=>$id_article));
 			// on lie le nouveau
-			sql_insertq('spip_mots_articles', array('id_mot' =>$id_mot,  'id_article' => $id_article));
-			// on invalide le cache
+			//sql_insertq('spip_mots_liens', array('id_mot' =>$id_mot,  'id_article' => $id_article));
+			objet_associer(array("mot"=>$id_mot), array("article"=>$id_article));
 		}
 	}
 	
+	// on invalide le cache
 	include_spip('inc/invalideur');
 	suivre_invalideur("id='id_article/$id_article'");
 	
