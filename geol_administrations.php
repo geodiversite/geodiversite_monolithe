@@ -53,6 +53,9 @@ function geol_installation(){
 	// taille des vignettes à 300px
 	ecrire_meta('taille_preview', '300');
 	
+	// thème bootstrap pour les box
+	ecrire_config('mediabox/skin', 'bootstrap');
+	
 	// forcer l'utilisation des mots clés
 	if (lire_meta('articles_mots') == 'non') ecrire_meta('articles_mots', 'oui');
 		
