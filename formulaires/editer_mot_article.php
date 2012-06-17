@@ -31,15 +31,12 @@ function formulaires_editer_mot_article_traiter_dist($id_article='new', $id_grou
 	include_spip('action/editer_liens');
 	// si aucun mot selectionne on delie le mot de ce groupe
 	if(!$id_mot = _request('id_mot')){
-		//sql_delete('spip_mots_liens','objet = "article" AND id_objet='.intval($id_article).' AND id_mot='.intval($id_mot_ancien));
 		objet_dissocier(array("mot"=>$id_mot_ancien), array("article"=>$id_article));
 	} else {
 		if ($id_mot_ancien != $id_mot) {
 			// on delie l'ancien mot
-			//sql_delete('spip_mots_liens','id_article='.intval($id_article).' AND id_mot='.intval($id_mot_ancien));
 			objet_dissocier(array("mot"=>$id_mot_ancien), array("article"=>$id_article));
 			// on lie le nouveau
-			//sql_insertq('spip_mots_liens', array('id_mot' =>$id_mot,  'id_article' => $id_article));
 			objet_associer(array("mot"=>$id_mot), array("article"=>$id_article));
 		}
 	}
