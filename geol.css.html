@@ -4,12 +4,17 @@
 
 /* ------------------------------------------
 /* ------------------------------------------
-/* prive/style_prive_plugin_bonux :
+/* prive/style_prive_plugin_polyhier et prive/themes/spip/picker.css :
 /* pour le picker de polyhierarchie
 /* ------------------------------------------ */
 /* ------------------------------------------ */
 
-[(#INCLURE{fond=prive/style_prive_plugin_bonux,ltr=#LTR})]
+[(#INCLURE{fond=prive/themes/spip/picker.css,ltr=#LTR})]
+
+/* formulaire de polyhierarchie dans le public */
+.formulaire_editer_polyhierarchie ul.item_picked li {margin:0 2px 2px;padding:2px;float:[(#ENV{ltr}|choixsiegal{left,left,right})];clear:none;}
+
+[(#INCLURE{fond=prive/style_prive_plugin_polyhier,ltr=#LTR})]
 
 /* ------------------------------------------
 /* ------------------------------------------
