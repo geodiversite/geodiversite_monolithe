@@ -7,7 +7,7 @@
 			<input type="checkbox" class="checkbox" name="medias" id="medias" value="" checked="checked" />
 			<label for="medias"><:geol:medias:></label>
 		</li>
-	<BOUCLE_kmls(ARTICLES documents_liens documents){mode=document}{documents.extension IN 'kml','kmz'}{par titre}>
+	<BOUCLE_kmls(ARTICLES documents_liens documents){documents.mode=document}{documents.extension IN 'kml','kmz'}{par titre}>
 		<li class="item">
 			<input type="checkbox" class="checkbox kml"[(#EXPOSE|oui) checked="checked"] name="kml_file" id="kml_#ID_ARTICLE" value="[(#URL_DOCUMENT|url_absolue)]" />
 			<label for="kml_#ID_ARTICLE">#TITRE</label>

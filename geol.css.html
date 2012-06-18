@@ -165,7 +165,7 @@
 .page_carte #conteneur,
 .page_carte #conteneur #contenu,
 .page_carte #conteneur #contenu .carte_gis { width: 100%; margin: 0; height: 100%; position: relative; }
-.page_carte #pied { position: absolute; bottom: 0; background: #fff; }
+.page_carte #pied { position: absolute; bottom: 0; background: #fff; z-index: 1000; }
 .page_carte #pied #bouton { position: absolute; top: -20px; right: 10px; }
 .page_carte #pied.cache #bouton { background-position: left top; }
 .page_carte #pied #bouton:hover { cursor: pointer; }
@@ -174,6 +174,9 @@
 	background: #999 url(#CHEMIN{images/bg_info_filtre.png}) right 50% no-repeat; color: #fff; }
 .page_carte .info_filtre #close_filtre { display: inline-block; height: 16px; width: 16px; margin-left: 5px;
 	text-indent: -3000em; background: transparent url(#CHEMIN{images/close.png}) 50% 50% no-repeat; }
+
+.page_carte .leaflet-control-layers label { float: left; }
+.page_carte .leaflet-bottom.leaflet-right { right: 60px; }
 
 .page_carte div#kml_panel { position: absolute; right: 10px; top: 35px; z-index: 4000; width: 200px;
 	padding: 5px; background: #fff; border: 5px solid #f2f2f2; }
@@ -187,8 +190,6 @@
 .page_carte #kml_panel ul.liste-items { max-height: 250px; overflow-y: auto; display: none; }
 .page_carte #kml_panel input.checkbox { vertical-align: middle; }
 
-.geol_window { padding: 10px; background: #fff; border: 1px solid #e2e2e2;
-	-moz-border-radius: 8px; -webkit-border-radius: 8px; border-radius: 8px; }
 .geol_window .descriptif_window { width: 225px; }
 .geol_window h3 { font-size: 1.2em;	margin: 0 14px 5px 0; }
 .geol_window .auteurs {	display: block; margin: 5px 0; }
