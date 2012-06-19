@@ -17,7 +17,7 @@
 	[(#INCLURE{fond=listes/favoris-vignette,
 		id_auteur,
 		ajax,
-		tri,
+		env,
 		largeur=200,
 		hauteur=200,
 		info_texte=non,
@@ -43,8 +43,8 @@
 	[(#REM) fans de l'article ]
 	[(#INCLURE{fond=listes/fans-vignette,
 		id_article,
-		pas,
-		ajax})]
+		ajax,
+		env})]
 
 </div>
 </BOUCLE_contenu_article>
