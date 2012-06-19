@@ -134,14 +134,12 @@
 				if (infowindow) infowindow._close();
 			});
 			
-/*
 			// <BOUCLE_kml(ARTICLES documents_liens documents){id_article}{documents.mode=document}{documents.extension IN 'kml','kmz'}>
 			// superposer le kml de l'article passe en url
-			layers['kml_#ID_ARTICLE'] = new google.maps.KmlLayer("[(#URL_DOCUMENT|url_absolue)]");
-			layers['kml_#ID_ARTICLE'].setMap(map);
+			layers['kml_#ID_ARTICLE'] = new L.KML("[(#URL_DOCUMENT|url_absolue)]", {async: true});
+			map.addLayer(layers['kml_#ID_ARTICLE']);
 			#SET{kml,oui}
 			// </BOUCLE_kml>
-*/
 			
 			// charger les markers sauf si on superpose un kml
 			[(#GET{kml}|non)
