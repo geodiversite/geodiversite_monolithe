@@ -17,7 +17,7 @@
 		[(#GET{zoom}|non)
 		#SET{zoom, #ENV{zoom,#CONFIG**{gis/zoom,0}}]
 		
-		var infowindow, maptype_maxzoom;
+		var infowindow;
 		var layers = new Array();
 
 		var parseData = function(data,map) {
@@ -54,7 +54,7 @@
 				className: 'geol_window',
 				maxWidth: 350
 			};
-			var infowindow = new L.Popup(infowindow_options);
+			infowindow = new L.Popup(infowindow_options);
 			var extUrl = "[(#URL_PAGE{get_infowindow})]";
 			
 			var get_infowindow = function(url,ids,infowindow,marker,map) {
@@ -129,20 +129,19 @@
 			map.addControl(new L.Control.Scale());
 			map.addControl(new L.Control.Zoom());
 
-			/*
-			
 			// fermer l'infowindow au chagenement de zoom
-			google.maps.event.addListener(map, 'zoom_changed', function() {
-				if (infowindow) infowindow.close();
+			map.on('zoomend', function(e) {
+				if (infowindow) infowindow._close();
 			});
-
+			
+/*
 			// <BOUCLE_kml(ARTICLES documents_liens documents){id_article}{documents.mode=document}{documents.extension IN 'kml','kmz'}>
 			// superposer le kml de l'article passe en url
 			layers['kml_#ID_ARTICLE'] = new google.maps.KmlLayer("[(#URL_DOCUMENT|url_absolue)]");
 			layers['kml_#ID_ARTICLE'].setMap(map);
 			#SET{kml,oui}
 			// </BOUCLE_kml>
-			*/
+*/
 			
 			// charger les markers sauf si on superpose un kml
 			[(#GET{kml}|non)
@@ -194,10 +193,10 @@
 						markerCluster.clearMarkers();
 					}
 					$('#kml_panel input#medias:checkbox').attr('checked',false);
-					layers[id] = new google.maps.KmlLayer(kml);
-					layers[id].setMap(map);
+					layers[id] = new L.KML(kml, {async: true});
+					map.addLayer(layers[id]);
 				} else {
-					layers[id].setMap(null);
+					map.removeLayer(layers[id]);
 				}
 			});
 		});
@@ -259,16 +258,10 @@
 		// formulaire de recherche geocoding
 		$("#formulaire_recherche form").submit(function(){
 			var adresse = $("#recherche").attr("value");
-			var geocoder = new google.maps.Geocoder();
-			if (geocoder) {
-				geocoder.geocode({'address': adresse }, function(result, status) {
-					if (status != google.maps.GeocoderStatus.OK) {
-						alert(adresse + " not found");
-					} else {
-						map.setCenter(result[0].geometry.location);
-					}
-				});
-			}
+			var geocoder = new L.Geocoder(function(result) {
+				map.setView(result.point, map.getZoom());
+			});
+			geocoder.geocode(adresse);
 			return false;
 		});
 	})
