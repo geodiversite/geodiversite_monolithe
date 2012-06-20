@@ -58,9 +58,11 @@
 		kml=#ID_DOCUMENT})]
 ]
 
-[(#REM) Document Flash (.flv) ? ]
-[(#TYPE_DOCUMENT|match{^(MP3|Flash Video)$}|?{' '})
-[(#MODELE{mediaplayer}{document=#ID_DOCUMENT}{width=560}{height=420})]
+[(#REM) Document flv ou mp3 ? ]
+[(#TYPE_DOCUMENT|match{^(MP3|Flash Video)$}|oui)
+[(#EXTENSION|=={mp3}|oui) [(#SET{largeur,560})][(#SET{hauteur,280})][
+(#SET{logo,#LOGO_DOCUMENT{vignette}|sinon{#CHEMIN{images/logo_carre.png}}|image_passe_partout{#GET{largeur},#GET{hauteur}}|image_recadre{#GET{largeur},#GET{hauteur},center,#000}|extraire_attribut{src}})]
+][(#MODELE{emb,controls=oui,id_document,largeur=#GET{largeur},hauteur=#GET{hauteur},logo=#GET{logo},autobuffer=oui,infos=non,env})]
 ]
 
 <script type="text/javascript">

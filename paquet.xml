@@ -32,6 +32,7 @@
 	<necessite nom="menus" compatibilite="[1.2.1;[" />
 	<necessite nom="gis" compatibilite="[4.0.0;[" />
 	<necessite nom="polyhier" compatibilite="[1.0.0;[" />
+	<necessite nom="mediaspip_player" compatibilite="[1.1.0;[" />
 
 	<utilise nom="amis" compatibilite="[0.1;[" />
  	<utilise nom='gravatar' compatibilite="[1.3.0;[" />
