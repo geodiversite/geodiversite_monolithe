@@ -293,6 +293,7 @@ h1, .h1, h2, .h2 { font: bold 1.2em geol, Arial, Helvetica, sans-serif; color: #
 #hierarchie li:first-child a { color: #fff; }
 #hierarchie li { padding: 4px 30px 4px 10px; background: #f2f2f2 url(images/bg_ariane_grey.png) right 50% no-repeat; }
 #hierarchie li.on { background-image: url(images/bg_ariane_grey_on.png); }
+#hierarchie li.collapsed { width: 5px; }
 
 /*  ------------------------------------------
 /*  navigation

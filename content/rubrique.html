@@ -1,10 +1,10 @@
 <BOUCLE_contenu_rubrique(RUBRIQUES){id_rubrique}{tout}>
 [(#REM) Fil d'Ariane ]
 <ol id="hierarchie">
-	<BOUCLE_arian(HIERARCHIE){id_rubrique}> </BOUCLE_arian>#SET{total_ariane,#GRAND_TOTAL}</B_arian>
-	<BOUCLE_ariane(HIERARCHIE){id_rubrique}{0,2}{doublons}><li><a href="#URL_RUBRIQUE">[(#TITRE|couper{80})]</a></li></BOUCLE_ariane>
-	[(#GET{total_ariane}|>{3}|oui)<li class="spacer">&nbsp;</li>]
-	<BOUCLE_ariane2(HIERARCHIE){id_rubrique}{n-1,1}{doublons}><li><a href="#URL_RUBRIQUE">[(#TITRE|couper{80})]</a></li></BOUCLE_ariane2>
+	<BOUCLE_ariane(HIERARCHIE){id_rubrique}{statut=*}{0,n-1}>[
+	(#COMPTEUR_BOUCLE|>{2}|non)<li><a href="#URL_RUBRIQUE">[(#TITRE|couper{80})]</a></li>][
+	(#COMPTEUR_BOUCLE|>{2}|oui)<li class="collapsed"><a href="#URL_RUBRIQUE" title="[(#TITRE|couper{80}|attribut_html)]">...</a></li>]
+	</BOUCLE_ariane>
 	[<li class="on"><strong>(#TITRE|couper{80})</strong></li>]
 </ol>
 
