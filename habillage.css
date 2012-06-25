@@ -288,12 +288,17 @@ h1, .h1, h2, .h2 { font: bold 1.2em geol, Arial, Helvetica, sans-serif; color: #
 /*  ------------------------------------------ */
 
 #hierarchie { font: bold 1.2em geol, Arial, Helvetica, sans-serif; }
-#hierarchie li:first-child { background: #00c0f8 url(images/bg_ariane_blue.png) right 50% no-repeat; color: #fff; }
-#hierarchie li.on:first-child { background-image: url(images/bg_ariane_blue_on.png) }
-#hierarchie li:first-child a { color: #fff; }
-#hierarchie li { padding: 4px 30px 4px 10px; background: #f2f2f2 url(images/bg_ariane_grey.png) right 50% no-repeat; }
-#hierarchie li.on { background-image: url(images/bg_ariane_grey_on.png); }
+#hierarchie li:first-child,
+div#hierarchie > a:first-child { background: #00c0f8 url(images/bg_ariane_blue.png) right 50% no-repeat; color: #fff; }
+#hierarchie .on:first-child { background-image: url(images/bg_ariane_blue_on.png) }
+#hierarchie li:first-child a,
+div#hierarchie > a:first-child { color: #fff; }
+#hierarchie li,
+div#hierarchie > a,
+div#hierarchie > strong { display: block; float: left; padding: 4px 30px 4px 10px; background: #f2f2f2 url(images/bg_ariane_grey.png) right 50% no-repeat; }
+#hierarchie .on { background-image: url(images/bg_ariane_grey_on.png); }
 #hierarchie li.collapsed { width: 5px; }
+#hierarchie .sep { display: none; }
 
 /*  ------------------------------------------
 /*  navigation
