@@ -16,7 +16,7 @@
 		[(#AUTORISER{modifier,article,#ENV{id_article}}|oui)
 			[<a href="(#URL_ACTION_AUTEUR{tourner,[(#ID_DOCUMENT)]--90,#SELF})" id="rotation_gauche" class="rotation_gauche" title="<:image_tourner_gauche|texte_backend:>"><:image_tourner_gauche:></a>]
 			[<a href="(#URL_ACTION_AUTEUR{tourner,[(#ID_DOCUMENT)]-90,#SELF})" id="rotation_droite" class="rotation_droite" title="<:image_tourner_droite|texte_backend:>"><:image_tourner_droite:></a>]
-			[<a href="(#URL_ACTION_AUTEUR{instituer_article,[(#ENV{id_article})]/poubelle,#URL_AUTEUR{#SESSION{id_auteur}}})" id="supprimer_doc" class="supprimer" title="<:geol:doc_supprimer|texte_backend:>"><:geol:doc_supprimer:></a>]
+			[<a href="(#URL_ACTION_AUTEUR{instituer_objet,article/[(#ENV{id_article})]/poubelle,#URL_AUTEUR{#SESSION{id_auteur}}})" id="supprimer_doc" class="supprimer" title="<:geol:doc_supprimer|texte_backend:>"><:geol:doc_supprimer:></a>]
 		][
 		(#PLUGIN{notation}|oui) #FORMULAIRE_NOTATION{article,#ID_ARTICLE} ]
 	</div>
@@ -39,7 +39,7 @@
 	<a href="[(#URL_DOCUMENT)]" title="<:geol:doc_telecharger|texte_backend:>" class="telecharger"><:geol:doc_telecharger:></a>
 	[(#AUTORISER{modifier,article,#ENV{id_article}}|oui)
 	[<a href="(#URL_PAGE{upload,id_article=#ID_ARTICLE})" id="modifier_doc" class="modifier" title="<:geol:doc_modifier|texte_backend:>"><:geol:doc_modifier:></a>]
-	[<a href="(#URL_ACTION_AUTEUR{instituer_article,[(#ENV{id_article})]/poubelle,#URL_AUTEUR{#SESSION{id_auteur}}})" id="supprimer_doc" class="supprimer" title="<:geol:doc_supprimer|texte_backend:>"><:geol:doc_supprimer:></a>]][
+	[<a href="(#URL_ACTION_AUTEUR{instituer_objet,article/[(#ENV{id_article})]/poubelle,#URL_AUTEUR{#SESSION{id_auteur}}})" id="supprimer_doc" class="supprimer" title="<:geol:doc_supprimer|texte_backend:>"><:geol:doc_supprimer:></a>]][
 	(#PLUGIN{notation}|oui) #FORMULAIRE_NOTATION{article,#ID_ARTICLE} ]
 </div>]
 <BOUCLE_gis(GIS){id_article}>#SET{lat,#LAT} #SET{lon,#LON} #SET{zoom,#ZOOM}</BOUCLE_gis>
@@ -60,7 +60,7 @@
 
 [(#REM) Document flv ou mp3 ? ]
 [(#TYPE_DOCUMENT|match{^(MP3|Flash Video)$}|oui)
-[(#EXTENSION|=={mp3}|oui) [(#SET{largeur,560})][(#SET{hauteur,280})][
+[(#EXTENSION|=={mp3}|oui) [(#SET{largeur,560})][(#SET{hauteur,240})][
 (#SET{logo,#LOGO_DOCUMENT{vignette}|sinon{#CHEMIN{images/logo_carre.png}}|image_passe_partout{#GET{largeur},#GET{hauteur}}|image_recadre{#GET{largeur},#GET{hauteur},center,#000}|extraire_attribut{src}})]
 ][(#MODELE{emb,controls=oui,id_document,largeur=#GET{largeur},hauteur=#GET{hauteur},logo=#GET{logo},autobuffer=oui,infos=non,env})]
 ]
