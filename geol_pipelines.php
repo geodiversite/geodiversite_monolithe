@@ -118,12 +118,4 @@ function geol_xmlrpc_server_class($flux){
 	return $flux;
 }
 
-/**
- * Insertion dans le pipeline jqueryui_plugins
- * Ajout de la fonction draggable pour les cartes
- */
-function geol_jqueryui_plugins($plugins){
-	$plugins[] = 'jquery.ui.draggable';
-	return $plugins;
-}
 ?>

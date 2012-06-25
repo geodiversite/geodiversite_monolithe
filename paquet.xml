@@ -19,7 +19,6 @@
 	<pipeline nom="styliser" inclure="geol_pipelines.php" />
 	<pipeline nom="formulaire_charger" inclure="geol_pipelines.php" />
 	<pipeline nom="em_post_upload_medias" inclure="geol_pipelines.php" />
-	<pipeline nom="jqueryui_plugins" inclure="geol_pipelines.php" />
 	<pipeline nom="xmlrpc_methodes" inclure="geol_pipelines.php" />
 	<pipeline nom="xmlrpc_server_class" inclure="geol_pipelines.php" />
 
