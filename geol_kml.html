@@ -6,11 +6,9 @@ version="1.0" encoding="#CHARSET" ?>
 <Document>
 [<name>(#NOM_SITE_SPIP|texte_backend)</name>]
 [<description>(#DESCRIPTIF_SITE_SPIP|supprimer_tags|texte_backend)</description>]
-<BOUCLE_un_article(ARTICLES){id_mot ?}{id_auteur ?}{branche ?}{recherche ?}{id_article ?}{!par date}>
-	[(#SET{logo_doc,''})][(#SET{lat,''})][(#SET{lon,''})]
-	<BOUCLE_gis(GIS){id_article}>
-	[(#SET{lat,#LAT})][(#SET{lon,#LON})]
-	</BOUCLE_gis><B_imaxe>
+<BOUCLE_un_article(ARTICLES){gis}{id_mot ?}{id_auteur ?}{branche ?}{recherche ?}{id_article ?}{!par date}>
+	[(#SET{logo_doc,''})]
+	<B_imaxe>
 	<Placemark id="#art_#ID_ARTICLE">
 		<name>[(#TITRE|supprimer_numero|texte_backend)]</name>
 		<atom:link rel="related" href="[(#URL_ARTICLE|url_absolue)]" />
@@ -30,7 +28,7 @@ version="1.0" encoding="#CHARSET" ?>
 			]]>
 		</description>
 		[<Point>
-			<coordinates>(#GET{lon}),[(#GET{lat})]</coordinates>
+			<coordinates>(#LON),[(#LAT)]</coordinates>
 		</Point>]
 		#SET{icon_w,#GET{logo_doc}|extraire_attribut{src}|largeur}
 		#SET{icon_h,#GET{logo_doc}|extraire_attribut{src}|hauteur}
@@ -53,7 +51,7 @@ version="1.0" encoding="#CHARSET" ?>
 			</Data>]
 		</ExtendedData>
 	</Placemark>
-</B_imaxe></B_gis>
+</B_imaxe>
 </BOUCLE_un_article>
 </Document>
 </kml>

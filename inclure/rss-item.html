@@ -1,4 +1,4 @@
-<BOUCLE_un_article(ARTICLES){id_article}><BOUCLE_gis(GIS){id_article}>#SET{lat,#LAT} #SET{lon,#LON}</BOUCLE_gis>
+<BOUCLE_un_article(ARTICLES){gis}{id_article}>
 	<item[ xml:lang="(#LANG)"]>
 		<title>[(#TITRE|supprimer_tags|texte_backend)]</title>
 		<link>[(#URL_ARTICLE|url_absolue)]</link>
@@ -18,9 +18,9 @@
 			<B_cat1>&lt;div class='rss_categories'&gt;<:geol:categories|texte_backend:> : <BOUCLE_cat1(RUBRIQUES){parents_indirects}{tout}{', '}>&lt;a href="[(#URL_RUBRIQUE|url_absolue)]"&gt;#TITRE&lt;/a&gt;</BOUCLE_cat1>&lt;/div&gt;</B_cat1>
 			<B_tags1>&lt;div class='rss_tags'&gt;<:geol:tags|texte_backend:> : <BOUCLE_tags1(MOTS){id_article}{", "}>&lt;a href="[(#URL_MOT|url_absolue)]" rel="tag"&gt;[(#TITRE|texte_backend)]&lt;/a&gt;</BOUCLE_tags1>&lt;/div&gt;</B_tags1>
 		</content:encoded>
-		[<georss:point>#GET{lat} #GET{lon}</georss:point>
-		<geo:lat>#GET{lat}</geo:lat>
-		<geo:long>#GET{lon}</geo:long>(#ENV{georss}|oui)]<BOUCLE_documents(DOCUMENTS){id_article}{vu=non}{0,1}>
+		[<georss:point>#LAT #LON</georss:point>
+		<geo:lat>#LAT</geo:lat>
+		<geo:long>#LON</geo:long>(#ENV{georss}|oui)]<BOUCLE_documents(DOCUMENTS){id_article}{vu=non}{0,1}>
 		[<enclosure url="(#URL_DOCUMENT|url_absolue|unique)"[ length="(#TAILLE)"][ type="(#MIME_TYPE)"] />]</BOUCLE_documents><BOUCLE_tags(MOTS){id_article}>
 		[<dc:subject>(#TITRE|texte_backend)</dc:subject>]</BOUCLE_tags>
 	</item>
