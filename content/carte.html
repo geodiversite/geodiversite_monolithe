@@ -84,7 +84,6 @@
 				if (markers.length > 1) {
 					// si on est au zoom maxi de la carte
 					if (map.getMaxZoom() <= map.getZoom()) {
-						console.log('max zoom !');
 						// récupérer les id des markers du cluster
 						var markers_ids = new Array();
 						$.each(markers,function(i,marker){
@@ -128,6 +127,7 @@
 			
 			map.addControl(new L.Control.Scale());
 			map.addControl(new L.Control.Zoom());
+			map.addControl(new L.Control.FullScreen());
 
 			// fermer l'infowindow au chagenement de zoom
 			map.on('zoomend', function(e) {
@@ -156,6 +156,9 @@
 			// carte filtree
 			infoFilter();
 			]
+			
+			// palcer le panel des kmls dans un bloc de control pour ne pas le perdre en fullscreen
+			map._controlCorners.topright.appendChild(L.DomUtil.get('kml_panel'));
 			
 		};
 		
@@ -216,11 +219,6 @@
 		$('#kml_panel #toggle').click(function() {
 			$('#kml_panel').toggleClass('replie');
 			$('#kml_panel ul.liste-items').slideToggle();
-		});
-		// panel draggable
-		$('#kml_panel').draggable({
-			containment: '#contenu',
-			handle: 'h3'
 		});
 		
 		// init de la carte
