@@ -9,7 +9,7 @@
 		<h1 class="h1"><:resultats_recherche:></h1>
 	</div>
 	[(#RECHERCHE|sinon{#ENV{recherche_libre}}|?{#SET{tri,#ENV{tri,points}},#SET{tri,#ENV{tri,date}}})]
-	[(#INCLURE{fond=listes/recherche-articles-vignette,
+	[(#INCLURE{fond=liste/recherche-articles-vignette,
 		largeur=200,hauteur=200,info_auteur=non,
 		tri=#GET{tri},
 		recherche=#ENV{recherche_libre}|sinon{#ENV{recherche}},
