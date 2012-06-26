@@ -230,7 +230,8 @@ ul.choix_mots li label { display: inline; font-weight: normal; }
 @font-face {
 	font-family: 'geol';
 	src: url('polices/jesaya_free.eot');
-	src: local('Jesaya Free Regular'), local('JesayaFree-Regular'), url('polices/jesaya_free.woff') format('woff'), url('polices/jesaya_free.ttf') format('truetype'), url('polices/jesaya_free.svg#JesayaFree-Regular') format('svg'); }
+	src: local('Jesaya Free Regular'), local('JesayaFree-Regular');
+	src: url('polices/jesaya_free.woff') format('woff'), url('polices/jesaya_free.ttf') format('truetype'), url('polices/jesaya_free.svg#JesayaFree-Regular') format('svg'); }
 
 /* Typo de base + Disposition a l'ecran des blocs principaux */
 
@@ -353,4 +354,4 @@ div#hierarchie > strong { display: block; float: left; padding: 4px 30px 4px 10p
 /* boutons admin */
 body .spip-admin-float { right: 5px; margin: 5px auto 0; }
 body a.spip-admin-boutons { border: 1px solid #ddd; color: #666; background: #fff; }
-body a.spip-admin-boutons:hover { border: 1px solid #ddd; color: #GET{couleur1}; background: transparent; }
+body a.spip-admin-boutons:hover { border: 1px solid #ddd; color: #00c0f8; background: transparent; }
