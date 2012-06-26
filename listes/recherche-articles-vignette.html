@@ -29,8 +29,8 @@
 		[(#INCLURE{fond=inclure/listes_liens_pas,pas,tri,cols=#GET{cols},self=#SELF})]
 	</div>
 	<ul class="liste-items">
-		<BOUCLE_articles(ARTICLES documents_liens documents){mode=document}{documents.extension IN #GET{extensions}}
-			{mots_articles.id_mot?}
+		<BOUCLE_articles(ARTICLES documents_liens documents){documents.mode=document}{documents.extension IN #GET{extensions}}
+			{id_mot?}
 			{enfants #ENV**{categories}}
 			{id_licence IN #ENV**{id_licence}}
 			{recherche?}
