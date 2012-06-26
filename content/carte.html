@@ -158,7 +158,8 @@
 			]
 			
 			// palcer le panel des kmls dans un bloc de control pour ne pas le perdre en fullscreen
-			map._controlCorners.topright.appendChild(L.DomUtil.get('kml_panel'));
+			if(L.DomUtil.get('kml_panel'))
+				map._controlCorners.topright.appendChild(L.DomUtil.get('kml_panel'));
 			
 		};
 		
