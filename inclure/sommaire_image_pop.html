@@ -1,0 +1,16 @@
+[(#REM) recuperer une des dix images les plus populaires au hasard ]
+#SET{images_pop,#ARRAY}
+<BOUCLE_pop(ARTICLES documents_liens documents){documents.mode=document}{documents.extension IN 'jpg','png','gif'}{!par popularite}{0,10}>#SET_PUSH{images_pop,#ID_ARTICLE}</BOUCLE_pop>
+<BOUCLE_article(ARTICLES){id_article IN #GET{images_pop}}{par hasard} {0,1}>
+	<div class="description">
+		[<h2>(#TITRE)</h2>]
+		[<span class="auteur"><:geol:de:> <span class="contributor">(#LESAUTEURS)</span></span>]
+	</div>
+	<BOUCLE_doch(DOCUMENTS){id_article}>
+	[<a href="#_article:URL_ARTICLE" title="#_article:TITRE">
+		(#FICHIER|image_passe_partout{384,280}
+			|image_recadre{384,280,center}
+			|inserer_attribut{alt,[(#TITRE|couper{80}|texte_backend)]})
+	</a>]
+	</BOUCLE_doch>
+</BOUCLE_article>
