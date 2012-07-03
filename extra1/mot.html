@@ -11,7 +11,7 @@
 		<img src="http://maps.google.com/maps/api/staticmap?maptype=terrain<B_articles>&amp;markers=size:tiny|color:0x[(#CONFIG{geol/couleur_primaire,#00c0f8}|substr{1,6})]|<BOUCLE_articles(ARTICLES){gis}{id_mot}{id_auteur?}{tout}{0,100}{!par date}{'|'}>[(#LAT|round{4})],[(#LON|round{4})]</BOUCLE_articles>&amp;size=200x200&amp;sensor=false" width="200" height="200" alt="" />
 	</BOUCLE_ggmap>
 	<BOUCLE_ol(CONDITION){si #REM|gis_layer_defaut|in_array{#ARRAY{0,google_roadmap,1,google_satellite,2,google_terrain}}|non}>
-		<img src="http://open.mapquestapi.com/staticmap/v4/getmap?imageType=png&type=map&scalebar=false<B_articles2>&pois=<BOUCLE_articles2(ARTICLES){gis}{id_mot}{id_auteur?}{tout}{0,100}{!par date}{'|'}>pcenter,[(#LAT|round{4})],[(#LON|round{4})]</BOUCLE_articles2>&size=200,200" width="200" height="200" alt="" />
+		<img src="http://open.mapquestapi.com/staticmap/v3/getmap?imageType=png&type=map&scalebar=false<B_articles2>&pois=<BOUCLE_articles2(ARTICLES){gis}{id_mot}{id_auteur?}{tout}{0,100}{!par date}{'|'}>pcenter,[(#LAT|round{4})],[(#LON|round{4})]</BOUCLE_articles2></B_articles2>&pois=pcenter,[(#CONFIG{gis/lat,0}|round{4})],[(#CONFIG{gis/lon,0}|round{4})]<//B_articles2>&size=200,200" width="200" height="200" alt="" />
 	</BOUCLE_ol>
 	</a>
 	<ul class="liste-items">
