@@ -29,7 +29,7 @@
 	</div>
 
 	<BOUCLE_documents(DOCUMENTS){id_article}{vu=non}{0,1}>
-	[(#MODELE{media_doc}{id_document}{id_article}{largeur=560}{hauteur=430}{class=media}{self=#SELF}{modifier_echelle})]
+	[(#INCLURE{fond=inclure/media_doc,id_document,id_article,largeur=560,hauteur=430,class=media,self=#SELF,modifier_echelle})]
 	</BOUCLE_documents>
 
 	<h2 class="h2"><:geol:description:></h2>
