@@ -13,8 +13,8 @@ if (!defined("_ECRIRE_INC_VERSION")) return;
  * -* recherche string
  * -* where array() : conditions à ajouter dans la clause where du select
  * -* champs_demandes array (champs que l'on souhaite récupérer, séparés par une virgule, sinon, on retourne l'ensemble)
- * -* tri array : array('!date') soit par date inversée, du dernier au premier, par défaut
- * 		si on veut trier sur les champs des auteurs mettre auteurs.champs comme auteurs.nom pour le tri sur le nom des auteurs
+ * -* tri array : array('!date') soit par date inversée, du dernier au premier, par défaut.
+ * 		 si on veut trier sur les champs des auteurs mettre auteurs.champs comme auteurs.nom pour le tri sur le nom des auteurs
  * -** Si distance dans le tri
  * -*** lat float
  * -*** lon float
@@ -45,14 +45,15 @@ function geodiv_liste_medias($args) {
 		$where[] = 'articles.statut="publie"';
 	}
 
+	
 	/**
 	 * Distance dans le tri
 	 * On a besoin de savoir par rapport à quoi donc :
 	 * -* $args['lon'] la longitude est obligatoire
 	 * -* $args['lat'] la latitude est obligatoire
-	 * -* on force l'existance d'un point gis (les medias non géolocalisés n'apparaitront donc jamais) 
+	 * -* on force l'existance d'un point gis (les medias non géolocalisés n'apparaitront donc jamais)
 	 */
-	if(in_array('distance',$order) OR in_array('!distance',$order)){ 
+	if(in_array('distance',$order) OR in_array('!distance',$order)){
 		$lat = $args['lat'];
 		$lon = $args['lon'];
 		if(!is_numeric($lon) OR !is_numeric($lat)){
@@ -225,10 +226,12 @@ function geodiv_lire_media($args){
 	/**
 	 * On ajoute les points de géoloc
 	 */
-	if((count($champs_demandes) == 0) || in_array('gis',$champs_demandes)){
-		$tous_gis = sql_select('gis.*','spip_gis AS `gis` INNER JOIN spip_gis_liens AS L1 ON L1.id_gis = gis.id_gis','L1.id_objet = '.intval($args['id_article']).' AND (L1.objet = '.sql_quote('article').')');
+	if(defined('_DIR_PLUGIN_GIS') && (count($champs_demandes) == 0) || in_array('gis',$champs_demandes)){
+		include_spip('gis_xmlrpc','inc');
+		$tous_gis = sql_select('gis.id_gis','spip_gis AS `gis` INNER JOIN spip_gis_liens AS L1 ON L1.id_gis = gis.id_gis','L1.id_objet = '.intval($args['id_article']).' AND (L1.objet = '.sql_quote('article').')');
 		while($gis=sql_fetch($tous_gis)){
-			$res['result'][0]['gis'][] = $gis;
+			$args['id_gis'] = $gis['id_gis'];
+			$res['result'][0]['gis'][] = spip_lire_gis($args);
 		}
 	}
 	
