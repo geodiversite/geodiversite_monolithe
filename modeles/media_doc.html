@@ -1,7 +1,5 @@
 <BOUCLE_doc(DOCUMENTS){id_document}>
 
-#SET{player,#ENV{player,#CONFIG{player,'neoplayer'}}}
-
 [(#REM) Document Image ? ]
 [(#TYPE_DOCUMENT|match{^(JPEG|GIF|PNG)$}|oui)
 	<div class="actions_doc">
