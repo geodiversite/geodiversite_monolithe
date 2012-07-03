@@ -14,6 +14,7 @@ if (!defined("_ECRIRE_INC_VERSION")) return;
  * -* where array() : conditions à ajouter dans la clause where du select
  * -* champs_demandes array (champs que l'on souhaite récupérer, séparés par une virgule, sinon, on retourne l'ensemble)
  * -* tri array : array('!date') soit par date inversée, du dernier au premier, par défaut
+ * 		si on veut trier sur les champs des auteurs mettre auteurs.champs comme auteurs.nom pour le tri sur le nom des auteurs
  * -** Si distance dans le tri
  * -*** lat float
  * -*** lon float
@@ -49,8 +50,9 @@ function geodiv_liste_medias($args) {
 	 * On a besoin de savoir par rapport à quoi donc :
 	 * -* $args['lon'] la longitude est obligatoire
 	 * -* $args['lat'] la latitude est obligatoire
+	 * -* on force l'existance d'un point gis (les medias non géolocalisés n'apparaitront donc jamais) 
 	 */
-	if(in_array('distance',$order)){
+	if(in_array('distance',$order) OR in_array('!distance',$order)){ 
 		$lat = $args['lat'];
 		$lon = $args['lon'];
 		if(!is_numeric($lon) OR !is_numeric($lat)){
@@ -59,6 +61,7 @@ function geodiv_liste_medias($args) {
 		}else{
 			$what[] = "(6371 * acos( cos( radians(\"$lat\") ) * cos( radians( gis.lat ) ) * cos( radians( gis.lon ) - radians(\"$lon\") ) + sin( radians(\"$lat\") ) * sin( radians( gis.lat ) ) ) ) AS distance";
 			$from .= ' LEFT JOIN spip_gis_liens as lien ON articles.id_article=lien.id_objet AND lien.objet="article" LEFT JOIN spip_gis as gis ON gis.id_gis=lien.id_gis';
+			$where[] = 'gis.id_gis > 0';
 		}
 	}
 
@@ -303,7 +306,6 @@ function geodiv_lire_media($args){
  */
 function geodiv_creer_media($args){
 	global $spip_xmlrpc_serveur;
-	spip_log($args['document']['name'],'xmlrpc');
 	/**
 	 * On est obligé d'être identifié
 	 */
