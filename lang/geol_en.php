@@ -68,6 +68,7 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 'doc_supprimer' => 'Delete document',
 'doc_supprimer_confirm' => 'Are you sure you want to delete this document?',
 'doc_telecharger' => 'Download document',
+'documents_annexes' => 'Additional documents',
 
 'echelle_media' => 'Subject\'s scale',
 'envoye_le' => 'Posted on:',

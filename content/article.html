@@ -47,16 +47,11 @@
 
 	[<div class="ps surlignable"><h2 class="h2 pas_surlignable"><:info_ps:></h2><div class="#EDIT{ps}">(#PS|image_reduire{500,0})</div></div>]
 
-
-
-	[(#REM) Gestion du portfolio et des documents
-		Le critere {env} permet de passer d'autres arguments de la page
-		 par exemple l'id_document choisi pour un affichage complet
-
-	[(#INCLURE{fond=inc-documents-noflv}
-		{id_article}
-		{env}
-	)]]
+	[(#REM) Gestion des documents annexes ]
+	[(#CONFIG{geol/afficher_docs_annexes}|oui)
+	[(#INCLURE{fond=inclure/media_annexes,id_article,modifier_annexes,ajax,env})]
+	]
+	
 </div>
 
 [(#REM) Petition :

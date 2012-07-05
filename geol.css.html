@@ -25,6 +25,7 @@
 #SET{couleur1,#CONFIG{geol/couleur_primaire,#00c0f8}}
 
 .hop { font-weight: bold; }
+.none, .js .none-js, .no-js .none-nojs { display:none }
 
 /*  ------------------------------------------
 /*  hierarchie
@@ -137,6 +138,11 @@
 .image-annotate-note .note-text .author a:hover { color: #GET{couleur1}; }
 .image_legendes .nb_notes { margin-bottom: 0; }
 .doc_echelle { margin: 5px 0 0; }
+
+.documents_annexes .documents_portfolio { text-align: left; }
+.documents_annexes .documents_portfolio .liste-items .item { display: inline-block; text-align: center; }
+.documents_annexes .documents_portfolio .spip_logos { border: 1px solid #aaa; padding: 4px; }
+.documents_annexes .documents_portfolio a { border: 0; }
 
 /* Listes d'articles et extraits introductifs */
 
@@ -309,7 +315,8 @@
 .formulaire_editer_mot_article,
 .formulaire_spipicious,
 .formulaire_editer_gis,
-.formulaire_editer_licence { width: auto; margin: 10px auto; padding: 10px; border: 1px solid #ddd; background: #f5f5f5; }
+.formulaire_editer_licence,
+.formulaire_joindre_document { width: auto; margin: 10px auto; padding: 10px; border: 1px solid #ddd; background: #f5f5f5; }
 .formulaire_ecrire_auteur fieldset legend,
 .formulaire_login fieldset legend,
 .formulaire_oubli fieldset legend,
