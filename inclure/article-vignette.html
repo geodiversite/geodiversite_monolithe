@@ -17,7 +17,7 @@
 
 #SET{url_article,#URL_ARTICLE}
 
-<BOUCLE_doc(DOCUMENTS){id_article}{vu=non}{0,1}>
+<BOUCLE_doc(DOCUMENTS){id_article}{mode=document}{vu=non}{0,1}>
 [(#SET{largeur,#ENV{largeur,#LARGEUR}})]
 [(#SET{hauteur,#ENV{hauteur,#HAUTEUR}})]
 [<a href="#GET{url_article}">
