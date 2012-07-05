@@ -30,6 +30,8 @@
 			<img src="http://maps.google.com/maps/api/staticmap?center=#GET{lat},#GET{lon}&amp;zoom=#CONFIG{geol/zoom_minicartes,7}&amp;maptype=terrain&amp;markers=[(#CHEMIN{images/geol_minimarker.png}|?{icon:[(#CHEMIN{images/geol_minimarker.png}|url_absolue)],color:0x[(#CONFIG{geol/couleur_primaire,#00c0f8}|substr{1,6})]})]|#GET{lat},#GET{lon}&amp;size=335x170&amp;sensor=false" width="335" height="170" alt="" />
 		][(#REM|gis_layer_defaut|in_array{#GET{google_layers}}|non)
 			<img src="http://open.mapquestapi.com/staticmap/v4/getmap?center=#GET{lat},#GET{lon}&zoom=#CONFIG{geol/zoom_minicartes,7}&xis=[(#CHEMIN{images/geol_minimarker.png}|url_absolue|sinon{http://open.mapquestapi.com/staticmap/geticon?uri=pcenter.png})],1,C,#GET{lat},#GET{lon}&size=335,170&imageType=png&type=map&scalebar=false" width="335" height="170" alt="" />
+		][(#REM) la même avec mapbox pour plus tard
+			<img src="http://api.tiles.mapbox.com/v3/mapbox.mapbox-light/[(#CHEMIN{images/geol_minimarker.png}|?{[url-(#CHEMIN{images/geol_minimarker.png}|url_absolue|urlencode)],pin-m[+(#CONFIG{geol/couleur_primaire,#00c0f8}|substr{1,6})]})]([(#GET{lon})],[(#GET{lat})])/#GET{lon},#GET{lat},#CONFIG{geol/zoom_minicartes,7}/335x170.png" width="335" height="170" alt="" />
 		]
 		</a>
 	]
