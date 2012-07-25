@@ -4,11 +4,11 @@
 	[(#INCLURE{fond=inclure/menu,env,id_menu})]
 </BOUCLE_menu1>
 	<ul class="menu-liste" id="menu_moi">
-		<li class="menu-entree"><a href="#URL_SITE_SPIP/"><:geol:nav_accueil|majuscules:></a></li>[
-		<li class="menu-entree">(#SESSION{id_auteur}|oui)<a href="#URL_AUTEUR{#SESSION{id_auteur}}"><:geol:mon_espace|majuscules:></a></li>
-		<li class="menu-entree"><a href="#URL_PAGE{upload}" rel="nofollow"><:geol:publier_media|majuscules:></a></li>
-		<li class="menu-entree"><a href="#URL_LOGOUT" rel="nofollow"><:icone_deconnecter|majuscules:></a></li>][
-		<li class="menu-entree">(#SESSION{id_auteur}|non)<a href="#URL_PAGE{inscription}" rel="nofollow"><:geol:creer_compte|majuscules:></a></li>
-		<li class="menu-entree"><a href="[(#URL_PAGE{login}|parametre_url{url,#SELF})]" rel="nofollow" class='login_modal'><:lien_connecter|majuscules:></a></li>]
+		<li class="menu-entree"><a href="#URL_SITE_SPIP/"><:geol:nav_accueil:></a></li>[
+		<li class="menu-entree">(#SESSION{id_auteur}|oui)<a href="#URL_AUTEUR{#SESSION{id_auteur}}"><:geol:mon_espace:></a></li>
+		<li class="menu-entree"><a href="#URL_PAGE{upload}" rel="nofollow"><:geol:publier_media:></a></li>
+		<li class="menu-entree"><a href="#URL_LOGOUT" rel="nofollow"><:icone_deconnecter:></a></li>][
+		<li class="menu-entree">(#SESSION{id_auteur}|non)<a href="#URL_PAGE{inscription}" rel="nofollow"><:geol:creer_compte:></a></li>
+		<li class="menu-entree"><a href="[(#URL_PAGE{login}|parametre_url{url,#SELF})]" rel="nofollow" class='login_modal'><:lien_connecter:></a></li>]
 	</ul>
 <//B_menu1>

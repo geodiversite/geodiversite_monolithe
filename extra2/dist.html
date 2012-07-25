@@ -1,8 +1,13 @@
 <div class="menu">
-	<h2 class="h2"><:geol:nav_explorer|majuscules:> : </h2>
-	<ul class="liste-items">
-		<li class="item"><a href="#URL_RUBRIQUE{#CONFIG{geol/secteur_medias,1}}"><:geol:galerie|majuscules:></a></li>
-		<li class="item"><a href="#URL_PAGE{carte}"><:geol:carte|majuscules:></a></li>
+<BOUCLE_menu(MENUS){identifiant=extra_explorer}>
+	[<h2 class="h2">(#TITRE|!={non}|?{#TITRE,''}) : </h2>]
+	[(#INCLURE{fond=inclure/menu,env,id_menu})]
+</BOUCLE_menu>
+	<h2 class="h2"><:geol:nav_explorer:> : </h2>
+	<ul class="menu-liste">
+		<li class="menu-entree"><a href="#URL_RUBRIQUE{#CONFIG{geol/secteur_medias,1}}"><:geol:galerie:></a></li>
+		<li class="menu-entree"><a href="#URL_PAGE{carte}"><:geol:carte:></a></li>
 	</ul>
+<//B_menu>
 	#FORMULAIRE_RECHERCHE
 </div>
