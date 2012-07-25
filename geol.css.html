@@ -182,6 +182,10 @@
 .page_carte .info_filtre #close_filtre { display: inline-block; height: 16px; width: 16px; margin-left: 5px;
 	text-indent: -3000em; background: transparent url(#CHEMIN{images/close.png}) 50% 50% no-repeat; }
 
+/* forcer le fullscreen pour webkit 
+https://developer.mozilla.org/en/DOM/Using_full-screen_mode#Presentation_differences */
+#geomap:-webkit-full-screen { width: 100% !important; height: 100% !important; }
+
 .page_carte .leaflet-control-layers label { float: left; }
 .page_carte .leaflet-bottom.leaflet-right { right: 60px; }
 
