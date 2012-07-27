@@ -12,7 +12,7 @@
 	</div>
 	<ul class="liste-items">
 		<BOUCLE_auteurs(AUTEURS){amis #ENV{id_auteur}} {par #ENV{tri,nom}}{inverse #ENV{senstri,0}}{tout} {pagination #ENV{pas,#GET{cols}|mult{3}}}>
-		<li class="item[ clear(#COMPTEUR_BOUCLE|modulo{#GET{cols}}|=={1}|oui)] article_vignette">
+		<li class="item[ first(#COMPTEUR_BOUCLE|modulo{#GET{cols}}|=={1}|oui)] article_vignette">
 			[(#INCLURE{fond=inclure/auteur-vignette,id_auteur,info_desc=non})]
 		</li>
 		</BOUCLE_auteurs>

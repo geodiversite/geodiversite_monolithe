@@ -10,7 +10,7 @@
 	</div>
 	<ul class="liste-items">
 		<BOUCLE_auteurs(FAVORIS){id_objet=#ENV{id_article}}{objet=article} {!par maj} {pagination #ENV{pas,#GET{cols}|mult{3}}}>
-		<li class="item[ clear(#COMPTEUR_BOUCLE|modulo{#GET{cols}}|=={1}|oui)] article_vignette">
+		<li class="item[ first(#COMPTEUR_BOUCLE|modulo{#GET{cols}}|=={1}|oui)] article_vignette">
 			[(#INCLURE{fond=inclure/auteur-vignette,id_auteur=#ID_AUTEUR})]
 		</li>
 		</BOUCLE_auteurs>
