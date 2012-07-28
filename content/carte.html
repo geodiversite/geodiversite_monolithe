@@ -236,22 +236,6 @@
 			resizeMap();
 		});
 		
-		// ajouter le bouton pour afficher/masquer le pied
-		// puis le faire glisser hors de la fenetre au chargement
-		$('#pied .conteneur').append('<div id="bouton"> </div>');
-		var pied_h = $('#pied').height();
-		$(window).load(function(){
-			$('#pied').animate({"bottom": (0-pied_h)}, { duration: "slow" }).toggleClass('cache');
-		});
-		$('#bouton').toggle(
-			function(){
-				$('#pied').animate({"bottom": 0}, { duration: "slow" }).toggleClass('cache');
-			},
-			function(){
-				$('#pied:not(.cache)').animate({"bottom": (0-pied_h)}, { duration: "slow" }).toggleClass('cache');
-			}
-		);
-		
 		// formulaire de recherche geocoding
 		$("#formulaire_recherche form").submit(function(){
 			var adresse = $("#recherche").attr("value");
