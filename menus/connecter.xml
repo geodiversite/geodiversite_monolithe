@@ -1,0 +1,8 @@
+<entree>
+	<nom><:lien_connecter:></nom>
+	<rang>10</rang>
+	<description><:lien_connecter:></description>
+	<icone>images/menus_logout.png</icone>
+	<parametre nom="titre" class="multilang" label="menus:entree_titre" />
+	<parametre nom="css" label="menus:entree_css" />
+</entree>

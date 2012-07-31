@@ -1,0 +1,15 @@
+[(#SET{titre, <:lien_connecter:>})]
+[(#ENV{titre}|oui)
+	#SET{titre, #ENV*{titre}|typo}
+]
+
+[(#ENV{appel_formulaire}|oui)
+	<div class="titre">#GET{titre}</div>
+	<div class="infos"> </div>
+]
+[(#ENV{appel_menu}|oui)
+	[(#SESSION{id_auteur}|>{0}|non)
+		<li class="menu-entree item[ (#ENV{css})]">
+			<a href="[(#URL_PAGE{login}|parametre_url{url,#ENV{url,#SELF}})]" title="[(#GET{titre}|attribut_html)]">#GET{titre}</a>
+	]
+]
