@@ -65,7 +65,7 @@ function geol_formulaire_charger($flux){
 /**
  * Insertion dans le pipeline em_post_upload_medias (plugin Emballe médias)
  * 
- * Dans le cas des fichiers jpg, si on a récup une date, on l'assigne au document
+ * Dans le cas des fichiers jpg, si on a récup une date, on l'assigne à l'article
  * 
  * @param array $flux
  * @return array $flux
@@ -74,8 +74,9 @@ function geol_em_post_upload_medias($flux){
 
 	spip_log("EM EXIFS : mime-type = ".$flux['args']['mime'],"emballe_medias");
 	
-	if ($flux['args']['mime'] == 'image/jpeg; charset=binary') {
+	if ($flux['args']['mime'] == 'image/jpeg') {
 		$id_document = $flux['args']['id_document'];
+		$id_article = $flux['args']['id_objet'];
 		$fichier = sql_getfetsel("fichier","spip_documents","id_document=".intval($id_document));
 		include_spip('inc/documents');
 		$fichier = get_spip_doc($fichier);
@@ -83,8 +84,8 @@ function geol_em_post_upload_medias($flux){
 		if (($exifs =  @exif_read_data($fichier,'EXIF')) && ($date_exifs = $exifs['DateTimeOriginal'])) {
 			spip_log("EM EXIFS : recuperation de la date du fichier $fichier","emballe_medias");
 			$date = date("Y-m-d H:i:s",strtotime($date_exifs));
-			sql_updateq('spip_documents', array('date'=> $date), "id_document=$id_document");
-			spip_log("EM EXIFS : Update de la date depuis EXIFS pour le document $id_document => date = $date","emballe_medias");
+			sql_updateq('spip_articles', array('date'=> $date), "id_article=$id_article");
+			spip_log("EM EXIFS : Update de la date depuis EXIFS pour l'article $id_article => date = $date","emballe_medias");
 		}
 	}
 	
