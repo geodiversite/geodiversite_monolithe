@@ -51,25 +51,7 @@
 	
 </div>
 
-<B_selections>
-<div id="selection" class="menu vignettes">
-	<h2 class="h2"><span><:geol:favoris:></span></h2>
-	<ul class="liste-items">
-		<BOUCLE_selections(FAVORIS){!par maj}{id_auteur}{0,3}>
-			<li class="item">
-				<a href="#INFO_URL{#OBJET,#ID_OBJET}"[ title="(#INFO_TITRE{#OBJET,#ID_OBJET}|attribut_html)"]>
-				<BOUCLE_doc(DOCUMENTS){id_article=#ID_OBJET}>
-				[(#LOGO_DOCUMENT|image_passe_partout{50,50}
-						|image_recadre{50,50,center}
-						|inserer_attribut{alt,[(#INFO_TITRE{#OBJET,#ID_OBJET}|texte_backend)]})]
-				</BOUCLE_doc>
-				</a>
-			</li>
-		</BOUCLE_selections>
-	</ul>
-	<p><a href="#URL_PAGE{favoris,id_auteur=#ID_AUTEUR}"><:geol:favoris_voir_tous:></a></p>
-</div>
-</B_selections>
+[(#INCLURE{fond=inclure/auteur_liste_favoris,id_auteur})]
 
 [(#PLUGIN{amis}|oui)
 [(#INCLURE{fond=inclure/auteur_liste_amis,id_auteur})]]
