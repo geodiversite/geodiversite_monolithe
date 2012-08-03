@@ -16,7 +16,7 @@
 		<a href="[(#URL_DOCUMENT|url_absolue)]" title="<:geol:doc_telecharger|texte_backend:>" class="telecharger"><:geol:doc_telecharger:></a></BOUCLE_doc>
 	</li>
 	<BOUCLE_nbfav(FAVORIS){id_objet=#ID_ARTICLE}{objet=article} />
-	[<li class="item"><a href="#URL_PAGE{favoris,id_article=#ID_ARTICLE}">(#TOTAL_BOUCLE|singulier_ou_pluriel{geol:favoris_nb_personne,geol:favoris_nb_personnes})</a></li>]
+	[<li class="item"><a href="#URL_PAGE{fans,id_article=#ID_ARTICLE}">(#TOTAL_BOUCLE|singulier_ou_pluriel{geol:favoris_nb_personne,geol:favoris_nb_personnes})</a></li>]
 	<//B_nbfav>
 	[(#PLUGIN{socialtags}|oui)
 	<li class="item socialtags"><:geol:partage_socialtags:> :
