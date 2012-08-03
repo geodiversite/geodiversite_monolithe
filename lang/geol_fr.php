@@ -119,6 +119,7 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 'media_type_textes' => 'Fichiers KML, KMZ, PDF',
 'medias' => 'Médias',
 'message_article_publie_prepa' => 'Vous devez publier votre média afin de pouvoir en ajouter un nouveau.',
+'messages_titre' => 'Messages',
 'modifier' => 'Modifier',
 'modifier_categories' => 'Modifier les catégories',
 'modifier_carte' => 'Modifier la localisation',

@@ -10,7 +10,7 @@
 		<h1 class="h1 fn"><span>#NOM</span></h1>
 	</div>
 	
-	[(#INCLURE{fond=inclure/menu-auteur,id_auteur,page})]
+	[(#INCLURE{fond=inclure/menu-auteur,id_auteur,type-page})]
 	
 	[(#REM) Contacts de l'auteur ]
 	[(#INCLURE{fond=liste/contacts-vignette,
@@ -23,6 +23,7 @@
 	[(#REM) Médias des contacts de l'auteur ]
 	[(#INCLURE{fond=liste/contacts-articles-vignette,
 		id_auteur,
+		cols=3,
 		largeur=200,
 		hauteur=200,
 		info_titre=non,
