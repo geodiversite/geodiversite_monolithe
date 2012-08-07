@@ -5,9 +5,9 @@
 	<p class="comment-meta">
 	<a rel="self bookmark" href="#forum#ID_FORUM" title="<:geol:commentaires_permalink_pour:> <:geol:commentaire:> #ID_FORUM" class="permalink">#</a>
 	<BOUCLE_auteur(AUTEURS){tout}{id_auteur}>
-	[<abbr class="dtreviewed"[ title="(#DATE|date_iso)"]><:geol:commentaires_le_date_jour:> (#DATE|affdate_jourcourt)[ <:geol:commentaires_a_date_heure:>&nbsp;(#DATE|heures)][:(#DATE|minutes)]</abbr>][<span class="item reviewer vcard">, <:par_auteur:> <a rel="nofollow" href="#URL_AUTEUR" class="url spip_in"><strong class="fn n">(#NOM)</strong></a>[(#PLUGIN{gravatar}|oui)[ (#MODELE{gravatar,largeur=32})]]</span>]
+	[<abbr class="dtreviewed"[ title="(#DATE|date_iso)"]><:geol:commentaires_le_date_jour:> (#DATE|affdate_jourcourt)[ <:geol:commentaires_a_date_heure:>&nbsp;(#DATE|heures)][:(#DATE|minutes)]</abbr>][<span class="item reviewer vcard">, <:par_auteur:> <a rel="nofollow" href="#URL_AUTEUR" class="url spip_in"><strong class="fn n">(#NOM)</strong></a>[(#PLUGIN{gravatar}|oui)[ (#MODELE{gravatar,largeur=#ENV{largeur,32}})]]</span>]
 	</BOUCLE_auteur>
-	[<abbr class="dtreviewed"[ title="(#DATE|date_iso)"]><:geol:commentaires_le_date_jour:> (#DATE|affdate_jourcourt)[ <:geol:commentaires_a_date_heure:>&nbsp;(#DATE|heures)][:(#DATE|minutes)]</abbr>][<span class="item reviewer vcard">, <:par_auteur:> [<a rel="external nofollow" href="(#URL_SITE)"[ title="(#NOM_SITE*|attribut_html)"] class="#EDIT{hyperlien} url spip_out">]<strong class="#EDIT{qui} fn n">(#NOM|sinon{[(#PLUGIN{gravatar}|oui)?]})</strong>[</a>(#URL_SITE|oui)][(#PLUGIN{gravatar}|oui)[ (#MODELE{gravatar,email=#EMAIL,largeur=32})]]</span>]
+	[<abbr class="dtreviewed"[ title="(#DATE|date_iso)"]><:geol:commentaires_le_date_jour:> (#DATE|affdate_jourcourt)[ <:geol:commentaires_a_date_heure:>&nbsp;(#DATE|heures)][:(#DATE|minutes)]</abbr>][<span class="item reviewer vcard">, <:par_auteur:> [<a rel="external nofollow" href="(#URL_SITE)"[ title="(#NOM_SITE*|attribut_html)"] class="#EDIT{hyperlien} url spip_out">]<strong class="#EDIT{qui} fn n">(#NOM|sinon{[(#PLUGIN{gravatar}|oui)?]})</strong>[</a>(#URL_SITE|oui)][(#PLUGIN{gravatar}|oui)[ (#MODELE{gravatar,email=#EMAIL,largeur=#ENV{largeur,32}})]]</span>]
 	<//B_auteur>
 	</p>
 	<div class="comment-content description">

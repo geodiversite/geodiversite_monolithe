@@ -5,7 +5,7 @@
 #ANCRE_PAGINATION
 <ul class="liste-items">
 	[<li class="item pagination prev">(#PAGINATION{prev}|trim|sinon{<span class="lien_pagination off">&nbsp;</span>})</li>]
-	<BOUCLE_serie(ARTICLES){id_rubrique}{par id_article}{pagination #ENV{pas_serie,5}}>
+	<BOUCLE_serie(ARTICLES){id_rubrique}{!par id_article}{pagination #ENV{pas_serie,5}}>
 		<li class="item[ (#EXPOSE)]">
 			<a href="#URL_ARTICLE"[ title="(#TITRE|attribut_html)"]>
 			<BOUCLE_doc(DOCUMENTS){id_article}{mode=document}{vu=non}>
