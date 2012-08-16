@@ -223,13 +223,17 @@ var resizeMap = function() {
 		});
 		
 		// init de la carte
-		if ($.browser.msie) {
-			$(window).load(initMap);
-			resizeMap();
-		} else {
-			resizeMap();
-			initMap();
-		};
+		$.getScript('[(#PRODUIRE{fond=javascript/gis.js}|compacte)]', function(){
+			$.getScript('[(#CHEMIN{javascript/leafclusterer.js}|compacte)]',function(){
+				if ($.browser.msie) {
+					$(window).load(initMap);
+					resizeMap();
+				} else {
+					resizeMap();
+					initMap();
+				};
+			});
+		});
 		
 		// window resize ?
 		$(window).resize(function(){
