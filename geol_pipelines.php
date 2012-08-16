@@ -63,6 +63,20 @@ function geol_formulaire_charger($flux){
 }
 
 /**
+ * Insertion dans le pipeline pre_boucle (SPIP)
+ * 
+ * Forcer le critère {tout} sur les boucles rubriques
+ * 
+ * @param array $boucle
+ * @return array $boucle
+ */
+function geol_pre_boucle($boucle){
+	if ($boucle->type_requete == 'rubriques' AND !isset($boucle->modificateur['criteres']['statut']))
+		$boucle->modificateur['criteres']['statut'] = true;
+	return $boucle;
+}
+
+/**
  * Insertion dans le pipeline em_post_upload_medias (plugin Emballe médias)
  * 
  * Dans le cas des fichiers jpg, si on a récup une date, on l'assigne à l'article
