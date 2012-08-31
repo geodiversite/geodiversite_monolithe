@@ -4,28 +4,13 @@
 	<a href="#URL_MOT" class="hop"><:geol:tag_docs_publics{titre=#TITRE}:></a>
 </div>]
 
-<div class="menu">
-	<h2 class="h2"><span><:geol:localisation:></span></h2>
-	<a href="[(#URL_PAGE{carte,id_mot=#ID_MOT}|parametre_url{id_auteur,#ENV{id_auteur}})]">
-	<BOUCLE_ggmap(CONDITION){si #REM|gis_layer_defaut|in_array{#ARRAY{0,google_roadmap,1,google_satellite,2,google_terrain}}|oui}>
-		<img src="http://maps.google.com/maps/api/staticmap?maptype=terrain<B_articles>&amp;markers=size:tiny|color:0x[(#CONFIG{geol/couleur_primaire,#00c0f8}|substr{1,6})]|<BOUCLE_articles(ARTICLES){gis}{id_mot}{id_auteur?}{tout}{0,100}{!par date}{'|'}>[(#LAT|round{4})],[(#LON|round{4})]</BOUCLE_articles>&amp;size=200x200&amp;sensor=false" width="200" height="200" alt="" />
-	</BOUCLE_ggmap>
-	<BOUCLE_ol(CONDITION){si #REM|gis_layer_defaut|in_array{#ARRAY{0,google_roadmap,1,google_satellite,2,google_terrain}}|non}>
-		<img src="http://open.mapquestapi.com/staticmap/v4/getmap?imageType=png&type=map&scalebar=false<B_articles2>&pois=<BOUCLE_articles2(ARTICLES){gis}{id_mot}{id_auteur?}{tout}{0,100}{!par date}{'|'}>pcenter,[(#LAT|round{4})],[(#LON|round{4})]</BOUCLE_articles2></B_articles2>&pois=pcenter,[(#CONFIG{gis/lat,0}|round{4})],[(#CONFIG{gis/lon,0}|round{4})]<//B_articles2>&size=200,200" width="200" height="200" alt="" />
-	</BOUCLE_ol>
-	</a>
-	<ul class="liste-items">
-		[<li class="item"><a href="(#URL_PAGE{carte,id_mot=#ID_MOT}|parametre_url{id_auteur,#ENV{id_auteur}})"><:geol:lien_grande_carte:></a></li>]
-	</ul>
-</div>
+[(#REM) carte ]
+[<div class="menu">
+	(#INCLURE{fond=inclure/mot_carte,id_mot})
+</div>]
 
-<div class="menu suivi">
-	<h2 class="h2"><span><:geol:syndic:></span></h2>
-	<p class="explication"><:geol:explication_suivi_mot:></p>
-	<ul class="liste-items">
-		<li class="item"><a href="[(#URL_PAGE{backend,id_mot=#ID_MOT}|parametre_url{id_auteur,#ENV{id_auteur}})]" class="rss"><:geol:flux_rss:></a></li>
-		<li class="item"><a href="[(#URL_PAGE{geol_kml,dl=oui}|parametre_url{id_mot,#ID_MOT}|parametre_url{id_auteur,#ENV{id_auteur}})]" class="kml"><:geol:flux_kml:></a></li>
-		<li class="item"><a href="[(#URL_PAGE{geol_georss,id_mot=#ID_MOT}|parametre_url{id_auteur,#ENV{id_auteur}})]" class="georss"><:geol:flux_georss:></a></li>
-	</ul>
-</div>
+[(#REM) liens de suivi ]
+[<div class="menu suivi">
+	(#INCLURE{fond=inclure/mot_suivi,id_mot})
+</div>]
 </BOUCLE_navigation_mot>

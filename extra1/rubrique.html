@@ -1,49 +1,14 @@
-<div class="menu">
-	<h2 class="h2"><span><:geol:localisation:></span></h2>
-	<a href="[(#ID_RUBRIQUE|!={#CONFIG{geol/secteur_medias,1}}|?{#URL_PAGE{carte,id_rubrique=#ID_RUBRIQUE},#URL_PAGE{carte}})]">
-	<BOUCLE_ggmap(CONDITION){si #REM|gis_layer_defaut|in_array{#ARRAY{0,google_roadmap,1,google_satellite,2,google_terrain}}|oui}>
-		<img src="http://maps.google.com/maps/api/staticmap?maptype=terrain<B_articles>&amp;markers=size:tiny|color:0x[(#CONFIG{geol/couleur_primaire,#00c0f8}|substr{1,6})]|<BOUCLE_articles(ARTICLES){gis}{branche}{tout}{0,100}{!par date}{'|'}>[(#LAT|round{4})],[(#LON|round{4})]</BOUCLE_articles></B_articles>&amp;markers=size:tiny|color:0x[(#CONFIG{geol/couleur_primaire,#00c0f8}|substr{1,6})]|[(#CONFIG{gis/lat,0}|round{4})],[(#CONFIG{gis/lon,0}|round{4})]<//B_articles>&amp;size=200x200&amp;sensor=false" width="200" height="200" alt="" />
-	</BOUCLE_ggmap>
-	<BOUCLE_ol(CONDITION){si #REM|gis_layer_defaut|in_array{#ARRAY{0,google_roadmap,1,google_satellite,2,google_terrain}}|non}>
-		<img src="http://open.mapquestapi.com/staticmap/v4/getmap?imageType=png&type=map&scalebar=false<B_articles2>&pois=<BOUCLE_articles2(ARTICLES){gis}{branche}{tout}{0,100}{!par date}{'|'}>pcenter,[(#LAT|round{4})],[(#LON|round{4})]</BOUCLE_articles2></B_articles2>&pois=pcenter,[(#CONFIG{gis/lat,0}|round{4})],[(#CONFIG{gis/lon,0}|round{4})]<//B_articles2>&size=200,200" width="200" height="200" alt="" />
-	</BOUCLE_ol>
-	</a>
-	<ul class="liste-items">
-		[<li class="item"><a href="(#ID_RUBRIQUE|!={#CONFIG{geol/secteur_medias,1}}|?{#URL_PAGE{carte,id_rubrique=#ID_RUBRIQUE},#URL_PAGE{carte}})"><:geol:lien_grande_carte:></a></li>]
-	</ul>
-</div>
+[(#REM) carte ]
+[<div class="menu">
+	(#INCLURE{fond=inclure/rubrique_carte,id_rubrique})
+</div>]
 
 [(#REM) affiche un plan de la rubrique ]
-<B_sous_rubriques>
-<div class="menu categories">
-	<h2 class="h2"><span><:geol:categories:></span></h2>
-	<ul class="liste-items">
-		<BOUCLE_sous_rubriques(RUBRIQUES) {id_parent=#CONFIG{geol/secteur_categories,2}} {par num titre, titre}{tout}>
-		<li class="item[ (#EXPOSE{on,off})]">
-			<a href="#URL_RUBRIQUE">[(#TITRE)]</a>
-			[(#REM) Une boucle recursive pour le mini plan]
-			<B_miniplan>
-			<ul class="liste-items">
-				<BOUCLE_miniplan(RUBRIQUES) {id_parent} {par num titre, titre}{tout}>
-				<li class="item[ (#EXPOSE{on,off})]">
-					<a href="#URL_RUBRIQUE">[(#TITRE)]</a>
-					<BOUCLE_m2(BOUCLE_miniplan)></BOUCLE_m2>
-				</li>
-				</BOUCLE_miniplan>
-			</ul>
-			</B_miniplan>
-		</li>
-		</BOUCLE_sous_rubriques>
-	</ul>
-	</div>
-</B_sous_rubriques>
+[<div class="menu categories">
+	(#INCLURE{fond=inclure/rubrique_plan,id_rubrique})
+</div>]
 
-<div class="menu suivi">
-	<h2 class="h2"><span><:geol:syndic:></span></h2>
-	<p class="explication"><:geol:explication_suivi_categorie:></p>
-	<ul class="liste-items">
-		<li class="item"><a href="[(#URL_PAGE{backend}|parametre_url{id_rubrique,#ID_RUBRIQUE})]" class="rss"><:geol:flux_rss:></a></li>
-		<li class="item"><a href="[(#URL_PAGE{geol_kml,dl=oui}|parametre_url{id_rubrique,#ID_RUBRIQUE})]" class="kml"><:geol:flux_kml:></a></li>
-		<li class="item"><a href="[(#URL_PAGE{geol_georss}|parametre_url{id_rubrique,#ID_RUBRIQUE})]" class="georss"><:geol:flux_georss:></a></li>
-	</ul>
-</div>
+[(#REM) liens de suivi ]
+[<div class="menu suivi">
+	(#INCLURE{fond=inclure/rubrique_suivi,id_rubrique})
+</div>]

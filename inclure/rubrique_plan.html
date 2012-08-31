@@ -1,0 +1,21 @@
+<B_sous_rubriques>
+<h2 class="h2"><span><:geol:categories:></span></h2>
+<ul class="liste-items">
+	<BOUCLE_sous_rubriques(RUBRIQUES) {id_parent=#CONFIG{geol/secteur_categories,2}} {par num titre, titre}{tout}>
+	<li class="item[ (#EXPOSE{on,off})]">
+		<a href="#URL_RUBRIQUE">[(#TITRE)]</a>
+		[(#REM) Une boucle recursive pour le mini plan]
+		<B_miniplan>
+		<ul class="liste-items">
+			<BOUCLE_miniplan(RUBRIQUES) {id_parent} {par num titre, titre}{tout}>
+			<li class="item[ (#EXPOSE{on,off})]">
+				<a href="#URL_RUBRIQUE">[(#TITRE)]</a>
+				<BOUCLE_m2(BOUCLE_miniplan)></BOUCLE_m2>
+			</li>
+			</BOUCLE_miniplan>
+		</ul>
+		</B_miniplan>
+	</li>
+	</BOUCLE_sous_rubriques>
+</ul>
+</B_sous_rubriques>
