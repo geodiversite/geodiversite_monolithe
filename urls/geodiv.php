@@ -4,7 +4,17 @@ if (!defined("_ECRIRE_INC_VERSION")) return; // securiser
 
 define('URLS_GEODIV_EXEMPLE', 'media12');
 
-// http://doc.spip.org/@_generer_url_html
+/**
+ * Generer l'url geodiv
+ *
+ * http://doc.spip.org/@_generer_url_arbo
+ *
+ * @param string $type
+ * @param int $id
+ * @param string $args
+ * @param string $ancre
+ * @return string
+ */
 function _generer_url_geodiv($type, $id, $args='', $ancre='') {
 
 	if ($type == 'forum') {
@@ -36,8 +46,19 @@ function _generer_url_geodiv($type, $id, $args='', $ancre='') {
 	return _DIR_RACINE . $type . $id . ($args ? "?$args" : '') .($ancre ? "#$ancre" : '');
 }
 
-// retrouver les parametres d'une URL dite "html"
-// http://doc.spip.org/@urls_html_dist
+/**
+ * API : retourner l'url d'un objet si i est numerique
+ * ou decoder cette url si c'est une chaine
+ * array([contexte],[type],[url_redirect],[fond]) : url decodee
+ *
+ * http://doc.spip.org/@urls_arbo_dist
+ *
+ * @param string|int $i
+ * @param string $entite
+ * @param string|array $args
+ * @param string $ancre
+ * @return array|string
+ */
 function urls_geodiv_dist($i, $entite, $args='', $ancre='') {
 	$contexte = $GLOBALS['contexte']; // recuperer aussi les &debut_xx
 
@@ -51,13 +72,24 @@ function urls_geodiv_dist($i, $entite, $args='', $ancre='') {
 	$url = $i;
 
 	// Decoder l'url html, page ou standard
-	$objets = 'article|breve|rubrique|mot|auteur|site|syndic';
+	$objets = 'article|breve|rubrique|mot|auteur|site|syndic|media|cat|tag';
 	if (preg_match(
 	',^(?:[^?]*/)?('.$objets.')([0-9]+)(?:\.html)?([?&].*)?$,', $url, $regs)
 	OR preg_match(
 	',^(?:[^?]*/)?('.$objets.')\.php3?[?]id_\1=([0-9]+)([?&].*)?$,', $url, $regs)
 	OR preg_match(
 	',^(?:[^?]*/)?(?:spip[.]php)?[?]('.$objets.')([0-9]+)(&.*)?$,', $url, $regs)) {
+		switch ($regs[1]){
+			case 'media':
+				$regs[1] = 'article';
+				break;
+			case 'cat':
+				$regs[1] = 'rubrique';
+				break;
+			case 'tag':
+				$regs[1] = 'mot';
+				break;
+		}
 		$type = preg_replace(',s$,', '', table_objet($regs[1]));
 		$_id = id_table_objet($regs[1]);
 		$id_objet = $regs[2];
