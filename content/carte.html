@@ -150,7 +150,7 @@ var resizeMap = function() {
 			
 			// charger les markers sauf si on superpose un kml
 			[(#GET{kml}|non)
-			$.getJSON("#PRODUIRE{fond=geol_markers.json,id_auteur=#ENV{id_auteur},id_mot=#ENV{id_mot},id_rubrique=#ENV{id_rubrique}}",
+			$.getJSON("#PRODUIRE{fond=geol_markers.json,id_auteur=#ENV{id_auteur},id_mot=#ENV{id_mot},id_rubrique=#ENV{id_rubrique},recherche=#ENV{recherche}}",
 				function(data) {
 					if (data){
 						parseData(data,map);
@@ -159,7 +159,7 @@ var resizeMap = function() {
 			);
 			]
 			
-			[(#ENV{id_auteur}|oui|ou{#ENV{id_mot}|oui}|ou{#ENV{id_rubrique}|ou{#GET{kml}|oui}|oui})
+			[(#ENV{id_auteur}|oui|ou{#ENV{id_mot}}|ou{#ENV{id_rubrique}}|ou{#GET{kml}}|ou{#ENV{recherche}})
 			// carte filtree
 			infoFilter();
 			]
@@ -174,13 +174,14 @@ var resizeMap = function() {
 		var infoFilter = function() {
 			var close_filtre = '<a href="#URL_PAGE{carte}" id="close_filtre" title="<:geol:recherche_retirer_filtre|attribut_html:>"><:geol:annuler:></a>';
 			var filtre = new Array();
+			[filtre.push('#ENV{recherche}');(#ENV{recherche}|oui)]
 			[filtre.push('#INFO_NOM{auteur,#ENV{id_auteur}}');(#ENV{id_auteur}|oui)]
 			[filtre.push('#INFO_TITRE{mot,#ENV{id_mot}}');(#ENV{id_mot}|oui)]
 			[filtre.push('#INFO_TITRE{rubrique,#ENV{id_rubrique}}');(#ENV{id_rubrique}|oui)]
 			[(#GET{kml}|oui)
 			filtre.push('#INFO_TITRE{article,#ENV{id_article}}');]
 			$('<span class="info_filtre">'+ filtre.join(", ") +' '+ close_filtre +'</span>')
-				.insertBefore('#menu_moi')
+				.prependTo('#nav')
 				.hide().fadeIn(3500);
 		};
 		
