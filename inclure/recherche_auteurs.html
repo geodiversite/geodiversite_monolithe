@@ -1,0 +1,13 @@
+<B_auteurs>
+<h2 class="h2"><span><:geol:contributeurs_les:></span></h2>
+<ul class="liste-items">
+<BOUCLE_auteurs(AUTEURS){recherche} {tout}{!par points}{0,10}>
+	<li class="item vcard">
+		<a href="#URL_AUTEUR">
+			<span class="titre fn">#NOM</span>
+			[(#PLUGIN{gravatar}|oui)[(#MODELE{gravatar,id_auteur,largeur=30})]]
+		</a>
+	</li>
+</BOUCLE_auteurs>
+</ul>
+</B_auteurs>
