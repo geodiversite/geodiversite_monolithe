@@ -26,7 +26,7 @@ function geodiv_liste_medias($args) {
 	$secteur_medias = lire_config('geol/secteur_medias',1);
 
 	$what[] = 'articles.id_article';
-	$from = 'spip_articles as articles LEFT JOIN spip_auteurs_liens AS auteurs ON articles.id_article=auteurs.id_article and auteurs.objet="article"';
+	$from = 'spip_articles as articles LEFT JOIN spip_auteurs_liens AS auteurs ON articles.id_article=auteurs.id_objet and auteurs.objet="article"';
 	$where = is_array($args['where']) ? $args['where'] : array();
 	$where[] = 'articles.id_secteur='.intval($secteur_medias);
 	$order = is_array($args['tri']) ? $args['tri'] : array('!date');
