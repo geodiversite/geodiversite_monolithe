@@ -217,7 +217,7 @@ function geodiv_lire_media($args){
 	 * On met juste leur id_auteur + nom, si besoin de plus une autre requête sur l'auteur est à effectuer 
 	 */
 	if((count($champs_demandes) == 0) || in_array('auteurs',$champs_demandes)){
-	$auteurs = sql_select('auteurs.nom, auteurs.id_auteur','spip_auteurs AS auteurs INNER JOIN spip_auteurs_liens AS L1 ON L1.id_auteur = auteurs.id_auteur INNER JOIN spip_articles AS L2 ON L2.id_article = L1.id_objet',"L1.objet='article' auteurs.statut != '5poubelle' AND L2.id_article = ".intval($res['result'][0]['id_article']));
+	$auteurs = sql_select('auteurs.nom, auteurs.id_auteur','spip_auteurs AS auteurs INNER JOIN spip_auteurs_liens AS L1 ON L1.id_auteur = auteurs.id_auteur INNER JOIN spip_articles AS L2 ON L2.id_article = L1.id_objet',"L1.objet='article' AND auteurs.statut != '5poubelle' AND L2.id_article = ".intval($res['result'][0]['id_article']));
 		while($auteur=sql_fetch($auteurs)){
 			$res['result'][0]['auteurs'][] = $auteur;
 		}
@@ -242,7 +242,7 @@ function geodiv_lire_media($args){
 	if((count($champs_demandes) == 0) || in_array('tags',$champs_demandes)){
 		$tags_group = (intval($config['groupe_tags']) > 0) ? intval($config['groupe_tags']) : intval(lire_config('spipicious/groupe_mot'));
 		if($tags_group > 0){
-			$tous_tags = sql_select('mots.id_mot, mots.titre','spip_mots AS `mots` INNER JOIN spip_mots_articles AS L1 ON ( L1.id_mot = mots.id_mot )','L1.id_article = '.intval($args['id_article']).' AND (mots.id_groupe = '.$tags_group.')');
+			$tous_tags = sql_select('mots.id_mot, mots.titre','spip_mots AS `mots` INNER JOIN spip_mots_liens AS L1 ON ( L1.id_mot = mots.id_mot )','L1.id_objet = '.intval($args['id_article']).' AND (L1.objet = "article") AND (mots.id_groupe = '.$tags_group.')');
 			while($tag=sql_fetch($tous_tags)){
 				$res['result'][0]['tags'][] = $tag;
 			}
@@ -256,7 +256,7 @@ function geodiv_lire_media($args){
 	if((count($champs_demandes) == 0) || in_array('echelle',$champs_demandes)){
 		$echelle_group = (intval($config['groupe_echelle']) > 0) ? intval($config['groupe_echelle']) : 0;
 		if($echelle_group > 0){
-			$echelle = sql_fetsel('mots.id_mot, mots.titre','spip_mots AS `mots` INNER JOIN spip_mots_articles AS L1 ON ( L1.id_mot = mots.id_mot )','L1.id_article = '.intval($args['id_article']).' AND (mots.id_groupe = '.$echelle_group.')');
+			$echelle = sql_fetsel('mots.id_mot, mots.titre','spip_mots AS `mots` INNER JOIN spip_mots_liens AS L1 ON ( L1.id_mot = mots.id_mot )','L1.id_objet = '.intval($args['id_article']).' AND (L1.objet = "article") AND (mots.id_groupe = '.$echelle_group.')');
 			if(is_array($echelle)){
 				$res['result'][0]['echelle'][] = $echelle;
 			}
