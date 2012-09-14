@@ -26,7 +26,7 @@ function geodiv_liste_medias($args) {
 	$secteur_medias = lire_config('geol/secteur_medias',1);
 
 	$what[] = 'articles.id_article';
-	$from = 'spip_articles as articles LEFT JOIN spip_auteurs_articles AS auteurs ON articles.id_article=auteurs.id_article';
+	$from = 'spip_articles as articles LEFT JOIN spip_auteurs_liens AS auteurs ON articles.id_article=auteurs.id_article and auteurs.objet="article"';
 	$where = is_array($args['where']) ? $args['where'] : array();
 	$where[] = 'articles.id_secteur='.intval($secteur_medias);
 	$order = is_array($args['tri']) ? $args['tri'] : array('!date');
@@ -217,7 +217,7 @@ function geodiv_lire_media($args){
 	 * On met juste leur id_auteur + nom, si besoin de plus une autre requête sur l'auteur est à effectuer 
 	 */
 	if((count($champs_demandes) == 0) || in_array('auteurs',$champs_demandes)){
-		$auteurs = sql_select('auteurs.nom, auteurs.id_auteur','spip_auteurs AS auteurs INNER JOIN spip_auteurs_articles AS L1 ON ( L1.id_auteur = auteurs.id_auteur ) INNER JOIN spip_articles AS L2 ON ( L2.id_article = L1.id_article )',"auteurs.statut != '5poubelle' AND L2.id_article = ".intval($res['result'][0]['id_article']));
+	$auteurs = sql_select('auteurs.nom, auteurs.id_auteur','spip_auteurs AS auteurs INNER JOIN spip_auteurs_liens AS L1 ON L1.id_auteur = auteurs.id_auteur INNER JOIN spip_articles AS L2 ON L2.id_article = L1.id_objet',"L1.objet='article' auteurs.statut != '5poubelle' AND L2.id_article = ".intval($res['result'][0]['id_article']));
 		while($auteur=sql_fetch($auteurs)){
 			$res['result'][0]['auteurs'][] = $auteur;
 		}
