@@ -1,5 +1,5 @@
 #SET{cols,#ENV{cols,3}}<B_auteurs>
-<div class="liste articles boites[ cols(#GET{cols})]">
+<div class="liste auteurs boites[ cols(#GET{cols})]">
 	#ANCRE_PAGINATION
 	<BOUCLE_combien(AUTEURS){tout} />
 	[<h2 class="h2">(#GRAND_TOTAL|singulier_ou_pluriel{geol:contributeur,geol:contributeurs})</h2>]
@@ -12,7 +12,7 @@
 	</div>
 	<ul class="liste-items">
 		<BOUCLE_auteurs(AUTEURS) {par #ENV{tri,nom}}{inverse #ENV{senstri,0}}{tout} {pagination #ENV{pas,#GET{cols}|mult{3}}}>
-		<li class="item[ first(#COMPTEUR_BOUCLE|modulo{#GET{cols}}|=={1}|oui)] article_vignette">
+		<li class="item[ first(#COMPTEUR_BOUCLE|modulo{#GET{cols}}|=={1}|oui)]">
 			[(#INCLURE{fond=inclure/auteur-vignette,id_auteur})]
 		</li>
 		</BOUCLE_auteurs>

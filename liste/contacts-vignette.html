@@ -1,5 +1,5 @@
 #SET{cols,#ENV{cols,3}}<B_auteurs>
-<div class="liste articles boites[ cols(#GET{cols})]">
+<div class="liste auteurs contacts boites[ cols(#GET{cols})]">
 	#ANCRE_PAGINATION
 	<BOUCLE_combien(AUTEURS){tout}{amis #ENV{id_auteur}} />
 	[<h2 class="h2">(#GRAND_TOTAL|singulier_ou_pluriel{geol:amis_nb_un,geol:amis_nb})[ ((#GRAND_TOTAL))]</h2>]

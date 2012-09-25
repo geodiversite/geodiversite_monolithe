@@ -1,6 +1,6 @@
 #CACHE{0}
 #SET{cols,#ENV{cols,3}}<B_auteurs>
-<div class="liste articles boites[ cols(#GET{cols})]">
+<div class="liste auteurs fans boites[ cols(#GET{cols})]">
 	#ANCRE_PAGINATION
 	<BOUCLE_combien(FAVORIS){id_objet=#ENV{id_article}}{objet=article} />
 	[<h2 class="h2">(#GRAND_TOTAL|singulier_ou_pluriel{geol:contributeur,geol:contributeurs})</h2>]
@@ -10,7 +10,7 @@
 	</div>
 	<ul class="liste-items">
 		<BOUCLE_auteurs(FAVORIS){id_objet=#ENV{id_article}}{objet=article} {!par maj} {pagination #ENV{pas,#GET{cols}|mult{3}}}>
-		<li class="item[ first(#COMPTEUR_BOUCLE|modulo{#GET{cols}}|=={1}|oui)] article_vignette">
+		<li class="item[ first(#COMPTEUR_BOUCLE|modulo{#GET{cols}}|=={1}|oui)]">
 			[(#INCLURE{fond=inclure/auteur-vignette,id_auteur=#ID_AUTEUR})]
 		</li>
 		</BOUCLE_auteurs>
