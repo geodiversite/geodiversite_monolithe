@@ -56,6 +56,9 @@ function geol_installation(){
 	// thème bootstrap pour les box
 	ecrire_config('mediabox/skin', 'bootstrap');
 	
+	// publication des articles post-datés
+	ecrire_config('post_dates', 'oui');
+	
 	// forcer l'utilisation des mots clés
 	if (lire_meta('articles_mots') == 'non') ecrire_meta('articles_mots', 'oui');
 		
