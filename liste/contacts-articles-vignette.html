@@ -14,7 +14,7 @@
 	</div>
 	<ul class="liste-items">
 		<BOUCLE_articles(ARTICLES){id_auteur IN #GET*{auteurs}}{!par #ENV{tri,date}}{pagination #ENV{pas,#GET{cols}|mult{3}}}>
-		<li class="item[ first(#COMPTEUR_BOUCLE|modulo{#GET{cols}}|=={1}|oui)] article_vignette">
+		<li class="item[ first(#COMPTEUR_BOUCLE|modulo{#GET{cols}}|=={1}|oui)]">
 			[(#INCLURE{fond=inclure/article-vignette,id_article,env})]
 		</li>
 		</BOUCLE_articles>

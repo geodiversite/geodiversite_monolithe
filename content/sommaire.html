@@ -50,7 +50,7 @@
 		<h2 class="h2"><:geol:dernieres_contribs|majuscules:></h2>
 		<ul class="liste-items">
 			<BOUCLE_articles(ARTICLES) {!par date} {0,4}{id_rubrique!=-1}>
-			<li class="item article_vignette">
+			<li class="item">
 				<BOUCLE_doc(DOCUMENTS){id_article}{mode=document}{vu=non}>
 				[<a href="#_articles:URL_ARTICLE" title="#_articles:TITRE">
 					(#LOGO_DOCUMENT|image_passe_partout{175,100}
