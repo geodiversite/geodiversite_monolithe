@@ -39,6 +39,10 @@ function geol_upgrade($nom_meta_base_version,$version_cible){
 			ecrire_config('emballe_medias/fichiers/publier_dans_secteur','on');
 			ecrire_meta($nom_meta_base_version,$current_version='0.2','non');
 		}
+		if (version_compare($current_version,'0.2.1','<')){
+			ecrire_config('nuage/score_min',0);
+			ecrire_meta($nom_meta_base_version,$current_version='0.2.1','non');
+		}
 	}
 }
 
