@@ -9,6 +9,20 @@
 	</BOUCLE_art_auteur>
 	<BOUCLE_txtaide(ARTICLES){page=aide}{0,1}>
 	<div class="mot_doux"><:geol:mot_doux_premier_upload{url=#URL_PAGE{aide}}:></div>
+	<script type="text/javascript">
+	<!--
+	;(function($){
+		$(function(){
+		if($.modalbox){
+			$('.mot_doux a').click(function(){
+				$.modalbox(parametre_url($(this).attr('href'),'var_zajax','content'),{maxWidth:'600px'});
+				return false;
+			});
+		}
+		});
+	})(jQuery);
+	-->
+	</script>
 	</BOUCLE_txtaide>
 	</B_txtaide>
 	[(#REM)
