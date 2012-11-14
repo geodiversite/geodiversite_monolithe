@@ -1,5 +1,13 @@
 <B_sous_rubriques>
 <h2 class="h2"><span><:geol:categories:></span></h2>
+
+<BOUCLE_courante(RUBRIQUES){id_rubrique}>
+<p><:geol:categorie_acceder:> : <a href="#URL_RUBRIQUE" id="rubcourante">#TITRE</a></p>
+</BOUCLE_courante>
+
+<p id="showmenu"><a href="#">Explorer les catégories</a></p>
+
+<div id="podmenu" class="none">
 <ul class="liste-items">
 	<BOUCLE_sous_rubriques(RUBRIQUES) {id_parent=#CONFIG{geol/secteur_categories,2}} {par num titre, titre}{tout}>
 	<li class="item[ (#EXPOSE{on,off})]">
@@ -18,4 +26,33 @@
 	</li>
 	</BOUCLE_sous_rubriques>
 </ul>
+</div>
+<script type="text/javascript">
+<!--
+;(function($){
+	$(function(){
+		$.getScript('[(#CHEMIN{javascript/fg.menu.js}|compacte)]',function(){
+			var titre = ['(#INFO_TITRE{rubrique,#CONFIG{geol/secteur_medias,1}}|texte_script)'];
+			$('#showmenu').fgMenu({
+				content: $('#podmenu').html(),
+				width: $('.menu.categories').width(),	
+				maxHeight: 220,
+				directionV: 'down',
+				detectV: false,
+				showSpeed: 300,
+				backLink: false,
+				crumbDefaultText: titre,
+				topLinkText: titre,
+				select: function (item) {
+					$('#rubcourante').text($(item).text()).attr('href',$(item).attr('href'));
+				},
+				clickItem: function (item) {
+					$('#rubcourante').text($(item).text()).attr('href',$(item).attr('href'));
+				}
+			});
+		});
+	});
+})(jQuery);
+-->
+</script>
 </B_sous_rubriques>

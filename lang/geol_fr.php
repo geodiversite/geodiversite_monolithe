@@ -23,6 +23,7 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 'autres_medias' => 'Autres médias',
 
 'carte' => 'Carte',
+'categorie_acceder' => 'Accéder à',
 'categories' => 'Catégories',
 'categories_scientifiques' => 'Catégories scientifiques',
 'cfg_descr_geol' => 'Configuration du squelette Gédiversité',
