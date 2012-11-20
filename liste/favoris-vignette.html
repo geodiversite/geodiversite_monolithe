@@ -10,7 +10,7 @@
 		<li class="item[ first(#COMPTEUR_BOUCLE|modulo{#GET{cols}}|=={1}|oui)]">
 			[(#INCLURE{fond=inclure/article-vignette,id_article=#ID_OBJET,env})]
 			[(#SESSION{id_auteur}|=={#ENV{id_auteur}}|oui)
-			[(#BOUTON_ACTION{<:geol:favoris_retirer:>,#URL_ACTION_AUTEUR{supprimer_favori,#ID_FAVORI,#SELF},ajax retirer_favori})]]
+			[(#BOUTON_ACTION{<:geol:favoris_retirer:>,#URL_ACTION_AUTEUR{supprimer_favori,#ID_FAVORI,#SELF},ajax lien_action})]]
 		</li>
 		</BOUCLE_articles>
 	</ul>

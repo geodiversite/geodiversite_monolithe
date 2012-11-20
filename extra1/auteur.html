@@ -9,7 +9,7 @@
 </div>
 </BOUCLE_merci_bonux>
 
-<div class="menu">
+<div class="menu profil">
 	<h2 class="h2"><span><:geol:profil:></span></h2>
 	
 	<div class="vcard #EDIT{profil}">[(#REM) microformat vcard]
@@ -51,10 +51,8 @@
 	
 </div>
 
-[(#INCLURE{fond=inclure/auteur_liste_favoris,id_auteur})]
-
-[(#PLUGIN{amis}|oui)
-[(#INCLURE{fond=inclure/auteur_liste_amis,id_auteur})]]
+[(#PLUGIN{amis}|non)
+[(#INCLURE{fond=inclure/auteur_liste_favoris,id_auteur})]]
 
 <div class="menu suivi">
 	<h2 class="h2"><span><:geol:syndic:></span></h2>

@@ -1,17 +1,27 @@
-#SET{cols,#ENV{cols,3}}<B_articles>
+[(#SET{defaut_tri,#ARRAY{
+	date,#ENV{date_sens,-1},
+	points,-1,
+	popularite,-1,
+	rang,1
+}})][(#SET{cols,#ENV{cols,3}})]
+<B_articles>
 <div class="liste articles boites[ cols(#GET{cols})]">
 	#ANCRE_PAGINATION
 	[<h2 class="h2">(#GRAND_TOTAL|singulier_ou_pluriel{geol:contrib,geol:contribs})[ ((#GRAND_TOTAL))]</h2>]
 	<div class="liens_options">
 		<strong><:geol:trier:></strong> 
-		<a href="[(#SELF|parametre_url{"tri","date"})]" class="ajax[(#ENV{tri,date}|=={date}|oui) on]"><:geol:trier_par_date:></a>, 
-		<a href="[(#SELF|parametre_url{"tri","popularite"})]" class="ajax[(#ENV{tri,date}|=={popularite}|oui) on]"><:geol:trier_par_pop:></a> |
+		[(#ENV{par}|=={rang}|oui)[(#TRI{rang,<:geol:trier_par_rang:>,ajax}),]]
+		[(#TRI{date,<:geol:trier_par_date:>,ajax}), ]
+		[(#TRI{popularite,<:geol:trier_par_pop:>,ajax}) | ]
 		[(#INCLURE{fond=inclure/listes_liens_pas,pas,tri,cols=#GET{cols},self=#SELF})]
 	</div>
 	<ul class="liste-items">
-		<BOUCLE_articles(ARTICLES) {id_mot?}{id_auteur?}{branche?}{recherche?}{texte?=#ENV{texte}}{doublons} {!par #ENV{tri,date}} {pagination #ENV{pas,#GET{cols}|mult{3}}}>
+		<BOUCLE_articles(ARTICLES) {id_mot?}{id_auteur?}{id_grappe?}{branche?}{recherche?}{texte?=#ENV{texte}}{doublons} {tri #ENV{par,date},#GET{defaut_tri}} {pagination #ENV{pas,#GET{cols}|mult{3}}}>
 		<li class="item[ first(#COMPTEUR_BOUCLE|modulo{#GET{cols}}|=={1}|oui)]">
 			[(#INCLURE{fond=inclure/article-vignette,id_article,env})]
+			[(#ENV{id_grappe}|oui)[(#SESSION{id_auteur}|=={#INFO_ID_ADMIN{grappe,#ENV{id_grappe}}}|oui)
+			[(#BOUTON_ACTION{<:geol:album_delier_media:>,#URL_ACTION_AUTEUR{lier_objets,delier/grappes/#ENV{id_grappe}/article/#ID_ARTICLE,#SELF},ajax lien_action})]
+			]]
 		</li>
 		</BOUCLE_articles>
 	</ul>
