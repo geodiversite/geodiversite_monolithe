@@ -11,6 +11,9 @@
 			[(#URL_PAGE{favoris,id_auteur=#ID_AUTEUR}|lien_ou_expose{<:geol:favoris:>,#SI_PAGE{favoris}})]<span class="sep"> | </span>
 		</li>
 		<li class="item">
+			[(#URL_PAGE{albums,id_auteur=#ID_AUTEUR}|lien_ou_expose{<:geol:albums_titre:>,#SI_PAGE{albums}})][(#REM)<span class="sep"> | </span>
+		</li>
+		<li class="item">
 			[(#URL_PAGE{contacts,id_auteur=#ID_AUTEUR}|lien_ou_expose{<:geol:amis_titre:>,#SI_PAGE{contacts}})]
 		</li>[(#SESSION{id_auteur}|=={#ID_AUTEUR}|oui)
 		<li class="item"><span class="sep"> | </span>
@@ -21,6 +24,7 @@
 				<:geol:amis_ajouter:>
 			</a>
 		</li>]
+		]
 	</ul>
 </div>
 </BOUCLE_auteur>

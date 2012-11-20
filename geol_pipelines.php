@@ -28,7 +28,7 @@ function geol_styliser($flux){
 	$fond = $flux['args']['fond'];
 	$ext = $flux['args']['ext'];
 	if ($flux['args']['id_rubrique'] == '-1'
-		&& $flux['args']['contexte']['type'] == 'article'
+		&& $flux['args']['contexte']['type-page'] == 'article'
 		&& $flux['args']['contexte']['composition'] == ''
 	){
 		$flux['args']['contexte']['composition'] = "page";

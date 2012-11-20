@@ -4,7 +4,7 @@
 <div class="comments-list">
 	<h2 class="h2"><:geol:commentaires_titre:></h2>
 	<ul>
-		<BOUCLE_comments-list(FORUMS) {statut IN publie} {id_rubrique ?}{id_article ?}{id_breve ?}{id_syndic ?} {plat} {par date}>
+		<BOUCLE_comments-list(FORUMS){statut IN publie}{id_rubrique ?}{id_article ?}{id_breve ?}{id_syndic ?}{id_grappe ?}{plat}{par date}>
 		<li class="[(#COMPTEUR_BOUCLE|alterner{'odd','even'})][ (#COMPTEUR_BOUCLE|=={1}|oui)first][ (#EXPOSE)]">
 			[(#INCLURE{fond=modeles/comment,id_forum,largeur,compteur=#COMPTEUR_BOUCLE})]
 		</li>
