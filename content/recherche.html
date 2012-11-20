@@ -11,7 +11,7 @@
 	[(#RECHERCHE|sinon{#ENV{recherche_libre}}|?{#SET{tri,#ENV{tri,points}},#SET{tri,#ENV{tri,date}}})]
 	[(#INCLURE{fond=liste/recherche-articles-vignette,
 		largeur=200,hauteur=200,info_auteur=non,
-		tri=#GET{tri},
+		par=#GET{tri},
 		recherche=#ENV{recherche_libre}|sinon{#ENV{recherche}},
 		categories=#ENV**{categories,1},
 		id_mot=#ENV{echelle},

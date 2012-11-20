@@ -6,7 +6,7 @@ version="1.0" encoding="#CHARSET" ?>
 <Document>
 [<name>(#NOM_SITE_SPIP|texte_backend)</name>]
 [<description>(#DESCRIPTIF_SITE_SPIP|supprimer_tags|texte_backend)</description>]
-<BOUCLE_un_article(ARTICLES){gis}{id_mot ?}{id_auteur ?}{branche ?}{recherche ?}{id_article ?}{!par date}>
+<BOUCLE_un_article(ARTICLES){gis}{id_mot ?}{id_auteur ?}{id_grappe ?}{branche ?}{recherche ?}{id_article ?}{!par date}>
 	[(#SET{logo_doc,''})]
 	<B_imaxe>
 	<Placemark id="#art_#ID_ARTICLE">

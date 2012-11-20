@@ -18,6 +18,14 @@
 		ajax})
 </div>]]
 
+[(#REM) albums lies au media ]
+[(#PLUGIN{geol_albums}|oui)
+[<div class="menu albums">
+	(#INCLURE{fond=inclure/media_albums,
+		id_article,
+		ajax=albums})
+</div>]]
+
 [(#REM) partage / telechargement ]
 [<div class="menu">
 	(#INCLURE{fond=inclure/media_partage,
