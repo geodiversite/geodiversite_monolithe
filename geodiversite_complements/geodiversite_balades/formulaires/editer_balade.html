@@ -1,0 +1,65 @@
+<div class="formulaire_spip formulaire_editer formulaire_editer_balade formulaire_editer_balade-#ENV{id_grappe,nouveau}">
+[<p class="reponse_formulaire reponse_formulaire_ok">(#ENV**{message_ok})</p>]
+[<p class="reponse_formulaire reponse_formulaire_erreur">(#ENV*{message_erreur})</p>]
+[(#ENV{editable}|oui)
+<form method="post" action="#ENV{action}"><div>
+[(#REM) declarer les hidden qui declencheront le service du formulaire
+parametre : url d'action ]
+#ACTION_FORMULAIRE{#ENV{action}}
+[(#SAISIE{hidden,id_gis})]
+[(#SAISIE{hidden,id_objet,valeur_forcee=#ENV{id_grappe}})]
+[(#SAISIE{hidden,objet,valeur_forcee=grappe})]
+[(#SAISIE{hidden,lon})]
+[(#SAISIE{hidden,lat})]
+[(#SAISIE{hidden,zoom})]
+[(#SAISIE{hidden,titre,defaut=#INFO_TITRE{grappe,#ENV{id_grappe}}})]
+<ul>
+	<li class="fieldset carte"><fieldset>
+		<legend><:geol_balades:legend_tracer:></legend>
+		[(#ENV{id_gis}|intval|non)
+		<p class='explication'>
+			<a href="#" id="tracer"><:geol_balades:explication_tracer:></a> |
+			<a href="#" id="importer"><:geol_balades:explication_importer:></a>
+		</p>]
+		<ul>
+			[(#SAISIE{carte,editer_gis_#ENV{id_gis},
+				recherche=non,
+				boutons=#ARRAY{marker,non,polygon,non,rectangle,non},
+				path_styles=#ARRAY{color,#CONFIG{geol/couleur_primaire,#00c0f8},weight,3,opacity,1,dashArray,5},
+				env})]
+			[(#REM) ajouter les points des articles de l'album à la carte ]
+			[(#INCLURE{fond=inclure/album_charger_medias,id_grappe,id_gis,editer=oui})]
+			<script type="text/javascript">
+			<!--
+			;(function($){
+				$(function(){
+					$('li.import').hide();
+					$('#tracer').click(function(){
+						$('li.import').hide();
+						$('li.saisie_carte').show();
+					});
+					$('#importer').click(function(){
+						$('li.import').show();
+						$('li.saisie_carte').hide();
+					});
+				});
+			})(jQuery);
+			-->
+			</script>
+		</ul>
+	</fieldset></li>
+	<li class="fieldset rang">
+		<fieldset>
+		<legend><:geol_balades:legend_ordonner:></legend>
+		<ul>
+			[(#INCLURE{fond=formulaires/inc-editer_balade-liste,env})]
+		</ul>
+		</fieldset>
+	</li>
+</ul>
+[(#REM) ajouter les saisies supplementaires : extra et autre, a cet endroit ]
+<!--extra-->
+<p class="boutons"><input type="submit" name="save" class="submit" value="<:bouton_enregistrer:>" /></p>
+</div>
+</form>]
+</div>

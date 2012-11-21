@@ -1,0 +1,49 @@
+<script type="text/javascript">
+<!--
+[(#REM) portée globale pour la fonction de callback ]
+var [callback_(#ENV{id_map}|?{map#ENV{id_map},form_map})];
+;(function($){
+	$(function(){
+		[callback_(#ENV{id_map}|?{map#ENV{id_map},form_map})] = function(map) {
+			$.getJSON('[(#URL_PAGE{gis_json}|url_absolue)]',
+				{
+					objets : "articles_album",
+					id_grappe : [(#ENV{id_grappe}|trim)]
+				},
+				function(data) {
+					if (data){
+						var markers = new L.geoJson('', {
+							pointToLayer: function (feature, latlng) {
+								return new L.Marker(latlng,{
+									icon: new L.DivIcon({
+										html: '<div><span>' + feature.properties.rang + '</span></div>',
+										className: 'marker-number',
+										iconSize: new L.Point(40, 40)
+									}),
+								});
+							},
+							onEachFeature: function (feature, layer) {
+								if (feature.properties && feature.properties.description) {
+									layer.bindPopup(feature.properties.description);
+								}
+							}
+						}).addTo(map);
+						markers.addData(data);
+						map.fitBounds(markers.getBounds());
+						map.layersControl.addOverlay(markers,'<:geol:medias_titre|texte_script:>');
+						[(#ENV{editer}|et{#ENV{id_gis}|intval|non})
+						map.draw.setType('polyline');
+						map.draw.enable();
+						var aide = L.popup()
+							.setLatLng(markers.getBounds().getCenter())
+							.setContent('<:geol_balades:explication_tracer_balade|texte_script:>')
+							.openOn(map);
+						]
+					}
+				}
+			);
+		};
+	});
+})(jQuery);
+-->
+</script>

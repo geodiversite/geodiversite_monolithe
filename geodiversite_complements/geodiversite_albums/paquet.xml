@@ -1,0 +1,22 @@
+<paquet
+	prefix="geol_albums"
+	categorie="squelette"
+	version="1.0.0"
+	etat="test"
+	compatibilite="[3.0.0;3.0.99]"
+	logo="images/geol_albums.png"
+>	
+
+	<nom>G&eacute;odiversit&eacute; - Albums</nom>
+	<!-- Complément albums pour Géodiversité -->
+
+	<auteur>b_b</auteur>
+
+	<copyright>2012</copyright>
+
+	<licence lien="http://www.gnu.org/licenses/gpl-3.0.html">GPL 3</licence>
+	
+	<necessite nom="geol" compatibilite="[1.2.0;[" />
+	<necessite nom="grappes" compatibilite="[1.0.0;[" />
+
+</paquet>

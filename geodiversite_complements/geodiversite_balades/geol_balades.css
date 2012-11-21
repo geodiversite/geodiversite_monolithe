@@ -1,0 +1,10 @@
+/* geol_balades.css */
+
+.page_editer_balade #contenu { float: none; width: 100%; }
+
+.formulaire_editer_balade .fieldset.carte fieldset { margin-bottom: 0; }
+.formulaire_editer_balade .editer_rang .liste-items .item {
+	float: left; clear: none; margin: 16px 8px 0; padding: 5px 10px; border: 1px solid #ccc;
+	-moz-border-radius: 3px; -webkit-border-radius: 3px; border-radius: 3px;
+	-moz-box-shadow: 0 1px 3px #999; -webkit-box-shadow: 0 1px 3px #999; box-shadow: 0 1px 3px #999;
+}

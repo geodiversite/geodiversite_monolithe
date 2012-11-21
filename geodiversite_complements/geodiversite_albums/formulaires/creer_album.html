@@ -1,0 +1,14 @@
+<div class="formulaire_spip formulaire_editer formulaire_creer_album" id="formulaire_creer_album">
+	[<p class="reponse_formulaire reponse_formulaire_ok">(#ENV**{message_ok})</p>]
+	[<p class="reponse_formulaire reponse_formulaire_erreur">(#ENV*{message_erreur})</p>]
+	[(#ENV{editable})
+	<form method='post' action='#ENV{action}'><div>
+		#ACTION_FORMULAIRE{#ENV{action}}
+		<ul>
+			[(#SAISIE{input,titre,label=<:geol_albums:label_titre:>,obligatoire=oui})]
+		</ul>
+		[(#REM) ajouter les saisies supplementaires : extra et autre, a cet endroit ]
+		<!--extra-->
+		<p class='boutons'><input type='submit' class='submit' value='<:bouton_valider|attribut_html:>' /></p>
+	</div></form>]
+</div>

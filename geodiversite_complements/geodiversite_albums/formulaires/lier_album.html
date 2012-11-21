@@ -1,0 +1,37 @@
+<div class="formulaire_spip formulaire_editer formulaire_editer_liens formulaire_lier_album ajax" id="#ENV{identifiant}">
+	[(#REM) Recherche pour ajouter de nouvelles liaisons ]
+	[(#ENV{editable})
+	<form action="#SELF" method="post">
+		[<p class="reponse_formulaire reponse_formulaire_ok">(#ENV*{message_ok})</p>]
+		[<p class="reponse_formulaire reponse_formulaire_erreur">(#ENV*{message_erreur})</p>]
+		[(#REM) declarer les hidden qui declencheront le service du formulaire
+		parametre : url d'action ]
+		#ACTION_FORMULAIRE{#SELF}
+		<ul>
+			<li class="nom_objet [ (#ENV**{erreurs}|table_valeur{nom_objet}|oui)erreur]">
+				<label for="nom_objet"><:geol_albums:label_lier:></label>
+				[<span class='erreur_message'>(#ENV**{erreurs}|table_valeur{nom_objet})</span>]
+				<input type='text' class='text' name='nom_objet' value="#ENV{nom_objet}" data-selecteur="[(#VAL{grappes_albums}|parametre_url{#SOURCE,#ID_SOURCE,&}|parametre_url{id_auteur,#SESSION{id_auteur}})]" data-select-callback="lier_objets_#ENV{identifiant}" />
+				<input type="hidden" class="pid_objet" name="pid_objet" value="" />
+				<input type='submit' class='submit' value='<:geol_albums:bouton_lier:>' />
+			</li>
+		</ul>
+	</form>]
+	<script type="text/javascript">
+	<!--
+		var lier_objets_#ENV{identifiant} = function(event,ui){
+			if (typeof(ui) != 'undefined' && (typeof(ui.item.value) == 'string')) {
+				$('[#(#ENV{identifiant}) ].pid_objet').val(ui.item.id);
+				this.value = ui.item.value;
+				$('[#(#ENV{identifiant}) ]input[type="submit"]').focus();
+				event.preventDefault();
+			}
+			else if (typeof(ui) != 'undefined'){
+				$('[#(#ENV{identifiant}) ].pid_objet').val('');
+				this.value = ui.item.value;
+			}
+			return false;
+		}
+	-->
+	</script>
+</div>

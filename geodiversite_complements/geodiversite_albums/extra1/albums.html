@@ -1,0 +1,12 @@
+<BOUCLE_auteur(AUTEURS){id_auteur}>
+[(#AUTORISER{modifier,auteur,#ID_AUTEUR})
+<div class="menu">
+	<h2 class="h2"><span><:geol_albums:titre_creer:></span></h2>
+	[(#FORMULAIRE_CREER_ALBUM)]
+</div>
+]
+[<div class="menu profil">
+	<h2 class="h2"><span><:geol:profil:></span></h2>
+	(#INCLURE{fond=vues/profil,id_auteur})
+</div>]
+</BOUCLE_auteur>

@@ -1,0 +1,15 @@
+<BOUCLE_media_albums(ARTICLES){id_article}>
+<h2 class="h2"><span><:geol_albums:albums_titre:></span></h2>
+
+<B_grappes>
+<ul class="liste-items puces">
+<BOUCLE_grappes(GRAPPES){id_article}{tout}>
+	[<li class="item"><a href="#URL_GRAPPE">(#TITRE|couper{80})</a></li>]
+</BOUCLE_grappes>
+</ul>
+</B_grappes>
+
+[(#SESSION{id_auteur}|oui)
+[(#FORMULAIRE_LIER_ALBUM{grappes,article,#ID_ARTICLE,album_#ID_ARTICLE})]
+]
+</BOUCLE_media_albums>

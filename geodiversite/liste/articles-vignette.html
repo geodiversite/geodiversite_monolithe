@@ -20,7 +20,7 @@
 		<li class="item[ first(#COMPTEUR_BOUCLE|modulo{#GET{cols}}|=={1}|oui)]">
 			[(#INCLURE{fond=inclure/article-vignette,id_article,env})]
 			[(#ENV{id_grappe}|oui)[(#SESSION{id_auteur}|=={#INFO_ID_ADMIN{grappe,#ENV{id_grappe}}}|oui)
-			[(#BOUTON_ACTION{<:geol:album_delier_media:>,#URL_ACTION_AUTEUR{lier_objets,delier/grappes/#ENV{id_grappe}/article/#ID_ARTICLE,#SELF},ajax lien_action})]
+			[(#BOUTON_ACTION{<:geol_albums:bouton_delier_media:>,#URL_ACTION_AUTEUR{lier_objets,delier/grappes/#ENV{id_grappe}/article/#ID_ARTICLE,#SELF},ajax lien_action})]
 			]]
 		</li>
 		</BOUCLE_articles>

@@ -1,0 +1,58 @@
+[(#REM) 
+	Parametres :
+	-* largeur : de l'image... (largeur originale par defaut)
+	-* hauteur : de l'image... (hauteur originale par defaut)
+	-* info_titre : si !=non afficher le titre
+	-* info_texte : si !=non afficher le descriptif
+	-* info_total : si !=non afficher le nombre d'objets de l'album
+	-* info_date : si !=non afficher la date
+	-* info_commentaires : !=non oui afficher le nombre de commentaires
+ ]
+ 
+<BOUCLE_album_vignette(GRAPPES){id_grappe}>
+
+[(#ENV{info_titre}|!={non}|oui)
+<h3 class="titre">#TITRE</h3>]
+
+#SET{url_album,#URL_GRAPPE}
+#SET{largeur,#ENV{largeur,200}}
+#SET{hauteur,#ENV{hauteur,150}}
+
+#SET{logo,#CHEMIN{images/rien.gif}}
+<BOUCLE_logo(CONDITION){si #LOGO_GRAPPE|oui}>
+#SET{logo,#LOGO_GRAPPE}
+</BOUCLE_logo>
+<BOUCLE_doc(ARTICLES documents_liens documents){documents.mode=document}{documents.extension IN 'jpg','png','gif'}{id_grappe}{0,1}>
+#SET{logo,#LOGO_DOCUMENT}
+</BOUCLE_doc>
+<//B_logo>
+
+[<a href="#GET{url_album}">
+	(#GET{logo}|image_passe_partout{#GET{largeur},#GET{hauteur}}
+		|image_recadre{#GET{largeur},#GET{hauteur},center}
+		|image_masque{#CHEMIN{images/#TYPE.png}|sinon{#CHEMIN{images/album.png}},mode=normal}
+		|inserer_attribut{class,spip_logos}
+		|inserer_attribut{alt,[(#TITRE|couper{80}|texte_backend)]})
+</a>]
+
+<div class="info_media">
+
+[(#ENV{info_texte}|!={non}|oui)
+	[<div class="texte">(#DESCRIPTIF|couper{100})</div>]]
+
+<BOUCLE_test(CONDITION){si #ENV{info_total}|!={non}}>
+	<BOUCLE_total(ARTICLES){id_grappe} />[<p>(#GRAND_TOTAL|singulier_ou_pluriel{geol:medias_un,geol:medias_nb}|sinon{<:geol:medias_aucun:>})</p>]<//B_total>
+</BOUCLE_test>
+
+[(#ENV{info_date}|!={non}|oui)
+	<p><abbr class="published" title="[(#DATE|date_iso)]">[<:geol:publie_le:> (#DATE|affdate{'d/m/Y'})]</abbr></p>]
+
+<BOUCLE_cond(CONDITION){si #ENV{info_commentaires}|!={non}}>
+	<BOUCLE_coms(FORUMS){id_grappe}{plat}></BOUCLE_coms>
+	[<p><a href="#GET{url_album}#forum">(#TOTAL_BOUCLE)
+		[(#TOTAL_BOUCLE|>{1}|?{<:geol:commentaires:>,<:geol:commentaire:>})]</a></p>]
+	<//B_coms>
+</BOUCLE_cond>
+
+</div>
+</BOUCLE_album_vignette>

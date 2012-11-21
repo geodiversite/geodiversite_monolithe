@@ -1,0 +1,26 @@
+<paquet
+	prefix="geol_balades"
+	categorie="squelette"
+	version="1.0.0"
+	etat="test"
+	compatibilite="[3.0.0;3.0.99]"
+	logo="images/geol_balades.png"
+>	
+
+	<nom>G&eacute;odiversit&eacute; - Balades</nom>
+	<!-- Complément balades pour Géodiversité -->
+
+	<auteur>b_b</auteur>
+
+	<copyright>2012</copyright>
+
+	<licence lien="http://www.gnu.org/licenses/gpl-3.0.html">GPL 3</licence>
+	
+	<pipeline nom="formulaire_charger" inclure="geol_balades_pipelines.php" />
+	<pipeline nom="diogene_charger" inclure="geol_balades_pipelines.php" />
+
+	<necessite nom="geol" compatibilite="[1.2.0;[" />
+	<necessite nom="geol_albums" compatibilite="[1.0.0;[" />
+	<necessite nom="gisgeom" compatibilite="[1.2.7;[" />
+
+</paquet>

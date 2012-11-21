@@ -1,0 +1,25 @@
+<BOUCLE_contenu_auteur(AUTEURS){id_auteur}{tout}>
+[(#REM) Fil d'Ariane ]
+<ol id="hierarchie">
+	[<li><a href="#URL_AUTEUR">(#NOM|couper{80})</a></li>]
+	<li class="on"><strong><:geol_albums:albums_titre:></strong></li>
+</ol>
+
+<div class="contenu-principal">
+	<div class="cartouche">
+		<h1 class="h1 fn"><span>#NOM</span></h1>
+	</div>
+	
+	[(#INCLURE{fond=inclure/menu-auteur,id_auteur,type-page})]
+	
+	[(#REM) albums persos de l'auteur ]
+	[(#INCLURE{fond=liste/albums-vignette,
+		id_auteur,
+		ajax,
+		env,
+		info_texte=non,
+		largeur=200,
+		hauteur=200})]
+
+</div>
+</BOUCLE_contenu_auteur>

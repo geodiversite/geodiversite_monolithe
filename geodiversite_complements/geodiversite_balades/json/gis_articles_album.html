@@ -1,0 +1,8 @@
+<BOUCLE_art(ARTICLES){gis}{id_grappe ?}{par rang,titre}{","}>
+{"type": "Feature",
+"geometry": {"type": "Point", "coordinates": [#LON, #LAT]},
+"id":"#ID_GIS",
+"properties": {
+	"description":[(#INCLURE{fond=inclure/infowindow,id_article}|json_encode)],
+	"rang":[(#RANG|!={0}|?{#RANG,#COMPTEUR_BOUCLE}|json_encode)]
+}}</BOUCLE_art>

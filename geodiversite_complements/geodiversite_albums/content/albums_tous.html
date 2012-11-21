@@ -1,0 +1,20 @@
+[(#REM) Fil d'Ariane ]
+<ol id="hierarchie">
+	<li class="on"><strong><:geol_albums:albums_titre:></strong></li>
+</ol>
+
+<div class="contenu-principal">
+	<div class="cartouche">
+		<h1 class="h1"><span><:geol_albums:albums_titre:></span></h1>
+	</div>
+	
+	[(#REM) albums du site ]
+	[(#INCLURE{fond=liste/albums-vignette,
+		ajax,
+		env,
+		info_texte=non,
+		cols=4,
+		largeur=200,
+		hauteur=200})]
+
+</div>

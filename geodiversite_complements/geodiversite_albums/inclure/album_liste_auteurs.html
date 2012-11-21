@@ -1,0 +1,22 @@
+<B_admin>
+<ul class="liste-items">
+<BOUCLE_admin(AUTEURS){id_auteur=#ID_ADMIN}>
+	<li class="item vcard">
+		<a href="#URL_AUTEUR">
+			<span class="titre fn">#NOM</span>
+			[(#PLUGIN{gravatar}|oui)[(#MODELE{gravatar,id_auteur,largeur=30})]]
+		</a>
+	</li>
+</BOUCLE_admin>
+<BOUCLE_auteurs(AUTEURS grappes_liens){id_grappe}{par nom}{pagination 3}>
+	<li class="item vcard">
+		<a href="#URL_AUTEUR">
+			<span class="titre fn">#NOM</span>
+			[(#PLUGIN{gravatar}|oui)[(#MODELE{gravatar,id_auteur,largeur=30})]]
+		</a>
+	</li>
+</BOUCLE_auteurs>
+</ul>
+[<p class="pagination">(#PAGINATION{precedent_suivant,label_precedent=<:precedent:>,label_suivant=<:suivant:>})</p>]
+</B_auteurs>
+</B_admin>

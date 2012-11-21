@@ -1,0 +1,17 @@
+#SET{cols,#ENV{cols,3}}<B_albums>
+<div class="liste articles albums boites[ cols(#GET{cols})]">
+	#ANCRE_PAGINATION
+	<h2 class="h2"><:geol_albums:albums_titre:>[ ((#GRAND_TOTAL))]</h2>
+	<div class="liens_options">
+		[(#INCLURE{fond=inclure/listes_liens_pas,pas,tri,cols=#GET{cols},self=#SELF,objets=<:geol_albums:objets_albums:>})]
+	</div>
+	<ul class="liste-items">
+		<BOUCLE_albums(GRAPPES){geol_albums #ENV{id_auteur}}{par titre}{pagination #ENV{pas,#GET{cols}|mult{3}}}>
+		<li class="item[ (#TYPE)][ first(#COMPTEUR_BOUCLE|modulo{#GET{cols}}|=={1}|oui)]">
+			[(#INCLURE{fond=inclure/album-vignette,id_grappe,env})]
+		</li>
+		</BOUCLE_albums>
+	</ul>
+	[<p class="pagination">(#PAGINATION{page_precedent_suivant,separateur=' ',label_precedent='<',label_suivant='>'})</p>]
+</div>
+</B_albums>

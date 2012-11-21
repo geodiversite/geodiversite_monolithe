@@ -1,0 +1,7 @@
+/* geol_albums.css */
+
+.page_albums_tous #contenu { float: none; width: 100%; }
+
+.formulaire_creer_album .editer_titre label { color: #666; }
+.formulaire_creer_album .editer_titre label span.obligatoire { display: none; }
+.formulaire_lier_album .nom_objet input.text { width: auto; }
