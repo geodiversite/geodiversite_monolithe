@@ -106,8 +106,6 @@ function geol_notifications_destinataires($flux){
 				elseif($r['email'])
 					$flux['data'][] = $r['email'];
 			}
-			// éviter les doublons
-			$flux['data'] = array_unique($flux['data']);
 		}
 	}
 	return $flux;
