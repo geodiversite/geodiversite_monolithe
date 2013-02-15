@@ -12,8 +12,8 @@
 			<a href="#" id="ajouter_note" class="ajouter_note" title="<:geol:note_ajouter|texte_backend:>"><:geol:note_ajouter:></a>
 		]
 		[(#AUTORISER{modifier,article,#ENV{id_article}}|oui)
-			[<a href="(#URL_ACTION_AUTEUR{tourner,[(#ID_DOCUMENT)]--90,#SELF})" id="rotation_gauche" class="rotation_gauche" title="<:image_tourner_gauche|texte_backend:>"><:image_tourner_gauche:></a>]
-			[<a href="(#URL_ACTION_AUTEUR{tourner,[(#ID_DOCUMENT)]-90,#SELF})" id="rotation_droite" class="rotation_droite" title="<:image_tourner_droite|texte_backend:>"><:image_tourner_droite:></a>]
+			[<a href="(#URL_ACTION_AUTEUR{tourner,[(#ID_DOCUMENT)]--90,#SELF})" id="rotation_gauche" class="rotation_gauche" title="<:medias:image_tourner_gauche|texte_backend:>"><:image_tourner_gauche:></a>]
+			[<a href="(#URL_ACTION_AUTEUR{tourner,[(#ID_DOCUMENT)]-90,#SELF})" id="rotation_droite" class="rotation_droite" title="<:medias:image_tourner_droite|texte_backend:>"><:image_tourner_droite:></a>]
 			[<a href="(#URL_ACTION_AUTEUR{instituer_objet,article/[(#ENV{id_article})]/poubelle,#URL_AUTEUR{#SESSION{id_auteur}}})" id="supprimer_doc" class="supprimer" title="<:geol:doc_supprimer|texte_backend:>"><:geol:doc_supprimer:></a>]
 		][
 		(#PLUGIN{notation}|oui) #FORMULAIRE_NOTATION{article,#ID_ARTICLE} ]
