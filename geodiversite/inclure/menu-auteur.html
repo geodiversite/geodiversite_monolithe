@@ -14,7 +14,7 @@
 		<li class="item"><span class="sep"> | </span>
 			[(#URL_PAGE{albums,id_auteur=#ID_AUTEUR}|lien_ou_expose{<:geol_albums:albums_titre:>,#SI_PAGE{albums}})]
 		</li>]
-		[(#REM)
+		[(#PLUGIN{amis}|oui)
 		<li class="item">
 			[(#URL_PAGE{contacts,id_auteur=#ID_AUTEUR}|lien_ou_expose{<:geol:amis_titre:>,#SI_PAGE{contacts}})]
 		</li>[(#SESSION{id_auteur}|=={#ID_AUTEUR}|oui)
