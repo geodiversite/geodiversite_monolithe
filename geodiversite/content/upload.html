@@ -5,6 +5,7 @@
 </ol>
 
 <div class="contenu-principal">
+	<BOUCLE_session(CONDITION){si #SESSION{statut}|oui}>
 	<BOUCLE_art_auteur(ARTICLES){id_auteur=#SESSION{id_auteur}}{0,1}>
 	</BOUCLE_art_auteur>
 	<BOUCLE_txtaide(ARTICLES){page=aide}{0,1}>
@@ -29,22 +30,22 @@
 		Peut être mettre un texte uniquement pour les webmestre ici les incitant à créer la page d'aide?
 	]<//B_txtaide>
 	<//B_art_auteur>
+	</BOUCLE_session>
 
 	<BOUCLE_diogene(DIOGENES){type=article}>
-	<BOUCLE_autorise(CONDITION){si #AUTORISER{creerdans,diogene,#ID_DIOGENE}|oui}>
+	<BOUCLE_autorise(CONDITION){si #AUTORISER{utiliser,diogene,#ID_DIOGENE}|oui}>
 	<div class="texte #_diogene:EDIT{description}">#_diogene:DESCRIPTION</div>
-	<INCLURE{fond=inclure/diogene_#OBJET,env,id_diogene}>
+	<INCLURE{fond=inclure/diogene_#OBJET,env,id_diogene,ajax}>
 	</BOUCLE_autorise>
 	</B_autorise>
-	<div class="texte">
-		<div class="formulaire_spip">
-			<p class="reponse_formulaire_erreur">
-				<:diogene:erreur_droits_objet_publier:>
-				[(#SESSION{id_auteur}|non)
-				<br /><:diogene:erreur_autorisation_login_publier:>
-				]
-			</p>
-		</div>
+	<div class="mot_doux">
+		<p class="reponse_formulaire_erreur">
+			<:diogene:erreur_droits_objet_publier:>
+			[(#SESSION{statut}|non)
+			#SET{url,#URL_PAGE{login}|parametre_url{url,#SELF}}
+			<br /><:diogene:erreur_autorisation_login_publier{url=#GET{url}}:>
+			]
+		</p>
 	</div>
 	<//B_autorise>
 	</BOUCLE_diogene>
