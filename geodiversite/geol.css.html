@@ -36,10 +36,11 @@
 #hierarchie li { padding-left: 10px; }
 #hierarchie li.spacer { padding-right: 5px; }
 
+#navigation .h2 span,#contenu .h2{color:#GET{couleur1};}
+
 /*  ------------------------------------------
 /*  navigation
 /*  ------------------------------------------ */
-
 .menu.media,
 .menu .explication { text-align: right; }
 .menu.carte .h2 { margin-bottom: 10px; }
@@ -114,10 +115,12 @@
 
 
 .page_upload #contenu,
+.page_publier #contenu,
 .page_ticket #contenu,
 .page_tickets #contenu,
 .page_editer_ticket #contenu { width: 60%; }
 .page_upload #navigation,
+.page_publier #navigation,
 .page_ticket #navigation,
 .page_tickets #navigation,
 .page_editer_ticket #navigation { width: 35%; }
@@ -274,16 +277,21 @@ https://developer.mozilla.org/en/DOM/Using_full-screen_mode#Presentation_differe
 .page_login #contenu,
 .page_spip_pass #contenu { float: none; width: 100%; }
 
-/* page upload
+/* page upload / page publier (au cas où)
 ----------------------------------------------- */
 
-.page_upload #em_message_avant_upload { border: 0; }
+.page_upload #em_message_avant_upload,.page_publier #em_message_avant_upload { border: 0; }
 .page_upload #em_upload_document li.fieldset,
 .page_upload .formulaire_supprimer_document,
 .page_upload #formulaire_diogene .editer_titre,
 .page_upload #formulaire_diogene .editer_texte,
-.page_upload #formulaire_diogene li.fieldset { margin: 20px 0; padding: 10px; border: 5px solid #f2f2f2; background: #fff; }
-.page_upload .previsu_document { border: 0; }
+.page_upload #formulaire_diogene li.fieldset,
+.page_publier #em_upload_document li.fieldset,
+.page_publier .formulaire_supprimer_document,
+.page_publier #formulaire_diogene .editer_titre,
+.page_publier #formulaire_diogene .editer_texte,
+.page_publier #formulaire_diogene li.fieldset { margin: 20px 0; padding: 10px; border: 5px solid #f2f2f2; background: #fff; }
+.page_upload .previsu_document,.page_publier .previsu_document { border: 0; }
 .page_upload .previsu_document h4,
 .page_upload .previsu_document .infos_document,
 .page_upload .previsu_document a.legende_add,
@@ -291,11 +299,19 @@ https://developer.mozilla.org/en/DOM/Using_full-screen_mode#Presentation_differe
 .page_upload #formulaire_diogene .editer_parent,
 .page_upload #formulaire_diogene .editer_parents,
 .page_upload #formulaire_diogene .editer_gis_titre,
-.page_upload #formulaire_diogene .editer_gis_descriptif { display: none; }
-.page_upload #formulaire_diogene h3.legend { margin-bottom: 10px; }
-.page_upload .formulaire_message { font-weight: bold; }
-.page_upload .diogene_geo #geomap { width: 100%; height: 350px; }
-.page_upload #em_upload_boutons { background: #f2f2f2; color: #666; border: 4px solid #fff;
+.page_upload #formulaire_diogene .editer_gis_descriptif,
+.page_publier .previsu_document h4,
+.page_publier .previsu_document .infos_document,
+.page_publier .previsu_document a.legende_add,
+.page_publier #formulaire_diogene .editer_id_parent,
+.page_publier #formulaire_diogene .editer_parent,
+.page_publier #formulaire_diogene .editer_parents,
+.page_publier #formulaire_diogene .editer_gis_titre,
+.page_publier #formulaire_diogene .editer_gis_descriptif { display: none; }
+.page_upload #formulaire_diogene h3.legend,.page_publier #formulaire_diogene h3.legend { margin-bottom: 10px; }
+.page_upload .formulaire_message,.page_publier .formulaire_message { font-weight: bold; }
+.page_upload .diogene_geo #geomap,.page_publier .diogene_geo #geomap { width: 100%; height: 350px; }
+.page_upload #em_upload_boutons,.page_publier #em_upload_boutons { background: #f2f2f2; color: #666; border: 4px solid #fff;
 	-moz-border-radius: 8px; -webkit-border-radius: 8px; border-radius: 8px;
 	-moz-box-shadow: 0 1px 3px #999; -webkit-box-shadow: 0 1px 3px #999; box-shadow: 0 1px 3px #999; }
 
