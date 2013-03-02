@@ -44,6 +44,7 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 'cfg_label_zoom_minicartes' => 'Zoom des cartes',
 'cfg_titre_geol' => 'Géodiversité',
 'commentaire' => 'commentaire',
+'commentaire_aucun' => 'Aucun commentaire',
 'commentaires' => 'commentaires',
 'commentaires_a_date_heure' => 'à',
 'commentaires_le_date_jour' => 'Le',
