@@ -268,9 +268,7 @@ h1, .h1, h2, .h2 { font: bold 1.2em geol, Arial, Helvetica, sans-serif; color: #
 #nav .menu-liste .menu-entree { display: inline; margin: 0.20em 0; padding: 0.20em; }
 #nav .menu-liste .menu-entree a { color: #fff; font-weight: bold; }
 #nav .menu-liste .menu-entree a:hover { color: #f5f5f5; text-decoration: none; }
-#nav .menu-liste.univers { position: absolute; right: 0; top: 45px; background: transparent; color: #00c0f8; }
-#nav .menu-liste.univers .menu-entree a { color: #00c0f8; }
-#nav .menu-liste.univers .menu-entree a:hover { color: #00c0f8; }
+#nav .menu-liste.univers { position: absolute; right: 0; top: 45px; background: transparent;}
 
 #extra .menu { float: right; margin: 0; padding: 5px; padding-left: 30px; background: transparent url(images/bg_extra.png) left 50% no-repeat; }
 #extra .menu .h2,
@@ -317,7 +315,6 @@ div#hierarchie > strong { display: block; float: left; padding: 4px 30px 4px 10p
 /*  ------------------------------------------ */
 
 #pied a { color: #666; }
-#pied a:hover { color: #00c0f8; }
 #pied .on { font-weight: normal; }
 
 /*  ------------------------------------------
@@ -354,7 +351,7 @@ div#hierarchie > strong { display: block; float: left; padding: 4px 30px 4px 10p
 /* boutons admin */
 body .spip-admin-float { right: 5px; margin: 5px auto 0; }
 body a.spip-admin-boutons { border: 1px solid #ddd; color: #666; background: #fff; }
-body a.spip-admin-boutons:hover { border: 1px solid #ddd; color: #00c0f8; background: transparent; }
+body a.spip-admin-boutons:hover { border: 1px solid #ddd; background: transparent; }
 
 /* Affichage sur petits ecrans
 Cf.: http://www.alsacreations.com/astuce/lire/1177
