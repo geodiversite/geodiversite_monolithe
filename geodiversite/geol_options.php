@@ -24,4 +24,6 @@ function autoriser_modererforum($faire, $type, $id, $qui, $opt) {
 	return autoriser_ecrire($faire, $type, $id, $qui, $opt);
 }
 
+define('_PAGE_PUBLIER','upload');
+
 ?>

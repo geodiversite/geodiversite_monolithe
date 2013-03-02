@@ -5,7 +5,7 @@ if (!defined('_ECRIRE_INC_VERSION')) return;
 /**
  * Insertion dans le pipeline insert_head_css (SPIP)
  * 
- * Ajout de la feuille de styles de geodiversite
+ * Ajout de la feuille de styles calculée de geodiversite
  * 
  * @param array $flux
  * @return array $flux

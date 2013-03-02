@@ -19,4 +19,10 @@ function geol_couleur_hex_to_dec($couleur) {
 	return implode(',',$retour);
 }
 
+/**
+ * Définition du id_grappe du plugin grappe si le plugin n'est pas dispo
+ */
+if (!defined('_DIR_PLUGIN_GRAPPES')){
+	function critere_id_grappe_dist($idb, &$boucles, $crit){}
+}
 ?>

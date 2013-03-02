@@ -8,8 +8,8 @@
 	</div>
 	<BOUCLE_doch(DOCUMENTS){id_article}>
 	[<a href="#_article:URL_ARTICLE" title="#_article:TITRE">
-		(#FICHIER|image_passe_partout{384,280}
-			|image_recadre{384,280,center}
+		(#FICHIER|image_passe_partout{#ENV{largeur,384},#ENV{hauteur,280}}
+			|image_recadre{#ENV{largeur,384},#ENV{hauteur,280},center}
 			|inserer_attribut{alt,[(#TITRE|couper{80}|texte_backend)]})
 	</a>]
 	</BOUCLE_doch>
