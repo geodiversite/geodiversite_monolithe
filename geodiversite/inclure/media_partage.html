@@ -1,14 +1,14 @@
 <BOUCLE_media_partage(ARTICLES){id_article}>
 <h2 class="h2"><span><:geol:partage_telechargement:></span></h2>
 
-[(#ENV{modifier_licence}|oui)
+[(#PLUGIN{licence}|et{#ENV{modifier_licence}}|oui)
 	[(#AUTORISER{modifier,article,#ENV{id_article}}|oui)
 	#FORMULAIRE_EDITER_LICENCE{#ID_ARTICLE,#URL_ARTICLE}
 	]
 ]
 
 <ul class="liste-items puces">
-	[(#ENV{modifier_licence}|non)
+	[(#PLUGIN{licence}|et{#ENV{modifier_licence}|non}|oui)
 	<li class="item">
 		<:geol:licence_media:> : [(#INCLURE{fond=modeles/licence,id_article=#ID_ARTICLE,logo=non})]
 	</li>]
@@ -24,7 +24,7 @@
 	</li>]
 </ul>
 
-[(#AUTORISER{modifier,article,#ENV{id_article}}|oui)
+[(#PLUGIN{licence}|et{#AUTORISER{modifier,article,#ENV{id_article}}}|oui)
 <div class="actions">
 	[(#VAL{91}|chr) ]<a href="[(#SELF|parametre_url{modifier_licence,#ENV{modifier_licence}|?{'',oui}})]" class="ajax">[(#ENV{modifier_licence}|?{<:geol:annuler:>,<:geol:modifier_licence:>})]</a>[ (#VAL{93}|chr)]
 </div>]
