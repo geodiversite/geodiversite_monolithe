@@ -52,11 +52,19 @@ function geol_albums_init(){
 			objet_modifier('collection', $id_collection, $set);
 			objet_instituer('collection', $id_collection, array('statut' => 'publie'));
 			
-			// copie des liens des grappes vers les collections
-			$liens = sql_allfetsel('*','spip_grappes_liens','id_grappe = ' . $grappe['id_grappe']);
+			// copie des liens de grappes_liens vers collections_liens pour les articles
+			$articles = sql_allfetsel('*','spip_grappes_liens',"objet = 'article' AND id_grappe = " . $grappe['id_grappe']);
+			foreach($articles as $article) {
+				objet_associer(array('collection' => $id_collection), array($article['objet'] => $article['id_objet']), array('rang' => $article['rang']));
+			}
 			
-			foreach($liens as $lien) {
-				$association = objet_associer(array('collection' => $id_collection), array($lien['objet'] => $lien['id_objet']), array('rang' => $lien['rang']));
+			// associer l'auteur id_admin de la grappe à la collection
+			objet_associer(array('auteur' => $grappe['id_admin']), array('collection' => $id_collection));
+			
+			// copie des liens de grappes_liens vers auteurs_liens pour les auteurs
+			$auteurs = sql_allfetsel('*','spip_grappes_liens',"objet = 'auteur' AND id_grappe = " . $grappe['id_grappe']);
+			foreach($auteurs as $auteur) {
+				objet_associer(array($auteur['objet'] => $auteur['id_objet']), array('collection' => $id_collection));
 			}
 			
 			// maj des liens des forums attachés aux grappes
@@ -72,6 +80,18 @@ function geol_albums_init(){
 			}
 		}
 	}
+}
+
+/**
+ * Fonction de désinstallation du plugin.
+ * 
+ * Supprime la meta d'installation du plugin
+ * 
+ * @param string $nom_meta_base_version
+ * 		Le nom de la meta d'installation
+ */
+function geol_albums_vider_tables($nom_meta_base_version) {
+	effacer_meta($nom_meta_base_version);
 }
 
 ?>
