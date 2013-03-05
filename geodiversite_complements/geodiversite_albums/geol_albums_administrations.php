@@ -64,6 +64,12 @@ function geol_albums_init(){
 			foreach($forums as $forum) {
 				sql_updateq('spip_forum', array('objet' => 'collection', 'id_objet' => $id_collection), 'id_forum = ' . $forum['id_forum']);
 			}
+			
+			// maj des liens des points gis attachés aux grappes
+			$points = sql_allfetsel('id_gis','spip_gis_liens',"objet = 'grappe' AND id_objet = ".$grappe['id_grappe']);
+			foreach($points as $point) {
+				sql_updateq('spip_gis_liens', array('objet' => 'collection', 'id_objet' => $id_collection), 'id_gis = ' . $point['id_gis']);
+			}
 		}
 	}
 }
