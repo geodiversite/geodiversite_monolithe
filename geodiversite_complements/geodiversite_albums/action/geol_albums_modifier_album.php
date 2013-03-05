@@ -6,30 +6,30 @@ function action_geol_albums_modifier_album_dist(){
 	$securiser_action = charger_fonction('securiser_action', 'inc');
 	$arg = $securiser_action();
 
-	list($action,$id_grappe) = explode('/',$arg);
+	list($action,$id_collection) = explode('/',$arg);
 
 	if ($action != 'ouvrir' AND $action != 'fermer' AND $action != 'balader') {
 		include_spip('inc/minipres');
 		minipres(_T('action_inconnue',array('action'=>$action)));
 	}
 
-	if (!autoriser('modifier','grappe',$id_grappe)){
+	if (!autoriser('modifier','collection',$id_collection)){
 		include_spip('inc/minipres');
 		minipres(_T('info_acces_interdit'));
 	}
 	
-	include_spip('action/editer_grappe');
+	include_spip('action/editer_objet');
 	
 	if ($action == 'ouvrir') {
-		grappe_modifier($id_grappe,array('type'=>'album_coop', 'acces'=>array('0minirezo','1comite')));
+		objet_modifier('collection',$id_collection, array('type_collection'=>'coop'));
 	} elseif ($action == 'fermer') {
-		grappe_modifier($id_grappe,array('type'=>'album_perso', 'acces'=>array('0minirezo')));
+		objet_modifier('collection',$id_collection, array('type_collection'=>'perso'));
 	} elseif ($action == 'balader') {
-		grappe_modifier($id_grappe,array('type'=>'balade', 'acces'=>array('0minirezo')));
+		objet_modifier('collection',$id_collection, array('type_collection'=>'balade'));
 	}
 
 	include_spip('inc/invalideur');
-	suivre_invalideur("id='id_grappe/$id_grappe'");
+	suivre_invalideur("id='id_collection/$id_collection'");
 }
 
 ?>

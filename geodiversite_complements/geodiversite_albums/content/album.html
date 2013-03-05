@@ -1,4 +1,4 @@
-<BOUCLE_contenu_album(GRAPPES){id_grappe=#ENV{id_album}}>
+<BOUCLE_contenu_album(COLLECTIONS){id_collection}>
 [(#REM) Fil d'Ariane ]
 <ol id="hierarchie">
 	<li><a href="#URL_PAGE{albums_tous}"><:geol_albums:albums_titre:></a></li>
@@ -8,27 +8,26 @@
 <div class="contenu-principal">
 	<div class="cartouche">
 		<h1 class="h1"><span>#TITRE</span></h1>
-		[(#LOGO_GRAPPE|image_reduire{150,150})]
 	</div>
 	
 
 	[<div class="#EDIT{descriptif} chapo">(#DESCRIPTIF|sinon{<:geol:pas_description:>})</div>]
 	
 	[(#REM) afficher la carte si c'est une balade et si le plugin geol_balades est actif ]
-	<BOUCLE_gis(GIS){id_grappe}>
+	<BOUCLE_gis(GIS){id_collection}>
 	[(#PLUGIN{geol_balades}|oui)
 	[(#INCLURE{fond=modeles/carte_gis,id_gis,
 		id_map=_album,
 		centrer_auto=oui,
 		path_styles=#ARRAY{color,#CONFIG{geol/couleur_primaire,#00c0f8},weight,3,opacity,1,dashArray,5,clickable,#EVAL{false}}
 	})]
-	[(#INCLURE{fond=inclure/album_charger_medias,id_grappe,id_map=_album})]
+	[(#INCLURE{fond=inclure/album_charger_medias,id_collection,id_map=_album})]
 	]
 	</BOUCLE_gis>
 
 	[(#REM) Articles de l'album ]
 	[(#INCLURE{fond=liste/articles-vignette,
-		id_grappe,
+		id_collection,
 		ajax,
 		env,
 		par=rang,
@@ -40,7 +39,7 @@
 
 [(#REM) Forum de l'album ]
 <a href="#forum" name="forum" id="forum"></a>
-<INCLURE{fond=inclure/forum}{id_grappe} />
+<INCLURE{fond=inclure/forum,id_collection,objet=collection,id_objet=#ID_COLLECTION} />
 
 [<div id="commenter" class="comments">
 <h2 class="h2"><:geol:commenter:></h2>

@@ -7,7 +7,7 @@
 	</div>
 	<ul class="liste-items">
 		<BOUCLE_albums(COLLECTIONS){id_auteur?}{par num titre,titre}{pagination #ENV{pas,#GET{cols}|mult{3}}}>
-		<li class="item[ (#TYPE)][ first(#COMPTEUR_BOUCLE|modulo{#GET{cols}}|=={1}|oui)]">
+		<li class="item[ (#TYPE_COLLECTION)][ first(#COMPTEUR_BOUCLE|modulo{#GET{cols}}|=={1}|oui)]">
 			[(#INCLURE{fond=inclure/album-vignette,id_collection,largeur,hauteur,info_texte})]
 		</li>
 		</BOUCLE_albums>
