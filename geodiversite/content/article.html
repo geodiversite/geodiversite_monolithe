@@ -20,7 +20,7 @@
 			[<p>(#VISITES|singulier_ou_pluriel{geol:vue,geol:vues})</p>]
 			<BOUCLE_coms(FORUMS) {id_article}{plat}> </BOUCLE_coms>
 			[(#TOTAL_BOUCLE|=={0}|et{#ACCEPTER_FORUM|!={non}|oui}|oui)
-				<p><a href="#forum"><:geol:commentaire_aucun</a></p>]
+				<p><a href="#forum"><:geol:commentaire_aucun:></a></p>]
 			[(#TOTAL_BOUCLE|>{0}|oui)
 			[<p><a href="#forum">(#TOTAL_BOUCLE)
 				[(#TOTAL_BOUCLE|=={1}|?{<:geol:commentaire:>,<:geol:commentaires:>})]</a></p>]]
