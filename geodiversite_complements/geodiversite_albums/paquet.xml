@@ -5,6 +5,7 @@
 	etat="test"
 	compatibilite="[3.0.0;3.0.99]"
 	logo="images/geol_albums.png"
+	schema="1.0.0"
 >	
 
 	<nom>G&eacute;odiversit&eacute; - Albums</nom>
@@ -17,6 +18,6 @@
 	<licence lien="http://www.gnu.org/licenses/gpl-3.0.html">GPL 3</licence>
 	
 	<necessite nom="geol" compatibilite="[1.2.0;[" />
-	<necessite nom="grappes" compatibilite="[1.0.0;[" />
+	<necessite nom="collections" compatibilite="[1.4.2;[" />
 
 </paquet>
