@@ -6,9 +6,9 @@
 		[(#INCLURE{fond=inclure/listes_liens_pas,pas,tri,cols=#GET{cols},self=#SELF,objets=<:geol_albums:objets_albums:>})]
 	</div>
 	<ul class="liste-items">
-		<BOUCLE_albums(GRAPPES){geol_albums #ENV{id_auteur}}{par titre}{pagination #ENV{pas,#GET{cols}|mult{3}}}>
+		<BOUCLE_albums(COLLECTIONS){id_auteur?}{par num titre,titre}{pagination #ENV{pas,#GET{cols}|mult{3}}}>
 		<li class="item[ (#TYPE)][ first(#COMPTEUR_BOUCLE|modulo{#GET{cols}}|=={1}|oui)]">
-			[(#INCLURE{fond=inclure/album-vignette,id_grappe,env})]
+			[(#INCLURE{fond=inclure/album-vignette,id_collection,largeur,hauteur,info_texte})]
 		</li>
 		</BOUCLE_albums>
 	</ul>
