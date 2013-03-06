@@ -8,7 +8,7 @@ function action_geol_albums_modifier_album_dist(){
 
 	list($action,$id_collection) = explode('/',$arg);
 
-	if ($action != 'ouvrir' AND $action != 'fermer' AND $action != 'balader') {
+	if (!in_array($action, array('ouvrir', 'fermer', 'balader', 'supprimer'))) {
 		include_spip('inc/minipres');
 		minipres(_T('action_inconnue',array('action'=>$action)));
 	}
@@ -21,11 +21,13 @@ function action_geol_albums_modifier_album_dist(){
 	include_spip('action/editer_objet');
 	
 	if ($action == 'ouvrir') {
-		objet_modifier('collection',$id_collection, array('type_collection'=>'coop'));
+		objet_modifier('collection',$id_collection,array('type_collection'=>'coop'));
 	} elseif ($action == 'fermer') {
-		objet_modifier('collection',$id_collection, array('type_collection'=>'perso'));
+		objet_modifier('collection',$id_collection,array('type_collection'=>'perso'));
 	} elseif ($action == 'balader') {
-		objet_modifier('collection',$id_collection, array('type_collection'=>'balade'));
+		objet_modifier('collection',$id_collection,array('type_collection'=>'balade'));
+	} elseif ($action == 'supprimer') {
+		objet_modifier('collection',$id_collection,array('statut'=>'poubelle'));
 	}
 
 	include_spip('inc/invalideur');
