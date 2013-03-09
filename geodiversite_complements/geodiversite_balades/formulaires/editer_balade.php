@@ -2,12 +2,12 @@
 
 if (!defined('_ECRIRE_INC_VERSION')) return;
 
-function formulaires_editer_balade_charger_dist($id_grappe='new', $retour=''){
+function formulaires_editer_balade_charger_dist($id_collection='new', $retour=''){
 	$valeurs = array();
 	include_spip('inc/autoriser');
-	if (!autoriser('modifier','grappe',$id_grappe))
+	if (!autoriser('modifier','collection',$id_collection))
 		return false;
-	$id_gis = sql_getfetsel("id_gis","spip_gis_liens","objet='grappe' AND id_objet=$id_grappe");
+	$id_gis = sql_getfetsel("id_gis","spip_gis_liens","objet='collection' AND id_objet=$id_collection");
 	$valeurs['id_gis'] = intval($id_gis) ? $id_gis : 'new';
 	if (intval($id_gis)) {
 		$wkt = sql_getfetsel("AsText(geo)","spip_gis","id_gis = $id_gis");
@@ -15,12 +15,12 @@ function formulaires_editer_balade_charger_dist($id_grappe='new', $retour=''){
 		$valeurs['geo'] = $wkt;
 		$valeurs['geojson'] = wkt_to_json($wkt);
 	}
-	$valeurs['id_grappe'] = $id_grappe;
+	$valeurs['id_collection'] = $id_collection;
 	$valeurs['editable'] = true;
 	return $valeurs;
 }
 
-function formulaires_editer_balade_verifier_dist($id_grappe='new', $retour=''){
+function formulaires_editer_balade_verifier_dist($id_collection='new', $retour=''){
 	$erreurs = array();
 	if (isset($_FILES['import']) && $_FILES['import']['error'] != 4) {
 		include_spip('action/ajouter_documents');
@@ -35,13 +35,13 @@ function formulaires_editer_balade_verifier_dist($id_grappe='new', $retour=''){
 	return $erreurs;
 }
 
-function formulaires_editer_balade_traiter_dist($id_grappe='new', $retour=''){
+function formulaires_editer_balade_traiter_dist($id_collection='new', $retour=''){
 	$message = array();
 	// récupérer le rang des articles de la balade et le mettre à jour
 	$rangs = _request('rang');
 	foreach ($rangs as $rang=>$id_article){
 		$rang = $rang + 1;
-		$ok = sql_updateq('spip_grappes_liens',array('rang' => intval($rang)),"objet='article' AND id_objet = $id_article");
+		$ok = sql_updateq('spip_collections_liens',array('rang' => intval($rang)),"objet='article' AND id_objet = $id_article");
 	}
 	// éditer le gis associé
 	if ($action_editer = charger_fonction("editer_gis",'action',true)) {

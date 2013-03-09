@@ -1,6 +1,6 @@
 <li class="editer editer_rang [ (#ENV**{erreurs}|table_valeur{rang}|oui)erreur]">
 	<ul class="liste-items" id="editer_rang">
-	<BOUCLE_art(ARTICLES documents_liens documents){documents.mode=document}{id_grappe}{par rang,titre}>
+	<BOUCLE_art(ARTICLES documents_liens documents){documents.mode=document}{id_collection}{par rang,titre}>
 		<li class="item">
 			[(#LOGO_DOCUMENT|image_passe_partout{120,50}|image_recadre{120,50,center}|inserer_attribut{title,#TITRE|attribut_html})]
 			<p>[<strong>(#RANG|!={0}|?{#RANG,#COMPTEUR_BOUCLE})</strong> ][(#TITRE|couper{16,''})]</p>
