@@ -14,7 +14,7 @@
 	[<div class="#EDIT{descriptif} chapo">(#DESCRIPTIF|sinon{<:geol:pas_description:>})</div>]
 	
 	[(#REM) afficher la carte si c'est une balade et si le plugin geol_balades est actif ]
-	<BOUCLE_gis(GIS){id_collection}>
+	<BOUCLE_gis(GIS gis_liens){id_collection}>
 	[(#PLUGIN{geol_balades}|oui)
 	[(#INCLURE{fond=modeles/carte_gis,id_gis,
 		id_map=_album,
