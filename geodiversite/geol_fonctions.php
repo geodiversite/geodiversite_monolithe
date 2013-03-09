@@ -20,7 +20,7 @@ function geol_couleur_hex_to_dec($couleur) {
 }
 
 /**
- * Définition du id_grappe du plugin grappe si le plugin n'est pas dispo
+ * Définition du id_collection du plugin collections s'il n'est pas dispo
  */
 if (!defined('_DIR_PLUGIN_COLLECTIONS')){
 	function critere_id_collection_dist($idb, &$boucles, $crit){}
