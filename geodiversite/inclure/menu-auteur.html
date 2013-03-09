@@ -12,7 +12,7 @@
 		</li>
 		[(#PLUGIN{geol_albums}|oui)
 		<li class="item"><span class="sep"> | </span>
-			[(#URL_PAGE{albums,id_auteur=#ID_AUTEUR}|lien_ou_expose{<:geol_albums:albums_titre:>,#SI_PAGE{albums}})]
+			[(#URL_PAGE{albums,id_auteur=#ID_AUTEUR}|lien_ou_expose{<:collection:titre_collections:>,#SI_PAGE{albums}})]
 		</li>]
 		[(#PLUGIN{amis}|oui)
 		<INCLURE{fond=inclure/menu-auteur_amis,env} />]

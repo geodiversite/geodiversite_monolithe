@@ -1,9 +1,9 @@
 #SET{cols,#ENV{cols,3}}<B_albums>
 <div class="liste articles albums boites[ cols(#GET{cols})]">
 	#ANCRE_PAGINATION
-	<h2 class="h2"><:geol_albums:albums_titre:>[ ((#GRAND_TOTAL))]</h2>
+	<h2 class="h2"><:collection:titre_collections:>[ ((#GRAND_TOTAL))]</h2>
 	<div class="liens_options">
-		[(#INCLURE{fond=inclure/listes_liens_pas,pas,tri,cols=#GET{cols},self=#SELF,objets=<:geol_albums:objets_albums:>})]
+		[(#INCLURE{fond=inclure/listes_liens_pas,pas,tri,cols=#GET{cols},self=#SELF,objets=<:collection:titre_collections|strtolower:>})]
 	</div>
 	<ul class="liste-items">
 		<BOUCLE_albums(COLLECTIONS){id_auteur?}{par num titre,titre}{pagination #ENV{pas,#GET{cols}|mult{3}}}>

@@ -6,7 +6,7 @@
 		#ACTION_FORMULAIRE{#SELF}
 		<ul>
 			<li class="nom_objet [ (#ENV**{erreurs}|table_valeur{nom_objet}|oui)erreur]">
-				<label for="nom_objet"><:geol_albums:label_lier:></label>
+				<label for="nom_objet"><:collection:label_collections_ajouter:></label>
 				[<span class='erreur_message'>(#ENV**{erreurs}|table_valeur{nom_objet})</span>]
 				<input type='text' class='text' name='nom_objet' value="#ENV{nom_objet}" data-selecteur="[(#VAL{geol_albums}|parametre_url{id_article,#ID_ARTICLE}|parametre_url{id_auteur,#SESSION{id_auteur}})]" data-select-callback="callback_#ENV{identifiant}" />
 				<input type="hidden" class="pid_objet" name="pid_objet" value="" />
