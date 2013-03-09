@@ -7,7 +7,7 @@
 	[(#REM) Album perso ? On propose à l'admin d'ouvrir l'album ! ]
 	[(#SESSION{id_auteur}|=={#ID_ADMIN}|et{#TYPE_COLLECTION|=={perso}}|oui)
 	<p class="explication"><:geol_albums:explication_ouvrir:></p>
-	[(#BOUTON_ACTION{<:geol_albums:bouton_ouvrir:>,#URL_ACTION_AUTEUR{geol_albums_modifier_album,ouvrir/#ID_COLLECTION,#SELF},ajax actions})]
+	[(#BOUTON_ACTION{<:geol_albums:bouton_ouvrir:>,#URL_ACTION_AUTEUR{editer_collection,#ID_COLLECTION,#SELF}|parametre_url{type_collection,coop},ajax actions})]
 	]
 	[(#REM) Album coop, on propose de participer si l'auteur n'en fait pas déjà partie ]
 	#SET{membres,#ARRAY}
@@ -25,7 +25,7 @@
 	[(#REM) Proposer à l'admin de générer une balade si le plugin geol_balades est présent ]
 	[(#SESSION{id_auteur}|=={#ID_ADMIN}|et{#TYPE_COLLECTION|=={perso}}|et{#PLUGIN{geol_balades}}|oui)
 	<p class="explication"><:geol_balades:explication_album_balader:></p>
-	[(#BOUTON_ACTION{<:geol_balades:bouton_balader:>,#URL_ACTION_AUTEUR{geol_albums_modifier_album,balader/#ID_COLLECTION,#URL_PAGE{editer_balade,id_album=#ID_GRAPPE}},ajax actions})]
+	[(#BOUTON_ACTION{<:geol_balades:bouton_balader:>,#URL_ACTION_AUTEUR{editer_collection,#ID_COLLECTION,#URL_PAGE{editer_balade,id_album=#ID_GRAPPE}}|parametre_url{type_collection,balade},ajax actions})]
 	]
 	[(#REM) Proposer à l'admin de modifier la balade si le plugin geol_balades est présent ]
 	[(#SESSION{id_auteur}|=={#ID_ADMIN}|et{#TYPE_COLLECTION|=={balade}}|et{#PLUGIN{geol_balades}}|oui)
@@ -34,7 +34,7 @@
 	[(#REM) Proposer à l'admin de supprimer l'album si pas de membres ]
 	[(#SESSION{id_auteur}|=={#ID_ADMIN}|et{#GET{membres}|count|<{2}}|oui)
 	<p class="explication"><:geol_albums:explication_supprimer:></p>
-	[(#BOUTON_ACTION{<:geol_albums:bouton_suprrimer:>,#URL_ACTION_AUTEUR{geol_albums_modifier_album,supprimer/#ID_COLLECTION,#URL_PAGE{albums,id_auteur=#SESSION{id_auteur}}},ajax actions,<:geol_albums:explication_supprimer_confirm|texte_script:>})]
+	[(#BOUTON_ACTION{<:geol_albums:bouton_suprrimer:>,#URL_ACTION_AUTEUR{editer_collection,#ID_COLLECTION,#URL_PAGE{albums,id_auteur=#SESSION{id_auteur}}}|parametre_url{statut,poubelle},ajax actions,<:geol_albums:explication_supprimer_confirm|texte_script:>})]
 	]
 	</BOUCLE_session>
 </div>
