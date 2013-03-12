@@ -18,7 +18,7 @@
 			</BOUCLE_auteur>
 			<p>[<:geol:publie_par:> (#LESAUTEURS) ]<abbr class="published" title="[(#DATE|date_iso)]">[<:geol:date_le:> (#DATE|affdate{'d/m/Y'})]</abbr></p>
 			[<p>(#VISITES|singulier_ou_pluriel{geol:vue,geol:vues})</p>]
-			<BOUCLE_coms(FORUMS) {id_article}{plat}> </BOUCLE_coms>
+			<BOUCLE_coms(FORUMS) {id_article}{plat} />
 			[(#ACCEPTER_FORUM|!={non}|oui)
 			[<p><a href="#forum">(#TOTAL_BOUCLE)
 				[(#TOTAL_BOUCLE|>{1}|?{<:geol:commentaires:>,<:geol:commentaire:>})]</a></p>]
