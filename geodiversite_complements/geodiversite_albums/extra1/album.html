@@ -14,11 +14,11 @@
 	<BOUCLE_test(CONDITION){si #TYPE_COLLECTION|=={coop}|oui}>
 	<BOUCLE_membres(AUTEURS){id_collection}{tout}>#SET{membres,#GET{membres}|push{#ID_AUTEUR}}</BOUCLE_membres>
 	[(#SESSION{id_auteur}|in_array{#GET{membres}}|non)
-	<p class="explication"><:geol_albums:explication_participer:></p>
+	<p class="explication"><:collection:explication_participer:></p>
 	[(#BOUTON_ACTION{<:collection:titre_participer:>,#URL_ACTION_AUTEUR{associer_auteur_collection,lier/#ID_COLLECTION,#SELF},ajax actions})]
 	]
 	[(#SESSION{id_auteur}|!={#ID_ADMIN}|et{#SESSION{id_auteur}|in_array{#GET{membres}}|oui})
-	<p class="explication"><:geol_albums:explication_quitter:></p>
+	<p class="explication"><:collection:explication_participer_non:></p>
 	[(#BOUTON_ACTION{<:geol_albums:bouton_quitter:>,#URL_ACTION_AUTEUR{associer_auteur_collection,delier/#ID_COLLECTION,#SELF},ajax actions})]
 	]
 	</BOUCLE_test>
