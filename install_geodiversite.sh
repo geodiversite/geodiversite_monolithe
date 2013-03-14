@@ -11,6 +11,7 @@ svn co https://github.com/brunob/geodiversite/trunk/geodiversite geodiversite
 svn co svn://zone.spip.org/spip-zone/_plugins_/gis/trunk gis
 svn co svn://zone.spip.org/spip-zone/_plugins_/jquery_file_upload/trunk jquery_file_upload
 svn co svn://zone.spip.org/spip-zone/_plugins_/legendes
+svn co svn://zone.spip.org/spip-zone/_plugins_/mediaspip_player/trunk mediaspip_player
 svn co svn://zone.spip.org/spip-zone/_plugins_/menus/trunk menus
 svn co svn://zone.spip.org/spip-zone/_plugins_/mesfavoris
 svn co svn://zone.spip.org/spip-zone/_plugins_/nospam
@@ -20,7 +21,6 @@ svn co svn://zone.spip.org/spip-zone/_plugins_/palette/trunk palette
 svn co svn://zone.spip.org/spip-zone/_plugins_/polyhierarchie/branches/v2.0/ polyhierarchie
 svn co svn://zone.spip.org/spip-zone/_plugins_/saisies
 svn co http://svn.aires-de-confluxence.info/svn/plugins_spip/swfupload/trunk swfupload
-svn co http://svn.aires-de-confluxence.info/svn/plugins_spip/html5/trunk mediaspip_player
 svn co svn://zone.spip.org/spip-zone/_plugins_/z-core
 svn co svn://zone.spip.org/spip-zone/_squelettes_/zpip-dist/trunk zpip-dist
 svn co svn://zone.spip.org/spip-zone/_plugins_/spip-bonux-3
