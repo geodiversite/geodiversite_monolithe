@@ -19,8 +19,8 @@
 	<pipeline nom="formulaire_charger" inclure="geol_balades_pipelines.php" />
 	<pipeline nom="diogene_charger" inclure="geol_balades_pipelines.php" />
 
-	<necessite nom="geol" compatibilite="[1.2.0;[" />
-	<necessite nom="geol_albums" compatibilite="[1.0.0;[" />
-	<necessite nom="gisgeom" compatibilite="[1.2.7;[" />
+	<necessite nom="geol" compatibilite="[1.3.2;[" />
+	<necessite nom="geol_albums" compatibilite="[2.0.0;[" />
+	<necessite nom="gisgeom" compatibilite="[1.2.8;[" />
 
 </paquet>
