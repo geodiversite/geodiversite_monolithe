@@ -25,5 +25,7 @@ function autoriser_modererforum($faire, $type, $id, $qui, $opt) {
 }
 
 define('_PAGE_PUBLIER','upload');
+define('_DIOGENE_REDIRIGE_PUBLICATION',true);
+define('_DIOGENE_MODIFIER_PUBLIC',false);
 
 ?>

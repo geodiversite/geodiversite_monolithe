@@ -1,7 +1,7 @@
 <paquet
 	prefix="geol"
 	categorie="squelette"
-	version="1.3.1"
+	version="1.3.2"
 	etat="test"
 	compatibilite="[3.0.0;3.0.*]"
 	logo="images/logo_site.png"
@@ -24,7 +24,7 @@
 	<pipeline nom="xmlrpc_methodes" inclure="geol_pipelines.php" />
 	<pipeline nom="xmlrpc_server_class" inclure="geol_pipelines.php" />
 
-	<necessite nom="diogene" compatibilite="[1.0.0;[" />
+	<necessite nom="diogene" compatibilite="[1.5.1;[" />
 	<necessite nom="emballe_medias" compatibilite="[1.1.1;[" />
 	<necessite nom="saisies" compatibilite="[1.25.10;[" />
 	<necessite nom="Zpip" compatibilite="[2.0.5-dev;[" />
