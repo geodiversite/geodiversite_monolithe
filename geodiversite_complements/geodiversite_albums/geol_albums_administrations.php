@@ -49,34 +49,36 @@ function geol_albums_init(){
 			
 			// créer des collections
 			$id_collection = objet_inserer('collection');
-			objet_modifier('collection', $id_collection, $set);
-			objet_instituer('collection', $id_collection, array('statut' => 'publie'));
-			
-			// copie des liens de grappes_liens vers collections_liens pour les articles
-			$articles = sql_allfetsel('*','spip_grappes_liens',"objet = 'article' AND id_grappe = " . $grappe['id_grappe']);
-			foreach($articles as $article) {
-				objet_associer(array('collection' => $id_collection), array($article['objet'] => $article['id_objet']), array('rang' => $article['rang']));
-			}
-			
-			// associer l'auteur id_admin de la grappe à la collection
-			objet_associer(array('auteur' => $grappe['id_admin']), array('collection' => $id_collection));
-			
-			// copie des liens de grappes_liens vers auteurs_liens pour les auteurs
-			$auteurs = sql_allfetsel('*','spip_grappes_liens',"objet = 'auteur' AND id_grappe = " . $grappe['id_grappe']);
-			foreach($auteurs as $auteur) {
-				objet_associer(array($auteur['objet'] => $auteur['id_objet']), array('collection' => $id_collection));
-			}
-			
-			// maj des liens des forums attachés aux grappes
-			$forums = sql_allfetsel('id_forum','spip_forum',"objet = 'grappe' AND id_objet = ".$grappe['id_grappe']);
-			foreach($forums as $forum) {
-				sql_updateq('spip_forum', array('objet' => 'collection', 'id_objet' => $id_collection), 'id_forum = ' . $forum['id_forum']);
-			}
-			
-			// maj des liens des points gis attachés aux grappes
-			$points = sql_allfetsel('id_gis','spip_gis_liens',"objet = 'grappe' AND id_objet = ".$grappe['id_grappe']);
-			foreach($points as $point) {
-				sql_updateq('spip_gis_liens', array('objet' => 'collection', 'id_objet' => $id_collection), 'id_gis = ' . $point['id_gis']);
+			if ($id_collection > 0) {
+				objet_modifier('collection', $id_collection, $set);
+				objet_instituer('collection', $id_collection, array('statut' => 'publie'));
+				
+				// copie des liens de grappes_liens vers collections_liens pour les articles
+				$articles = sql_allfetsel('*','spip_grappes_liens',"objet = 'article' AND id_grappe = " . $grappe['id_grappe']);
+				foreach($articles as $article) {
+					objet_associer(array('collection' => $id_collection), array($article['objet'] => $article['id_objet']), array('rang' => $article['rang']));
+				}
+				
+				// associer l'auteur id_admin de la grappe à la collection
+				objet_associer(array('auteur' => $grappe['id_admin']), array('collection' => $id_collection));
+				
+				// copie des liens de grappes_liens vers auteurs_liens pour les auteurs
+				$auteurs = sql_allfetsel('*','spip_grappes_liens',"objet = 'auteur' AND id_grappe = " . $grappe['id_grappe']);
+				foreach($auteurs as $auteur) {
+					objet_associer(array($auteur['objet'] => $auteur['id_objet']), array('collection' => $id_collection));
+				}
+				
+				// maj des liens des forums attachés aux grappes
+				$forums = sql_allfetsel('id_forum','spip_forum',"objet = 'grappe' AND id_objet = ".$grappe['id_grappe']);
+				foreach($forums as $forum) {
+					sql_updateq('spip_forum', array('objet' => 'collection', 'id_objet' => $id_collection), 'id_forum = ' . $forum['id_forum']);
+				}
+				
+				// maj des liens des points gis attachés aux grappes
+				$points = sql_allfetsel('id_gis','spip_gis_liens',"objet = 'grappe' AND id_objet = ".$grappe['id_grappe']);
+				foreach($points as $point) {
+					sql_updateq('spip_gis_liens', array('objet' => 'collection', 'id_objet' => $id_collection), 'id_gis = ' . $point['id_gis']);
+				}
 			}
 		}
 	}
