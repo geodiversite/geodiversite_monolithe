@@ -12,6 +12,7 @@ Quelques sites qui utilisent geodiv
 - http://www.peluche.um2.fr/
 - http://trektic.org/
 - http://cornes.debru.me/
+- http://www.sequoia-act.net/
 
 Script d'installation
 ------
