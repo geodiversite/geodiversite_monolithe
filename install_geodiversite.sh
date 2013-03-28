@@ -45,9 +45,12 @@ svn co https://github.com/brunob/geodiversite/trunk/geodiversite_complements/geo
 svn co https://github.com/brunob/geodiversite/trunk/geodiversite_complements/geodiversite_balades geodiversite_balades
 svn co svn://zone.spip.org/spip-zone/_plugins_/gravatar
 svn co svn://zone.spip.org/spip-zone/_plugins_/licence
+svn co svn://zone.spip.org/spip-zone/_plugins_/mailshot
+svn co svn://zone.spip.org/spip-zone/_plugins_/mailsubscribers
 svn co http://svn.aires-de-confluxence.info/svn/plugins_spip/media_collections
 svn co svn://zone.spip.org/spip-zone/_plugins_/microblog
 svn co svn://zone.spip.org/spip-zone/_plugins_/minibando/trunk minibando
+svn co svn://zone.spip.org/spip-zone/_plugins_/newsletters
 svn co svn://zone.spip.org/spip-zone/_plugins_/notation/trunk notation
 svn co svn://zone.spip.org/spip-zone/_plugins_/notifications/trunk notifications
 svn co svn://zone.spip.org/spip-zone/_plugins_/openid
