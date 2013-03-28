@@ -16,26 +16,20 @@ function geol_insert_head_css($flux) {
 }
 
 /**
- * Insertion dans le pipeline styliser (SPIP)
+ * Insertion dans le pipeline recuperer_fond (SPIP)
  * 
  * Par défaut, appliquer la composition 'page' aux articles de la rubrique -1 (les pages donc)
  * 
  * @param array $flux
  * @return array $flux
  */
-function geol_styliser($flux){
-	$squelette = $flux['data'];
-	$fond = $flux['args']['fond'];
-	$ext = $flux['args']['ext'];
-	if ($flux['args']['id_rubrique'] == '-1'
+function geol_recuperer_fond($flux){
+	if ($flux['args']['fond'] == 'structure'
+		&& $flux['args']['contexte']['id_rubrique'] == '-1'
 		&& $flux['args']['contexte']['type-page'] == 'article'
 		&& $flux['args']['contexte']['composition'] == ''
 	){
 		$flux['args']['contexte']['composition'] = "page";
-		if (isset($flux['args']['contexte']['composition'])
-			AND $f=find_in_path($fond."-".$flux['args']['contexte']['composition'].".$ext")){
-				$flux['data'] = substr($f,0,-strlen(".$ext"));
-		}
 	}
 	return $flux;
 }
