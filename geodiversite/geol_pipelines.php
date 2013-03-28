@@ -25,9 +25,9 @@ function geol_insert_head_css($flux) {
  */
 function geol_recuperer_fond($flux){
 	if ($flux['args']['fond'] == 'structure'
-		&& $flux['args']['contexte']['id_rubrique'] == '-1'
-		&& $flux['args']['contexte']['type-page'] == 'article'
-		&& $flux['args']['contexte']['composition'] == ''
+		AND $flux['args']['contexte']['id_rubrique'] == '-1'
+		AND $flux['args']['contexte']['type-page'] == 'article'
+		AND $flux['args']['contexte']['composition'] == ''
 	){
 		$flux['args']['contexte']['composition'] = "page";
 	}
@@ -45,13 +45,18 @@ function geol_recuperer_fond($flux){
  */
 function geol_formulaire_charger($flux){
 	// sujet perso pour formulaire_ecrire_auteur depuis une page article (erreur de localisation)
-	if (($flux['args']['form']=='ecrire_auteur') AND ($flux['args']['args'][1]!='')) {
+	if ($flux['args']['form'] == 'ecrire_auteur' AND $flux['args']['args'][1] != '') {
 		$flux['data']['sujet_message_auteur'] .= supprimer_tags(extraire_multi($GLOBALS['meta']['nom_site']))." : "._T('geol:sujet_erreur_localisation');
 		$flux['data']['texte_message_auteur'] .= _T('geol:depuis_page')." : ".generer_url_entite_absolue($flux['args']['args'][1],'article')."\n\nMessage :\n\n";
 	}
 	// pas d'explicaltion sur le form d'inscription
-	if (($flux['args']['form']=='inscription') AND ($flux['args']['args'][0]=='1comite')) {
+	if ($flux['args']['form'] == 'inscription' AND $flux['args']['args'][0] == '1comite') {
 		$flux['data']['_commentaire'] = '';
+	}
+	// limiter le form de polyhierarchie sur la branche des categories (dans le public)
+	// cf http://zone.spip.org/trac/spip-zone/changeset/41280
+	if ($flux['args']['form'] == 'editer_polyhierarchie' AND !test_espace_prive()) {
+		$flux['data']['limite_branche'] = lire_config('geol/secteur_categories',2);
 	}
 	return $flux;
 }
