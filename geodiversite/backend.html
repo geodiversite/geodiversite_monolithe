@@ -9,11 +9,11 @@ version="1.0"[ encoding="(#CHARSET)"]?>
 
 	<INCLURE{fond=inclure/rss-entete}{id_auteur}>
 
-	<BOUCLE_10recents(ARTICLES){lang ?}{branche ?}{id_mot ?}{id_auteur ?}{id_grappe ?}{!par date}{0,10}{unique}>
+	<BOUCLE_10recents(ARTICLES){lang ?}{branche ?}{id_mot ?}{id_auteur ?}{id_collection ?}{!par date}{0,10}{unique}>
 	<INCLURE{fond=inclure/rss-item}{id_article}>
 	</BOUCLE_10recents>
 
-	<BOUCLE_tres_recents(ARTICLES){lang ?}{branche ?}{id_mot ?}{id_auteur ?}{id_grappe ?}{!par date}{age<3}{unique}>
+	<BOUCLE_tres_recents(ARTICLES){lang ?}{branche ?}{id_mot ?}{id_auteur ?}{id_collection ?}{!par date}{age<3}{unique}>
 	<INCLURE{fond=inclure/rss-item}{id_article}>
 	</BOUCLE_tres_recents>
 

@@ -16,11 +16,11 @@
 		[(#INCLURE{fond=inclure/listes_liens_pas,pas,tri,cols=#GET{cols},self=#SELF})]
 	</div>
 	<ul class="liste-items">
-		<BOUCLE_articles(ARTICLES) {id_mot?}{id_auteur?}{id_grappe?}{branche?}{recherche?}{texte?=#ENV{texte}}{doublons} {tri #ENV{par,date},#GET{defaut_tri}} {pagination #ENV{pas,#GET{cols}|mult{3}}}>
+		<BOUCLE_articles(ARTICLES) {id_mot?}{id_auteur?}{id_collection?}{branche?}{recherche?}{texte?=#ENV{texte}}{doublons} {tri #ENV{par,date},#GET{defaut_tri}} {pagination #ENV{pas,#GET{cols}|mult{3}}}>
 		<li class="item[ first(#COMPTEUR_BOUCLE|modulo{#GET{cols}}|=={1}|oui)]">
 			[(#INCLURE{fond=inclure/article-vignette,id_article,env})]
-			[(#ENV{id_grappe}|oui)[(#SESSION{id_auteur}|=={#INFO_ID_ADMIN{grappe,#ENV{id_grappe}}}|oui)
-			[(#BOUTON_ACTION{<:geol_albums:bouton_delier_media:>,#URL_ACTION_AUTEUR{lier_objets,delier/grappes/#ENV{id_grappe}/article/#ID_ARTICLE,#SELF},ajax lien_action})]
+			[(#ENV{id_collection}|oui)[(#AUTORISER{modifier,collection,#ENV{id_collection}}|oui)
+			[(#BOUTON_ACTION{<:collection:label_collections_retirer:>,#URL_ACTION_AUTEUR{supprimer_lien,collection-#ENV{id_collection}-article-#ID_ARTICLE,#SELF},ajax lien_action})]
 			]]
 		</li>
 		</BOUCLE_articles>

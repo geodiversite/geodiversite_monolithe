@@ -8,7 +8,7 @@ var [callback_(#ENV{id_map}|?{map#ENV{id_map},form_map})];
 			$.getJSON('[(#URL_PAGE{gis_json}|url_absolue)]',
 				{
 					objets : "articles_album",
-					id_grappe : [(#ENV{id_grappe}|trim)]
+					id_collection : [(#ENV{id_collection}|trim)]
 				},
 				function(data) {
 					if (data){

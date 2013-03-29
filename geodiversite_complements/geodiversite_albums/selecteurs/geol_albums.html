@@ -1,0 +1,9 @@
+#HTTP_HEADER{Content-Type: text/plain; charset=#CHARSET}
+#CACHE{0}
+#SET{resultats,#LISTE}
+<BOUCLE_doublons(COLLECTIONS){id_article}{doublons} />
+<BOUCLE_s(COLLECTIONS){doublons}{id_auteur ?}{titre LIKE %(#ENV{q})%}{0,20}{par multi titre}>
+[(#SET{resultats,[(#GET{resultats}|push{[(#ARRAY{label,[(#TITRE|textebrut)],value,[(#TITRE|textebrut)],id,#ID_COLLECTION})]})]})]
+</BOUCLE_s>
+[(#GET{resultats}|json_encode)]
+#FILTRE{trim}

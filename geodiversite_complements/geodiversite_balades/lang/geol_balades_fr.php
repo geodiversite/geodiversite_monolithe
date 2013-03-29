@@ -7,7 +7,7 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 'bouton_balader' => 'Générer',
 
 'editer_balade' => 'Éditer une balade',
-'explication_album_balader' => 'Générer une balade à partir du contenu de cet album.',
+'explication_album_balader' => 'Générer une balade à partir du contenu de cette collection.',
 'explication_importer' => 'Importer un fichier (KML ou GPX)',
 'explication_tracer' => 'Tracer le trajet',
 'explication_tracer_balade' => 'Importez un fichier (KML ou GPX) ou cliquez sur la carte pour commencer à tracer votre balade.<br />Terminez l\'édition en cliquant sur le dernier point de votre tracé.',

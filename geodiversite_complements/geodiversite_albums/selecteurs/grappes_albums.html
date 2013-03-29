@@ -1,8 +1,0 @@
-#HTTP_HEADER{Content-Type: text/plain; charset=#CHARSET}
-#CACHE{0}
-#SET{resultats, #LISTE}
-<BOUCLE_s(GRAPPES){titre LIKE %(#ENV{q})%}{0,20}{par multi titre}{geol_albums #ENV{id_auteur}}>
-[(#SET{resultats, [(#GET{resultats}|push{[(#ARRAY{label,[(#TITRE|textebrut)],value,[(#TITRE|textebrut)],id,#ID_GRAPPE})]})]})]
-</BOUCLE_s>
-[(#GET{resultats}|json_encode)]
-#FILTRE{trim}

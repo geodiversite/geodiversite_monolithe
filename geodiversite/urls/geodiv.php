@@ -44,7 +44,7 @@ function _generer_url_geodiv($type, $id, $args='', $ancre='') {
 		return _DIR_RACINE . $type . $id . ($args ? "?$args" : '') .($ancre ? "#$ancre" : '');
 	}
 	
-	if ($type == 'grappe') {
+	if ($type == 'collection') {
 		return _DIR_RACINE . 'album' . $id . ($args ? "?$args" : '') .($ancre ? "#$ancre" : '');
 	}
 
@@ -77,7 +77,7 @@ function urls_geodiv_dist($i, $entite, $args='', $ancre='') {
 	$url = $i;
 
 	// Decoder l'url html, page ou standard
-	$objets = 'article|breve|rubrique|mot|auteur|site|syndic|media|cat|tag|grappe|album';
+	$objets = 'article|breve|rubrique|mot|auteur|site|syndic|media|cat|tag|collection|album';
 	if (preg_match(
 	',^(?:[^?]*/)?('.$objets.')([0-9]+)(?:\.html)?([?&].*)?$,', $url, $regs)
 	OR preg_match(
@@ -95,7 +95,7 @@ function urls_geodiv_dist($i, $entite, $args='', $ancre='') {
 				$regs[1] = 'mot';
 				break;
 			case 'album':
-				$regs[1] = 'grappe';
+				$regs[1] = 'collection';
 				break;
 		}
 		$type = preg_replace(',s$,', '', table_objet($regs[1]));

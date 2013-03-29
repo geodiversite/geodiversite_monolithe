@@ -1,4 +1,4 @@
-<div class="formulaire_spip formulaire_editer formulaire_editer_balade formulaire_editer_balade-#ENV{id_grappe,nouveau}">
+<div class="formulaire_spip formulaire_editer formulaire_editer_balade formulaire_editer_balade-#ENV{id_collection,nouveau}">
 [<p class="reponse_formulaire reponse_formulaire_ok">(#ENV**{message_ok})</p>]
 [<p class="reponse_formulaire reponse_formulaire_erreur">(#ENV*{message_erreur})</p>]
 [(#ENV{editable}|oui)
@@ -7,12 +7,12 @@
 parametre : url d'action ]
 #ACTION_FORMULAIRE{#ENV{action}}
 [(#SAISIE{hidden,id_gis})]
-[(#SAISIE{hidden,id_objet,valeur_forcee=#ENV{id_grappe}})]
-[(#SAISIE{hidden,objet,valeur_forcee=grappe})]
+[(#SAISIE{hidden,id_objet,valeur_forcee=#ENV{id_collection}})]
+[(#SAISIE{hidden,objet,valeur_forcee=collection})]
 [(#SAISIE{hidden,lon})]
 [(#SAISIE{hidden,lat})]
 [(#SAISIE{hidden,zoom})]
-[(#SAISIE{hidden,titre,defaut=#INFO_TITRE{grappe,#ENV{id_grappe}}})]
+[(#SAISIE{hidden,titre,defaut=#INFO_TITRE{collection,#ENV{id_collection}}})]
 <ul>
 	<li class="fieldset carte"><fieldset>
 		<legend><:geol_balades:legend_tracer:></legend>
@@ -28,7 +28,7 @@ parametre : url d'action ]
 				path_styles=#ARRAY{color,#CONFIG{geol/couleur_primaire,#00c0f8},weight,3,opacity,1,dashArray,5},
 				env})]
 			[(#REM) ajouter les points des articles de l'album à la carte ]
-			[(#INCLURE{fond=inclure/album_charger_medias,id_grappe,id_gis,editer=oui})]
+			[(#INCLURE{fond=inclure/album_charger_medias,id_collection,id_gis,editer=oui})]
 			<script type="text/javascript">
 			<!--
 			;(function($){
