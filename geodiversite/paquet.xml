@@ -8,13 +8,14 @@
 	schema="0.2.1"
 >	
 
-	<nom>G&eacute;odiversit&eacute;</nom>
+	<nom>Géodiversité</nom>
 	<!-- Squelettes du projet Géodiversité -->
 
 	<auteur>b_b</auteur>
 
 	<licence lien="http://www.gnu.org/licenses/gpl-3.0.html">GPL 3</licence>
 
+	<pipeline nom="geol_navigation_fin" action="" />
 	<pipeline nom="insert_head_css" inclure="geol_pipelines.php" />
 	<pipeline nom="recuperer_fond" inclure="geol_pipelines.php" />
 	<pipeline nom="formulaire_charger" inclure="geol_pipelines.php" />
