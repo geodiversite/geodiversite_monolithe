@@ -26,7 +26,6 @@
 		</div>
 		[(#REM) Inclure le modele des liens de traductions ]
 		#MODELE{article_traductions}
-		
 	</div>
 
 	<BOUCLE_documents(DOCUMENTS){id_article}{mode=document}{vu=non}{0,1}>
@@ -52,7 +51,6 @@
 	[(#CONFIG{geol/afficher_docs_annexes}|oui)
 	[(#INCLURE{fond=inclure/media_annexes,id_article,modifier_annexes,ajax,env})]
 	]
-	
 </div>
 
 [(#REM) Petition :
