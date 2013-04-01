@@ -133,7 +133,7 @@ var resizeMap = function() {
 			map.attributionControl.setPrefix('');
 			
 			map.addControl(new L.Control.Scale());
-			map.addControl(new L.Control.Zoom());
+			map.zoomControl = new L.Control.Zoom().addTo(map);
 			map.addControl(new L.Control.FullScreen());
 
 			// fermer l'infowindow au chagenement de zoom
