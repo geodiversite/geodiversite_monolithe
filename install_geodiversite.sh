@@ -48,6 +48,7 @@ svn co svn://zone.spip.org/spip-zone/_plugins_/licence
 svn co svn://zone.spip.org/spip-zone/_plugins_/mailshot
 svn co svn://zone.spip.org/spip-zone/_plugins_/mailsubscribers
 svn co http://svn.aires-de-confluxence.info/svn/plugins_spip/media_collections
+svn co svn://zone.spip.org/spip-zone/_plugins_/memoization
 svn co svn://zone.spip.org/spip-zone/_plugins_/microblog
 svn co svn://zone.spip.org/spip-zone/_plugins_/minibando/trunk minibando
 svn co svn://zone.spip.org/spip-zone/_plugins_/newsletters
