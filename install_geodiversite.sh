@@ -36,6 +36,7 @@ svn co svn://zone.spip.org/spip-zone/_plugins_/champs_extras/core/trunk cextras_
 svn co svn://zone.spip.org/spip-zone/_plugins_/champs_extras/interface/trunk cextras_interface
 svn co svn://zone.spip.org/spip-zone/_plugins_/compositions/trunk compositions
 svn co svn://zone.spip.org/spip-zone/_plugins_/crayons
+svn co svn://zone.spip.org/spip-zone/_plugins_/criteres_suivant_precedent
 svn co svn://zone.spip.org/spip-zone/_plugins_/diogene/diogene_complements/diogene_geo/trunk diogene_geo
 svn co svn://zone.spip.org/spip-zone/_plugins_/diogene/diogene_complements/diogene_licence/trunk diogene_licence
 svn co svn://zone.spip.org/spip-zone/_plugins_/diogene/diogene_complements/diogene_mots/trunk diogene_mots
