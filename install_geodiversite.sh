@@ -37,6 +37,7 @@ svn co svn://zone.spip.org/spip-zone/_plugins_/champs_extras/interface/trunk cex
 svn co svn://zone.spip.org/spip-zone/_plugins_/compositions/trunk compositions
 svn co svn://zone.spip.org/spip-zone/_plugins_/crayons
 svn co svn://zone.spip.org/spip-zone/_plugins_/criteres_suivant_precedent
+svn co svn://zone.spip.org/spip-zone/_plugins_/crud
 svn co svn://zone.spip.org/spip-zone/_plugins_/diogene/diogene_complements/diogene_geo/trunk diogene_geo
 svn co svn://zone.spip.org/spip-zone/_plugins_/diogene/diogene_complements/diogene_licence/trunk diogene_licence
 svn co svn://zone.spip.org/spip-zone/_plugins_/diogene/diogene_complements/diogene_mots/trunk diogene_mots
@@ -60,6 +61,7 @@ svn co svn://zone.spip.org/spip-zone/_plugins_/opensearch
 svn co svn://zone.spip.org/spip-zone/_plugins_/selecteur_generique/trunk selecteur_generique
 svn co svn://zone.spip.org/spip-zone/_plugins_/socialtags
 svn co svn://zone.spip.org/spip-zone/_plugins_/spipicious_jquery/trunk spipicious_jquery
+svn co svn://zone.spip.org/spip-zone/_plugins_/xmlrpc/trunk xmlrpc
 svn co svn://zone.spip.org/spip-zone/_plugins_/zen-garden/trunk zen-garden
 
 cd ..
