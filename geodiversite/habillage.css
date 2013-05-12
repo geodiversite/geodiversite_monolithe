@@ -386,6 +386,7 @@ code, pre, samp { white-space: pre-line; }
 /* le reste :p */
 
 #nav .menu-liste { background: #f2f2f2; float: none; padding: 1%; }
+#nav .menu-liste.univers { position: relative; top: 0; }
 #nav .menu-liste .menu-entree a,
 #nav .menu-liste .menu-entree a:hover { color: #00c0f8; }
 #extra { margin-bottom: 15px !important; }
