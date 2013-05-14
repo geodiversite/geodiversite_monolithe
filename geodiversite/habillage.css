@@ -231,7 +231,11 @@ ul.choix_mots li label { display: inline; font-weight: normal; }
 	font-family: 'geol';
 	src: url('polices/jesaya_free.eot');
 	src: local('Jesaya Free Regular'), local('JesayaFree-Regular');
-	src: url('polices/jesaya_free.woff') format('woff'), url('polices/jesaya_free.ttf') format('truetype'), url('polices/jesaya_free.svg#JesayaFree-Regular') format('svg'); }
+	src: url('polices/jesaya_free.eot?#iefix') format('embedded-opentype'),
+		 url('polices/jesaya_free.woff') format('woff'),
+		 url('polices/jesaya_free.ttf') format('truetype'),
+		 url('polices/jesaya_free.svg#JesayaFree-Regular') format('svg');
+}
 
 /* Typo de base + Disposition a l'ecran des blocs principaux */
 
