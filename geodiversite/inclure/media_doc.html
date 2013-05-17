@@ -65,11 +65,38 @@
 ]
 
 <script type="text/javascript">
-(function($) {
-	$('#supprimer_doc').click(function(){
-		return confirm("<:geol:doc_supprimer_confirm|texte_script:>");
+<!--
+(function($){
+	$(function(){
+		$('#supprimer_doc').click(function(){
+			return confirm("<:geol:doc_supprimer_confirm|texte_script:>");
+		});
+		[(#LARGEUR|>{#ENV{largeur}}|oui)
+		var clicked = false;
+		$('.actions_doc .zoom').attr('type','').attr('title','<:taxinomes:aide_zoom|texte_script:>').on('click', function(){
+			if (clicked) {
+				clicked = false;
+				$('.zoomImg').remove();
+			} else {
+				clicked = true;
+				$('.image_legendes').animateLoading().zoom({
+					url: '[(#FICHIER|url_absolue)]',
+					callback: function(){
+						$('.image_legendes').endLoading(true);
+					}
+				});
+			}
+			return false;
+		});
+		$('.image_legendes').click(function(){
+			if (clicked) {
+				clicked = false;
+				$('.zoomImg').remove();
+			}
+		});]
 	});
 })(jQuery);
+-->
 </script>
 
 [(#REM) Sinon : document normal ]
