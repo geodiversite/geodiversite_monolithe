@@ -45,6 +45,7 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 'cfg_titre_geol' => 'Géodiversité',
 'commentaire' => '@nb@ commentaire',
 'commentaire_aucun' => 'Aucun commentaire',
+'commentaire_zero' => '0 commentaire',
 'commentaires' => '@nb@ commentaires',
 'commentaires_a_date_heure' => 'à',
 'commentaires_le_date_jour' => 'Le',
