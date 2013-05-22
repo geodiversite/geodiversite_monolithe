@@ -25,7 +25,7 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 'carte' => 'Carte',
 'categories' => 'Catégories',
 'categories_scientifiques' => 'Catégories scientifiques',
-'cfg_descr_geol' => 'Configuration du squelette Gédiversité',
+'cfg_descr_geol' => 'Configuration du squelette Géodiversité',
 'cfg_explication_afficher_serie' => 'Afficher un bloc "Autres médias" dans la navigation des pages médias pour permettre la navigation entre les médias précédents/suivants.',
 'cfg_explication_afficher_docs_annexes' => 'Afficher un bloc "Documents annexes" sous la description des médias pour permettre l\'ajout de documents complémentaires.',
 'cfg_explication_largeur_gravatar' => 'Taille des gravatars dans les messages des forums.',
@@ -133,7 +133,7 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 'modifier_licence' => 'Modifier la licence',
 'modifier_pass' => 'Changer de mot de passe',
 'mon_espace' => 'Mon espace',
-'mot_doux_categories' => 'Pour ajouter un mot clé  scientifique à ce média il faut être inscrit et membre du collectif scientifique.',
+'mot_doux_categories' => 'Pour ajouter un mot clé scientifique à ce média il faut être inscrit et membre du collectif scientifique.',
 'mot_doux_premier_upload' => 'C\'est la première fois que vous publiez un média, <a href="@url@">consultez l\'aide en ligne</a>.',
 
 'nav_a_propos' => 'À propos',
