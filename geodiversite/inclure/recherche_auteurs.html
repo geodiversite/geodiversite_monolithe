@@ -1,7 +1,8 @@
 <B_auteurs>
+#ANCRE_PAGINATION
 <h2 class="h2"><span><:geol:contributeurs_les:></span></h2>
 <ul class="liste-items">
-<BOUCLE_auteurs(AUTEURS){recherche} {tout}{!par points}{0,10}>
+<BOUCLE_auteurs(AUTEURS){recherche} {tout}{!par points}{pagination #ENV{pas,5}}>
 	<li class="item vcard">
 		<a href="#URL_AUTEUR">
 			<span class="titre fn">#NOM</span>
@@ -10,4 +11,5 @@
 	</li>
 </BOUCLE_auteurs>
 </ul>
+[<p class="pagination">(#PAGINATION{precedent_suivant})</p>]
 </B_auteurs>

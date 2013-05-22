@@ -6,7 +6,7 @@ cd plugins-dist
 
 svn co svn://zone.spip.org/spip-zone/_plugins_/date_inscription
 svn co svn://zone.spip.org/spip-zone/_plugins_/diogene/diogene/trunk diogene
-svn co http://svn.aires-de-confluxence.info/svn/plugins_spip/import_video/emballe_medias/branches/v1.3 emballe_medias
+svn co svn://zone.spip.org/spip-zone/_plugins_/emballe_medias/emballe_medias/branches/v1.3 emballe_medias
 svn co https://github.com/brunob/geodiversite/trunk/geodiversite geodiversite
 svn co svn://zone.spip.org/spip-zone/_plugins_/gis/trunk gis
 svn co svn://zone.spip.org/spip-zone/_plugins_/jquery_file_upload/trunk jquery_file_upload
@@ -36,6 +36,8 @@ svn co svn://zone.spip.org/spip-zone/_plugins_/champs_extras/core/trunk cextras_
 svn co svn://zone.spip.org/spip-zone/_plugins_/champs_extras/interface/trunk cextras_interface
 svn co svn://zone.spip.org/spip-zone/_plugins_/compositions/trunk compositions
 svn co svn://zone.spip.org/spip-zone/_plugins_/crayons
+svn co svn://zone.spip.org/spip-zone/_plugins_/criteres_suivant_precedent
+svn co svn://zone.spip.org/spip-zone/_plugins_/crud
 svn co svn://zone.spip.org/spip-zone/_plugins_/diogene/diogene_complements/diogene_geo/trunk diogene_geo
 svn co svn://zone.spip.org/spip-zone/_plugins_/diogene/diogene_complements/diogene_licence/trunk diogene_licence
 svn co svn://zone.spip.org/spip-zone/_plugins_/diogene/diogene_complements/diogene_mots/trunk diogene_mots
@@ -47,7 +49,8 @@ svn co svn://zone.spip.org/spip-zone/_plugins_/gravatar
 svn co svn://zone.spip.org/spip-zone/_plugins_/licence
 svn co svn://zone.spip.org/spip-zone/_plugins_/mailshot
 svn co svn://zone.spip.org/spip-zone/_plugins_/mailsubscribers
-svn co http://svn.aires-de-confluxence.info/svn/plugins_spip/media_collections
+svn co svn://zone.spip.org/spip-zone/_plugins_/emballe_medias/media_collections/trunk media_collections
+svn co svn://zone.spip.org/spip-zone/_plugins_/memoization
 svn co svn://zone.spip.org/spip-zone/_plugins_/microblog
 svn co svn://zone.spip.org/spip-zone/_plugins_/minibando/trunk minibando
 svn co svn://zone.spip.org/spip-zone/_plugins_/newsletters
@@ -58,6 +61,7 @@ svn co svn://zone.spip.org/spip-zone/_plugins_/opensearch
 svn co svn://zone.spip.org/spip-zone/_plugins_/selecteur_generique/trunk selecteur_generique
 svn co svn://zone.spip.org/spip-zone/_plugins_/socialtags
 svn co svn://zone.spip.org/spip-zone/_plugins_/spipicious_jquery/trunk spipicious_jquery
+svn co svn://zone.spip.org/spip-zone/_plugins_/xmlrpc/trunk xmlrpc
 svn co svn://zone.spip.org/spip-zone/_plugins_/zen-garden/trunk zen-garden
 
 cd ..

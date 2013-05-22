@@ -1,0 +1,15 @@
+<BOUCLE_art(ARTICLES){id_article}>
+<div class="info-publi #ENV{class}">
+	<BOUCLE_auteur(AUTEURS){id_article}{0,1}>
+	[(#PLUGIN{gravatar}|oui)[ (#MODELE{gravatar,id_auteur,largeur=40})]]
+	</BOUCLE_auteur>
+	[<p class="info-auteur"><:geol:publie_par:> (#LESAUTEURS) </p>]
+	[<p class="info-date"><abbr class="published" title="[(#DATE|date_iso)]"><:geol:date_le:> (#DATE|affdate{'d/m/Y'})</abbr></p>]
+	[<p class="info-visites">(#VISITES|singulier_ou_pluriel{geol:vue,geol:vues})</p>]
+	<BOUCLE_coms(FORUMS){id_article}{plat} />
+	[(#ACCEPTER_FORUM|!={non}|oui)
+	[<p class="info-comments"><a href="#forum">(#TOTAL_BOUCLE)
+		[(#TOTAL_BOUCLE|>{1}|?{<:geol:commentaires:>,<:geol:commentaire:>})]</a></p>]
+	]<//B_coms>
+</div>
+</BOUCLE_art>

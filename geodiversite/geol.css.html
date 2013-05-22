@@ -138,6 +138,8 @@ body a.spip-admin-boutons:hover { color: #GET{couleur1}; }
 
 .cartouche { margin-bottom: 0; }
 .cartouche .info-publi { overflow: hidden; }
+.cartouche .info-publi .info-date,
+.cartouche .info-publi .info-auteur { display: inline; }
 .cartouche .avatar { float: left; margin-right: 10px; }
 .cartouche p { clear: none; margin: 0; padding: 0; }
 .cartouche .spip_logos { float: left; margin: 0 16px 4px 0; }
@@ -289,7 +291,8 @@ https://developer.mozilla.org/en/DOM/Using_full-screen_mode#Presentation_differe
 /* page upload / page publier (au cas où)
 ----------------------------------------------- */
 
-.page_upload #em_message_avant_upload,.page_publier #em_message_avant_upload { border: 0; }
+.page_upload #em_message_avant_upload,
+.page_publier #em_message_avant_upload { border: 0; }
 .page_upload #em_upload_document li.fieldset,
 .page_upload .formulaire_supprimer_document,
 .page_upload #formulaire_diogene .editer_titre,
@@ -300,7 +303,10 @@ https://developer.mozilla.org/en/DOM/Using_full-screen_mode#Presentation_differe
 .page_publier #formulaire_diogene .editer_titre,
 .page_publier #formulaire_diogene .editer_texte,
 .page_publier #formulaire_diogene li.fieldset { margin: 20px 0; padding: 10px; border: 5px solid #f2f2f2; background: #fff; }
-.page_upload .previsu_document,.page_publier .previsu_document { border: 0; }
+.page_upload .previsu_document,
+.page_publier .previsu_document { border: 0; }
+.page_upload #contenu .h2,
+.page_upload #contenu div.texte,
 .page_upload .previsu_document h4,
 .page_upload .previsu_document .infos_document,
 .page_upload .previsu_document a.legende_add,
@@ -309,6 +315,8 @@ https://developer.mozilla.org/en/DOM/Using_full-screen_mode#Presentation_differe
 .page_upload #formulaire_diogene .editer_parents,
 .page_upload #formulaire_diogene .editer_gis_titre,
 .page_upload #formulaire_diogene .editer_gis_descriptif,
+.page_publier #contenu .h2,
+.page_publier #contenu div.texte,
 .page_publier .previsu_document h4,
 .page_publier .previsu_document .infos_document,
 .page_publier .previsu_document a.legende_add,
@@ -317,10 +325,14 @@ https://developer.mozilla.org/en/DOM/Using_full-screen_mode#Presentation_differe
 .page_publier #formulaire_diogene .editer_parents,
 .page_publier #formulaire_diogene .editer_gis_titre,
 .page_publier #formulaire_diogene .editer_gis_descriptif { display: none; }
-.page_upload #formulaire_diogene h3.legend,.page_publier #formulaire_diogene h3.legend { margin-bottom: 10px; }
-.page_upload .formulaire_message,.page_publier .formulaire_message { font-weight: bold; }
-.page_upload .diogene_geo #geomap,.page_publier .diogene_geo #geomap { width: 100%; height: 350px; }
-.page_upload #em_upload_boutons,.page_publier #em_upload_boutons { background: #f2f2f2; color: #666; border: 4px solid #fff;
+.page_upload #formulaire_diogene h3.legend,
+.page_publier #formulaire_diogene h3.legend { margin-bottom: 10px; }
+.page_upload .formulaire_message,
+.page_publier .formulaire_message { font-weight: bold; }
+.page_upload .diogene_geo #geomap,
+.page_publier .diogene_geo #geomap { width: 100%; height: 350px; }
+.page_upload #em_upload_boutons,
+.page_publier #em_upload_boutons { background: #f2f2f2; color: #666; border: 4px solid #fff;
 	-moz-border-radius: 8px; -webkit-border-radius: 8px; border-radius: 8px;
 	-moz-box-shadow: 0 1px 3px #999; -webkit-box-shadow: 0 1px 3px #999; box-shadow: 0 1px 3px #999; }
 
@@ -354,12 +366,13 @@ https://developer.mozilla.org/en/DOM/Using_full-screen_mode#Presentation_differe
 .formulaire_editer_gis,
 .formulaire_editer_licence,
 .formulaire_creer_collection_rapide,
+.formulaire_newsletter_subscribe,
 .formulaire_joindre_document { width: auto; margin: 10px auto; padding: 10px; border: 1px solid #ddd; background: #f5f5f5; }
-.formulaire_ecrire_auteur fieldset legend,
-.formulaire_login fieldset legend,
-.formulaire_oubli fieldset legend,
-.formulaire_mot_de_passe fieldset legend,
-.formulaire_spipicious fieldset legend { background: transparent; }
+div.formulaire_ecrire_auteur fieldset legend,
+div.formulaire_login fieldset legend,
+div.formulaire_oubli fieldset legend,
+div.formulaire_mot_de_passe fieldset legend,
+div.formulaire_spipicious fieldset legend { background: transparent; }
 
 .formulaire_spip fieldset.previsu { border: 1px dashed #bbb; }
 .formulaire_spip fieldset.previsu legend { color: #666; }
@@ -391,7 +404,7 @@ https://developer.mozilla.org/en/DOM/Using_full-screen_mode#Presentation_differe
 /* recherche avancee */
 
 .formulaire_recherche_geol { width: 90%; margin-top: 10px; }
-.formulaire_recherche_geol ul li { overflow: hidden; padding: 15px 10px 15px 150px; border-top: 1px solid #ddd; }
+.formulaire_spip.formulaire_recherche_geol ul li { overflow: hidden; padding: 15px 10px 15px 150px; border-top: 1px solid #ddd; }
 .formulaire_recherche_geol ul li:first-child { border-top: 0; }
 .formulaire_recherche_geol ul li label { float: left; width: 140px; margin-left: -145px; text-align: left; vertical-align: top;
 	/* pour IE6 */ position: relative; display: inline; }
