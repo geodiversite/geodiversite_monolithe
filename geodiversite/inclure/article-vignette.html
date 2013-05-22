@@ -8,8 +8,7 @@
 	-* info_date : si !=non afficher la date
 	-* info_visites : !=non oui afficher le nombre de visite
 	-* info_commentaires : !=non oui afficher le nombre de commentaires
- ]
- 
+] 
 <BOUCLE_article_vignette(ARTICLES){id_article}>
 
 [(#ENV{info_titre}|!={non}|oui)
@@ -41,8 +40,7 @@
 
 <BOUCLE_merci_bonux(CONDITION){si #ENV{info_commentaires}|!={non}}>
 	<BOUCLE_coms(FORUMS){id_article}{plat} />
-	[<p><a href="#GET{url_article}#forum">(#TOTAL_BOUCLE)
-		[(#TOTAL_BOUCLE|>{1}|?{<:geol:commentaires:>,<:geol:commentaire:>})]</a></p>]
+	[<p><a href="#GET{url_article}#forum">(#TOTAL_BOUCLE|singulier_ou_pluriel{geol:commentaire,geol:commentaires})</a></p>]
 	<//B_coms>
 </BOUCLE_merci_bonux>
 

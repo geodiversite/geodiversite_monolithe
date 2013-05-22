@@ -8,8 +8,7 @@
 	[<p class="info-visites">(#VISITES|singulier_ou_pluriel{geol:vue,geol:vues})</p>]
 	<BOUCLE_coms(FORUMS){id_article}{plat} />
 	[(#ACCEPTER_FORUM|!={non}|oui)
-	[<p class="info-comments"><a href="#forum">(#TOTAL_BOUCLE)
-		[(#TOTAL_BOUCLE|>{1}|?{<:geol:commentaires:>,<:geol:commentaire:>})]</a></p>]
+	[<p class="info-comments"><a href="#forum">(#TOTAL_BOUCLE|singulier_ou_pluriel{geol:commentaire,geol:commentaires})</a></p>]
 	]<//B_coms>
 </div>
 </BOUCLE_art>
