@@ -120,7 +120,7 @@ var resizeMap = function() {
 			// on colle le control de layers à gauche en mode toujours ouvert
 			var layers_control = new L.Control.Layers('','',{position: 'topleft', collapsed: false});
 			layers_control.addBaseLayer([(#GET{layer_defaut})],["(#GET{layers}|table_valeur{#GET{layer_defaut}/nom})"]);
-			<BOUCLE_layers(DATA){source table, #GET{layers}}{si #ENV{control_type,#ENV{controle_type}}|!={non}|et{#ENV{no_control,#ENV{aucun_controle}}|!={oui}}|et{#CONFIG{gis/layers,#ARRAY}|count|>{1}|oui}|oui}>[
+			<BOUCLE_layers(DATA){source table, #GET{layers}}{si #CONFIG{gis/layers,#ARRAY}|count|>{1}|oui}>[
 			(#CLE|!={#GET{layer_defaut}}|oui|et{#CLE|in_array{#CONFIG{gis/layers,#ARRAY}}|oui}|oui)
 			layers_control.addBaseLayer([new (#VALEUR|table_valeur{layer})],"[(#VALEUR|table_valeur{nom})]");]
 			</BOUCLE_layers>
