@@ -12,10 +12,10 @@ var resizeMap = function() {
 (function($){
 	$(function(){
 
-		// <BOUCLE_gis(GIS){id_article}>
-		// centrer sur l'article passe dans l'url
-		// #SET{lat,#LAT} #SET{lon,#LON} #SET{zoom,#ZOOM}
-		// </BOUCLE_gis>
+		<BOUCLE_gis(GIS){id_article}>
+		[(#REM) centrer sur l'article passe dans l'url ]
+		#SET{lat,#LAT} #SET{lon,#LON} #SET{zoom,#ZOOM}
+		</BOUCLE_gis>
 		[(#REM) Sinon centrer sur les coordonnes passees en parametre ou sur celle par defaut ]
 		[(#GET{lat}|non)
 		#SET{lat,#ENV{lat,#CONFIG**{gis/lat,0}}}]
@@ -23,139 +23,27 @@ var resizeMap = function() {
 		#SET{lon,#ENV{lon,#CONFIG**{gis/lon,0}}}]
 		[(#GET{zoom}|non)
 		#SET{zoom, #ENV{zoom,#CONFIG**{gis/zoom,0}}]
-		
-		var infowindow;
-		var layers = new Array();
-
-		var parseData = function(data,map) {
-			markers = [];
-			$.each(data.features, function(i,item){
-				if (item.geometry.coordinates[0]) {
-					var latlng = new L.LatLng(item.geometry.coordinates[1],item.geometry.coordinates[0]);
-					var marker = new L.Marker(latlng);
-					if (item.properties.icon) {
-						marker.setIcon(new L.Icon({
-							iconUrl: item.properties.icon,
-							iconSize: new L.Point(32,32),
-							iconAnchor: new L.Point(16,16),
-						}));
-					}
-					marker.id = item.id;
-					markers.push(marker);
-				}
-			});
-			
-			markerCluster = new L.Marker.Clusterer(map, markers, {
-				maxZoom: 50, // on veut des clusters quel que soit le zoom pour ouvrir les infowindows paginées
-				styles: [{
-					url: '#CHEMIN{images/bg_cluster.png}',
-					height: 40,
-					width: 40,
-					opt_textColor: '#ffffff'
-				}]
-			});
-			
-			// préparer les infowindows
-			var infowindow_options = {
-				className: 'geol_window',
-				maxWidth: 350
-			};
-			infowindow = new L.Popup(infowindow_options);
-			var extUrl = "[(#URL_PAGE{get_infowindow})]";
-			
-			var get_infowindow = function(url,ids,infowindow,marker,map) {
-				$.ajax({
-					url: url,
-					data: { id_article : ids },
-					success: function(data){
-						infowindow.setContent(data);
-						infowindow.setLatLng(marker._latlng);
-						map.openPopup(infowindow);
-					}
-				});
-			};
-			
-			$.each(markers,function(i,marker){
-				[// ouvrir l'infowindow du marker passé dans l'url
-				if (marker.id=='(#ENV{id_article})') {
-					get_infowindow(extUrl,#ENV{id_article},infowindow,marker,map);
-				}]
-				marker.addEventListener('click', function() {
-					get_infowindow(extUrl,marker.id,infowindow,marker,map);
-				});
-			});
-			// lors du  clic sur un cluster
-			markerCluster.addEventListener('click', function (e) {
-				var markers = e.cluster.getMarkers();
-				if (markers.length > 1) {
-					// si on est au zoom maxi de la carte
-					if (map.getMaxZoom() <= map.getZoom()) {
-						// récupérer les id des markers du cluster
-						var markers_ids = new Array();
-						$.each(markers,function(i,marker){
-							markers_ids.push(marker.marker.id);
-						});
-						// ouvrir une infowindow multiple
-						get_infowindow(extUrl,markers_ids,infowindow,e.cluster._clusterMarker,map);
-					}
-				}
-				return false;
-			});
-		};
 
 		var initMap = function() {
-			var map_container = 'geomap';
-			map = new L.Map(map_container,{
-				zoomControl: false,
-				maxZoom: 21 // on fixe un zoom max arbitraire en attendant que les couches le renseignent
-			});
-			map.setView(new L.LatLng([(#GET{lat})], [(#GET{lon})]), [(#GET{zoom})]);
-
-			//default layer
-			#SET{layer_defaut,#REM|gis_layer_defaut} #SET{layers,#EVAL{$GLOBALS['gis_layers']}}
-			var [(#GET{layer_defaut})] = [new (#GET{layers}|table_valeur{#GET{layer_defaut}/layer})];
-			map.addLayer([(#GET{layer_defaut})]);
+			<BOUCLE_kml(ARTICLES documents_liens documents){id_article}{documents.mode=document}{documents.extension IN 'kml','kmz'}>
+			#SET{kml,ID_ARTICLE} #SET{url_kml,#URL_DOCUMENT}
+			</BOUCLE_kml>[()]</B_kml>
 			
-			<B_layers>
-			// on colle le control de layers à gauche en mode toujours ouvert
-			var layers_control = new L.Control.Layers('','',{position: 'topleft', collapsed: false});
-			layers_control.addBaseLayer([(#GET{layer_defaut})],["(#GET{layers}|table_valeur{#GET{layer_defaut}/nom})"]);
-			<BOUCLE_layers(DATA){source table, #GET{layers}}{si #CONFIG{gis/layers,#ARRAY}|count|>{1}|oui}>[
-			(#CLE|!={#GET{layer_defaut}}|oui|et{#CLE|in_array{#CONFIG{gis/layers,#ARRAY}}|oui}|oui)
-			layers_control.addBaseLayer([new (#VALEUR|table_valeur{layer})],"[(#VALEUR|table_valeur{nom})]");]
-			</BOUCLE_layers>
-			map.addControl(layers_control);
-			// classe noajax sur le layer_control pour éviter l'ajout de hidden par SPIP
-			$(layers_control._form).addClass('noajax');
-			</B_layers>
-
-			map.attributionControl.setPrefix('');
-			
-			map.addControl(new L.Control.Scale());
-			map.zoomControl = new L.Control.Zoom().addTo(map);
-			map.addControl(new L.Control.FullScreen());
-
-			// fermer l'infowindow au chagenement de zoom
-			map.on('zoomend', function(e) {
-				if (infowindow) infowindow._close();
+			map = new L.Map.Geodiv('geomap',{
+				center: new L.LatLng([(#GET{lat})], [(#GET{lon})]),
+				zoom: [(#GET{zoom})],
+				maxZoom: 21, // on fixe un zoom max arbitraire en attendant que les couches le renseignent
+				[openInfowindow: (#ENV{id_article}),]
+				[loadData: (#GET{kml}|?{false,true}),]
+				default_layer: '[(#REM|gis_layer_defaut)]',
+				affiche_layers: [(#CONFIG{gis/layers,#ARRAY}|json_encode)],
+				dataUrl: "#PRODUIRE{fond=geol_markers.json,id_auteur=#ENV{id_auteur},id_mot=#ENV{id_mot},id_rubrique=#ENV{id_rubrique},recherche=#ENV{recherche}}",
 			});
 			
-			// <BOUCLE_kml(ARTICLES documents_liens documents){id_article}{documents.mode=document}{documents.extension IN 'kml','kmz'}>
-			// superposer le kml de l'article passe en url
-			layers['kml_#ID_ARTICLE'] = new L.KML("[(#URL_DOCUMENT|url_absolue)]", {async: true});
-			map.addLayer(layers['kml_#ID_ARTICLE']);
-			#SET{kml,oui}
-			// </BOUCLE_kml>
-			
-			// charger les markers sauf si on superpose un kml
-			[(#GET{kml}|non)
-			$.getJSON("#PRODUIRE{fond=geol_markers.json,id_auteur=#ENV{id_auteur},id_mot=#ENV{id_mot},id_rubrique=#ENV{id_rubrique},recherche=#ENV{recherche}}",
-				function(data) {
-					if (data){
-						parseData(data,map);
-					}
-				}
-			);
+			[(#GET{kml}|oui)
+			// superposer le kml de l'article passé dans l'url
+			layers\['kml_[(#GET{kml})]'\] = new L.KML("[(#GET{url_kml}|url_absolue)]", {async: true});
+			map.addLayer(layers\['kml_[(#ENV{id_article})]'\]);
 			]
 			
 			[(#ENV{id_auteur}|oui|ou{#ENV{id_mot}}|ou{#ENV{id_rubrique}}|ou{#GET{kml}}|ou{#ENV{recherche}})
@@ -225,13 +113,15 @@ var resizeMap = function() {
 		// init de la carte
 		$.getScript('[(#PRODUIRE{fond=javascript/gis.js}|compacte)]', function(){
 			$.getScript('[(#CHEMIN{javascript/leafclusterer.js}|compacte)]',function(){
-				if ($.browser.msie) {
-					$(window).load(initMap);
-					resizeMap();
-				} else {
-					resizeMap();
-					initMap();
-				};
+				$.getScript('[(#PRODUIRE{fond=javascript/leaflet.geodiv.js}|compacte)]', function(){
+					if ($.browser.msie) {
+						$(window).load(initMap);
+						resizeMap();
+					} else {
+						resizeMap();
+						initMap();
+					};
+				});
 			});
 		});
 		

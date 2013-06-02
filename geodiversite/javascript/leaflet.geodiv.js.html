@@ -1,0 +1,163 @@
+#HTTP_HEADER{Content-Type: text/javascript;}
+// Plugin Leaflet L.Map.Geodiv
+L.Map.Geodiv = L.Map.extend({
+	
+	includes: L.Mixin.Events,
+	
+	options:{
+		default_layer: null,
+		gis_layers: #EVAL{json_encode($GLOBALS['gis_layers'])},
+		affiche_layers: null,
+		layersControl: true,
+		zoomControl: false,  // Pas tout de suite pour permettre l'ajout du control layers avant
+		scaleControl: true,
+		layersControlOptions: {position: 'topleft', collapsed: false},
+		loadData: true,
+		dataUrl: null,
+		getInfowindowUrl: "[(#URL_PAGE{get_infowindow})]",
+		clusterImg: "#CHEMIN{images/bg_cluster.png}",
+		openInfowindow: null
+	},
+	
+	initialize: function (id,options) {
+		L.Util.setOptions(this, options);
+		
+		L.Map.prototype.initialize.call(this, id, options);
+		
+		this.populateTileLayers(this.options.affiche_layers);
+		
+		this.attributionControl.setPrefix('');
+		
+		if (this.options.scaleControl)
+			this.scaleControl = L.control.scale().addTo(this);
+		
+		this.zoomControl = new L.Control.Zoom().addTo(this);
+		this.addControl(new L.Control.FullScreen());
+		
+		this.infowindow = new L.Popup({className: 'geol_window', maxWidth: 350});
+		
+		if (this.options.loadData && this.options.loadData)
+			this.loadData(this.options.dataUrl);
+		
+		this.on('zoomend', function(e) {
+			if (this.infowindow)
+				this.infowindow._close();
+		});
+		
+	},
+
+	populateTileLayers: function (tilelayers) {
+		// Fond de carte par défaut
+		var default_layer = this.createTileLayer(this.options.default_layer);
+		this.addLayer(default_layer);
+		// Fonds de carte supplémentaires
+		if (this.options.affiche_layers.length>1){
+			var layers_control = new L.Control.Layers('','',this.options.layersControlOptions);
+			layers_control.addBaseLayer(default_layer,this.options.gis_layers[this.options.default_layer]["nom"]);
+			for(var l in this.options.affiche_layers){
+				if (this.options.affiche_layers[l]!==this.options.default_layer){
+					var layer = this.createTileLayer(this.options.affiche_layers[l]);
+					if (typeof layer!=="undefined")
+						layers_control.addBaseLayer(layer,this.options.gis_layers[this.options.affiche_layers[l]]["nom"]);
+				}
+			}
+			this.addControl(layers_control);
+			// ajouter l'objet du controle de layers à la carte pour permettre d'y accéder depuis le callback
+			this.layersControl = layers_control;
+			// classe noajax sur le layer_control pour éviter l'ajout de hidden par SPIP
+			L.DomUtil.addClass(layers_control._form,'noajax');
+		}
+		
+	},
+
+	createTileLayer: function (name) {
+		var layer;
+		if (typeof this.options.gis_layers[name]!=="undefined")
+			eval("layer=new "+ this.options.gis_layers[name]["layer"] +";");
+		return layer;
+	},
+	
+	loadData: function (url) {
+		var me = this;
+		$.getJSON(url, function(data) {
+			if (data){
+				me.parseData(data);
+			}
+		});
+	},
+
+	parseData: function (data) {
+		var me = this;
+		markers = [];
+		$.each(data.features, function(i,item){
+			if (item.geometry.coordinates[0]) {
+				var latlng = new L.LatLng(item.geometry.coordinates[1],item.geometry.coordinates[0]);
+				var marker = new L.Marker(latlng);
+				if (item.properties.icon) {
+					marker.setIcon(new L.Icon({
+						iconUrl: item.properties.icon,
+						iconSize: new L.Point(32,32),
+						iconAnchor: new L.Point(16,16),
+					}));
+				}
+				marker.id = item.id;
+				markers.push(marker);
+			}
+		});
+		
+		markerCluster = new L.Marker.Clusterer(me, markers, {
+			maxZoom: 50, // on veut des clusters quel que soit le zoom pour ouvrir les infowindows paginées
+			styles: [{
+				url: me.options.clusterImg,
+				height: 40,
+				width: 40,
+				opt_textColor: '#ffffff'
+			}]
+		});
+		
+		$.each(markers,function(i,marker){
+			// ouvrir l'infowindow du marker demandé
+			if (me.options.openInfowindow && marker.id==me.options.openInfowindow) {
+				me.getInfowindow(me.options.getInfowindowUrl,me.options.openInfowindow,me.infowindow,marker);
+			}
+			marker.addEventListener('click', function() {
+				me.getInfowindow(me.options.getInfowindowUrl,marker.id,me.infowindow,marker);
+			});
+		});
+		// lors du  clic sur un cluster
+		markerCluster.addEventListener('click', function (e) {
+			var markers = e.cluster.getMarkers();
+			if (markers.length > 1) {
+				// si on est au zoom maxi de la carte
+				if (me.getMaxZoom() <= me.getZoom()) {
+					// récupérer les id des markers du cluster
+					var markers_ids = new Array();
+					$.each(markers,function(i,marker){
+						markers_ids.push(marker.marker.id);
+					});
+					// ouvrir une infowindow multiple
+					me.getInfowindow(me.options.getInfowindowUrl,markers_ids,me.infowindow,e.cluster._clusterMarker);
+				}
+			}
+			return false;
+		});
+	},
+	
+	getInfowindow: function(url,ids,infowindow,marker) {
+		var me = this;
+		$.ajax({
+			url: url,
+			data: { id_article : ids },
+			success: function(data){
+				infowindow.setContent(data);
+				infowindow.setLatLng(marker._latlng);
+				me.openPopup(infowindow);
+			}
+		});
+	}
+
+});
+
+L.map.Geodiv = function (options) {
+	return new L.Map.Geodiv(options);
+};
