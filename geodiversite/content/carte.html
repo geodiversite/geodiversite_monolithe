@@ -130,15 +130,6 @@ var resizeMap = function() {
 			resizeMap();
 		});
 		
-		// formulaire de recherche geocoding
-		$("#formulaire_recherche form").submit(function(){
-			var adresse = $("#recherche").attr("value");
-			var geocoder = new L.Geocoder(function(result) {
-				map.setView(result.point, map.getZoom());
-			});
-			geocoder.geocode(adresse);
-			return false;
-		});
 	})
 })(jQuery)
 // -->
