@@ -23,11 +23,13 @@ var resizeMap = function() {
 		#SET{lon,#ENV{lon,#CONFIG**{gis/lon,0}}}]
 		[(#GET{zoom}|non)
 		#SET{zoom, #ENV{zoom,#CONFIG**{gis/zoom,0}}]
-
+		
+		var layers = new Array();
+		
 		var initMap = function() {
 			<BOUCLE_kml(ARTICLES documents_liens documents){id_article}{documents.mode=document}{documents.extension IN 'kml','kmz'}>
-			#SET{kml,ID_ARTICLE} #SET{url_kml,#URL_DOCUMENT}
-			</BOUCLE_kml>[()]</B_kml>
+			#SET{kml,#ID_ARTICLE} #SET{url_kml,#URL_DOCUMENT}
+			</BOUCLE_kml>
 			
 			map = new L.Map.Geodiv('geomap',{
 				center: new L.LatLng([(#GET{lat})], [(#GET{lon})]),
@@ -79,8 +81,8 @@ var resizeMap = function() {
 			var kml = $(this).val();
 			$(this).bind ('click',function(){
 				if ($(this).attr('checked')) {
-					if (typeof(markerCluster) != "undefined") {
-						markerCluster.clearMarkers();
+					if (typeof(map.markerCluster) != "undefined") {
+						map.markerCluster.clearMarkers();
 					}
 					$('#kml_panel input#medias:checkbox').attr('checked',false);
 					layers[id] = new L.KML(kml, {async: true});
@@ -92,15 +94,9 @@ var resizeMap = function() {
 		});
 		$('#kml_panel input#medias:checkbox').click(function() {
 			if ($(this).attr('checked')) {
-				$.getJSON("#URL_PAGE{geol_markers.json}",
-					function(data) {
-						if (data){
-							parseData(data,map);
-						}
-					}
-				);
+				map.loadData();
 			} else {
-				markerCluster.clearMarkers()
+				map.markerCluster.clearMarkers()
 			}
 		})[(#GET{kml}|?{".attr('checked',false);",";"})]
 		
