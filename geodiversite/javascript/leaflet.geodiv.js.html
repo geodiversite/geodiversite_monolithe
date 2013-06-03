@@ -36,8 +36,8 @@ L.Map.Geodiv = L.Map.extend({
 		
 		this.infowindow = new L.Popup({className: 'geol_window', maxWidth: 350});
 		
-		if (this.options.loadData && this.options.loadData)
-			this.loadData(this.options.dataUrl);
+		if (this.options.loadData && this.options.dataUrl)
+			this.loadData();
 		
 		this.on('zoomend', function(e) {
 			if (this.infowindow)
@@ -77,9 +77,9 @@ L.Map.Geodiv = L.Map.extend({
 		return layer;
 	},
 	
-	loadData: function (url) {
+	loadData: function () {
 		var me = this;
-		$.getJSON(url, function(data) {
+		$.getJSON(me.options.dataUrl, function(data) {
 			if (data){
 				me.parseData(data);
 			}
@@ -105,7 +105,7 @@ L.Map.Geodiv = L.Map.extend({
 			}
 		});
 		
-		markerCluster = new L.Marker.Clusterer(me, markers, {
+		me.markerCluster = new L.Marker.Clusterer(me, markers, {
 			maxZoom: 50, // on veut des clusters quel que soit le zoom pour ouvrir les infowindows paginées
 			styles: [{
 				url: me.options.clusterImg,
@@ -125,7 +125,7 @@ L.Map.Geodiv = L.Map.extend({
 			});
 		});
 		// lors du  clic sur un cluster
-		markerCluster.addEventListener('click', function (e) {
+		me.markerCluster.addEventListener('click', function (e) {
 			var markers = e.cluster.getMarkers();
 			if (markers.length > 1) {
 				// si on est au zoom maxi de la carte
