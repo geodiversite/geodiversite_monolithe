@@ -35,6 +35,8 @@ L.Map.Geodiv = L.Map.extend({
 		
 		this.infowindow = new L.Popup({className: 'geol_window', maxWidth: 350});
 		
+		this.initCluster();
+		
 		if (this.options.loadData && this.options.dataUrl)
 			this.loadData();
 		
@@ -42,7 +44,6 @@ L.Map.Geodiv = L.Map.extend({
 			if (this.infowindow)
 				this.infowindow._close();
 		});
-		
 	},
 
 	populateTileLayers: function (tilelayers) {
@@ -66,7 +67,6 @@ L.Map.Geodiv = L.Map.extend({
 			// classe noajax sur le layer_control pour éviter l'ajout de hidden par SPIP
 			L.DomUtil.addClass(layers_control._form,'noajax');
 		}
-		
 	},
 
 	createTileLayer: function (name) {
@@ -88,17 +88,6 @@ L.Map.Geodiv = L.Map.extend({
 	parseData: function (data) {
 		var me = this;
 		markers = [];
-		
-		me.markerCluster = new L.MarkerClusterGroup({
-			maxClusterRadius: 70,
-			spiderfyOnMaxZoom: false,
-			showCoverageOnHover: false,
-			iconCreateFunction: function(cluster) {
-				var childCount = cluster.getChildCount();
-				return new L.DivIcon({ html: '<div><span>' + ((childCount == 1) ? '' : childCount) + '</span></div>', className: 'marker-geodiv marker-clusterer', iconSize: new L.Point(40, 40) });
-			}
-		});
-		
 		$.each(data.features, function(i,item){
 			if (item.geometry.coordinates[0]) {
 				var latlng = new L.LatLng(item.geometry.coordinates[1],item.geometry.coordinates[0]);
@@ -112,22 +101,40 @@ L.Map.Geodiv = L.Map.extend({
 				}
 				marker.id = item.id;
 				markers.push(marker);
-				me.markerCluster.addLayer(marker);
 			}
 		});
-		
-		me.addLayer(me.markerCluster);
-		
-		$.each(markers,function(i,marker){
-			// ouvrir l'infowindow du marker demandé
-			if (me.options.openInfowindow && marker.id==me.options.openInfowindow) {
-				me.getInfowindow(me.options.getInfowindowUrl,me.options.openInfowindow,me.infowindow,marker);
+		me.markerCluster.addLayers(markers);
+	},
+	
+	getInfowindow: function(ids,latlng) {
+		var me = this;
+		$.ajax({
+			url: me.options.getInfowindowUrl,
+			data: { id_article : ids },
+			success: function(data){
+				me.infowindow.setContent(data);
+				me.infowindow.setLatLng(latlng);
+				me.openPopup(me.infowindow);
 			}
-			marker.addEventListener('click', function() {
-				me.getInfowindow(me.options.getInfowindowUrl,marker.id,me.infowindow,marker);
-			});
 		});
-		// lors du  clic sur un cluster
+	},
+	
+	initCluster: function () {
+		var me = this;
+		me.markerCluster = new L.MarkerClusterGroup({
+			maxClusterRadius: 70,
+			spiderfyOnMaxZoom: false,
+			showCoverageOnHover: false,
+			iconCreateFunction: function(cluster) {
+				var childCount = cluster.getChildCount();
+				return new L.DivIcon({ html: '<div><span>' + ((childCount == 1) ? '' : childCount) + '</span></div>', className: 'marker-geodiv marker-clusterer', iconSize: new L.Point(40, 40) });
+			}
+		}).addTo(me);
+		// lors du clic sur un marker, ouvrir sa popup
+		me.markerCluster.on('click', function (e) {
+			me.getInfowindow(e.layer.id,e.layer.getLatLng());
+		});
+		// lors du  clic sur un cluster, si le zoom est au max ouvrir une popup multiple
 		me.markerCluster.on('clusterclick', function (e) {
 			var markers = e.layer.getAllChildMarkers();
 			if (markers.length > 1) {
@@ -139,24 +146,19 @@ L.Map.Geodiv = L.Map.extend({
 						markers_ids.push(marker.id);
 					});
 					// ouvrir une infowindow multiple
-					me.getInfowindow(me.options.getInfowindowUrl,markers_ids,me.infowindow,e.layer);
+					me.getInfowindow(markers_ids,e.layer.getLatLng());
 				}
 			}
 			return false;
 		});
-	},
-	
-	getInfowindow: function(url,ids,infowindow,marker) {
-		var me = this;
-		$.ajax({
-			url: url,
-			data: { id_article : ids },
-			success: function(data){
-				infowindow.setContent(data);
-				infowindow.setLatLng(marker._latlng);
-				me.openPopup(infowindow);
-			}
-		});
+		// lors de l'ajout d'un marker au cluster, vérifier si on doit ouvrir sa popup (uniquement au chargement)
+		if (me.options.openInfowindow) {
+			me.markerCluster.on('layeradd', function (e) {
+				if (e.layer.id==me.options.openInfowindow)
+					me.getInfowindow(e.layer.id,e.layer.getLatLng());
+					me.options.openInfowindow = false;
+			});
+		}
 	}
 
 });
@@ -164,3 +166,7 @@ L.Map.Geodiv = L.Map.extend({
 L.map.Geodiv = function (options) {
 	return new L.Map.Geodiv(options);
 };
+
+[(#CONFIG{auto_compress_js}|=={oui}|oui)
+#FILTRE{compacte}
+]
