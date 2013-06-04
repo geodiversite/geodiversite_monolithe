@@ -17,7 +17,7 @@ var [callback_(#ENV{id_map}|?{map#ENV{id_map},form_map})];
 								return new L.Marker(latlng,{
 									icon: new L.DivIcon({
 										html: '<div><span>' + feature.properties.rang + '</span></div>',
-										className: 'marker-number',
+										className: 'marker-geodiv marker-number',
 										iconSize: new L.Point(40, 40)
 									}),
 								});

@@ -90,12 +90,12 @@ L.Map.Geodiv = L.Map.extend({
 		markers = [];
 		
 		me.markerCluster = new L.MarkerClusterGroup({
-			maxClusterRadius: 60,
+			maxClusterRadius: 70,
 			spiderfyOnMaxZoom: false,
 			showCoverageOnHover: false,
 			iconCreateFunction: function(cluster) {
 				var childCount = cluster.getChildCount();
-				return new L.DivIcon({ html: '<div><span>' + ((childCount == 1) ? '' : childCount) + '</span></div>', className: 'marker-clusterer', iconSize: new L.Point(40, 40) });
+				return new L.DivIcon({ html: '<div><span>' + ((childCount == 1) ? '' : childCount) + '</span></div>', className: 'marker-geodiv marker-clusterer', iconSize: new L.Point(40, 40) });
 			}
 		});
 		
