@@ -15,7 +15,6 @@ L.Map.Geodiv = L.Map.extend({
 		loadData: true,
 		dataUrl: null,
 		getInfowindowUrl: "[(#URL_PAGE{get_infowindow})]",
-		clusterImg: "#CHEMIN{images/bg_cluster.png}",
 		openInfowindow: null
 	},
 	
@@ -89,6 +88,17 @@ L.Map.Geodiv = L.Map.extend({
 	parseData: function (data) {
 		var me = this;
 		markers = [];
+		
+		me.markerCluster = new L.MarkerClusterGroup({
+			maxClusterRadius: 60,
+			spiderfyOnMaxZoom: false,
+			showCoverageOnHover: false,
+			iconCreateFunction: function(cluster) {
+				var childCount = cluster.getChildCount();
+				return new L.DivIcon({ html: '<div><span>' + ((childCount == 1) ? '' : childCount) + '</span></div>', className: 'marker-clusterer', iconSize: new L.Point(40, 40) });
+			}
+		});
+		
 		$.each(data.features, function(i,item){
 			if (item.geometry.coordinates[0]) {
 				var latlng = new L.LatLng(item.geometry.coordinates[1],item.geometry.coordinates[0]);
@@ -102,18 +112,11 @@ L.Map.Geodiv = L.Map.extend({
 				}
 				marker.id = item.id;
 				markers.push(marker);
+				me.markerCluster.addLayer(marker);
 			}
 		});
 		
-		me.markerCluster = new L.Marker.Clusterer(me, markers, {
-			maxZoom: 50, // on veut des clusters quel que soit le zoom pour ouvrir les infowindows paginées
-			styles: [{
-				url: me.options.clusterImg,
-				height: 40,
-				width: 40,
-				opt_textColor: '#ffffff'
-			}]
-		});
+		me.addLayer(me.markerCluster);
 		
 		$.each(markers,function(i,marker){
 			// ouvrir l'infowindow du marker demandé
@@ -125,18 +128,18 @@ L.Map.Geodiv = L.Map.extend({
 			});
 		});
 		// lors du  clic sur un cluster
-		me.markerCluster.addEventListener('click', function (e) {
-			var markers = e.cluster.getMarkers();
+		me.markerCluster.on('clusterclick', function (e) {
+			var markers = e.layer.getAllChildMarkers();
 			if (markers.length > 1) {
 				// si on est au zoom maxi de la carte
 				if (me.getMaxZoom() <= me.getZoom()) {
 					// récupérer les id des markers du cluster
 					var markers_ids = new Array();
 					$.each(markers,function(i,marker){
-						markers_ids.push(marker.marker.id);
+						markers_ids.push(marker.id);
 					});
 					// ouvrir une infowindow multiple
-					me.getInfowindow(me.options.getInfowindowUrl,markers_ids,me.infowindow,e.cluster._clusterMarker);
+					me.getInfowindow(me.options.getInfowindowUrl,markers_ids,me.infowindow,e.layer);
 				}
 			}
 			return false;
