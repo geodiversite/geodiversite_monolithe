@@ -1,8 +1,8 @@
 <paquet
 	prefix="geol"
 	categorie="squelette"
-	version="1.3.5"
-	etat="test"
+	version="1.4.0"
+	etat="stable"
 	compatibilite="[3.0.0;3.0.*]"
 	logo="images/logo_site.png"
 	schema="0.2.1"
