@@ -108,15 +108,13 @@ var resizeMap = function() {
 		
 		// init de la carte
 		$.getScript('[(#PRODUIRE{fond=javascript/gis.js,cluster=oui})]', function(){
-			$.getScript('[(#PRODUIRE{fond=javascript/leaflet.geodiv.js})]', function(){
-				if ($.browser.msie) {
-					$(window).load(initMap);
-					resizeMap();
-				} else {
-					resizeMap();
-					initMap();
-				};
-			});
+			if ($.browser.msie) {
+				$(window).load(initMap);
+				resizeMap();
+			} else {
+				resizeMap();
+				initMap();
+			};
 		});
 		
 		// window resize ?

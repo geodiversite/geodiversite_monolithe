@@ -18,7 +18,8 @@ function geol_insert_head_css($flux) {
 /**
  * Insertion dans le pipeline recuperer_fond (SPIP)
  * 
- * Par défaut, appliquer la composition 'page' aux articles de la rubrique -1 (les pages donc)
+ * TODO : Par défaut, appliquer la composition 'page' aux articles de la rubrique -1 (les pages donc)
+ * Ajouter le script leaflet.geodiv.js au squelette du script de GIS
  * 
  * @param array $flux
  * @return array $flux
@@ -30,6 +31,9 @@ function geol_recuperer_fond($flux){
 		AND $flux['args']['contexte']['composition'] == ''
 	){
 		$flux['args']['contexte']['composition'] = "page";
+	}
+	if ($flux['args']['fond'] == 'javascript/gis.js') {
+		$flux['data']['texte'] .= "\n". recuperer_fond('javascript/leaflet.geodiv.js');
 	}
 	return $flux;
 }
