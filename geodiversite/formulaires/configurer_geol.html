@@ -5,7 +5,7 @@
 
 <form method="post" action="#SELF">
 	<div>
-		#ACTION_FORMULAIRE{SELF}
+		#ACTION_FORMULAIRE{#ENV{action}}
 			<ul>
 				[(#SAISIE{secteur,secteur_medias,
 					label=<:geol:cfg_label_secteur_medias:>})]
