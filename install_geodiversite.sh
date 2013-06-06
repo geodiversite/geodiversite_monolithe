@@ -41,6 +41,7 @@ svn co svn://zone.spip.org/spip-zone/_plugins_/crud
 svn co svn://zone.spip.org/spip-zone/_plugins_/diogene/diogene_complements/diogene_geo/trunk diogene_geo
 svn co svn://zone.spip.org/spip-zone/_plugins_/diogene/diogene_complements/diogene_licence/trunk diogene_licence
 svn co svn://zone.spip.org/spip-zone/_plugins_/diogene/diogene_complements/diogene_mots/trunk diogene_mots
+svn co svn://zone.spip.org/spip-zone/_plugins_/embed_code/trunk embed_code
 svn co svn://zone.spip.org/spip-zone/_plugins_/facteur/trunk facteur
 svn co svn://zone.spip.org/spip-zone/_plugins_/fulltext
 svn co https://github.com/brunob/geodiversite/trunk/geodiversite_complements/geodiversite_albums geodiversite_albums
