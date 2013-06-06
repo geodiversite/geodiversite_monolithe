@@ -10,3 +10,5 @@
 <ul class="liste-items">
 	[<li class="item"><a href="(#ID_RUBRIQUE|!={#CONFIG{geol/secteur_medias,1}}|?{#URL_PAGE{carte,id_rubrique=#ID_RUBRIQUE},#URL_PAGE{carte}})"><:geol:lien_grande_carte:></a></li>]
 </ul>
+[(#PLUGIN{embed_code}|oui)
+[(#INCLURE{fond=inclure/embed_code,objet=rubrique,id_objet=#ID_RUBRIQUE})]]

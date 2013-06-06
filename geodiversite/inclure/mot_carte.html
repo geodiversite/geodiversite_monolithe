@@ -10,3 +10,5 @@
 <ul class="liste-items">
 	[<li class="item"><a href="(#URL_PAGE{carte,id_mot=#ID_MOT}|parametre_url{id_auteur,#ENV{id_auteur}})"><:geol:lien_grande_carte:></a></li>]
 </ul>
+[(#PLUGIN{embed_code}|oui)
+[(#INCLURE{fond=inclure/embed_code,objet=mot,id_objet=#ID_MOT})]]
