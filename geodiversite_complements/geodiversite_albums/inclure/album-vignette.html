@@ -28,10 +28,11 @@
 [(#ENV{info_date}|!={non}|oui)
 	<p><abbr class="published" title="[(#DATE|date_iso)]">[<:geol:publie_le:> (#DATE|affdate{'d/m/Y'})]</abbr></p>]
 
-<BOUCLE_coms(FORUMS){si #ENV{info_commentaires}|!={non}}{id_collection}{plat} />
-	[<p><a href="[(#URL_COLLECTION|ancre_url{forum})]">(#TOTAL_BOUCLE)
-		[(#TOTAL_BOUCLE|>{1}|?{<:geol:commentaires:>,<:geol:commentaire:>})]</a></p>]
-<//B_coms>
+<BOUCLE_merci_bonux(CONDITION){si #ENV{info_commentaires}|!={non}|et{#ACCEPTER_FORUM|!={non}}|oui}>
+	<BOUCLE_coms(FORUMS){si #ENV{info_commentaires}|!={non}}{id_collection}{plat} />
+		[<p><a href="[(#URL_COLLECTION|ancre_url{forum})]">(#TOTAL_BOUCLE|>{0}|?{[(#TOTAL_BOUCLE|singulier_ou_pluriel{geol:commentaire,geol:commentaires})],<:geol:commentaire_zero:>})</a></p>]
+	<//B_coms>
+</BOUCLE_merci_bonux>
 
 </div>
 </BOUCLE_album_vignette>
