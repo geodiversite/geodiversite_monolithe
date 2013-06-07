@@ -24,11 +24,8 @@
 </head>
 <body class="page_carte" dir="#LANG_DIR" style="width:#ENV{largeur}px;[height:(#ENV{hauteur,450}|moins{150})px]">
 	<div class="embed_gis">
+		[(#ENV{id_balade}|non)
 		<div id="geomap" class="carte_gis" style="width: 100%;[ height: (#ENV{hauteur,450}|moins{150})px;]"></div>
-		[(#ENV{id_auteur}|oui) #SET{titre,#INFO_NOM{auteur,#ENV{id_auteur}}} #SET{url,#URL_AUTEUR{#ENV{id_auteur}}} ][
-		(#ENV{id_mot}|oui) #SET{titre,#INFO_TITRE{mot,#ENV{id_mot}}} #SET{url,#URL_MOT{#ENV{id_mot}}} ][
-		(#ENV{id_rubrique}|oui) #SET{titre,#INFO_TITRE{rubrique,#ENV{id_rubrique}}} #SET{url,#URL_RUBRIQUE{#ENV{id_rubrique}}} ]
-		<p class="legende"><a href="#GET{url}">[(#NOM_SITE_SPIP)][ - (#GET{titre})]</a></p>
 		<script type="text/javascript">
 		<!--
 		(function($){
@@ -51,7 +48,20 @@
 			})
 		})(jQuery)
 		// -->
-		</script>
+		</script>]
+		<BOUCLE_gis(GIS gis_liens){si #PLUGIN{geol_balades}|oui}{id_collection=#ENV{id_balade}}>
+		[(#INCLURE{fond=modeles/carte_gis,id_gis,
+			id_map=_album,
+			centrer_auto=oui,
+			path_styles=#ARRAY{color,#CONFIG{geol/couleur_primaire,#00c0f8},weight,3,opacity,1,dashArray,5,clickable,#EVAL{false}}
+		})]
+		[(#INCLURE{fond=inclure/album_charger_medias,id_collection=#ENV{id_balade},id_map=_album})]
+		</BOUCLE_gis>
+		[(#ENV{id_auteur}|oui) #SET{titre,#INFO_NOM{auteur,#ENV{id_auteur}}} #SET{url,#URL_AUTEUR{#ENV{id_auteur}}} ][
+		(#ENV{id_mot}|oui) #SET{titre,#INFO_TITRE{mot,#ENV{id_mot}}} #SET{url,#URL_MOT{#ENV{id_mot}}} ][
+		(#ENV{id_rubrique}|oui) #SET{titre,#INFO_TITRE{rubrique,#ENV{id_rubrique}}} #SET{url,#URL_RUBRIQUE{#ENV{id_rubrique}}} ][
+		(#ENV{id_balade}|oui) #SET{titre,#INFO_TITRE{collection,#ENV{id_balade}}} #SET{url,#URL_COLLECTION{#ENV{id_balade}}} ]
+		<p class="legende"><a href="#GET{url}">[(#NOM_SITE_SPIP)][ - (#GET{titre})]</a></p>
 	</div>
 </body>
 </html>

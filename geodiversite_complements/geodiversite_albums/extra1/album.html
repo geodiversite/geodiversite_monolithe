@@ -47,5 +47,9 @@
 		<li class="item"><a href="[(#URL_PAGE{geol_kml,dl=oui}|parametre_url{id_collection,#ID_COLLECTION})]" class="kml"><:geol:flux_kml:></a></li>
 		<li class="item"><a href="[(#URL_PAGE{geol_georss}|parametre_url{id_collection,#ID_COLLECTION})]" class="georss"><:geol:flux_georss:></a></li>
 	</ul>
+	<BOUCLE_gis(GIS gis_liens){id_collection}>
+	[(#PLUGIN{embed_code}|oui)
+	[(#INCLURE{fond=inclure/embed_code,objet=balade,id_objet=#ID_COLLECTION})]]
+	</BOUCLE_gis>
 </div>
 </BOUCLE_navigation_album>
