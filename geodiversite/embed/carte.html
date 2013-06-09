@@ -35,7 +35,7 @@
 				#SET{zoom,#ENV{zoom,#CONFIG**{gis/zoom,0}}}			
 				// init de la carte
 				$.getScript('[(#PRODUIRE{fond=javascript/gis.js,cluster=oui}|compacte)]', function(){
-					map = new L.Map.Geodiv('geomap',{
+					map = new L.Map.[(#VAL{_GEOL_LEAFLET_MAP}|defined|?{#EVAL{_GEOL_LEAFLET_MAP},Geodiv})]('geomap',{
 						center: new L.LatLng([(#GET{lat})], [(#GET{lon})]),
 						zoom: [(#GET{zoom})],
 						maxZoom: 21, // on fixe un zoom max arbitraire en attendant que les couches le renseignent
