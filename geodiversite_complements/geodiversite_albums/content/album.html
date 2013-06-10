@@ -19,7 +19,7 @@
 	[(#INCLURE{fond=modeles/carte_gis,id_gis,
 		id_map=_album,
 		centrer_auto=oui,
-		path_styles=#ARRAY{color,#CONFIG{geol/couleur_primaire,#00c0f8},weight,3,opacity,1,dashArray,5,clickable,#EVAL{false}}
+		path_styles=#ARRAY{color,#VAL{_GEOL_COULEUR_PRIMAIRE}|defined|?{#EVAL{_GEOL_COULEUR_PRIMAIRE},#CONFIG{geol/couleur_primaire,#00c0f8}},weight,3,opacity,1,dashArray,5,clickable,#EVAL{false}}
 	})]
 	[(#INCLURE{fond=inclure/album_charger_medias,id_collection,id_map=_album})]
 	]

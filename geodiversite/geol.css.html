@@ -22,7 +22,7 @@
 /* ------------------------------------------ */
 /* ------------------------------------------ */
 
-#SET{couleur1,#CONFIG{geol/couleur_primaire,#00c0f8}}
+#SET{couleur1,#VAL{_GEOL_COULEUR_PRIMAIRE}|defined|?{#EVAL{_GEOL_COULEUR_PRIMAIRE},#CONFIG{geol/couleur_primaire,#00c0f8}}}
 
 .hop { font-weight: bold; }
 .none, .js .none-js, .no-js .none-nojs { display:none }
