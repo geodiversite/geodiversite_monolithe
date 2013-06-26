@@ -3,9 +3,9 @@
 [<p class="reponse_formulaire reponse_formulaire_ok">(#ENV*{message_ok})</p>]
 [<p class="reponse_formulaire reponse_formulaire_erreur">(#ENV*{message_erreur})</p>]
 
-<form method="post" action="#SELF">
+<form method="post" action="'#ENV{action}">
 	<div>
-		#ACTION_FORMULAIRE{SELF}
+		#ACTION_FORMULAIRE{#ENV{action}}
 			<ul>
 				[(#SAISIE{secteur,secteur_medias,
 					label=<:geol:cfg_label_secteur_medias:>})]
@@ -15,9 +15,13 @@
 					label=<:geol:cfg_label_groupe_echelle:>})]
 				[(#SAISIE{groupe_mots,groupe_tags,
 					label=<:geol:cfg_label_groupe_tags:>})]
+				#SET{couleur_primaire_readonly,#VAL{_GEOL_COULEUR_PRIMAIRE}|defined|?{'oui',''}}
 				[(#SAISIE{couleur,couleur_primaire,
 					label=<:geol:cfg_label_couleur_primaire:>,
-					defaut=#00c0f8})]
+					defaut=#00c0f8
+					class=[(#GET{couleur_primaire_readonly}|?{readonly,''})],
+					valeur_forcee=[(#GET{couleur_primaire_readonly}|?{#EVAL{_GEOL_COULEUR_PRIMAIRE},''})],
+					readonly=#GET{couleur_primaire_readonly}})]
 				[(#SAISIE{input,nom_fichier_kml,
 					label=<:geol:cfg_label_nom_fichier_kml:>,
 					explication=<:geol:cfg_explication_nom_fichier_kml:>,

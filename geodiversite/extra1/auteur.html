@@ -62,5 +62,8 @@
 		<li class="item"><a href="[(#URL_PAGE{geol_kml,dl=oui}|parametre_url{id_auteur,#ID_AUTEUR})]" class="kml"><:geol:flux_kml:></a></li>
 		<li class="item"><a href="[(#URL_PAGE{geol_georss}|parametre_url{id_auteur,#ID_AUTEUR})]" class="georss"><:geol:flux_georss:></a></li>
 	</ul>
+	[(#PLUGIN{embed_code}|oui)
+	[(#INCLURE{fond=inclure/embed_code,objet=auteur,id_objet=#ID_AUTEUR})]]
 </div>
+
 </BOUCLE_navigation_auteur>

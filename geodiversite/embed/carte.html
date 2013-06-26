@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="#LANG" lang="#LANG" dir="#LANG_DIR">
+<head>
+    <title>#NOM_SITE_SPIP</title>
+    <base target="_parent" />
+    <meta name="generator" content="SPIP[ (#SPIP_VERSION)]" />
+    <meta http-equiv="Content-Type" content="text/html; charset=#CHARSET" />
+   	[(#VAL{''}|geol_insert_head_css)]
+   	[(#VAL{''}|gis_insert_head_css)]
+	<style type="text/css">
+	<!--
+	@-o-viewport { width: device-width; }
+	@-moz-viewport { width: device-width; }
+	@-ms-viewport { width: device-width; }
+	@-webkit-viewport { width: device-width; }
+	@viewport { width: device-width; }
+	body { font: 90% Arial,sans-serif; margin: 0; padding: 0; color: #4B4B4B; }
+	.embed_gis { background: #fff; border: 0; border-radius: 5px; box-shadow: 0 4px 18px #C8C8C8; margin: 20px; padding: 10px; overflow: auto; }
+	-->
+	</style>
+   	[<script src="(#CHEMIN{prive/javascript/jquery.js})" type="text/javascript"></script>]
+   	[<script src="(#CHEMIN{prive/javascript/jquery.placeholder-label.js})" type="text/javascript"></script>]
+    [<script src="(#CHEMIN{prive/javascript/ajaxCallback.js})" type="text/javascript"></script>]
+   	[(#VAL{''}|gis_insert_head)]
+</head>
+<body class="page_carte" dir="#LANG_DIR" style="width:#ENV{largeur}px;[height:(#ENV{hauteur,450}|moins{150})px]">
+	<div class="embed_gis">
+		[(#ENV{id_balade}|non)
+		<div id="geomap" class="carte_gis" style="width: 100%;[ height: (#ENV{hauteur,450}|moins{150})px;]"></div>
+		<script type="text/javascript">
+		<!--
+		(function($){
+			$(function(){
+				#SET{lat,#ENV{lat,#CONFIG**{gis/lat,0}}}
+				#SET{lon,#ENV{lon,#CONFIG**{gis/lon,0}}}
+				#SET{zoom,#ENV{zoom,#CONFIG**{gis/zoom,0}}}			
+				// init de la carte
+				$.getScript('[(#PRODUIRE{fond=javascript/gis.js,cluster=oui}|compacte)]', function(){
+					map = new L.Map.[(#VAL{_GEOL_LEAFLET_MAP}|defined|?{#EVAL{_GEOL_LEAFLET_MAP},Geodiv})]('geomap',{
+						center: new L.LatLng([(#GET{lat})], [(#GET{lon})]),
+						zoom: [(#GET{zoom})],
+						maxZoom: 21, // on fixe un zoom max arbitraire en attendant que les couches le renseignent
+						layersControlOptions: {position: 'topright', collapsed: true},
+						default_layer: '[(#REM|gis_layer_defaut)]',
+						affiche_layers: [(#CONFIG{gis/layers,#ARRAY}|json_encode)],
+						dataUrl: "#PRODUIRE{fond=geol_markers.json,id_auteur=#ENV{id_auteur},id_mot=#ENV{id_mot},id_rubrique=#ENV{id_rubrique}}",
+					});
+				});
+			})
+		})(jQuery)
+		// -->
+		</script>]
+		<BOUCLE_gis(GIS gis_liens){si #PLUGIN{geol_balades}|oui}{id_collection=#ENV{id_balade}}>
+		[(#INCLURE{fond=modeles/carte_gis,id_gis,
+			id_map=_album,
+			centrer_auto=oui,
+			path_styles=#ARRAY{color,#VAL{_GEOL_COULEUR_PRIMAIRE}|defined|?{#EVAL{_GEOL_COULEUR_PRIMAIRE},#CONFIG{geol/couleur_primaire,#00c0f8}},weight,3,opacity,1,dashArray,5,clickable,#EVAL{false}}
+		})]
+		[(#INCLURE{fond=inclure/album_charger_medias,id_collection=#ENV{id_balade},id_map=_album})]
+		</BOUCLE_gis>
+		[(#ENV{id_auteur}|oui) #SET{titre,#INFO_NOM{auteur,#ENV{id_auteur}}} #SET{url,#URL_AUTEUR{#ENV{id_auteur}}} ][
+		(#ENV{id_mot}|oui) #SET{titre,#INFO_TITRE{mot,#ENV{id_mot}}} #SET{url,#URL_MOT{#ENV{id_mot}}} ][
+		(#ENV{id_rubrique}|oui) #SET{titre,#INFO_TITRE{rubrique,#ENV{id_rubrique}}} #SET{url,#URL_RUBRIQUE{#ENV{id_rubrique}}} ][
+		(#ENV{id_balade}|oui) #SET{titre,#INFO_TITRE{collection,#ENV{id_balade}}} #SET{url,#URL_COLLECTION{#ENV{id_balade}}} ]
+		<p class="legende"><a href="#GET{url}">[(#NOM_SITE_SPIP)][ - (#GET{titre})]</a></p>
+	</div>
+</body>
+</html>
+#FILTRE{trim}

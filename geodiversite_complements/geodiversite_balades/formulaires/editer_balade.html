@@ -25,7 +25,7 @@ parametre : url d'action ]
 			[(#SAISIE{carte,editer_gis_#ENV{id_gis},
 				recherche=non,
 				boutons=#ARRAY{marker,non,polygon,non,rectangle,non},
-				path_styles=#ARRAY{color,#CONFIG{geol/couleur_primaire,#00c0f8},weight,3,opacity,1,dashArray,5},
+				path_styles=#ARRAY{color,#VAL{_GEOL_COULEUR_PRIMAIRE}|defined|?{#EVAL{_GEOL_COULEUR_PRIMAIRE},#CONFIG{geol/couleur_primaire,#00c0f8}},weight,3,opacity,1,dashArray,5},
 				env})]
 			[(#REM) ajouter les points des articles de l'album à la carte ]
 			[(#INCLURE{fond=inclure/album_charger_medias,id_collection,id_gis,editer=oui})]

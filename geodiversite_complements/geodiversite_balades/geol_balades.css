@@ -8,3 +8,6 @@
 	-moz-border-radius: 3px; -webkit-border-radius: 3px; border-radius: 3px;
 	-moz-box-shadow: 0 1px 3px #999; -webkit-box-shadow: 0 1px 3px #999; box-shadow: 0 1px 3px #999;
 }
+
+.marker-number div { width: 20px; height: 20px; margin: 8px 0 0 8px; border-radius: 13px; border: 3px solid #fff; }
+.marker-number span { line-height: 20px; }

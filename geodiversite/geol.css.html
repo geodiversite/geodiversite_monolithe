@@ -22,7 +22,7 @@
 /* ------------------------------------------ */
 /* ------------------------------------------ */
 
-#SET{couleur1,#CONFIG{geol/couleur_primaire,#00c0f8}}
+#SET{couleur1,#VAL{_GEOL_COULEUR_PRIMAIRE}|defined|?{#EVAL{_GEOL_COULEUR_PRIMAIRE},#CONFIG{geol/couleur_primaire,#00c0f8}}}
 
 .hop { font-weight: bold; }
 .none, .js .none-js, .no-js .none-nojs { display:none }
@@ -222,16 +222,16 @@ https://developer.mozilla.org/en/DOM/Using_full-screen_mode#Presentation_differe
 .geol_window h3 { font-size: 1.2em;	margin: 0 14px 5px 0; }
 .geol_window .auteurs {	display: block; margin: 5px 0; }
 .geol_window .lien_logo { display: block; text-align: center; }
-.geol_window .multi .liste-items { list-style: none; }
-#page .geol_window .multi .liste-items .item { border-bottom: 1px solid #ddd; margin: 0 0 10px; padding: 0 0 5px; }
-#page .geol_window .multi .liste-items .item .lien_logo { float: left; }
+.geol_window .multi .liste-items { list-style: none; margin: 0; padding: 0; }
+#geomap .geol_window .multi .liste-items .item { border-bottom: 1px solid #ddd; margin: 0 0 10px; padding: 0 0 5px; }
+#geomap .geol_window .multi .liste-items .item .lien_logo { float: left; }
 .geol_window .multi .liste-items .item .desc { margin-left: 60px; }
 .geol_window .multi .pagination { text-align: center; }
 
-#page .olPopupCloseBox { background: url(#CHEMIN{images/infowindow_close.png}) no-repeat; }
+.marker-geodiv div { background-color: #GET{couleur1}; color: #fff; text-align: center; font: bold 11px "Helvetica Neue", Arial, Helvetica, sans-serif; }
 
-.marker-number div { background-color: #CONFIG{geol/couleur_primaire,#00c0f8}; color: #fff; width: 20px; height: 20px; margin-left: 8px; margin-top: 8px; border-radius: 13px; text-align: center; border: 3px solid #fff; font: bold 11px "Helvetica Neue", Arial, Helvetica, sans-serif; }
-.marker-number span { line-height: 20px; }
+.marker-clusterer div { width: 30px; height: 30px; margin: 12px 0 0 12px; border-radius: 10px; border: 2px solid #fff; }
+.marker-clusterer span { line-height: 30px; }
 
 /*
 .page_carte #infopanel { position: absolute; left: 0; bottom: 120px; z-index: 4000; width: 100%; opacity: 0.8;
@@ -267,6 +267,7 @@ https://developer.mozilla.org/en/DOM/Using_full-screen_mode#Presentation_differe
 .menu.profil,
 .page_auteur #navigation .menu { text-align: right; }
 
+.suivi .embed,
 .suivi .liste-items { text-align: right; }
 .suivi .liste-items .item a { display: block; padding: 10px 0; }
 .vignettes .liste-items .item { display: inline; }
