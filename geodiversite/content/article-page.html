@@ -13,7 +13,6 @@
 		</div>
 		[(#REM) Inclure le modele des liens de traductions ]
 		#MODELE{article_traductions}
-		
 	</div>
 
 	<div class="surlignable">
@@ -28,11 +27,8 @@
 	[(#REM) Gestion du portfolio et des documents
 		Le critere {env} permet de passer d'autres arguments de la page
 		 par exemple l'id_document choisi pour un affichage complet
-
-	[(#INCLURE{fond=inc-documents-noflv}
-		{id_article}
-		{env}
-	)]]
+	]
+	[(#INCLURE{fond=inclure/inc-documents-images,id_article,ajax,env})]
 </div>
 
 [(#REM) Petition :
