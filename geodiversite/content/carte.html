@@ -107,13 +107,8 @@ var resizeMap = function() {
 		
 		// init de la carte
 		$.getScript('[(#PRODUIRE{fond=javascript/gis.js,cluster=oui})]', function(){
-			if ($.browser.msie) {
-				$(window).load(initMap);
-				resizeMap();
-			} else {
-				resizeMap();
-				initMap();
-			};
+			resizeMap();
+			initMap();
 		});
 		
 		// window resize ?
