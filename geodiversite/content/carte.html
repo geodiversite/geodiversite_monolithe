@@ -38,7 +38,7 @@ var resizeMap = function() {
 				loadData: (#GET{kml}|?{false,true}),]
 				default_layer: '[(#REM|gis_layer_defaut)]',
 				affiche_layers: [(#CONFIG{gis/layers,#ARRAY}|json_encode)],
-				dataUrl: "#PRODUIRE{fond=geol_markers.json,id_auteur=#ENV{id_auteur},id_mot=#ENV{id_mot},id_rubrique=#ENV{id_rubrique},recherche=#ENV{recherche}}",
+				dataUrl: "#PRODUIRE{fond=geol_markers.json,id_auteur=#ENV{id_auteur},id_mot=#ENV{id_mot},id_rubrique=#ENV{id_rubrique},recherche=#ENV{recherche}}"
 			});
 			
 			[(#GET{kml}|oui)
@@ -107,13 +107,8 @@ var resizeMap = function() {
 		
 		// init de la carte
 		$.getScript('[(#PRODUIRE{fond=javascript/gis.js,cluster=oui})]', function(){
-			if ($.browser.msie) {
-				$(window).load(initMap);
-				resizeMap();
-			} else {
-				resizeMap();
-				initMap();
-			};
+			resizeMap();
+			initMap();
 		});
 		
 		// window resize ?
