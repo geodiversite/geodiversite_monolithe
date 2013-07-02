@@ -12,7 +12,7 @@
 	<li class="item">
 		<:geol:licence_media:> : [(#INCLURE{fond=modeles/licence,id_article=#ID_ARTICLE,logo=non})]
 	</li>]
-	<li class="item"><BOUCLE_doc(DOCUMENTS){id_article}>
+	<li class="item"><BOUCLE_doc(DOCUMENTS){id_article}{0,1}>
 		<a href="[(#URL_DOCUMENT|url_absolue)]" title="<:geol:doc_telecharger|texte_backend:>" class="telecharger"><:geol:doc_telecharger:></a></BOUCLE_doc>
 	</li>
 	<BOUCLE_nbfav(FAVORIS){id_objet=#ID_ARTICLE}{objet=article} />

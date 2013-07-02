@@ -1,0 +1,25 @@
+<div class="documents_annexes">
+<BOUCLE_document_previsu(DOCUMENTS){id_article}{id_document}>
+<div id="document_previsu">
+[(#INCLURE{fond=inclure/media_doc,id_document,id_article,largeur=560,hauteur=430,class=media,self=#SELF,modifier_echelle})]
+[<div class="titre #EDIT{titre}">(#TITRE)</div>]
+[<div class="descriptif #EDIT{descriptif}">(#DESCRIPTIF)</div>]
+[<div class="credits #EDIT{credits}">(#CREDITS)</div>]
+</div>
+</BOUCLE_document_previsu>
+
+<B_doc>
+<div class="liste documents documents_portfolio">
+<ul class="liste-items">
+<BOUCLE_doc(DOCUMENTS){id_article}{mode=document}{vu=non}>
+<li class="item #EXPOSE">
+	<a href="[(#SELF|parametre_url{id_document,#ID_DOCUMENT}|ancre_url{document_previsu})]" type="#MIME_TYPE"
+				 rel="documents_portfolio[-a(#ID_ARTICLE)][-r(#ID_RUBRIQUE)]" class="ajax">
+		[(#LOGO_DOCUMENT|image_passe_partout{#ENV{largeur,52},#ENV{hauteur,52}}|image_recadre{#ENV{largeur,52},#ENV{hauteur,52},center}|inserer_attribut{alt,[(#INFO_TITRE{#OBJET,#ID_OBJET}|texte_backend)]})]
+	</a>
+</li>
+</BOUCLE_doc>
+</ul>
+</div>
+</B_doc>
+</div>
