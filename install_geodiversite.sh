@@ -22,7 +22,6 @@ svn co svn://zone.spip.org/spip-zone/_plugins_/polyhierarchie/branches/v2.0/ pol
 svn co svn://zone.spip.org/spip-zone/_plugins_/saisies
 svn co svn://zone.spip.org/spip-zone/_plugins_/emballe_medias/swfupload/trunk swfupload
 svn co svn://zone.spip.org/spip-zone/_plugins_/z-core
-svn co svn://zone.spip.org/spip-zone/_squelettes_/zpip-dist/trunk zpip-dist
 svn co svn://zone.spip.org/spip-zone/_plugins_/spip-bonux-3
 
 cd ..
