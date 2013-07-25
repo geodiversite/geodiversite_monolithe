@@ -360,64 +360,81 @@ body a.spip-admin-boutons:hover { border: 1px solid #ddd; background: transparen
 /* Affichage sur petits ecrans
 Cf.: http://www.alsacreations.com/astuce/lire/1177
 ------------------------------------------ */
-@media (max-width: 640px) {
 
-/* les bases */
+@media (max-width: 768px) {
+	/* les bases */
+	body,
+	#page,
+	#conteneur, body div.conteneur,
+	#top,
+	#entete,
+	#entete .accueil,
+	#nav,
+	#extra,
+	#contenu,
+	#navigation,
+	#pied { width: auto !important; margin: auto !important; padding: auto !important; }
+	#page { margin: 0; }
+	#contenu,
+	#navigation { clear: both; float: none !important; }
 
-body,
-#page,
-#conteneur,
-#top,
-#entete,
-#entete .accueil,
-body div.conteneur,
-#nav,
-#extra,
-#contenu,
-#navigation,
-#pied { width: auto !important; margin: auto !important; padding: auto !important; }
-#page { margin: 0; padding: 5%; }
-#contenu,
-#navigation { clear: both; float: none !important; }
+	/* la typo */
+	img, table, td, blockquote, code, pre, textarea, input, iframe, object, embed, video { max-width: 100% !important; }
+	img { height: auto; }
+	textarea, table, td, th, code, pre, samp { word-wrap: break-word; }
+	code, pre, samp { white-space: pre-line; }
 
-/* la typo */
+	/* le reste :p */
+	#nav .menu-liste { background: #f2f2f2; float: none; padding: 1%; }
+	#nav .menu-liste.univers { position: relative; top: 0; }
+	#nav .menu-liste .menu-entree a,
+	#nav .menu-liste .menu-entree a:hover { color: #00c0f8; }
+	#extra { margin-bottom: 15px !important; }
+	#extra .menu { background: #000; padding: 0 1%; float: none; overflow: hidden; }
+	#extra .menu .h2 { display: none; }
+	#extra .menu .menu-liste .menu-entree { display: block; float: left; }
+	#extra .menu .menu-liste .menu-entree a { color: #fff; font-weight: bold; }
+	#extra .menu #formulaire_recherche { display: none; position: static; text-align: center; }
 
-img, table, td, blockquote, code, pre, textarea, input, iframe, object, embed, video { max-width: 100% !important; }
-img { height: auto; }
-textarea, table, td, th, code, pre, samp { word-wrap: break-word; }
-code, pre, samp { white-space: pre-line; }
+	#hierarchie li { display: none; }
+	#hierarchie li.on { display: block; }
 
-/* le reste :p */
+	.comments-list li { padding: 0 }
+	.comments-list .comment-meta img.photo { display: none; }
 
-#nav .menu-liste { background: #f2f2f2; float: none; padding: 1%; }
-#nav .menu-liste.univers { position: relative; top: 0; }
-#nav .menu-liste .menu-entree a,
-#nav .menu-liste .menu-entree a:hover { color: #00c0f8; }
-#extra { margin-bottom: 15px !important; }
-#extra .menu { background: #000; padding: 0 1%; float: none; overflow: hidden; }
-#extra .menu .h2 { display: none; }
-#extra .menu .menu-liste .menu-entree { display: block; float: left; }
-#extra .menu .menu-liste .menu-entree a { color: #fff; font-weight: bold; }
-#extra .menu #formulaire_recherche { display: none; position: static; text-align: center; }
-
-#hierarchie li { display: none; }
-#hierarchie li.on { display: block; }
-
-.boites .liste-items .item { width: 100% !important; margin: auto !important; padding: auto !important; }
-
-#navigation,
-#navigation .menu,
-#navigation .menu .explication { text-align: left !important; }
-#navigation .h2 { margin: 20px 0; padding: 4px 0 4px 10px; text-align: left;
-	background: transparent url(images/bg_titre_left.png) -190px 50% no-repeat; }
-#navigation .h2 span { display: inline; float: none; padding: 0; background: transparent; }
-
-.page_sommaire .image_pop,
-.page_sommaire #contenu .menu,
-.page_sommaire #contenu .boites .h2 { width:auto !important; margin: 1em auto !important; float: none !important; }
-
+	#navigation,
+	#navigation .menu,
+	#navigation .menu .explication,
+	#navigation .menu .adr,
+	#navigation .menu .geo { text-align: left !important; }
+	#navigation .h2 { margin: 20px 0; padding: 4px 0 4px 10px; text-align: left;
+		background: transparent url(images/bg_titre_left.png) -190px 50% no-repeat; }
+	#navigation .h2 span { display: inline; float: none; padding: 0; background: transparent; }
+	
+	.suivi .liste-items .item { float: left; clear: none; margin-right: 10px; }
+	.suivi .liste-items .item a { padding-left: 25px; padding-right: 0; background-position: left 50%; }
+	
 }
 
-@media (max-width: 520px) {
-#nav .menu-liste .menu-entree { display: block; width: 48%; float: left; }
+/* Tablet Portrait width to 960px */
+@media only screen and (min-width: 768px) and (max-width: 959px) {
+	body { min-width: 768px; }
+	#page { padding: 3%; }
+	.page_sommaire #contenu { width: 90%; }
 }
+/* All Mobile Widths */
+@media only screen and (max-width: 767px) {
+	body { min-width: 300px; }
+	#page { padding: 5%; }
+	.boites .liste-items .item { width: 100% !important; margin: auto !important; padding: auto !important; }
+	.page_sommaire .image_pop,
+	.page_sommaire #contenu .menu,
+	.page_sommaire #contenu .boites .h2 { width:auto !important; margin: 1em auto !important; float: none !important; }
+}
+/* Mobile Landscape Width to Tablet Portrait Width */
+@media only screen and (min-width: 480px) and (max-width: 767px) {
+	body { min-width: 480px; }
+}
+
+@media (max-width: 520px) { #nav .menu-liste .menu-entree { display: block; width: 48%; float: left; } }
+@media (max-width: 959px) { .page_sommaire .image_pop { overflow: hidden; } }
