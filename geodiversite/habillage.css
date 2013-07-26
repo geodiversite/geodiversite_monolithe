@@ -361,7 +361,7 @@ body a.spip-admin-boutons:hover { border: 1px solid #ddd; background: transparen
 Cf.: http://www.alsacreations.com/astuce/lire/1177
 ------------------------------------------ */
 
-@media (max-width: 768px) {
+@media (max-width: 959px) {
 	/* les bases */
 	body,
 	#page,
@@ -414,6 +414,8 @@ Cf.: http://www.alsacreations.com/astuce/lire/1177
 	.suivi .liste-items .item { float: left; clear: none; margin-right: 10px; }
 	.suivi .liste-items .item a { padding-left: 25px; padding-right: 0; background-position: left 50%; }
 	
+	.page_sommaire .image_pop { overflow: hidden; }
+	
 }
 
 /* Tablet Portrait width to 960px */
@@ -421,12 +423,12 @@ Cf.: http://www.alsacreations.com/astuce/lire/1177
 	body { min-width: 768px; }
 	#page { padding: 3%; }
 	.page_sommaire #contenu { width: 90%; }
+	#navigation { width: 360px !important; margin: 0 !important; }
 }
 /* All Mobile Widths */
 @media only screen and (max-width: 767px) {
 	body { min-width: 300px; }
 	#page { padding: 5%; }
-	.boites .liste-items .item { width: 100% !important; margin: auto !important; padding: auto !important; }
 	.page_sommaire .image_pop,
 	.page_sommaire #contenu .menu,
 	.page_sommaire #contenu .boites .h2 { width:auto !important; margin: 1em auto !important; float: none !important; }
@@ -434,7 +436,10 @@ Cf.: http://www.alsacreations.com/astuce/lire/1177
 /* Mobile Landscape Width to Tablet Portrait Width */
 @media only screen and (min-width: 480px) and (max-width: 767px) {
 	body { min-width: 480px; }
+	#navigation { width: 360px !important; margin: 0 !important; }
 }
 
-@media (max-width: 520px) { #nav .menu-liste .menu-entree { display: block; width: 48%; float: left; } }
-@media (max-width: 959px) { .page_sommaire .image_pop { overflow: hidden; } }
+@media (max-width: 520px) { 
+	#nav .menu-liste .menu-entree { display: block; width: 48%; float: left; }
+	.boites .liste-items .item { width: 100% !important; margin: auto !important; padding: auto !important; }
+}
