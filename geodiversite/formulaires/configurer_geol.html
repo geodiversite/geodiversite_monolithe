@@ -18,7 +18,7 @@
 				#SET{couleur_primaire_readonly,#VAL{_GEOL_COULEUR_PRIMAIRE}|defined|?{'oui',''}}
 				[(#SAISIE{couleur,couleur_primaire,
 					label=<:geol:cfg_label_couleur_primaire:>,
-					defaut=#00c0f8
+					defaut=#00c0f8,
 					class=[(#GET{couleur_primaire_readonly}|?{readonly,''})],
 					valeur_forcee=[(#GET{couleur_primaire_readonly}|?{#EVAL{_GEOL_COULEUR_PRIMAIRE},''})],
 					readonly=#GET{couleur_primaire_readonly}})]
@@ -26,6 +26,9 @@
 					label=<:geol:cfg_label_nom_fichier_kml:>,
 					explication=<:geol:cfg_explication_nom_fichier_kml:>,
 					defaut=geodiversite})]
+				[(#SAISIE{input,cle_mapquest,
+					label=<:geol:cfg_label_cle_mapquest:>,
+					explication=<:geol:cfg_explication_cle_mapquest:>})]
 				[(#SAISIE{input,zoom_minicartes,
 					label=<:geol:cfg_label_zoom_minicartes:>,
 					explication=<:geol:cfg_explication_zoom_minicartes:>,
