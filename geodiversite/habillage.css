@@ -331,7 +331,7 @@ div#hierarchie > strong { display: block; float: left; padding: 4px 30px 4px 10p
 .page_article #contenu { width: 60%; }
 .page_article #navigation { width: 35%; }
 
-.cartouche .h1 { margin-bottom: 20px; color: #666; position: absolute; left: -3000em; }
+.cartouche .h1 { display: none; }
 
 /*  ------------------------------------------
 /*  page carte
