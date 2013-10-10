@@ -16,22 +16,39 @@ function geol_insert_head_css($flux) {
 }
 
 /**
+ * Insertion dans le pipeline styliser (SPIP)
+ * 
+ * Par défaut, appliquer la composition 'page' aux articles de la rubrique -1 (les pages donc)
+ * 
+ * @param array $flux
+ * @return array
+ */
+function geol_styliser($flux){
+	// Si c'est un squelette ayant rapport avec un article
+	if (isset($flux['args']['contexte']['type-page'])
+		and $flux['args']['contexte']['type-page'] == 'article'
+		// Et qu'on sait que ça se passe dans la rubrique -1
+		and $flux['args']['contexte']['id_rubrique'] == '-1'
+		// Et qu'il n'y a pas déjà une composition appliquée
+		and $flux['args']['contexte']['composition'] == ''
+		// Et qu'il existe un squelette du même fond, mais avec le suffixe "page"
+		and $f=find_in_path($flux['args']['fond'].'-page.'.$flux['args']['ext'])
+	){
+		// Alors ok, on l'utilise
+		$flux['data'] = substr($f, 0, -strlen('.'.$flux['args']['ext']));
+	}
+	return $flux;
+}
+
+/**
  * Insertion dans le pipeline recuperer_fond (SPIP)
  * 
- * Par défaut, appliquer la composition 'page' aux articles de la rubrique -1 (les pages donc) /!\ ne fonctionne pas
  * Ajouter le script leaflet.geodiv.js au squelette du script de GIS
  * 
  * @param array $flux
  * @return array $flux
  */
 function geol_recuperer_fond($flux){
-	if ($flux['args']['fond'] == 'structure'
-		AND $flux['args']['contexte']['id_rubrique'] == '-1'
-		AND $flux['args']['contexte']['type-page'] == 'article'
-		AND $flux['args']['contexte']['composition'] == ''
-	){
-		$flux['args']['contexte']['composition'] = "page";
-	}
 	if ($flux['args']['fond'] == 'javascript/gis.js') {
 		$flux['data']['texte'] .= "\n\n". recuperer_fond('javascript/leaflet.geodiv.js');
 	}
