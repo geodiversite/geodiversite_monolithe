@@ -97,6 +97,7 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 
 'galerie' => 'Gallery',
 
+'info_embed_carte' => 'Embed the map on your website',
 'info_vide' => 'not specified',
 'info_vide_f' => 'not specified',
 'inscription' => 'Sign up',
