@@ -1,20 +1,20 @@
-#SET{extensions,#ARRAY|array_merge{#CONFIG{emballe_medias/fichiers/fichiers_images}}|array_merge{#CONFIG{emballe_medias/fichiers/fichiers_videos}}|array_merge{#CONFIG{emballe_medias/fichiers/fichiers_audios}}|array_merge{#CONFIG{emballe_medias/fichiers/fichiers_textes}}}
+#SET{extensions,#ARRAY|array_merge{#CONFIG{emballe_medias/fichiers/fichiers_images,#ARRAY}}|array_merge{#CONFIG{emballe_medias/fichiers/fichiers_videos,#ARRAY}}|array_merge{#CONFIG{emballe_medias/fichiers/fichiers_audios,#ARRAY}}|array_merge{#CONFIG{emballe_medias/fichiers/fichiers_textes,#ARRAY}}}
 
 [(#ENV{type_doc}|oui)
 	#SET{extensions,#ARRAY}
 ]
 
 [(#VAL{'type_images'}|in_array{#ENV{type_doc,#ARRAY}}|oui)
-	#SET{extensions,#GET{extensions}|array_merge{#CONFIG{emballe_medias/fichiers/fichiers_images}}}
+	#SET{extensions,#GET{extensions}|array_merge{#CONFIG{emballe_medias/fichiers/fichiers_images,#ARRAY}}}
 ]
 [(#VAL{'type_videos'}|in_array{#ENV{type_doc,#ARRAY}}|oui)
-	#SET{extensions,#GET{extensions}|array_merge{#CONFIG{emballe_medias/fichiers/fichiers_videos}}}
+	#SET{extensions,#GET{extensions}|array_merge{#CONFIG{emballe_medias/fichiers/fichiers_videos,#ARRAY}}}
 ]
 [(#VAL{'type_audios'}|in_array{#ENV{type_doc,#ARRAY}}|oui)
-	#SET{extensions,#GET{extensions}|array_merge{#CONFIG{emballe_medias/fichiers/fichiers_audios}}}
+	#SET{extensions,#GET{extensions}|array_merge{#CONFIG{emballe_medias/fichiers/fichiers_audios,#ARRAY}}}
 ]
 [(#VAL{'type_textes'}|in_array{#ENV{type_doc,#ARRAY}}|oui)
-	#SET{extensions,#GET{extensions}|array_merge{#CONFIG{emballe_medias/fichiers/fichiers_textes}}}
+	#SET{extensions,#GET{extensions}|array_merge{#CONFIG{emballe_medias/fichiers/fichiers_textes,#ARRAY}}}
 ]
 [(#SET{defaut_tri,#ARRAY{
 	points,-1,
