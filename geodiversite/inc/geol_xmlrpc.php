@@ -23,29 +23,27 @@ if (!defined("_ECRIRE_INC_VERSION")) return;
 function geodiv_liste_medias($args) {
 	global $spip_xmlrpc_serveur;
 	$objet = 'article';
+	$table_objet = 'articles';
 	$secteur_medias = lire_config('geol/secteur_medias',1);
 
-	$what[] = 'articles.id_article';
-	$from = 'spip_articles as articles LEFT JOIN spip_auteurs_liens AS auteurs ON articles.id_article=auteurs.id_objet and auteurs.objet="article"';
+	$what[] = $table_objet.'.id_article';
+	$from = 'spip_articles as articles LEFT JOIN spip_auteurs_liens AS auteurs ON '.$table_objet.'.id_article=auteurs.id_objet and auteurs.objet="article"';
 	$where = is_array($args['where']) ? $args['where'] : array();
-	$where[] = 'articles.id_secteur='.intval($secteur_medias);
+	$where[] = $table_objet.'.id_secteur='.intval($secteur_medias);
 	$order = is_array($args['tri']) ? $args['tri'] : array('!date');
 
 	if(intval($args['id_auteur'])){
 		$where[] = 'auteurs.id_auteur='.intval($args['id_auteur']);
 	}
-	
-	if(is_array($GLOBALS['visiteur_session'])){
-		if(!$args['id_auteur']){
-			$where[] = 'auteurs.id_auteur='.intval($GLOBALS['visiteur_session']['id_auteur']);
-		}else{
-			$where[] = 'articles.statut="publie"';
-		}
-	}else{
-		$where[] = 'articles.statut="publie"';
-	}
 
-	
+	if(is_array($GLOBALS['visiteur_session'])){
+		if(!$args['id_auteur'])
+			$where[] = 'auteurs.id_auteur='.intval($GLOBALS['visiteur_session']['id_auteur']);
+		else
+			$where[] = $table_objet.'.statut="publie"';
+	}else
+		$where[] = $table_objet.'.statut="publie"';
+
 	/**
 	 * Distance dans le tri
 	 * On a besoin de savoir par rapport à quoi donc :
@@ -61,7 +59,7 @@ function geodiv_liste_medias($args) {
 			return new IXR_Error(-32601, attribut_html($erreur));
 		}else{
 			$what[] = "(6371 * acos( cos( radians(\"$lat\") ) * cos( radians( gis.lat ) ) * cos( radians( gis.lon ) - radians(\"$lon\") ) + sin( radians(\"$lat\") ) * sin( radians( gis.lat ) ) ) ) AS distance";
-			$from .= ' LEFT JOIN spip_gis_liens as lien ON articles.id_article=lien.id_objet AND lien.objet="article" LEFT JOIN spip_gis as gis ON gis.id_gis=lien.id_gis';
+			$from .= ' LEFT JOIN spip_gis_liens as lien ON '.$table_objet.'.id_article=lien.id_objet AND lien.objet="article" LEFT JOIN spip_gis as gis ON gis.id_gis=lien.id_gis';
 			$where[] = 'gis.id_gis > 0';
 		}
 	}
@@ -71,10 +69,10 @@ function geodiv_liste_medias($args) {
 	 */	
 	if(is_string($args['recherche']) AND strlen($args['recherche']) > 3){
 		$prepare_recherche = charger_fonction('prepare_recherche', 'inc');
-		list($rech_select, $rech_where) = $prepare_recherche($args['recherche'], $objet, $where);
+		list($rech_select, $rech_where) = $prepare_recherche($args['recherche'], $table_objet, $where);
 		$what[] = $rech_select;
-		$from .= ' INNER JOIN spip_resultats AS resultats ON ( resultats.id = articles.id_article ) ';
-		$where[] = 'resultats.'.$rech_where;
+		$from .= ' INNER JOIN spip_resultats AS resultats ON ( resultats.id = '.$table_objet.'.id_article ) ';
+		$where[] = $rech_where;
 	}
 	
 	$medias_struct = array();
@@ -196,6 +194,8 @@ function geodiv_lire_media($args){
 				}else{
 					$res['result'][0]['document'] = url_absolue(get_spip_doc($document['fichier']));
 				}
+				$res['result'][0]['media'] = $document['media'];
+				$res['result'][0]['extension'] = $document['extension'];
 			}
 			
 			if((count($champs_demandes) == 0) || in_array('vignette',$champs_demandes)){
