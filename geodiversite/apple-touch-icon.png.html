@@ -9,7 +9,7 @@ $file="[(#CHEMIN{apple-touch-icon[-(#ENV{size,''})].png}|sinon{[(#CHEMIN{images/
 		|image_passe_partout{[(#ENV{size,57}|intval)],[(#ENV{size,57}|intval)]}
 		|image_recadre{[(#ENV{size,57}|intval)],[(#ENV{size,57}|intval)],center}
 		|image_aplatir{png,#ffffff}|extraire_attribut{src})]})]";
-if ($cl = filesize($file))
+if ($cl = filesize(preg_replace(',[?].*$,','',$file)))
 	header("Content-Length: ". $cl);
 
 readfile($file);
