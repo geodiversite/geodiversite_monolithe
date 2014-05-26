@@ -1,6 +1,7 @@
 <div id="geomap" class="carte_gis"></div>
 <script type="text/javascript">
 <!--
+var map;
 // resize la carte si chgt de taille sur window
 // (placée ici pour permettre sa surcharge depuis un autre squelette)
 var resizeMap = function() {
@@ -32,8 +33,7 @@ var resizeMap = function() {
 			
 			map = new L.Map.Geodiv('geomap',{
 				center: new L.LatLng([(#GET{lat})], [(#GET{lon})]),
-				zoom: [(#GET{zoom})],
-				maxZoom: 21, // on fixe un zoom max arbitraire en attendant que les couches le renseignent[
+				zoom: [(#GET{zoom})],[
 				openInfowindow: (#ENV{id_article}),][
 				loadData: (#GET{kml}|?{false,true}),]
 				default_layer: '[(#REM|gis_layer_defaut)]',
