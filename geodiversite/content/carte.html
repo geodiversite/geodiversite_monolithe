@@ -41,6 +41,8 @@ var resizeMap = function() {
 				dataUrl: "#PRODUIRE{fond=geol_markers.json,id_auteur=#ENV{id_auteur},id_mot=#ENV{id_mot},id_rubrique=#ENV{id_rubrique},recherche=#ENV{recherche}}"
 			});
 			
+			[(#INCLURE{fond=inclure/carte_init})]
+			
 			[(#GET{kml}|oui)
 			// superposer le kml de l'article passé dans l'url
 			layers\['kml_[(#GET{kml})]'\] = new L.KML("[(#GET{url_kml}|url_absolue)]", {async: true});
