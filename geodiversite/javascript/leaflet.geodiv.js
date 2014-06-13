@@ -1,13 +1,13 @@
-#HTTP_HEADER{Content-Type: text/javascript;}
+(function() {
 // Plugin Leaflet L.Map.Geodiv
 L.Map.Geodiv = L.Map.extend({
 	
 	includes: L.Mixin.Events,
 	
 	options:{
-		default_layer: null,
-		gis_layers: #EVAL{json_encode($GLOBALS['gis_layers'])},
-		affiche_layers: null,
+		gis_layers: L.gisConfig.gis_layers,
+		default_layer: L.gisConfig.default_layer,
+		affiche_layers: L.gisConfig.affiche_layers,
 		layersControl: true,
 		zoomControl: false,  // Pas tout de suite pour permettre l'ajout du control layers avant
 		scaleControl: true,
@@ -15,9 +15,17 @@ L.Map.Geodiv = L.Map.extend({
 		layersControlOptions: {position: 'topleft', collapsed: false},
 		loadData: true,
 		dataUrl: null,
-		getInfowindowUrl: "[(#URL_PAGE{get_infowindow})]",
+		getInfowindowUrl: L.gisConfig.getInfowindowUrl,
 		openInfowindow: null,
-		clusterOptions: null
+		clusterOptions: {
+			maxClusterRadius: 70,
+			spiderfyOnMaxZoom: false,
+			showCoverageOnHover: false,
+			iconCreateFunction: function(cluster) {
+				var childCount = cluster.getChildCount();
+				return new L.DivIcon({ html: '<div><span>' + ((childCount == 1) ? '' : childCount) + '</span></div>', className: 'marker-geodiv marker-clusterer', iconSize: new L.Point(40, 40) });
+			}
+		}
 	},
 	
 	initialize: function (id,options) {
@@ -123,16 +131,7 @@ L.Map.Geodiv = L.Map.extend({
 	
 	initCluster: function () {
 		var me = this;
-		var defaultOptions = {
-			maxClusterRadius: 70,
-			spiderfyOnMaxZoom: false,
-			showCoverageOnHover: false,
-			iconCreateFunction: function(cluster) {
-				var childCount = cluster.getChildCount();
-				return new L.DivIcon({ html: '<div><span>' + ((childCount == 1) ? '' : childCount) + '</span></div>', className: 'marker-geodiv marker-clusterer', iconSize: new L.Point(40, 40) });
-			}
-		};
-		me.markerCluster = new L.MarkerClusterGroup(L.extend({}, defaultOptions, me.options.clusterOptions)).addTo(me);
+		me.markerCluster = new L.MarkerClusterGroup(me.options.clusterOptions).addTo(me);
 		// lors du clic sur un marker, ouvrir sa popup
 		me.markerCluster.on('click', function (e) {
 			me.getInfowindow(e.layer.id,e.layer.getLatLng());
@@ -166,6 +165,8 @@ L.Map.Geodiv = L.Map.extend({
 
 });
 
-L.map.Geodiv = function (id, options) {
+L.map.geodiv = function (id, options) {
 	return new L.Map.Geodiv(id, options);
 };
+
+})();

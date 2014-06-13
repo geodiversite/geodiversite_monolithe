@@ -1,7 +1,7 @@
 <paquet
 	prefix="geol"
 	categorie="squelette"
-	version="1.5.3"
+	version="1.5.4"
 	etat="stable"
 	compatibilite="[3.0.0;3.0.*]"
 	logo="images/logo_site.png"
@@ -33,7 +33,7 @@
 	<necessite nom="pages" compatibilite="[1.0.0;[" />
 	<necessite nom="mesfavoris" compatibilite="[2.2.0;[" />
 	<necessite nom="menus" compatibilite="[1.2.1;[" />
-	<necessite nom="gis" compatibilite="[4.0.0;[" />
+	<necessite nom="gis" compatibilite="[4.20.2;[" />
 	<necessite nom="polyhier" compatibilite="[1.0.0;[" />
 	<necessite nom="mediaspip_player" compatibilite="[1.1.0;[" />
 
