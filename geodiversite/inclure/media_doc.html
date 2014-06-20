@@ -59,7 +59,7 @@
 [(#REM) Document flv ou mp3 ? ]
 [(#TYPE_DOCUMENT|match{^(MP3|Flash Video|MPEG4|Ogg Video)$}|oui)
 [(#SET{largeur,#ENV{largeur}})][(#SET{hauteur,#ENV{hauteur}})]
-[(#EXTENSION|=={mp3}|oui) [(#SET{hauteur,240})][
+[(#EXTENSION|=={mp3}|oui)[(#SET{hauteur,''})][
 (#SET{logo,#LOGO_DOCUMENT{vignette}|sinon{#CHEMIN{images/logo_site.png}}|image_passe_partout{#GET{largeur},#GET{hauteur}}|image_recadre{#GET{largeur},#GET{hauteur},center,#000}|extraire_attribut{src}})]
 ][(#MODELE{emb,controls=oui,id_document,largeur=#GET{largeur},hauteur=#GET{hauteur},logo=#GET{logo},autobuffer=oui,infos=non,autostart=non,env})]
 ]
