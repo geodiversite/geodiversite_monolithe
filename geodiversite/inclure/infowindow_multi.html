@@ -2,9 +2,9 @@
 <ul class="liste-items">
 <BOUCLE_articles(ARTICLES){id_article IN #ENV{id_article}}{pagination 3}><li class="item">
 	<BOUCLE_img(DOCUMENTS){extension !IN 'kml','kmz'}{id_article}{vu=non}{0,1}>
-	<a href='[(#URL_ARTICLE|url_absolue)]' [title='(#_articles:TITRE|texte_backend)'] class="lien_logo">
-		<img src='[(#LOGO_DOCUMENT|image_passe_partout{50,50}|image_recadre{50,50,center}|extraire_attribut{src}|url_absolue)]' height='50' width='50' alt='[(#_articles:TITRE|texte_backend|sinon{Image})]' />
-	</a>
+	[<a href="[(#URL_ARTICLE|url_absolue)]" class="lien_logo"[ title='(#_articles:TITRE|attribut_html)']>
+		<img src="(#LOGO_DOCUMENT|image_passe_partout{50,50}|image_recadre{50,50,center}|extraire_attribut{src}|url_absolue)" height="50" width="50" alt="" />
+	</a>]
 	</BOUCLE_img>
 	<div class="desc">
 		<h3>#TITRE</h3>
