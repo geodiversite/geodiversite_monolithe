@@ -155,10 +155,11 @@ L.Map.Geodiv = L.Map.extend({
 		});
 		// lors de l'ajout d'un marker au cluster, vérifier si on doit ouvrir sa popup (uniquement au chargement)
 		if (me.options.openInfowindow) {
-			me.markerCluster.on('layeradd', function (e) {
+			// brancher layeradd sur markerCluster._featureGroup, cf https://github.com/Leaflet/Leaflet.markercluster/issues/368
+			me.markerCluster._featureGroup.on('layeradd', function (e) {
 				if (e.layer.id==me.options.openInfowindow)
 					me.getInfowindow(e.layer.id,e.layer.getLatLng());
-					me.options.openInfowindow = false;
+				me.options.openInfowindow = false;
 			});
 		}
 	}
