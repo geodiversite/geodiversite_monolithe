@@ -61,7 +61,7 @@
 [(#SET{largeur,#ENV{largeur}})][(#SET{hauteur,#ENV{hauteur}})]
 [(#EXTENSION|=={mp3}|oui)[(#SET{hauteur,''})][
 (#SET{logo,#LOGO_DOCUMENT{vignette}|sinon{#CHEMIN{images/logo_site.png}}|image_reduire{#GET{largeur},215}|image_recadre{#GET{largeur},215,center,#000}|extraire_attribut{src}})]
-][(#MODELE{emb,controls=oui,id_document,largeur=#GET{largeur},hauteur=#GET{hauteur},logo=#GET{logo},autobuffer=oui,infos=non,autostart=non,env})]
+][(#MODELE{emb,controls=oui,id_document,largeur=#GET{largeur},hauteur=#GET{hauteur},logo=#GET{logo},autobuffer=oui,infos=non,env})]
 ]
 
 <script type="text/javascript">
