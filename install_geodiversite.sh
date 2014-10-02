@@ -7,7 +7,7 @@ cd plugins-dist
 svn co svn://zone.spip.org/spip-zone/_plugins_/date_inscription
 svn co svn://zone.spip.org/spip-zone/_plugins_/diogene/diogene/trunk diogene
 svn co svn://zone.spip.org/spip-zone/_plugins_/emballe_medias/emballe_medias/branches/v1.3 emballe_medias
-svn co https://github.com/brunob/geodiversite/trunk/geodiversite geodiversite
+svn co https://github.com/geodiversite/geodiversite/trunk/geodiversite geodiversite
 svn co svn://zone.spip.org/spip-zone/_plugins_/gis/trunk gis
 svn co svn://zone.spip.org/spip-zone/_plugins_/jquery_file_upload/trunk jquery_file_upload
 svn co svn://zone.spip.org/spip-zone/_plugins_/legendes
@@ -43,8 +43,8 @@ svn co svn://zone.spip.org/spip-zone/_plugins_/diogene/diogene_complements/dioge
 svn co svn://zone.spip.org/spip-zone/_plugins_/embed_code/trunk embed_code
 svn co svn://zone.spip.org/spip-zone/_plugins_/facteur/trunk facteur
 svn co svn://zone.spip.org/spip-zone/_plugins_/fulltext
-svn co https://github.com/brunob/geodiversite/trunk/geodiversite_complements/geodiversite_albums geodiversite_albums
-svn co https://github.com/brunob/geodiversite/trunk/geodiversite_complements/geodiversite_balades geodiversite_balades
+svn co https://github.com/geodiversite/geodiversite/trunk/geodiversite_complements/geodiversite_albums geodiversite_albums
+svn co https://github.com/geodiversite/geodiversite/trunk/geodiversite_complements/geodiversite_balades geodiversite_balades
 svn co svn://zone.spip.org/spip-zone/_plugins_/gravatar
 svn co svn://zone.spip.org/spip-zone/_plugins_/licence
 svn co svn://zone.spip.org/spip-zone/_plugins_/mailshot
