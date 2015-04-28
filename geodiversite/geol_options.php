@@ -5,9 +5,6 @@ if (!defined('_ECRIRE_INC_VERSION')) return;
 // blocs Z
 $GLOBALS['z_blocs'] = array('content','extra1','extra2','head','head_js','header','footer');
 
-// titres sans numero
-$table_des_traitements['TITRE'][]= 'supprimer_numero(typo(%s))';
-
 // urls prorpes en minuscules
 define ('_url_minuscules',1);
 
