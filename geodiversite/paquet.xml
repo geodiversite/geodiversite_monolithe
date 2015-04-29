@@ -1,11 +1,11 @@
 <paquet
 	prefix="geol"
 	categorie="squelette"
-	version="1.5.4"
+	version="1.5.5"
 	etat="stable"
 	compatibilite="[3.0.0;3.0.*]"
 	logo="images/logo_site.png"
-	schema="0.2.1"
+	schema="0.2.2"
 >	
 
 	<nom>Géodiversité</nom>
@@ -21,7 +21,6 @@
 	<pipeline nom="recuperer_fond" inclure="geol_pipelines.php" />
 	<pipeline nom="formulaire_charger" inclure="geol_pipelines.php" />
 	<pipeline nom="pre_boucle" inclure="geol_pipelines.php" />
-	<pipeline nom="notifications_destinataires" inclure="geol_pipelines.php" />
 	<pipeline nom="em_post_upload_medias" inclure="geol_pipelines.php" />
 	<pipeline nom="xmlrpc_methodes" inclure="geol_pipelines.php" />
 	<pipeline nom="xmlrpc_server_class" inclure="geol_pipelines.php" />

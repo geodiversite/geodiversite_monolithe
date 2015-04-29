@@ -98,41 +98,6 @@ function geol_pre_boucle($boucle){
 }
 
 /**
- * Insertion dans le pipeline notifications_destinataires (plugin notifications)
- *
- * Ajouter les auteurs qui ont déjà posté sous l'article aux destinataires (mode thread pour forums à plat)
- *
- * @param array $flux
- * @return array
- */
-function geol_notifications_destinataires($flux){
-	$quoi = $flux['args']['quoi'];
-	$options = $flux['args']['options'];
-	// forum valide sur un article : prevenir les auteurs qui ont déjà posté sous l'article seulement si leur message est publié
-	if ($quoi=='forumvalide' AND $GLOBALS['notifications']['thread_forum']) {
-		$id_forum = $flux['args']['id'];
-		if (($t = $options['forum'] OR $t = sql_fetsel("*", "spip_forum", "id_forum=" . intval($id_forum)))
-			AND $t['objet'] == 'article'
-		) {
-			// Tous les participants a ce *thread*, abonnes
-			// on prend les emails parmi notification_email (prioritaire si rempli) email_auteur ou email de l'auteur qd id_auteur connu
-			$s = sql_select("F.email_auteur, F.notification_email, A.email",
-				"spip_forum AS F LEFT JOIN spip_auteurs AS A ON F.id_auteur=A.id_auteur",
-				"notification=1 AND F.statut='publie' AND F.objet='article' AND F.id_objet=" . intval($t['id_objet']) . " AND (email_auteur != '' OR notification_email != '' OR A.email IS NOT NULL )");
-			while ($r = sql_fetch($s)){
-				if ($r['notification_email'])
-					$flux['data'][] = $r['notification_email'];
-				elseif($r['email_auteur'])
-					$flux['data'][] = $r['email_auteur'];
-				elseif($r['email'])
-					$flux['data'][] = $r['email'];
-			}
-		}
-	}
-	return $flux;
-}
-
-/**
  * Insertion dans le pipeline em_post_upload_medias (plugin Emballe médias)
  * 
  * Dans le cas des fichiers jpg, si on a récup une date, on l'assigne à l'article
