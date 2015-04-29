@@ -8,11 +8,13 @@
 		#ACTION_FORMULAIRE{#ENV{action}}
 			<ul>
 				[(#SAISIE{secteur,secteur_medias,
-					label=<:geol:cfg_label_secteur_medias:>})]
+					label=<:geol:cfg_label_secteur_medias:>,
+					defaut=1})]
 				[(#SAISIE{secteur,secteur_categories,
 					label=<:geol:cfg_label_secteur_categories:>})]
 				[(#SAISIE{groupe_mots,groupe_echelle,
-					label=<:geol:cfg_label_groupe_echelle:>})]
+					label=<:geol:cfg_label_groupe_echelle:>,
+					defaut=1})]
 				[(#SAISIE{groupe_mots,groupe_tags,
 					label=<:geol:cfg_label_groupe_tags:>})]
 				#SET{couleur_primaire_readonly,#VAL{_GEOL_COULEUR_PRIMAIRE}|defined|?{'oui',''}}
