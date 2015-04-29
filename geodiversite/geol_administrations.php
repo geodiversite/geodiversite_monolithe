@@ -73,7 +73,7 @@ function geol_installation(){
 		);
 		if (sql_error() != '') die((_T('geol:erreur_install_mots ')).sql_error());
 		
-		$mots_region = array(
+		$mots_echelle = array(
 						'10. 10 km',
 						'20. 1 km',
 						'30. 500 m',
@@ -90,11 +90,11 @@ function geol_installation(){
 						'140. 0,1 mm'
 		);
 		
-		foreach ($mots_region as $st) {
+		foreach ($mots_echelle as $echelle) {
 		  sql_insertq('spip_mots', 
-					  array('titre'=>$st, 'id_groupe'=>$id_groupe, 'type'=>'echelle')
+					  array('titre'=>$echelle, 'id_groupe'=>$id_groupe, 'type'=>'echelle')
 					 );
-		  if (sql_error() != '') $Terreurs[] = (_T('erreur_creation_mot_cle')).$st.': '.sql_error();
+		  if (sql_error() != '') $Terreurs[] = (_T('erreur_creation_mot_cle')).$echelle.': '.sql_error();
 		}
 	}
 	
