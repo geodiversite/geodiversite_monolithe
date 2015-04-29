@@ -28,10 +28,10 @@ function geol_upgrade($nom_meta_base_version,$version_cible){
 function geol_installation(){
 
 	// activer l'inscription des visiteurs
-	if (lire_meta('accepter_inscriptions') == 'non') ecrire_meta('accepter_inscriptions', 'oui');
+	if (lire_config('accepter_inscriptions') == 'non') ecrire_config('accepter_inscriptions', 'oui');
 	
 	// taille des vignettes à 300px
-	ecrire_meta('taille_preview', '300');
+	ecrire_config('taille_preview', '300');
 	
 	// thème bootstrap pour les box
 	ecrire_config('mediabox/skin', 'bootstrap');
@@ -40,18 +40,18 @@ function geol_installation(){
 	ecrire_config('post_dates', 'oui');
 	
 	// forcer l'utilisation des mots clés
-	if (lire_meta('articles_mots') == 'non') ecrire_meta('articles_mots', 'oui');
+	if (lire_config('articles_mots') == 'non') ecrire_config('articles_mots', 'oui');
 		
 	// activer les docs sur les articles
-	is_array($documents_objets = explode(',',lire_meta('documents_objets'))) || $documents_objets = array();
+	is_array($documents_objets = explode(',',lire_config('documents_objets'))) || $documents_objets = array();
 	if (!in_array('spip_articles', $documents_objets)){
-		ecrire_meta('documents_objets', implode(',',array('spip_articles','')));
+		ecrire_config('documents_objets', implode(',',array('spip_articles','')));
 	}
 	
 	// pas de titre, lien et barre typo dans les forums
-	if (lire_meta('forums_titre') == 'oui') ecrire_meta('forums_titre', 'non');
-	if (lire_meta('forums_afficher_barre') == 'oui') ecrire_meta('forums_afficher_barre', 'non');
-	if (lire_meta('forums_urlref') == 'oui') ecrire_meta('forums_urlref', 'non');
+	if (lire_config('forums_titre') == 'oui') ecrire_config('forums_titre', 'non');
+	if (lire_config('forums_afficher_barre') == 'oui') ecrire_config('forums_afficher_barre', 'non');
+	if (lire_config('forums_urlref') == 'oui') ecrire_config('forums_urlref', 'non');
 	
 	// création du groupe de mots clés echelle et de ses mots clés
 	$Terreur = array();
