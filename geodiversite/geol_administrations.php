@@ -25,9 +25,6 @@ function geol_upgrade($nom_meta_base_version,$version_cible){
 
 }
 
-// création des groupes et mots clés du squelette
-// configuration de certains options de spip
-
 function geol_installation(){
 
 	// activer l'inscription des visiteurs
@@ -117,6 +114,11 @@ function geol_installation(){
 			}
 		}
 	}
+
+	// maj suivantes
+	geol_upgrade_02();
+	geol_upgrade_021();
+	geol_upgrade_022();
 
 }
 
