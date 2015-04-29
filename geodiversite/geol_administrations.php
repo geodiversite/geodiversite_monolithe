@@ -53,6 +53,10 @@ function geol_installation(){
 	if (lire_config('forums_afficher_barre') == 'oui') ecrire_config('forums_afficher_barre', 'non');
 	if (lire_config('forums_urlref') == 'oui') ecrire_config('forums_urlref', 'non');
 	
+	// configuration de GIS : activer le geocoder + geolocalisation sur les articles
+	ecrire_config('gis/geocoder','on');
+	ecrire_config('gis/gis_objets',array('spip_articles'));
+	
 	// création du groupe de mots clés echelle et de ses mots clés
 	$Terreur = array();
 	if (sql_countsel('spip_groupes_mots', "titre = 'echelle'") == 0) {
