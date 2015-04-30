@@ -57,6 +57,13 @@ function geol_installation(){
 	ecrire_config('gis/geocoder','on');
 	ecrire_config('gis/gis_objets',array('spip_articles'));
 	
+	// configuration d'Emballe médias
+	ecrire_config('emballe_medias/fichiers/chercher_article','on');
+	ecrire_config('emballe_medias/fichiers/fichiers_images',array('gif','jpg','png'));
+	ecrire_config('emballe_medias/fichiers/fichiers_audios',array('mp3'));
+	ecrire_config('emballe_medias/fichiers/fichiers_videos',array('flv','mp4'));
+	ecrire_config('emballe_medias/fichiers/fichiers_textes',array('kml'));
+	
 	// création du groupe de mots clés echelle et de ses mots clés
 	$Terreur = array();
 	if (sql_countsel('spip_groupes_mots', "titre = 'echelle'") == 0) {
