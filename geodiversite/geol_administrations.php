@@ -55,7 +55,7 @@ function geol_installation(){
 	
 	// configuration de GIS : activer le geocoder + geolocalisation sur les articles
 	ecrire_config('gis/geocoder','on');
-	ecrire_config('gis/gis_objets',array('spip_articles'));
+	ecrire_config('gis/gis_objets',array('spip_articles','spip_documents'));
 	
 	// configuration d'Emballe médias
 	ecrire_config('emballe_medias/fichiers/chercher_article','on');
