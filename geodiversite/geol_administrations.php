@@ -140,7 +140,7 @@ function geol_upgrade_02(){
 	include_spip('action/editer_diogene');
 	$secteur_medias = lire_config('geol/secteur_medias',1);
 	if(!$id_diogene_medias = sql_getfetsel('id_diogene','spip_diogenes','objet="emballe_media" AND id_secteur = '.intval($secteur_medias))){
-		$id_diogene_medias = insert_diogene();
+		$id_diogene_medias = diogene_inserer();
 		$set_media = array(
 			'titre' => _T('geol:publier_media'),
 			'description' => '',
@@ -150,13 +150,16 @@ function geol_upgrade_02(){
 			),
 			'menu'=> '',
 			'statut_auteur' => '1comite',
-			'statut_auteur_publier' => '1comite',
+			'statut_auteur_publier' => '1comite'
+
+		);
+		$err = diogene_modifier($id_diogene_medias, $set_media);
+		$err = diogene_instituer($id_diogene_medias, array(
 			'id_secteur' => $secteur_medias,
 			'objet' => 'emballe_media',
 			'type' => 'article'
-
+			)
 		);
-		$err = diogene_set($id_diogene_medias, $set_media);
 	}
 	ecrire_config('emballe_medias/fichiers/publier_dans_secteur','on');
 }
