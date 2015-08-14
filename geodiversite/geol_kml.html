@@ -53,5 +53,12 @@ version="1.0" encoding="#CHARSET" ?>
 	</Placemark>
 </B_imaxe>
 </BOUCLE_un_article>
+<BOUCLE_trace(GIS){id_collection}>
+	<Placemark>
+		<name>[(#TITRE|supprimer_numero|texte_backend)]</name>
+		<atom:link rel="related" href="[(#URL_COLLECTION|url_absolue)]" />
+		[(#GEOMETRY|wkt_to_kml)]
+	</Placemark>
+</BOUCLE_trace>
 </Document>
 </kml>
