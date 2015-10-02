@@ -21,6 +21,8 @@ L.Map.Geodiv = L.Map.extend({
 			maxClusterRadius: 70,
 			spiderfyOnMaxZoom: false,
 			showCoverageOnHover: false,
+			chunkedLoading: true,
+			chunkInterval: 500,
 			iconCreateFunction: function(cluster) {
 				var childCount = cluster.getChildCount();
 				return new L.DivIcon({ html: '<div><span>' + ((childCount == 1) ? '' : childCount) + '</span></div>', className: 'marker-geodiv marker-clusterer', iconSize: new L.Point(40, 40) });
@@ -132,6 +134,21 @@ L.Map.Geodiv = L.Map.extend({
 	
 	initCluster: function () {
 		var me = this;
+		// si le chunkloading est actif, créer les conteneurs pour la barre de chargement et déclarer la fonction associée pour la mise à jour
+		if (me.options.clusterOptions.chunkedLoading) {
+			me.progress = L.DomUtil.create('div', 'leaflet-bar leaflet-progress', me.getContainer());
+			me.progressBar = L.DomUtil.create('div', 'leaflet-progress-bar', me.progress);
+			me.options.clusterOptions.chunkProgress = function updateProgressBar(processed, total, elapsed) {
+				if (elapsed > 1000) {
+					me.progress.style.display = 'block';
+					me.progressBar.style.width = Math.round(processed/total*100) + '%';
+				}
+				if (processed === total) {
+					me.progress.style.display = 'none';
+				}
+			}
+		}
+		// init du cluster
 		me.markerCluster = new L.MarkerClusterGroup(me.options.clusterOptions).addTo(me);
 		// lors du clic sur un marker, ouvrir sa popup
 		me.markerCluster.on('click', function (e) {
