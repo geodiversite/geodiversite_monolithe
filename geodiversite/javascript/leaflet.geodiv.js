@@ -91,6 +91,7 @@ L.Map.Geodiv = L.Map.extend({
 		$.getJSON(me.options.dataUrl, function(data) {
 			if (data){
 				me.parseData(data);
+				me.fire('ready');
 			}
 		});
 	},
