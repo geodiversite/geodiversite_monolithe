@@ -11,7 +11,7 @@ h3,.h3 { font-size: 1.20em; font-weight: bold; }
 /* Autres enrichissements typo */
 strong { font-weight: bold; }
 em { font-style: italic; }
-abbr, acronym { border-bottom: 1px dotted; cursor: help; }
+abbr, acronym { border-bottom: 1px dotted; cursor: help; text-decoration: none; }
 small { font-size: 0.90em; color: #666; }
 dfn { font-weight: bold; color: #666; }
 del { text-decoration: line-through; }
