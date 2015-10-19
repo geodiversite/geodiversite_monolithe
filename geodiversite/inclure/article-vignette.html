@@ -30,7 +30,7 @@
 	[<div class="texte">(#TEXTE|couper{100})</div>]]
 
 [(#ENV{info_auteur}|!={non}|oui)
-	<p>[<:geol:de:> <span class="contributor"><span(#_article_vignette:LESAUTEURS)</span>]</p>]
+	<p>[<:geol:de:> <span class="contributor">(#_article_vignette:LESAUTEURS)</span>]</p>]
 	
 [(#ENV{info_date}|!={non}|oui)
 	<p><abbr class="published" title="[(#DATE|date_iso)]">[<:geol:publie_le:> (#DATE|affdate{'d/m/Y'})]</abbr></p>]
