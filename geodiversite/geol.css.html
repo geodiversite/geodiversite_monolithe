@@ -11,10 +11,11 @@
 
 [(#INCLURE{fond=prive/themes/spip/picker.css,ltr=#LTR})]
 
-/* formulaire de polyhierarchie dans le public */
-.formulaire_editer_polyhierarchie ul.item_picked li {margin:0 2px 2px;padding:2px;float:[(#ENV{ltr}|choixsiegal{left,left,right})];clear:none;}
-
 [(#INCLURE{fond=prive/style_prive_plugin_polyhier,ltr=#LTR})]
+
+/* formulaire de polyhierarchie dans le public */
+.formulaire_editer_polyhierarchie ul.item_picked li { margin:0 2px 2px; padding:2px; padding-[(#ENV{ltr}|choixsiegal{left,left,right})]: 15px; float:[(#ENV{ltr}|choixsiegal{left,left,right})]; clear:none; }
+.formulaire_editer_polyhierarchie .editer_parents { background-image: none; }
 
 /* ------------------------------------------
 /* ------------------------------------------
