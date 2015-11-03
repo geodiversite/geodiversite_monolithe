@@ -390,11 +390,9 @@ Cf.: http://www.alsacreations.com/astuce/lire/1177
 	#nav .menu-liste .menu-entree a,
 	#nav .menu-liste .menu-entree a:hover { color: #00c0f8; }
 	#extra { margin-bottom: 15px !important; }
-	#extra .menu { background: #000; padding: 0 1%; float: none; overflow: hidden; }
+	#extra .menu { background: #000; padding-left: 5px; float: none; overflow: hidden; }
 	#extra .menu .h2 { display: none; }
-	#extra .menu .menu-liste .menu-entree { display: block; float: left; }
 	#extra .menu .menu-liste .menu-entree a { color: #fff; font-weight: bold; }
-	#extra .menu #formulaire_recherche { display: none; position: static; text-align: center; }
 
 	#hierarchie li { display: none; }
 	#hierarchie li.on { display: block; }
