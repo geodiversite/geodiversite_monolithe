@@ -8,6 +8,10 @@
 		<h1 class="h1"><span><:collection:titre_collections:></span></h1>
 	</div>
 	
+	<BOUCLE_txt(ARTICLES){page=albums_tous}>
+	[<div class="chapo">(#TEXTE)</div>]
+	</BOUCLE_txt>
+	
 	[(#REM) albums du site ]
 	[(#INCLURE{fond=liste/albums-vignette,
 		ajax,
