@@ -1,7 +1,7 @@
 <paquet
 	prefix="geol"
 	categorie="squelette"
-	version="1.5.14"
+	version="1.5.15"
 	etat="stable"
 	compatibilite="[3.0.0;3.0.*]"
 	logo="images/logo_site.png"

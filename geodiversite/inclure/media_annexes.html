@@ -21,6 +21,8 @@
 				|inserer_attribut{class,spip_logos}
 				|inserer_attribut{alt,[(#TITRE|attribut_html|couper{80})]})]
 			</a>
+			[(#ENV{modifier_annexes}|oui)
+			<p class="titre #EDIT{titre}">[(#TITRE|sinon{<:geol:info_vide:>})]</p>]
 			[(#AUTORISER{modifier,article,#ID_ARTICLE}|oui|et{#ENV{modifier_annexes}|oui})[(#BOUTON_ACTION{<:medias:bouton_enlever_supprimer_document:>,#URL_ACTION_AUTEUR{dissocier_document,#ID_ARTICLE-article-#ID_DOCUMENT-suppr-safe,#SELF|parametre_url{var_mode,calcul}},ajax})]]
 		</li>
 		]</BOUCLE_documents_portfolio>
@@ -33,13 +35,16 @@
 	<div class="liste documents documents_joints">
 	<h2 class="h2"><:medias:titre_documents_joints:></h2>
 	<ul class="liste-items">
-		<BOUCLE_documents_joints(DOCUMENTS){id_article}{mode=annexe}{extension !IN gif,jpg,png}{vu=non}{par num titre, date}>[
+		<BOUCLE_documents_joints(DOCUMENTS){id_article}{mode=annexe}{extension !IN gif,jpg,png}{vu=non}{par num titre, date}>
 		<li class="item">
-			<strong><a href="(#URL_DOCUMENT)" title="<:bouton_telecharger:>" type="#MIME_TYPE">[(#TITRE|sinon{<:medias:info_document:>})]</a></strong>
+			[(#ENV{modifier_annexes}|non)
+			<strong><a href="#URL_DOCUMENT" title="<:bouton_telecharger:>" type="#MIME_TYPE">[(#TITRE|sinon{<:medias:info_document:>})]</a></strong>]
+			[(#ENV{modifier_annexes}|oui)
+			<strong class="#EDIT{titre}">[(#TITRE|sinon{<:medias:info_document:>})]</strong>]
 			<span class="small">(<span>#TYPE_DOCUMENT[ &ndash; (#TAILLE|taille_en_octets)]</span>)</span>
 			#DESCRIPTIF
 			[(#AUTORISER{modifier,article,#ID_ARTICLE}|oui|et{#ENV{modifier_annexes}|oui})[(#BOUTON_ACTION{<:medias:bouton_enlever_supprimer_document:>,#URL_ACTION_AUTEUR{dissocier_document,#ID_ARTICLE-article-#ID_DOCUMENT-suppr-safe,#SELF|parametre_url{var_mode,calcul}},ajax})]]
-		]</li>
+		</li>
 		</BOUCLE_documents_joints>
 	</ul>
 	</div>
