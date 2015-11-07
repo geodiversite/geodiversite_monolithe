@@ -9,7 +9,7 @@ function formulaires_recherche_geol_charger_dist(){
 		'action'=> generer_url_public('recherche'),
 		);
 	
-	$valeurs['recherche'] = _request('recherche_libre');
+	$valeurs['recherche'] = _request('recherche');
 	
 	// on recupere les donnees des licences pour la saisie
 	if (defined('_DIR_PLUGIN_LICENCE')) {

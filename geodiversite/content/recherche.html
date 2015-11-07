@@ -1,21 +1,21 @@
 [(#REM) Fil d'Ariane ]
 <ol id="hierarchie">
-	<li[(#RECHERCHE|sinon{#ENV{recherche_libre}}|non) class="on"]><:info_rechercher:></li>
-	[<li class="on"><strong>(#RECHERCHE|sinon{#ENV{recherche_libre}})</strong></li>]
+	<li[(#RECHERCHE|non) class="on"]><:info_rechercher:></li>
+	[<li class="on"><strong>(#RECHERCHE)</strong></li>]
 </ol>
 
 <div class="contenu-principal">
 	<div class="cartouche">
 		<h1 class="h1"><:resultats_recherche:></h1>
 	</div>
-	[(#RECHERCHE|sinon{#ENV{recherche_libre}}|?{#SET{tri,#ENV{tri,points}},#SET{tri,#ENV{tri,date}}})]
+	[(#RECHERCHE|?{#SET{tri,#ENV{tri,points}},#SET{tri,#ENV{tri,date}}})]
 	[(#INCLURE{fond=liste/recherche-articles-vignette,
 		largeur=200,hauteur=200,info_auteur=non,
 		par=#GET{tri},
-		recherche=#ENV{recherche_libre}|sinon{#ENV{recherche}},
 		categories=#ENV**{categories,1},
 		id_mot=#ENV{echelle},
 		id_licence=#ENV**{id_licence,#ARRAY{0,0,1,1,2,2,3,3,4,4,5,5,6,6,7,7,8,8}},
+		recherche,
 		type_doc,
 		ajax,
 		env})
