@@ -5,7 +5,6 @@ include_spip('inc/licence');
 function formulaires_recherche_geol_charger_dist(){
 
 	$valeurs = array(
-		'editable'=>true,
 		'action'=> generer_url_public('recherche'),
 		);
 	

@@ -1,7 +1,6 @@
 <div class="formulaire_spip formulaire_recherche_geol" id="formulaire_recherche_geol">
 [<p class="reponse_formulaire reponse_formulaire_ok">(#ENV*{message_ok})</p>]
 [<p class="reponse_formulaire reponse_formulaire_erreur">(#ENV*{message_erreur})</p>]
-[(#ENV{editable})
 <form method='get' action='#ENV{action}'>
 	[(#REM) declarer les hidden qui declencheront le service du formulaire parametre : url d'action ]
 	<input type="hidden" value="recherche" name="page">
@@ -20,10 +19,12 @@
 				defaut=#ARRAY{0,0},
 				size=10,
 				label=<:geol:categories:>})]
+			<BOUCLE_echelle(GROUPES_MOTS){id_groupe=#CONFIG{geol/groupe_echelle}}>
 			[(#SAISIE{mot,
 				echelle,
 				label=<:geol:echelle_media:>,
-				id_groupe=#CONFIG{geol/groupe_echelle,2}})]
+				id_groupe=#ID_GROUPE})]
+			</BOUCLE_echelle>
 			[(#SAISIE{checkbox,type_doc,
 				label=<:geol:media_type:>,
 				defaut=#ARRAY{0,0}, 
@@ -44,5 +45,5 @@
 	<p class="boutons">
 		<input type="submit" class="submit" value="<:info_rechercher:>" title="<:info_rechercher:>" />	
 	</p>
-</form>]
+</form>
 </div>
