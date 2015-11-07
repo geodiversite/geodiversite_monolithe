@@ -2,7 +2,7 @@
 
 include_spip('inc/licence');
 
-function formulaires_recherche_geol_charger_dist($recherche='', $retour=''){
+function formulaires_recherche_geol_charger_dist(){
 
 	$valeurs = array(
 		'editable'=>true,
@@ -10,9 +10,6 @@ function formulaires_recherche_geol_charger_dist($recherche='', $retour=''){
 		);
 	
 	$valeurs['recherche'] = _request('recherche_libre');
-	
-	if ($recherche)
-		$valeurs['recherche'] = $recherche;
 	
 	// on recupere les donnees des licences pour la saisie
 	if (defined('_DIR_PLUGIN_LICENCE')) {
