@@ -11,11 +11,11 @@ function formulaires_recherche_geol_charger_dist($recherche='', $retour=''){
 	
 	$valeurs['recherche'] = _request('recherche_libre');
 	
-	if($recherche)
+	if ($recherche)
 		$valeurs['recherche'] = $recherche;
 	
 	// on recupere les donnees des licences pour la saisie
-	if(defined('_DIR_PLUGIN_LICENCE')){
+	if (defined('_DIR_PLUGIN_LICENCE')) {
 		$licences = $GLOBALS['licence_licences'];
 		foreach ($licences as $licence) {
 			$valeurs['licences'][$licence['id']] = $licence['name'];
