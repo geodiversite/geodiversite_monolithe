@@ -1,19 +1,15 @@
 <?php
-
-// Ceci est un fichier langue de SPIP -- This is a SPIP language file
-
-///  Fichier produit par PlugOnet
-// Module: paquet-geol
-// Langue: fr
-// Date: 15-06-2012 17:42:39
-// Items: 2
+// This is a SPIP language file  --  Ceci est un fichier langue de SPIP
+// extrait automatiquement de http://trad.spip.net/tradlang_module/paquet-geol?lang_cible=es
+// ** ne pas modifier le fichier **
 
 if (!defined('_ECRIRE_INC_VERSION')) return;
 
 $GLOBALS[$GLOBALS['idx_lang']] = array(
 
-// G
+	// G
 	'geol_description' => 'Esqueletos del proyecto Geodiversite.net.',
-	'geol_slogan' => 'Esqueletos del proyecto Geodiversidad',
+	'geol_slogan' => 'Esqueletos del proyecto Geodiversidad'
 );
+
 ?>
