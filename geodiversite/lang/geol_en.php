@@ -23,7 +23,7 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 	'amis_une_demande' => '1 new request',
 	'amis_voir_tous' => 'Show all contacts',
 	'annuler' => 'Cancel',
-	'auteur_carte' => 'Show contributions on a map',
+	'auteur_carte' => 'Show contributions on a map', # RELIRE
 
 	// C
 	'carte' => 'Map',
@@ -69,7 +69,7 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 	'date_le' => 'on',
 	'de' => 'By',
 	'deplie_replie' => 'Fold/Unfold',
-	'depuis_page' => 'From page',
+	'depuis_page' => 'From page', # RELIRE
 	'dernieres_contribs' => 'Recent contributions',
 	'description' => 'Description',
 	'doc_modifier' => 'Modify document',
@@ -115,18 +115,18 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 
 	// L
 	'legend_editer_profil' => 'Edit your profile',
-	'licence_media' => 'Document license',
-	'lien_grande_carte' => 'Show on a bigger map', # verif
+	'licence_media' => 'Document license', # RELIRE
+	'lien_grande_carte' => 'Show on a bigger map', # verif RELIRE
 	'localisation' => 'Location',
 
 	// M
-	'media_non_geolocalise' => 'Document is not located', # verif
+	'media_non_geolocalise' => 'Document is not located', # verif RELIRE
 	'media_type' => 'Document type',
 	'media_type_audios' => 'Sounds',
 	'media_type_images' => 'Images',
 	'media_type_textes' => 'KML, KMZ, PDF files',
 	'media_type_videos' => 'Videos',
-	'message_article_publie_prepa' => 'You have to publish your document before uploading a new one.',
+	'message_article_publie_prepa' => 'You have to publish your document before uploading a new one.', # RELIRE
 	'modifier' => 'Edit',
 	'modifier_carte' => 'Edit location',
 	'modifier_categories' => 'Edit categories',
@@ -134,8 +134,8 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 	'modifier_licence' => 'Edit licence',
 	'modifier_pass' => 'Change your password',
 	'mon_espace' => 'My space',
-	'mot_doux_categories' => 'You have to member of the scientific commity to add a scientific keyword.', # verif
-	'mot_doux_premier_upload' => 'This is the first time you publish a media, <a href="@url@">see the online help</a>.', # verif
+	'mot_doux_categories' => 'You have to member of the scientific commity to add a scientific keyword.', # verif RELIRE
+	'mot_doux_premier_upload' => 'This is the first time you publish a media, <a href="@url@">see the online help</a>.', # verif RELIRE
 
 	// N
 	'nav_a_propos' => 'About',
@@ -169,7 +169,7 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 	'publier' => 'Publish',
 	'publier_media' => 'Publish a document',
 	'publier_nouveau_media' => 'Publish a new document',
-	'publier_prepa_media' => '1 document pending publication.',
+	'publier_prepa_media' => '1 document pending publication.', # RELIRE
 
 	// R
 	'recherche_avancee' => 'Advanced search',
@@ -181,12 +181,12 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 
 	// S
 	'signaler_bug' => 'Create a bug report',
-	'signaler_erreur_localisation' => 'Report location error',
+	'signaler_erreur_localisation' => 'Report location error', # RELIRE
 	'site_spip' => 'Made with SPIP',
 	'statut_admin' => 'Admin',
 	'statut_admin_restreint' => 'Restricted admin',
 	'statut_auteur' => 'Status',
-	'suivi_edito' => 'Editorial monitoring',
+	'suivi_edito' => 'Editorial monitoring', # RELIRE
 	'suivi_edito_filtre_categorie' => 'Contributions without categorie',
 	'suivi_edito_filtre_texte' => 'Contributions without description',
 	'suivi_edito_filtres' => 'Contributions types',
@@ -194,7 +194,7 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 	'syndic' => 'Syndication',
 
 	// T
-	'tag_docs_publics' => 'See all public documents tagged with @titre@.',
+	'tag_docs_publics' => 'See all public documents tagged with @titre@.', # RELIRE
 	'tags' => 'Tags',
 	'tags_auteurs' => 'Autor’s tags',
 	'tags_modifier' => 'Edit tags',

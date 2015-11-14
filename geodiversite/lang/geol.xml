@@ -1,5 +1,6 @@
 <traduction module="geol" gestionnaire="salvatore" url="http://trad.spip.net" source="https://github.com/geodiversite/geodiversite/trunk/geodiversite/lang/" reference="fr">
-	<langue code="en" url="http://trad.spip.net/tradlang_module/geol?lang_cible=en" total="193" traduits="177" relire="0" modifs="0" nouveaux="16" pourcent="91.71">
+	<langue code="en" url="http://trad.spip.net/tradlang_module/geol?lang_cible=en" total="193" traduits="165" relire="12" modifs="0" nouveaux="16" pourcent="85.49">
+		<traducteur nom="b_b" lien="http://trad.spip.net/auteur/b_b" />
 	</langue>
 	<langue code="es" url="http://trad.spip.net/tradlang_module/geol?lang_cible=es" total="193" traduits="191" relire="0" modifs="0" nouveaux="2" pourcent="98.96">
 	</langue>
