@@ -7,7 +7,7 @@
 			<input type="checkbox" class="checkbox" name="medias" id="medias" value="" checked="checked" />
 			<label for="medias"><:geol:medias_titre:></label>
 		</li>
-	<BOUCLE_kmls(ARTICLES documents_liens documents){documents.mode=document}{documents.extension IN 'kml','kmz'}{par titre}>
+	<BOUCLE_kmls(ARTICLES documents_liens documents){si #CONFIG{geol/medias_calques}|strlen|>{0}|non}{documents.mode=document}{documents.extension IN 'kml','kmz'}{par titre}>
 		<li class="item">
 			<input type="checkbox" class="checkbox kml"[(#EXPOSE|oui) checked="checked"] name="kml_file" id="kml_#ID_ARTICLE" value="[(#URL_DOCUMENT|url_absolue)]" />
 			<label for="kml_#ID_ARTICLE">#TITRE</label>
@@ -16,3 +16,22 @@
 	</ul>
 </div>
 </B_kmls>
+<B_kmls_persos>
+<div class="leaflet-control menu replie" id="kml_panel">
+	<a href="#" id="toggle" title="<:geol:deplie_replie|texte_backend:>"><:geol:deplie_replie:></a>
+	<h3 class="h3"><:geol:couches_kml:></h3>
+	<ul class="liste-items">
+		<li class="item">
+			<input type="checkbox" class="checkbox" name="medias" id="medias" value="" checked="checked" />
+			<label for="medias"><:geol:medias_titre:></label>
+		</li>
+	<BOUCLE_kmls_persos(ARTICLES documents_liens documents){id_article IN #CONFIG{geol/medias_calques}|explode{','}}{documents.mode=document}{documents.extension IN 'kml','kmz'}{par titre}>
+		<li class="item">
+			<input type="checkbox" class="checkbox kml"[(#EXPOSE|oui) checked="checked"] name="kml_file" id="kml_#ID_ARTICLE" value="[(#URL_DOCUMENT|url_absolue)]" />
+			<label for="kml_#ID_ARTICLE">#TITRE</label>
+		</li>
+	</BOUCLE_kmls_persos>
+	</ul>
+</div>
+</B_kmls_persos>
+<//B_kmls>
