@@ -21,7 +21,7 @@ svn co svn://zone.spip.org/spip-zone/_plugins_/palette/trunk palette
 svn co svn://zone.spip.org/spip-zone/_plugins_/polyhierarchie/branches/v2.0/ polyhierarchie
 svn co svn://zone.spip.org/spip-zone/_plugins_/saisies/trunk saisies
 svn co svn://zone.spip.org/spip-zone/_plugins_/emballe_medias/swfupload/trunk swfupload
-svn co svn://zone.spip.org/spip-zone/_plugins_/z-core
+svn co svn://zone.spip.org/spip-zone/_plugins_/z-core/trunk z-core
 svn co svn://zone.spip.org/spip-zone/_plugins_/spip-bonux-3
 
 cd ..
