@@ -13,6 +13,7 @@ Quelques sites qui utilisent geodiv
 - http://trektic.org/
 - http://cornes.debru.me/
 - http://www.sequoia-act.net/
+- http://www.streetart-brest.fr/
 
 Script d'installation
 ------
