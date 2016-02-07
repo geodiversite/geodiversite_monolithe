@@ -38,11 +38,11 @@
 	<necessite nom="legendes" compatibilite="[1.1.2;[" />
 	<necessite nom="nuage" compatibilite="[4.0.5;[" />
 
- 	<utilise nom='gravatar' compatibilite="[1.3.0;[" />
- 	<utilise nom='spipicious' compatibilite="[0.7.8;[" />
- 	<utilise nom='date_inscription' compatibilite="[0.1.0;[" />
-  	<utilise nom='licence' compatibilite="[0.4.0;[" />
- 	<utilise nom='Fulltext' compatibilite="[0.7.0;[" />
+ 	<utilise nom="gravatar" compatibilite="[1.3.0;[" />
+ 	<utilise nom="spipicious" compatibilite="[0.7.8;[" />
+ 	<utilise nom="date_inscription" compatibilite="[0.1.0;[" />
+  	<utilise nom="licence" compatibilite="[0.4.0;[" />
+ 	<utilise nom="Fulltext" compatibilite="[0.7.0;[" />
  	
  	<menu nom="configurer_geol" titre="geol:cfg_titre_geol" parent="menu_squelette" icone="images/geol-16.png" />
 </paquet>
