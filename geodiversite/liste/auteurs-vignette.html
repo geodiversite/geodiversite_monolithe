@@ -10,9 +10,9 @@
 	<//B_combien>
 	<div class="liens_options">
 		<strong><:geol:trier:></strong>
-		[(#TRI{nom,<:geol:trier_par_nom:>,ajax}), ]
-		[(#TRI{date_inscription,<:geol:trier_par_date_inscription:>,ajax}) | ]
-		[(#INCLURE{fond=inclure/listes_liens_pas,pas,tri,cols=#GET{cols},objets=<:geol:objets_auteurs:>,self=#SELF})]
+		[(#TRI{nom,<:geol:trier_par_nom:>,ajax})]
+		[(#PLUGIN{date_inscription}|oui)[, (#TRI{date_inscription,<:geol:trier_par_date_inscription:>,ajax})]]
+		[ | (#INCLURE{fond=inclure/listes_liens_pas,pas,tri,cols=#GET{cols},objets=<:geol:objets_auteurs:>,self=#SELF})]
 	</div>
 	<ul class="liste-items">
 		<BOUCLE_auteurs(AUTEURS) {tri #ENV{par,nom},#GET{defaut_tri}}{tout} {pagination #ENV{pas,#GET{cols}|mult{3}}}>
