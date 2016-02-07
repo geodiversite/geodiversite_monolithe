@@ -30,7 +30,6 @@ cd ..
 mkdir plugins
 cd plugins
 
-svn co svn://zone.spip.org/spip-zone/_plugins_/amis
 svn co svn://zone.spip.org/spip-zone/_plugins_/champs_extras/core/trunk cextras_core
 svn co svn://zone.spip.org/spip-zone/_plugins_/champs_extras/interface/trunk cextras_interface
 svn co svn://zone.spip.org/spip-zone/_plugins_/compositions/trunk compositions
