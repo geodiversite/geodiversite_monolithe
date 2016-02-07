@@ -13,7 +13,7 @@ svn co svn://zone.spip.org/spip-zone/_plugins_/jquery_file_upload/trunk jquery_f
 svn co svn://zone.spip.org/spip-zone/_plugins_/legendes
 svn co svn://zone.spip.org/spip-zone/_plugins_/mediaspip_player/trunk mediaspip_player
 svn co svn://zone.spip.org/spip-zone/_plugins_/menus/trunk menus
-svn co svn://zone.spip.org/spip-zone/_plugins_/mesfavoris
+svn co svn://zone.spip.org/spip-zone/_plugins_/mesfavoris/trunk mesfavoris
 svn co svn://zone.spip.org/spip-zone/_plugins_/nospam
 svn co svn://zone.spip.org/spip-zone/_plugins_/nuage/trunk nuage
 svn co svn://zone.spip.org/spip-zone/_plugins_/pages/trunk pages
