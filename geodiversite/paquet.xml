@@ -38,7 +38,6 @@
 	<necessite nom="legendes" compatibilite="[1.1.2;[" />
 	<necessite nom="nuage" compatibilite="[4.0.5;[" />
 
-	<utilise nom="amis" compatibilite="[0.1;[" />
  	<utilise nom='gravatar' compatibilite="[1.3.0;[" />
  	<utilise nom='spipicious' compatibilite="[0.7.8;[" />
  	<utilise nom='date_inscription' compatibilite="[0.1.0;[" />
