@@ -24,7 +24,7 @@ var [callback_(#ENV{id_map}|?{map#ENV{id_map},form_map})];
 							},
 							onEachFeature: function (feature, layer) {
 								if (feature.properties && feature.properties.description) {
-									layer.bindPopup(feature.properties.description);
+									layer.bindPopup(L.popup({className: 'geol_window', maxWidth: 350}).setContent(feature.properties.description));
 								}
 							}
 						}).addTo(map);
