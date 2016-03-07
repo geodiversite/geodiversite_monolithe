@@ -30,8 +30,8 @@ cd ..
 mkdir plugins
 cd plugins
 
-svn co svn://zone.spip.org/spip-zone/_plugins_/champs_extras/core/trunk cextras_core
-svn co svn://zone.spip.org/spip-zone/_plugins_/champs_extras/interface/trunk cextras_interface
+svn co svn://zone.spip.org/spip-zone/_plugins_/champs_extras_core/trunk cextras_core
+svn co svn://zone.spip.org/spip-zone/_plugins_/champs_extras_interface/trunk cextras_interface
 svn co svn://zone.spip.org/spip-zone/_plugins_/compositions/trunk compositions
 svn co svn://zone.spip.org/spip-zone/_plugins_/crayons
 svn co svn://zone.spip.org/spip-zone/_plugins_/criteres_suivant_precedent
