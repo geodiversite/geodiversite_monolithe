@@ -13,5 +13,3 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 	'geol_description' => 'Esqueletos del proyecto Geodiversite.net.',
 	'geol_slogan' => 'Esqueletos del proyecto Geodiversidad'
 );
-
-?>
