@@ -5,7 +5,7 @@ svn co svn://trac.rezo.net/spip/branches/spip-3.0 .
 cd plugins-dist
 
 svn co svn://zone.spip.org/spip-zone/_plugins_/date_inscription
-svn co svn://zone.spip.org/spip-zone/_plugins_/diogene/diogene/trunk diogene
+svn co svn://zone.spip.org/spip-zone/_plugins_/diogene/diogene/branches/v1.7 diogene
 svn co svn://zone.spip.org/spip-zone/_plugins_/emballe_medias/emballe_medias/branches/v1.3 emballe_medias
 svn co https://github.com/geodiversite/geodiversite/trunk/geodiversite geodiversite
 svn co svn://zone.spip.org/spip-zone/_plugins_/gis/trunk gis
