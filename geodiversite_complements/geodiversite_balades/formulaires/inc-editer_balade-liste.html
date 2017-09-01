@@ -1,4 +1,4 @@
-<li class="editer editer_rang [ (#ENV**{erreurs}|table_valeur{rang}|oui)erreur]">
+<[(#VAL{li}|saisie_balise_structure_formulaire)] class="editer editer_rang [ (#ENV**{erreurs}|table_valeur{rang}|oui)erreur]">
 	<ul class="liste-items" id="editer_rang">
 	<BOUCLE_art(ARTICLES documents_liens documents){documents.mode=document}{id_collection}{par rang,titre}>
 		<li class="item">
@@ -24,4 +24,4 @@
 	})(jQuery);
 	-->
 	</script>
-</li>
+</[(#VAL{li}|saisie_balise_structure_formulaire)]>
