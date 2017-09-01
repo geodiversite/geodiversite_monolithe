@@ -18,7 +18,7 @@
 	<necessite nom="geol" compatibilite="[1.5.1;[" />
 	<!-- les utilise de geol -->
 	<necessite nom="gravatar" compatibilite="[1.3.0;[" />
-	<necessite nom="spipicious" compatibilite="[0.7.8;[" />
+	<necessite nom="spipicious" compatibilite="[1.2.5;[" />
 	<necessite nom="date_inscription" compatibilite="[0.1.0;[" />
 	<necessite nom="licence" compatibilite="[0.9.1;[" />
 	<necessite nom="Fulltext" compatibilite="[0.7.0;[" />
