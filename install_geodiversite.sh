@@ -7,6 +7,7 @@ cd plugins-dist
 svn co svn://zone.spip.org/spip-zone/_plugins_/date_inscription
 svn co svn://zone.spip.org/spip-zone/_plugins_/diogene/diogene/branches/v1.7 diogene
 svn co svn://zone.spip.org/spip-zone/_plugins_/emballe_medias/emballe_medias/branches/v1.3 emballe_medias
+svn co svn://zone.spip.org/spip-zone/_plugins_/facteur/trunk facteur
 svn co https://github.com/geodiversite/geodiversite/trunk/geodiversite geodiversite
 svn co svn://zone.spip.org/spip-zone/_plugins_/gis/trunk gis
 svn co svn://zone.spip.org/spip-zone/_plugins_/jquery_file_upload/trunk jquery_file_upload
@@ -15,6 +16,7 @@ svn co svn://zone.spip.org/spip-zone/_plugins_/mediaspip_player/trunk mediaspip_
 svn co svn://zone.spip.org/spip-zone/_plugins_/menus/trunk menus
 svn co svn://zone.spip.org/spip-zone/_plugins_/mesfavoris/trunk mesfavoris
 svn co svn://zone.spip.org/spip-zone/_plugins_/nospam
+svn co svn://zone.spip.org/spip-zone/_plugins_/notifications/trunk notifications
 svn co svn://zone.spip.org/spip-zone/_plugins_/nuage/trunk nuage
 svn co svn://zone.spip.org/spip-zone/_plugins_/pages/trunk pages
 svn co svn://zone.spip.org/spip-zone/_plugins_/palette/trunk palette
