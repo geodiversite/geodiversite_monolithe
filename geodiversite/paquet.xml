@@ -3,7 +3,7 @@
 	categorie="squelette"
 	version="1.6.1"
 	etat="stable"
-	compatibilite="[3.0.0;3.0.*]"
+	compatibilite="[3.0.0;3.1.*]"
 	logo="images/logo_site.png"
 	schema="0.2.2"
 >
@@ -26,7 +26,7 @@
 	<pipeline nom="xmlrpc_server_class" inclure="geol_pipelines.php" />
 
 	<necessite nom="diogene" compatibilite="[1.5.1;[" />
-	<necessite nom="emballe_medias" compatibilite="[1.1.1;1.*.*]" />
+	<necessite nom="emballe_medias" compatibilite="[1.3.9;[" />
 	<necessite nom="saisies" compatibilite="[1.25.10;[" />
 	<necessite nom="Zcore" compatibilite="[2.2.1;[" />
 	<necessite nom="pages" compatibilite="[1.0.0;[" />
