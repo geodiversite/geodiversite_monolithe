@@ -1,16 +1,16 @@
 <div class="formulaire_spip formulaire_recherche_geol" id="formulaire_recherche_geol">
 [<p class="reponse_formulaire reponse_formulaire_ok">(#ENV*{message_ok})</p>]
 [<p class="reponse_formulaire reponse_formulaire_erreur">(#ENV*{message_erreur})</p>]
-<form method='get' action='#ENV{action}'>
+<form method="get" action="#ENV{action}">
 	[(#REM) declarer les hidden qui declencheront le service du formulaire parametre : url d'action ]
 	<input type="hidden" value="recherche" name="page">
 	<fieldset>
-		<ul>
-			<li class="recherche">
+		<[(#VAL{ul}|saisie_balise_structure_formulaire)] class="editer-groupe">
+			<[(#VAL{li}|saisie_balise_structure_formulaire)] class="recherche">
 				<label for="recherche"><:info_rechercher:></label>
 				<input type="text" class="text" size="10" name="recherche" id="recherche"[ value="(#ENV{recherche})"] />
 				[(#PLUGIN{Fulltext}|oui)<p class="explication"><:fulltext:casse_indifferente:> <:fulltext:accents_pas_pris:>.</p>]
-			</li>
+			</[(#VAL{li}|saisie_balise_structure_formulaire)]>
 			[(#SAISIE{secteur,
 				categories,
 				explication=<:geol:explication_select_multiple:>,
@@ -40,7 +40,7 @@
 				label=<:geol:licence_media:>,
 				option_intro=<:geol:toutes:>,
 				datas=#ENV**{licences}})]]
-		</ul>
+		</[(#VAL{ul}|saisie_balise_structure_formulaire)]>
 	</fieldset>
 	<p class="boutons">
 		<input type="submit" class="submit" value="<:info_rechercher:>" title="<:info_rechercher:>" />	

@@ -6,7 +6,7 @@
 <form method="post" action="#ENV{action}">
 	<div>
 		#ACTION_FORMULAIRE{#ENV{action}}
-			<ul>
+			<[(#VAL{ul}|saisie_balise_structure_formulaire)] class="editer-groupe">
 				[(#SAISIE{secteur,secteur_medias,
 					label=<:geol:cfg_label_secteur_medias:>,
 					defaut=1})]
@@ -50,7 +50,7 @@
 					label=<:geol:cfg_label_afficher_docs_annexes:>,
 					label_case=<:geol:cfg_label_afficher_bloc:>,
 					explication=<:geol:cfg_explication_afficher_docs_annexes:>})]
-			</ul>
+			</[(#VAL{ul}|saisie_balise_structure_formulaire)]>
 			<p class="boutons">
 				<input type="submit" value="<:bouton_enregistrer:>" class="submit" />
 			</p>
