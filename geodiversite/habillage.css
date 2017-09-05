@@ -283,7 +283,7 @@ h1, .h1, h2, .h2 { font: bold 1.2em geol, Arial, Helvetica, sans-serif; color: #
 #extra .menu .formulaire_recherche * { vertical-align: baseline; }
 #extra .menu .formulaire_recherche label { text-transform: uppercase; font-weight: normal; z-index: 1; }
 #extra .menu .formulaire_recherche input.text { padding: 1px; border: 0; background: #fff; color: #333; }
-#extra .menu .formulaire_recherche input.submit { padding: 0; border: 0; background: #f5f5f5; }
+#extra .menu .formulaire_recherche input.submit { padding: 1px; border: 0; background: #f5f5f5; cursor: pointer; }
 
 
 /*  ------------------------------------------
