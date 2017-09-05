@@ -25,5 +25,8 @@
 	<!-- les classiques -->
 	<necessite nom="nospam" compatibilite="[1.5.11;[" />
 	<necessite nom="palette" compatibilite="[3.0.4;[" />
+	<!-- plugins utiles mais pas nécessités par geol -->
+	<necessite nom="diogene_geo" compatibilite="[1.3.4;[" />
+	<necessite nom="diogene_licence" compatibilite="[1.2.0;[" />
 
 </paquet>
