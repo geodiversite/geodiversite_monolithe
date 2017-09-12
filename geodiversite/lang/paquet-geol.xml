@@ -3,4 +3,7 @@
 	</langue>
 	<langue code="fr" url="https://trad.spip.net/tradlang_module/paquet-geol?lang_cible=fr" total="2" traduits="2" relire="0" modifs="0" nouveaux="0" pourcent="100.00">
 	</langue>
+	<langue code="pt_br" url="https://trad.spip.net/tradlang_module/paquet-geol?lang_cible=pt_br" total="2" traduits="2" relire="0" modifs="0" nouveaux="0" pourcent="100.00">
+		<traducteur nom="filipaun" lien="https://trad.spip.net/auteur/filipaun" />
+	</langue>
 </traduction>
