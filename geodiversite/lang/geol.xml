@@ -7,6 +7,7 @@
 	<langue code="fr" url="https://trad.spip.net/tradlang_module/geol?lang_cible=fr" total="195" traduits="195" relire="0" modifs="0" nouveaux="0" pourcent="100.00">
 	</langue>
 	<langue code="pt_br" url="https://trad.spip.net/tradlang_module/geol?lang_cible=pt_br" total="195" traduits="195" relire="0" modifs="0" nouveaux="0" pourcent="100.00">
+		<traducteur nom="b_b" lien="https://trad.spip.net/auteur/b_b" />
 		<traducteur nom="filipaun" lien="https://trad.spip.net/auteur/filipaun" />
 	</langue>
 </traduction>
