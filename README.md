@@ -14,6 +14,7 @@ Quelques sites qui utilisent geodiv
 - http://cornes.debru.me/
 - http://www.sequoia-act.net/
 - http://www.streetart-brest.fr/
+- http://www.portal.zoo.bio.br/
 
 Script d'installation
 ------
