@@ -80,7 +80,7 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 	'creer_profil' => 'Criar seu perfil',
 
 	// D
-	'date_le' => 'o',
+	'date_le' => 'no dia',
 	'de' => 'De',
 	'deplie_replie' => 'Desdobrar/Dobrar',
 	'depuis_page' => 'A partir da página',
