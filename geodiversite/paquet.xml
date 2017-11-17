@@ -1,7 +1,7 @@
 <paquet
 	prefix="geol"
 	categorie="squelette"
-	version="1.6.1"
+	version="1.6.2"
 	etat="stable"
 	compatibilite="[3.0.0;3.1.*]"
 	logo="images/logo_site.png"
@@ -20,6 +20,7 @@
 	<pipeline nom="styliser" inclure="geol_pipelines.php" />
 	<pipeline nom="recuperer_fond" inclure="geol_pipelines.php" />
 	<pipeline nom="formulaire_charger" inclure="geol_pipelines.php" />
+	<pipeline nom="formulaire_traiter" inclure="geol_pipelines.php" />
 	<pipeline nom="pre_boucle" inclure="geol_pipelines.php" />
 	<pipeline nom="em_post_upload_medias" inclure="geol_pipelines.php" />
 	<pipeline nom="xmlrpc_methodes" inclure="geol_pipelines.php" />
