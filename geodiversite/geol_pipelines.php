@@ -84,6 +84,21 @@ function geol_formulaire_charger($flux){
 }
 
 /**
+ * Insertion dans le pipeline formulaire_traiter (SPIP)
+ * 
+ * Surcharge du formulaire joindre_documents dans l'espace prublic pour ne pas subir la redirection après l'ajout de document (faute de mieux...)
+ * 
+ * @param array $flux
+ * @return array $flux
+ */
+function geol_formulaire_traiter($flux){
+	if ($flux['args']['form'] == 'joindre_document' AND !test_espace_prive()) {
+		$flux['data']['redirect'] = '';
+	}
+	return $flux;
+}
+
+/**
  * Insertion dans le pipeline pre_boucle (SPIP)
  * 
  * Forcer le critère {tout} sur les boucles rubriques

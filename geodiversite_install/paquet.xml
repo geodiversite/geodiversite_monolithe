@@ -3,7 +3,7 @@
 	categorie="outil"
 	version="1.0.0"
 	etat="stable"
-	compatibilite="[3.0.0;3.0.*]"
+	compatibilite="[3.0.0;3.1.*]"
 	logo="images/geol_install.png"
 >	
 
@@ -18,12 +18,16 @@
 	<necessite nom="geol" compatibilite="[1.5.1;[" />
 	<!-- les utilise de geol -->
 	<necessite nom="gravatar" compatibilite="[1.3.0;[" />
-	<necessite nom="spipicious" compatibilite="[0.7.8;[" />
+	<necessite nom="spipicious" compatibilite="[1.2.5;[" />
 	<necessite nom="date_inscription" compatibilite="[0.1.0;[" />
-	<necessite nom="licence" compatibilite="[0.4.0;[" />
+	<necessite nom="licence" compatibilite="[0.9.1;[" />
 	<necessite nom="Fulltext" compatibilite="[0.7.0;[" />
 	<!-- les classiques -->
 	<necessite nom="nospam" compatibilite="[1.5.11;[" />
 	<necessite nom="palette" compatibilite="[3.0.4;[" />
+	<!-- plugins utiles mais pas nécessités par geol -->
+	<necessite nom="diogene_geo" compatibilite="[1.3.4;[" />
+	<necessite nom="diogene_licence" compatibilite="[1.2.0;[" />
+	<necessite nom="crayons" compatibilite="[1.26.11;[" />
 
 </paquet>

@@ -13,15 +13,15 @@ parametre : url d'action ]
 [(#SAISIE{hidden,lat})]
 [(#SAISIE{hidden,zoom})]
 [(#SAISIE{hidden,titre,defaut=#INFO_TITRE{collection,#ENV{id_collection}}})]
-<ul>
-	<li class="fieldset carte"><fieldset>
+<[(#VAL{ul}|saisie_balise_structure_formulaire)] class="editer-groupe">
+	<[(#VAL{li}|saisie_balise_structure_formulaire)] class="fieldset carte"><fieldset>
 		<legend><:geol_balades:legend_tracer:></legend>
 		[(#ENV{id_gis}|intval|non)
 		<p class='explication'>
 			<a href="#" id="tracer"><:geol_balades:explication_tracer:></a> |
 			<a href="#" id="importer"><:geol_balades:explication_importer:></a>
 		</p>]
-		<ul>
+		<[(#VAL{ul}|saisie_balise_structure_formulaire)]>
 			[(#SAISIE{carte,editer_gis_#ENV{id_gis},
 				recherche=non,
 				boutons=#ARRAY{marker,non,polygon,non,rectangle,non},
@@ -33,30 +33,30 @@ parametre : url d'action ]
 			<!--
 			;(function($){
 				$(function(){
-					$('li.import').hide();
+					$('.editer_import').hide();
 					$('#tracer').click(function(){
-						$('li.import').hide();
-						$('li.saisie_carte').show();
+						$('.editer_import').hide();
+						$('.saisie_carte').show();
 					});
 					$('#importer').click(function(){
-						$('li.import').show();
-						$('li.saisie_carte').hide();
+						$('.editer_import').show();
+						$('.saisie_carte').hide();
 					});
 				});
 			})(jQuery);
 			-->
 			</script>
-		</ul>
-	</fieldset></li>
-	<li class="fieldset rang">
+		</[(#VAL{ul}|saisie_balise_structure_formulaire)]>
+	</fieldset></[(#VAL{li}|saisie_balise_structure_formulaire)]>
+	<[(#VAL{li}|saisie_balise_structure_formulaire)] class="fieldset rang">
 		<fieldset>
 		<legend><:geol_balades:legend_ordonner:></legend>
-		<ul>
+		<[(#VAL{ul}|saisie_balise_structure_formulaire)]>
 			[(#INCLURE{fond=formulaires/inc-editer_balade-liste,env})]
-		</ul>
+		</[(#VAL{ul}|saisie_balise_structure_formulaire)]>
 		</fieldset>
-	</li>
-</ul>
+	</[(#VAL{li}|saisie_balise_structure_formulaire)]>
+</[(#VAL{ul}|saisie_balise_structure_formulaire)]>
 [(#REM) ajouter les saisies supplementaires : extra et autre, a cet endroit ]
 <!--extra-->
 <p class="boutons"><input type="submit" name="save" class="submit" value="<:bouton_enregistrer:>" /></p>

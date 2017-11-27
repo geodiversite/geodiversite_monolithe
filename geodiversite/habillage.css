@@ -129,12 +129,12 @@ input, select, textarea { font-size: 100%; font-family: inherit; }
 .formulaire_spip .explication { margin: 0.50em 0; color: #444; }
 
 /* Lignes */
-.formulaire_spip ul { margin: 0; padding: 0; list-style: none; }
-.formulaire_spip ul li { clear: both; margin: 0; padding: 0.50em 0; }
+.formulaire_spip .editer-groupe { margin: 0; padding: 0; list-style: none; }
+.formulaire_spip .editer-groupe .editer { clear: both; margin: 0; padding: 0.50em 0; }
 
 /* Labels */
 .formulaire_spip label { display: block; text-align: left; color: #444; font-weight: bold; /* pour IE/Win */ position: relative;  }
-.formulaire_spip li p { margin-top: 0; margin-bottom: 0; }
+.formulaire_spip .editer p { margin-top: 0; margin-bottom: 0; }
 
 .formulaire_spip .choix label{display:inline;font-weight:normal;}
 .formulaire_spip .choix input.radio,
@@ -156,13 +156,13 @@ input, select, textarea { font-size: 100%; font-family: inherit; }
 ----------------------------------------------- */
 
 /* Champs obligatoires */
-.formulaire_spip li.obligatoire {}
-.formulaire_spip li.obligatoire label {}
+.formulaire_spip .editer.obligatoire {}
+.formulaire_spip .editer.obligatoire label {}
 
 /* Previsualisation du message */
 .formulaire_spip fieldset.previsu { margin-bottom: 2em; padding: 1em; }
 .formulaire_spip fieldset.previsu legend { padding: 0 0.50em; font-weight: bold; }
-.formulaire_spip fieldset.previsu li { padding: 3px; border: none; }
+.formulaire_spip fieldset.previsu .editer { padding: 3px; border: none; }
 .formulaire_spip fieldset.previsu p { margin: 1em 0; } 
 
 /* Reponse du formulaire */
@@ -171,8 +171,8 @@ fieldset.reponse_formulaire { border-color: #e86519; font-weight: normal; }
 fieldset.reponse_formulaire.reponse_formulaire legend { color: #F57900; } /* Preciser la couleur des legend et du fond pour IE/Win */
 
 /* * Erreurs */
-.formulaire_spip li.erreur .erreur_message { display: block; color: #C30; font-weight: bold; }
-.formulaire_spip li.erreur input.text, .formulaire_spip li.erreur textarea { background-color: #FCC; border-style: solid; border-color: #C30; }
+.formulaire_spip .editer.erreur .erreur_message { display: block; color: #C30; font-weight: bold; }
+.formulaire_spip .editer.erreur input.text, .formulaire_spip .editer.erreur textarea { background-color: #FCC; border-style: solid; border-color: #C30; }
 .reponse_formulaire_erreur { margin: 0; color: #C30; font-weight: bold; }
 
 /* * OK */
@@ -283,7 +283,7 @@ h1, .h1, h2, .h2 { font: bold 1.2em geol, Arial, Helvetica, sans-serif; color: #
 #extra .menu .formulaire_recherche * { vertical-align: baseline; }
 #extra .menu .formulaire_recherche label { text-transform: uppercase; font-weight: normal; z-index: 1; }
 #extra .menu .formulaire_recherche input.text { padding: 1px; border: 0; background: #fff; color: #333; }
-#extra .menu .formulaire_recherche input.submit { padding: 0; border: 0; background: #f5f5f5; }
+#extra .menu .formulaire_recherche input.submit { padding: 1px; border: 0; background: #f5f5f5; cursor: pointer; }
 
 
 /*  ------------------------------------------
