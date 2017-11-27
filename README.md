@@ -19,4 +19,4 @@ Quelques sites qui utilisent geodiv
 Script d'installation
 ------
 
-Le script ```install_geodiv.sh``` doit être exécuté depuis le répertoire où vous souhaitez installer Géodiversité (SPIP branche 3.0 svn et les plugins nécessaires).
+Le script ```install_geodiv.sh``` doit être exécuté depuis le répertoire où vous souhaitez installer Géodiversité (SPIP branche 3.1 svn et les plugins nécessaires).

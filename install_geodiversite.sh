@@ -1,5 +1,5 @@
-# récupération de SPIP 3.0.X
-svn co svn://trac.rezo.net/spip/branches/spip-3.0 .
+# récupération de SPIP 3.1.X
+svn co svn://trac.rezo.net/spip/branches/spip-3.1 .
 
 # récupération des plugins à placer dans extensions
 cd plugins-dist
