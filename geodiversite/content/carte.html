@@ -79,11 +79,11 @@ var resizeMap = function() {
 			var id = $(this).attr('id');
 			var kml = $(this).val();
 			$(this).bind ('click',function(){
-				if ($(this).attr('checked')) {
+				if ($(this).prop('checked')) {
 					if (typeof(map.markerCluster) != "undefined") {
 						map.removeLayer(map.markerCluster);
 					}
-					$('#kml_panel input#medias:checkbox').attr('checked',false);
+					$('#kml_panel input#medias:checkbox').prop('checked',false);
 					layers[id] = new L.KML(kml, {async: true});
 					map.addLayer(layers[id]);
 				} else {
@@ -92,12 +92,12 @@ var resizeMap = function() {
 			});
 		});
 		$('#kml_panel input#medias:checkbox').click(function() {
-			if ($(this).attr('checked')) {
+			if ($(this).prop('checked')) {
 				map.addLayer(map.markerCluster);
 			} else {
 				map.removeLayer(map.markerCluster);
 			}
-		})[(#GET{kml}|?{".attr('checked',false);",";"})]
+		})[(#GET{kml}|?{".prop('checked',false);",";"})]
 		
 		//  deplier/replier le panel
 		$('#kml_panel #toggle').click(function() {
