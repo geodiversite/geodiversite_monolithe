@@ -29,5 +29,6 @@
 	<necessite nom="diogene_geo" compatibilite="[1.3.4;[" />
 	<necessite nom="diogene_licence" compatibilite="[1.2.0;[" />
 	<necessite nom="crayons" compatibilite="[1.26.11;[" />
+	<necessite nom="metasplus" compatibilite="[1.2.5;[" />
 
 </paquet>

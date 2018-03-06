@@ -53,6 +53,7 @@ svn co svn://zone.spip.org/spip-zone/_plugins_/mailshot
 svn co svn://zone.spip.org/spip-zone/_plugins_/mailsubscribers/trunk mailsubscribers
 svn co svn://zone.spip.org/spip-zone/_plugins_/emballe_medias/media_collections/trunk media_collections
 svn co svn://zone.spip.org/spip-zone/_plugins_/memoization/trunk memoization
+svn co svn://zone.spip.org/spip-zone/_plugins_/metaplus/branches/v1 metaplus
 svn co svn://zone.spip.org/spip-zone/_plugins_/twitter/trunk twitter
 svn co svn://zone.spip.org/spip-zone/_plugins_/minibando/trunk minibando
 svn co svn://zone.spip.org/spip-zone/_plugins_/newsletters
