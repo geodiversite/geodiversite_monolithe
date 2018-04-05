@@ -13,6 +13,17 @@ function autoriser_ecrire($faire, $type, $id, $qui, $opt) {
 	return $qui['statut'] == '0minirezo';
 }
 
+// surcharger autoriser_rubrique_modifier_dist pour y reproduire autoriser_rubrique_publierdans_dist
+// puisque diogene surcharge autoriser_rubrique_publierdans et permet donc aux rédacteurs de modifier les rubriques
+function autoriser_rubrique_modifier($faire, $type, $id, $qui, $opt) {
+	return
+		($qui['statut'] == '0minirezo')
+		and (
+			!$qui['restreint'] or !$id
+			or in_array($id, $qui['restreint'])
+		);
+}
+
 // surcharger autoriser_ecrire_ticket_dist sinon autoriser_ecrire passe avant
 function autoriser_ticket_ecrire($faire, $type, $id, $qui, $opt) {
 	include_spip('inc/tickets_autoriser');
