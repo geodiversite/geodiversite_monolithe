@@ -16,11 +16,7 @@
 				<[(#VAL{li}|saisie_balise_structure_formulaire)] class="editer_email obligatoire">
 					<label for="#ENV{name_email}"><:geol:profil_mail:></label>
 					<input type="text" name="#ENV{name_email}" id="#ENV{name_email}" value="[(#EMAIL**|entites_html)]" class="text crayon-active" />
-				</[(#VAL{li}|saisie_balise_structure_formulaire)]>[(#PLUGIN{openid}|oui)
-				<[(#VAL{li}|saisie_balise_structure_formulaire)] class="editer_openid">
-					<label for="#ENV{name_openid}"><:geol:profil_openid:></label>
-					<input type="text" name="#ENV{name_openid}" id="#ENV{name_openid}" value="[(#OPENID**|entites_html)]" class="text crayon-active" />
-				</[(#VAL{li}|saisie_balise_structure_formulaire)]>]
+				</[(#VAL{li}|saisie_balise_structure_formulaire)]>
 				<[(#VAL{li}|saisie_balise_structure_formulaire)] class="editer_bio">
 					<label for="#ENV{name_bio}"><:geol:profil_bio:></label>
 					<textarea name="#ENV{name_bio}" id="#ENV{name_bio}" style="width:100%; height:#ENV{hauteur}|mul{2}px;">[(#BIO**|entites_html)]</textarea>
