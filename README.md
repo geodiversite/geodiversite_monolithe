@@ -13,6 +13,7 @@ Géodiversité, ou geodiv pour les intimes, est un squelette pour SPIP qui perme
 - http://www.sequoia-act.net/
 - http://www.streetart-brest.fr/
 - http://www.portal.zoo.bio.br/
+- http://inventaire.eau-et-rivieres.org/
 
 ## Script d'installation
 
