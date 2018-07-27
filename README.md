@@ -5,11 +5,11 @@ Géodiversité, ou geodiv pour les intimes, est un squelette pour SPIP qui perme
 
 ## Quelques sites qui utilisent geodiv
 
-- http://www.geodiversite.net/
-- http://www.lestaxinomes.org/
-- http://www.peluche.um2.fr/
-- http://trektic.org/
-- http://cornes.debru.me/
+- https://www.geodiversite.net/
+- https://www.lestaxinomes.org/
+- https://peluche.umontpellier.fr/
+- https://trektic.org/
+- https://cornes.debru.me/
 - http://www.sequoia-act.net/
 - http://www.streetart-brest.fr/
 - http://www.portal.zoo.bio.br/
