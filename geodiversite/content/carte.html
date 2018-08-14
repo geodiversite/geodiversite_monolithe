@@ -14,7 +14,7 @@ var resizeMap = function() {
 
 		<BOUCLE_gis(GIS){id_article}>
 		[(#REM) centrer sur l'article passe dans l'url ]
-		#SET{lat,#LAT} #SET{lon,#LON} #SET{zoom,#ZOOM}
+		#SET{lat,#LAT} #SET{lon,#LON} #SET{zoom,12}
 		</BOUCLE_gis>
 		[(#REM) Sinon centrer sur les coordonnes passees en parametre ou sur celle par defaut ]
 		[(#GET{lat}|non)
