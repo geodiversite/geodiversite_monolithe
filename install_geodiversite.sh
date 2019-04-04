@@ -46,7 +46,7 @@ svn co svn://zone.spip.org/spip-zone/_plugins_/facteur/trunk facteur
 svn co svn://zone.spip.org/spip-zone/_plugins_/fulltext/trunk fulltext
 svn co https://github.com/geodiversite/geodiversite/trunk/geodiversite_complements/geodiversite_albums geodiversite_albums
 svn co https://github.com/geodiversite/geodiversite/trunk/geodiversite_complements/geodiversite_balades geodiversite_balades
-svn co svn://zone.spip.org/spip-zone/_plugins_/gis_geometries
+svn co svn://zone.spip.org/spip-zone/_plugins_/gis_geometries/trunk gis_geometries
 svn co svn://zone.spip.org/spip-zone/_plugins_/gravatar
 svn co svn://zone.spip.org/spip-zone/_plugins_/licence
 svn co svn://zone.spip.org/spip-zone/_plugins_/mailshot
