@@ -76,8 +76,6 @@ L.Map.Geodiv = L.Map.extend({
 			this.addControl(layers_control);
 			// ajouter l'objet du controle de layers à la carte pour permettre d'y accéder depuis le callback
 			this.layersControl = layers_control;
-			// classe noajax sur le layer_control pour éviter l'ajout de hidden par SPIP
-			L.DomUtil.addClass(layers_control._form,'noajax');
 		}
 	},
 
